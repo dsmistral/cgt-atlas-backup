@@ -1,23 +1,15 @@
-# RESUME — CHUNK 48g (INSTALL) — IN FLIGHT (session 2026-10-11)
+# RESUME — CHUNK 48g (INSTALL) — CLOSED (folded into KNOWLEDGE.md: STATUS LOG entry 53 + the 48g WORKING LOG)
 
-Authoritative state: KNOWLEDGE.md (SESSION STATE + CHUNK STATE + working point) + this file. GitHub repo dsmistral/cgt-atlas-backup = MAIN SOURCE OF TRUTH (user direction, this session): checkpoint-push after every milestone so a disconnect or a local-layer failure loses at most the current sub-step; if the local file layer is inaccessible, rebuild from the repo.
+Authoritative state: KNOWLEDGE.md (SESSION STATE + CHUNK STATE + working point). This file is retained in the repo as the resume-infra slot; a fresh temp RESUME.md is created at the start of each in-flight chunk. GitHub repo dsmistral/cgt-atlas-backup = MAIN SOURCE OF TRUTH (user direction): milestone pushes during chunks; rebuild from the repo if the local layer is inaccessible.
 
-## Context
-- 48f DONE (STATUS LOG entry 52): the Ch. 12 master cgt-atlas-project/cgt-ch12-olympiad.md is COMPLETE pre-install — 166,459 canonical UTF-8 bytes / 962 lines / frontmatter name "cgt-ch12-olympiad" (= the planned canvas folder name).
-- 48g scope: (i) turn the master’s three pre-install markers honest at install time — the Editions paragraph, the Standing-decisions tail, and the status footer (🟨 authored pre-install, chunks 48d–48f → 🟩 installed, chunks 48d–48g, naming the web-edition build as the remaining next chunk); (ii) install the canvas /home/user/canvases/cgt-ch12-olympiad/CANVAS.md byte-identically to the master; (iii) close-out — buffer (STATUS LOG entry 53 + CHUNK STATE row 48g ✅ + 48g WORKING LOG + SESSION STATE → 48h), atlas (row 48 48g-DONE note + Next cell 48g–48h → 48h + atlas canvas resync), GitHub pushes, fold this file into the 48g WORKING LOG + delete local.
-- STANDING GOTCHA: UTF-8 byte work goes through the canonical path ONLY (TS read → in-memory verify → write → readback string-equality); the bash layer double-encodes UTF-8 intermittently (CHECKPOINT 48f-4).
+## Step log — ALL DONE (chunk 48g closed 2026-10-11)
+0. ✅ Disconnect recovery: state verified intact; zero sub-steps lost.
+1. ✅ RESUME.md created + pushed (commit bbef341) — GitHub connectivity verified.
+2. ✅ Master edits: three pre-install markers turned; master 166,528 canonical UTF-8 bytes / 962 lines; hygiene green.
+3. ✅ Canvas install: CANVAS.md == master byte-identically (166,528 bytes; readback equal; frontmatter name = folder name). Mid-session checkpoint commit 786364d.
+4. ✅ Buffer close-out: STATUS LOG entry 53; CHUNK STATE 48g ✅; 48g WORKING LOG; SESSION STATE → 48h; the new standing direction recorded (GitHub = main source of truth).
+5. ✅ Atlas row 48: 48g-DONE note + Next cell → 48h; atlas canvas resynced (readback equal).
+6. ✅ Close push: atlas + KNOWLEDGE.md + this closed RESUME.
+7. ✅ Folded + deleted locally; tidy verified (buffer = KNOWLEDGE.md only; 2 knowledge topics; ch12 canvas present).
 
-## Step log (updated after EVERY sub-step)
-0. ✅ Disconnect recovery: state verified — buffer holds only KNOWLEDGE.md (262,317 bytes / 354 lines); master untouched (footer still pre-install at line 962); no ch12 canvas (the pre-disconnect mkdir had not persisted — redone); atlas 257 lines. No 48g sub-step was lost.
-1. ✅ RESUME.md created; pushed to GitHub as this commit (connectivity check + source-of-truth checkpoint).
-2. ✅ Master edits DONE (canonical path, single write, readback string-equal): Editions paragraph + Standing-decisions tail + status footer 🟨 authored pre-install (48d–48f) → 🟩 installed (48d–48g); no "not yet installed" phrasing survives; master now 166528 canonical UTF-8 bytes / 962 lines; hygiene gate re-run green (1 H1, 7 H2, 30 problem headers, Terrace III / The Trick Bag / Revision each 1, 0 CR, 0 mojibake, single trailing newline, footer = final line).
-3. ✅ Canvas install DONE: /home/user/canvases/cgt-ch12-olympiad/CANVAS.md == master byte-identically (166528 bytes; readback string-equal on both copies; frontmatter name = folder name).
-4. [ ] Buffer close-out: entry 53, CHUNK STATE 48g ✅, 48g WORKING LOG, SESSION STATE → 48h (+ the new GitHub-source-of-truth standing direction recorded).
-5. [ ] Atlas row 48: 48g-DONE note + Next cell → 48h; atlas canvas resync (canonical copy + readback equality).
-6. [ ] Close push: atlas + KNOWLEDGE.md + RESUME (closed state).
-7. [ ] Fold RESUME into the 48g WORKING LOG + delete local + tidy verify (buffer = KNOWLEDGE.md only; 2 knowledge topics; ch12 canvas present).
-
-On retry: read this step log + KNOWLEDGE.md CHUNK STATE first; NEVER redo a completed sub-step.
-
-## NEW STANDING DIRECTION (user, this session — to be folded into KNOWLEDGE.md SESSION STATE at close)
-GitHub repo = the main source of truth; the local knowledge base is second. Checkpoint-push after every milestone (not just at chunk close); prioritize verification + intact, recoverable data; if the local file layer becomes inaccessible, rebuild from the repo.
+NEXT CHUNK: 48h — web build + closeout (see KNOWLEDGE.md SESSION STATE working point).
