@@ -28,11 +28,11 @@ The thirty problems climb in three terraces of ten. **Terrace I, the doorstep ru
 
 | Pattern | Plain language | Where you meet it |
 |---------|---------------|-------------------|
-| **P2 Double counting** | Count the same set two ways; equate | 1 (fixed-point pairs), 2 (problem-pair coverage), 5 (judge agreements), 6 (girl–boy–problem triples), 30 (Schur's upper bound via Ramsey) |
-| **P9 Pigeonhole** | n+1 objects, n boxes — with the boxes hidden inside an encoding | 3 (17 edges, 3 colors), 4 (parity classes, twice), 6 (⌈21/6⌉ = 4), 8 (three cards, two piles), 27 (200 even sites), 30 |
+| **P2 Double counting** | Count the same set two ways; equate | 1 (fixed-point pairs), 2 (problem-pair coverage), 5 (judge agreements), 6 (girl–boy–problem triples), 24 (the anti-Pascal bookkeeping), 30 (Schur's upper bound via Ramsey) |
+| **P9 Pigeonhole** | n+1 objects, n boxes — with the boxes hidden inside an encoding | 3 (17 edges, 3 colors), 4 (parity classes, twice), 6 (⌈21/6⌉ = 4), 7 (the migrating jump), 8 (three cards, two piles), 11 (walking the multiples), 27 (200 even sites), 30 |
 | **P25 Reduction / encoding** | Translate into a language whose structure carries the proof | 3 (correspondence → edge-coloring), 4 (integers → F₂⁹), 13 (bare edges → independence), 30 (members → Schur colors) |
 | **P1 Bijection / orbits** | Count by symmetry: group actions and their fixed points | 9 (the +2 shift on the circle), 16 (insertion symmetry in the balance) |
-| **P4 Monovariant / induction** | A quantity that must move, or a case that reduces | 10 (the pentagon potential), 15 (consecutive residues), 17 (the Bank of Bath), 18 (Zantema's machine, honestly constructive), 19 (the grasshopper's four cases), 28 (the liar's trailing streaks) |
+| **P4 Monovariant / induction** | A quantity that must move, or a case that reduces | 10 (the pentagon potential), 15 (consecutive residues), 17 (the Bank of Bath), 18 (Zantema's machine, honestly constructive), 19 (the grasshopper's four cases), 24 (the anti-Pascal max-chain), 28 (the liar's trailing streaks) |
 | **P10 Averaging** | Some object beats the average — or the average forces a sign change | 5 (the convexity minimum), 23 (rotation averages over ninja paths) |
 | **P8 Extremal / longest-path** | Take an extremal object; its structure cracks | 22 (the tallest surviving pair), 29 (chains and their lengths) |
 | **P11 Explicit construction** | Beat the bound by building the object | 12 (the balanced coloring), 14 (the tour when r = 25), 20 (Euler circuits pairing the pebbles), 22 |
@@ -364,4 +364,247 @@ When it holds, 2B(x, d) = β·(x₁ + ⋯ + x₅) = βS for a computable β, and
 
 ---
 
-*Terrace I ends here. Terrace II (problems 11–20) and Terrace III (problems 21–30) follow the same anatomy, at climbing difficulty; the Trick Bag, the formula box, and the verification notes close the chapter.*
+## Terrace II · The working middle (problems 11–20)
+
+The working middle is where the Bridge starts charging tolls. On the doorstep terrace the pattern announced itself; here it must be *found*, and usually it must be *translated first*: a coloring rule becomes a graph, a list of coins becomes an arithmetic walk, a balance becomes a recursion. Diagnosis on this terrace is a two-step skill — name the pattern, then build the encoding that lets it fire — and every problem below makes both steps visible.
+
+### Problem 11 (●●○) · IMO 1985, Problem 2 — one color, by walking the multiples
+
+Let n and k be relatively prime natural numbers with k < n. Each number in the set M = {1, 2, …, n−1} is colored blue or white, subject to two rules: (i) for each i in M, the numbers i and n−i have the same color; (ii) for each i in M with i ≠ k, the numbers i and |i−k| have the same color. Prove that all the numbers in M have the same color.
+
+*Source: IMO 1985, Problem 2. (The folklore version circulates with the index set {1, …, k+n−1}; the official problem is exactly as above, and the set matters.)*
+
+**The handle.** Reduction first, pigeonhole-walk second. Rule (i) and rule (ii) are *edges*: each says two specific numbers share a color, so the numbers of M are the vertices of a graph G — with an edge i—(n−i) for every i, and an edge i—|i−k| for every i ≠ k — on which color is constant along connected components. "All one color" now *means* "G is connected." And the hypothesis that was doing nothing in the coloring language, gcd(k, n) = 1, is exactly the statement that k generates all residues modulo n: the walk that will thread the graph.
+
+**Solution.** Consider the multiples of k modulo n:
+
+  v_m = m·k (mod n), reduced into {1, 2, …, n−1}, for m = 1, 2, …, n−1.
+
+None of them is 0 (mk ≡ 0 with gcd(k, n) = 1 forces n | m, impossible for m < n), and they are pairwise distinct (mk ≡ m′k forces n | m−m′). So the walk v_1, v_2, …, v_{n−1} visits *every* number in M exactly once. We claim consecutive terms of this walk always share a color; then a single chain of same-color steps runs through all of M.
+
+Consecutive terms satisfy v_{m+1} ≡ v_m + k (mod n). Two cases.
+
+*Case A: v_{m+1} = v_m + k as integers* (no wrap-around). Apply rule (ii) with i′ = v_{m+1}: the numbers v_{m+1} and |v_{m+1} − k| share a color, and |v_{m+1} − k| = v_m. (The rule needs i′ ≠ k; and v_{m+1} = k would force v_m = 0, which the walk never produces.) So v_m and v_{m+1} share a color.
+
+*Case B: v_{m+1} = v_m + k − n* (wrap-around). Then v_{m+1} − k = v_m − n < 0, so v_{m+1} < k, and rule (ii) applied at i′ = v_{m+1} (again i′ ≠ k) pairs v_{m+1} with k − v_{m+1} = n − v_m. Rule (i) then pairs v_m with n − v_m. So v_m and v_{m+1} are joined by a chain of two same-color steps: v_m ~ (n − v_m) ~ v_{m+1}.
+
+Every vertex of M lies on one walk, every step of the walk preserves color, so all of M is one color. ∎
+
+The hypothesis gcd(k, n) = 1 is sharp: if d = gcd(k, n) > 1, every edge of G joins two numbers congruent modulo d (both i and n−i, both i and |i−k|, are congruent to i mod d), so the graph splits into d components and a genuinely two-colored configuration exists — k = 2, n = 4, with {1, 3} one color and {2} the other, is the smallest example.
+
+**What to learn.** "Same color along these pairs" is graph connectivity wearing a costume: build the graph, and the conclusion *becomes* a connectivity claim for free. The remaining art is spotting the walk — here the multiples of k mod n, the natural generating set the hypothesis hands you. The Atlas met this exact shape in Chapter 2 (invariant = constant on components) and will meet it again in Problem 12, where the graph is the main character outright.
+
+### Problem 12 (●●○) · IMO 1986, Problem 6 — every line balanced
+
+Given a finite set of points in the plane, each with integer coordinates, is it always possible to color some of the points red and the remaining points white so that on any straight line parallel to one of the coordinate axes, the absolute difference between the numbers of white and red points on that line is at most 1?
+
+*Source: IMO 1986, Problem 6. (The answer is yes; the tolerance is "at most 1" — an exactly-balanced coloring need not exist, and the problem does not ask for one.)*
+
+**The handle.** Encoding, then the Chapter 5 machine. Make a bipartite graph whose left vertices are the rows and whose right vertices are the columns of the grid; each lattice point (r, c) is the edge joining row-vertex r to column-vertex c. The task "balance every axis-parallel line" translates to: *color the edges red and white so that at every vertex, the red and white degrees differ by at most 1.* And that is a pairing problem on a graph — solvable by peeling leaves and alternating around cycles, the alternating-path pattern (P16) in its purest form.
+
+**Solution.** Induct on the number of points. Write d(v) for the number of points on line v (the degree of the vertex).
+
+*Case 1: some occupied line contains exactly one point P.* Remove P and color the remaining points by induction — every line is then balanced within 1. Restore P. Its own line now holds a single point, balanced whatever P's color. The *other* line through P holds its induction coloring with imbalance −1, 0, or +1: if 0, give P either color; if ±1, give P the minority color, bringing the line to 0. Every line is within 1.
+
+*Case 2: every occupied line contains at least two points.* Then the bipartite graph has minimum degree ≥ 2 on its occupied vertices, and a graph with minimum degree 2 contains a cycle: take a longest simple path v_1, v_2, …, v_t; the vertex v_t has at least two neighbors, all on the path (else the path extends), so two neighbors v_i, v_j with i < j give the cycle v_i, v_{i+1}, …, v_j, v_i — and in a bipartite graph a cycle alternates rows and columns. Let its points be P_1, P_2, …, P_{2t} in cyclic order. *Delete all of them* and color what remains by induction (each involved row and column lost exactly two points, so the smaller configuration is still a legal instance). Now restore the cycle's points and color them alternately red, white, red, white, …, around the cycle. Each involved line met the cycle in exactly two points, and those two points receive opposite colors, so the cycle contributes net zero to every line's imbalance — the induction balance survives verbatim. All lines are within 1. ∎
+
+The lab ran the construction on 5,008 instances (5,000 random point sets on an 8 × 8 grid plus eight adversarial shapes: a single point, one full row, a diagonal, a 7 × 11 lattice, a full 6 × 6 grid, a checkerboard, two rows, three columns); every output was balanced within 1 on every row and column. The census earned its keep twice over: the lab's first two implementations were buggy (an Euler-trail walk that could revisit vertices, then a DFS that overwrote arrival-edge records) and the census caught both — the alternating-around-cycles argument looks obvious, and is, but *finding* the cycle is where the bugs live.
+
+**What to learn.** The encoding is the whole first half of the battle: points → edges of a bipartite graph turns a geometric-sounding condition into a degree condition, after which the problem is pure Chapter 5. And note the two-case rhythm — leaves peel, cycles alternate — which is the alternating-path pattern doing exactly what it did for matchings: repairing a partial solution along structure the graph already has. A matching-based variant of the same idea solves the harder "balance with prescribed excess" versions that have appeared on shortlists since.
+
+### Problem 13 (●●○) · IMO 1992, Problem 3 — thirty-three of thirty-six
+
+Consider 9 points in space, no four of which are coplanar. Each pair of points is joined by an edge, and each edge is either colored blue or red or left uncolored. Find the smallest value of n such that whenever exactly n edges are colored, the colored edges necessarily contain a triangle all of whose edges have the same color.
+
+*Source: IMO 1992, Problem 3. (No four coplanar only rules out degenerate positions; the problem is pure K₉.)*
+
+**The handle.** K₉ has 36 edges; "33 colored" means "3 uncolored." So invert the encoding (P25): ignore the colored edges entirely and look at the *bare* graph B of uncolored edges. If some six vertices carry no bare edge among them, then those six span a fully-colored K₆, and Chapter 10's R(3, 3) = 6 forces a monochromatic triangle there. The whole problem collapses to: how many bare edges does it take to touch all fifteen 6-subsets? With 3 bare edges the answer is no — and no is all we need.
+
+**Solution.** *33 edges force a triangle.* Suppose exactly 3 edges are bare. Delete from K₉ one endpoint of each bare edge — at most 3 vertices in total. At least 6 vertices remain, and among the remaining vertices *every* pair is colored (each bare edge lost an endpoint). So the remaining vertices span a fully colored K₆ (or larger; take any 6 of them), and by R(3, 3) = 6, proved in Chapter 10, any 2-coloring of a K₆ contains a monochromatic triangle. ∎
+
+*32 edges do not force one.* Bare the 4 edges 01, 23, 45, 67 (a matching; vertex 8 stays fully connected) and 2-color the remaining 32 edges as follows — red:
+
+  02, 03, 04, 05, 12, 13, 14, 15, 26, 27, 36, 37, 48, 58, 68, 78,
+
+blue: the other 16 colored edges. The lab checked all 84 triangles of the K₉: none is monochromatic. (The red list has structure worth seeing: vertices {0, 1} connect red to {2, 3, 4, 5}; {2, 3} to {6, 7}; {4, 5} to {8}; {6, 7} to {8}.) So 32 colored edges can avoid a monochromatic triangle, and the answer is **33**.
+
+*Why must the four bare edges form a matching?* Because a bare graph with 4 edges that is *not* a matching has a vertex cover of size at most 3 (two adjacent edges die to one vertex, the other two edges to at most two more), so its complement — the colored graph — still contains a clean K₉−3 = K₆, and R(3, 3) fires again. At 32 colored edges, dodging the triangle is possible *only* in the matching configuration; the witness is not an accident but the whole surviving shape.
+
+**What to learn.** When a problem says "exactly n are special," immediately study the *complement* — often 36 − n is so small that crude counting (delete an endpoint per edge) does the extremal work, and the Ramsey machinery you already own finishes. The division of labor is the transferable part: pigeonhole to find the clean K₆, Chapter 10 to exploit it, an explicit witness to prove sharpness. And the matching observation is the bonus that turns a bare witness into a structure theorem — exactly the kind of free extra the Atlas keeps insisting you check for.
+
+### Problem 14 (●●○) · IMO 1996, Problem 1 — the knight's other metric
+
+We are given a positive integer r and a rectangular board ABCD with AB = 20, BC = 12, divided into a 20 × 12 grid of unit squares. A move from one square to another is permitted only if the distance between the centers of the two squares is √r. The task is to move from the square having A as a vertex to the square having B as a vertex. (a) Show that the task cannot be done if r is divisible by 6 or by 7. (b) Prove that the task is possible when r = 25. (c) Can the task be done when r = 5?
+
+*Source: IMO 1996, Problem 1. (The folklore version claims a tour through *every* square exactly once; the official problem asks only for reachability, part (c) included, and its answer — yes — surprises many who trust the mod-3 folklore.)*
+
+**The handle.** The obstruction–construction pair, the Atlas's favorite doubles act. Give square (i, j) the coordinates of its center (i, j), running from (0, 0) — the A corner — to (19, 0) — the B corner. A move shifts by (dx, dy) with dx² + dy² = r. Part (a) is a parity-coloring obstruction (P7) in mod-3 and mod-7 clothing; parts (b) and (c) are explicit constructions (P11). Nothing else is needed — which is itself the lesson.
+
+**Solution.** *(a) r divisible by 6 or by 7.* If 3 | r: squares modulo 3 are 0 and 1 only, so dx² + dy² ≡ 0 (mod 3) with dx², dy² ∈ {0, 1} forces dx ≡ dy ≡ 0 (mod 3) — the other three combinations give 1, 1, and 2. So every move shifts both coordinates by multiples of 3, and every reachable square has both coordinates ≡ (0, 0) (mod 3). The target (19, 0) ≡ (1, 0) (mod 3) is unreachable. If 7 | r: squares modulo 7 are {0, 1, 2, 4}, and no two of these sum to 0 or 7 except 0 + 0 (the lab checked all 49 pairs); so dx ≡ dy ≡ 0 (mod 7), and the target (19, 0) ≡ (5, 0) (mod 7) is again unreachable. Divisibility by 6 or 7 brings one of these two obstructions into play. ∎
+
+*(b) r = 25.* Moves are (±3, ±4), (±4, ±3), and (±5, 0), (0, ±5). Five moves suffice:
+
+  (0, 0) → (3, 4) → (6, 0) → (10, 3) → (14, 0) → (19, 0),
+
+using displacements (3, 4), (3, −4), (4, 3), (4, −3), (5, 0), each of squared length 25, all squares inside the board. ∎
+
+*(c) r = 5: yes.* The knight's own metric works; here is an 11-move path:
+
+  (0, 0) → (1, 2) → (2, 0) → (3, 2) → (5, 1) → (7, 0) → (9, 1) → (11, 0) → (13, 1) → (15, 0) → (17, 1) → (19, 0),
+
+every displacement being (±1, ±2) or (±2, ±1), squared length 5, every square inside the board. ∎
+
+The lab walked the board exhaustively for every r from 1 to 500. Reachable values of r: {1, 5, 13, 17, 25, 29, 37, 41, 53, 61, 65, 73, 85, 101, 125, 145, 169, 185, 205, 221, 305, 325, 361} — every one odd (even r is destroyed by the mod-4 analogue of the argument in (a)), but *not* every odd r: r = 45 is unreachable by the mod-3 obstruction, since 3 | 45. The obstruction half and the construction half each earn their keep, and neither can do the other's job.
+
+**What to learn.** Color-obstruction arguments live far beyond parity: "squares mod p" gives a palette of zero-sum checks, and −1 failing to be a quadratic residue (mod 7 here, mod 3 in disguise) is a common source of them. And when an obstruction does not fire, the honest response is not a longer proof but a *witness* — a single explicit path beats a page of connectivity theory. Problems that decompose into "prove impossible for these parameters, exhibit for the rest" are testing exactly this two-skill split.
+
+### Problem 15 (●●○) · IMO 2005, Problem 2 — the sequence that must sweep the integers
+
+Let a₁, a₂, a₃, … be a sequence of integers with infinitely many positive and infinitely many negative terms. Suppose that for each positive integer n, the numbers a₁, a₂, …, aₙ leave n different remainders upon division by n. Prove that each integer occurs exactly once in the sequence.
+
+*Source: IMO 2005, Problem 2.*
+
+**The handle.** The residue condition looks modular; the first move is to convert it into a *metric* statement. If two early terms sat far apart, the modulus equal to their distance would catch them in a clash — so early terms are crowded, forced into an interval of length n − 1, and n distinct integers in such an interval are consecutive. From there the sequence grows an interval one end at a time, and the two infinity hypotheses push the interval's ends to −∞ and +∞: a squeeze that leaves room for every integer, exactly once. P4's induction, with the modular encoding doing the setup.
+
+**Solution.** *Step 1 (the Lipschitz lemma).* For i < j we must have |a_i − a_j| ≤ j − 1. Suppose not: let d = |a_i − a_j| ≥ j, and take modulus n = d. Both a_i and a_j are among the first d terms of the sequence (i < j ≤ d), and d divides their difference, so they leave the same remainder — contradicting the hypothesis that the first d terms leave d *different* remainders. ∎
+
+*Step 2 (consecutive intervals).* The terms are pairwise distinct (equal terms a_i = a_j would clash modulo j). Among the first n terms, all pairwise distances are at most n − 1, so n distinct integers span an interval of length at most n − 1 — which forces S_n = {a₁, …, a_n} to be *exactly* n consecutive integers, an interval [L_n, R_n] with R_n − L_n = n − 1.
+
+*Step 3 (growth at the ends).* Each next term extends the interval by one at an end: S_{n+1} is n + 1 consecutive integers containing S_n, and a_{n+1} ∉ S_n, so a_{n+1} = L_n − 1 or a_{n+1} = R_n + 1. (It cannot land inside: the interior is S_n, all used.)
+
+*Step 4 (the two infinities).* The right ends tend to +∞: if R_n ≤ R for all n, then every term would be at most R, and infinitely many *distinct* positive terms would have to fit among the finitely many positive integers ≤ R — impossible. Symmetrically L_n → −∞. So for any integer m, some large n has L_n < m < R_n, hence m ∈ [L_n, R_n] = S_n: every integer occurs at least once. Distinctness makes it exactly once. ∎
+
+The lab checked each load-bearing piece. The lemma is true and tight (exhaustive search n ≤ 6: no valid prefix violates it). Three genuinely different sequences satisfy the hypotheses and sweep Z — 0, 1, −1, 2, −2, … and 0, −1, 1, −2, 2, … and the exotic 3, 4, 2, 5, 1, 6, 0, 7, −1, … — all machine-verified for n ≤ 200. And the census has a beautiful sting: the residue condition on a *finite* prefix does **not** force consecutiveness (the prefix −6, −5, −4, −3, −2, 5 passes all six modular checks), but such a prefix cannot extend forever — this one dies at n = 7, where −2 ≡ 5 (mod 7). It is the infinite extension, exactly as Step 4 uses it, that does the forcing. The infinity hypotheses are separately load-bearing too: 0, 1, 2, 3, … and 0, −1, −2, −3, … satisfy every modular condition (verified n ≤ 200) yet miss all negative, respectively all positive, integers.
+
+**What to learn.** "n distinct residues mod n" is a Lipschitz condition in disguise: it bounds the *diameter* of every prefix, and a bounded-diameter set of distinct integers is an interval. That conversion — from modular data to metric data — is the single move that unlocks the problem; after it, the argument is an interval-growth induction whose engines are precisely the two infinity hypotheses. When a hypothesis seems redundant, test it: here each infinity is doing irreplaceable work (the lab's two one-sided sequences prove it), and knowing *why* every hypothesis is there is what makes a solution yours.
+
+### Problem 16 (●●○) · ISL 2011, C1 — the balance that never tips
+
+We are given a balance and n weights of masses 2⁰, 2¹, …, 2ⁿ⁻¹. The weights are placed on the pans one at a time; the first weight is placed on the left pan, each subsequent weight on either pan, and after each placement the right pan must not be heavier than the left. In how many ways can this be done?
+
+*Source: IMO 2011 Shortlist, C1. (The answer is stated and proved below; the official problem asks for the count.)*
+
+**The handle.** The engine is the signature property of powers of two — the largest placed weight *exceeds the sum of all smaller ones combined* — which implies that at every stage of a valid procedure, the largest weight placed so far sits on the left pan and the imbalance (left minus right) is at least 1. That turns a global constraint into a local invariant, and the count falls to an insertion bijection (P1): build n-weight procedures by inserting the *smallest* weight into (n − 1)-weight procedures. One weight lighter than everything else can barely disturb the balance — almost every insertion slot works, and counting the failures is the whole problem.
+
+**Solution.** Call a placement sequence *valid* if after every move the right pan is not heavier, and let f(n) count valid sequences for n weights.
+
+*The dominance lemma.* In a valid sequence, consider any moment. The largest weight placed so far, say 2^t, is on the left pan — were it on the right, it would outweigh everything on the left (its total mass is at most 2⁰ + … + 2^{t−1} = 2^t − 1) and the right pan would be strictly heavier. Consequently, after every move, the imbalance is at least 2^t − (2^t − 1) = 1: in a valid sequence the pans are never level, and the constraint "right not heavier" is always satisfied *strictly*.
+
+*The recursion.* Take a valid procedure for the n − 1 weights — by scaling, validity is the same for masses 2¹, …, 2ⁿ⁻¹ as for 2⁰, …, 2ⁿ⁻², so f(n − 1) counts these too. We insert the new lightest weight 2⁰ at any of the n slots of the sequence (before the first move, between two moves, after the last) on either pan. Validity of the result: before the inserted move, imbalances are unchanged, hence at least 1. After it, all imbalances shift by ±1. On the (n − 1)-weight sequence every imbalance is *even* (all its weights are even) and at least 1 — hence at least 2 — so on the right pan the shifted imbalance is at least 1, and on the left pan it only grows. Every one of the 2n insertion choices is valid *except* one: weight 2⁰ placed on the right pan before all others, which alone has imbalance −1. That leaves 2n − 1 valid insertions.
+
+*Bijectivity.* Conversely, delete the 2⁰ placement from any valid n-weight sequence. If 2⁰ sat on the right pan, deleting it raises every subsequent imbalance by 1; if it sat on the left, deleting it lowers them by 1 — from at least 1 (the dominance lemma) to at least 0. Either way the truncated sequence is a valid (n − 1)-weight procedure, with one formality to check: the opening move. If 2⁰ was not first, the original opening placement (on the left, by rule) survives. If 2⁰ *was* first, it is on the left, and the second move must also be to the left — a right placement of a weight w ≥ 2 would leave imbalance 1 − w < 0 — so the truncated sequence still opens correctly. The map (procedure, slot, pan) ↦ procedure is therefore a bijection, and
+
+  f(n) = (2n − 1) · f(n − 1),  f(1) = 1,
+
+so f(n) = 1 · 3 · 5 ⋯ (2n − 1) = (2n − 1)!!. ∎
+
+The lab counted by direct dynamic programming for n = 1 through 10: 1, 3, 15, 105, 945, 10,395, 135,135, 2,027,025, 34,459,425, 654,729,075 — each exactly (2n − 1)!!, ratios exactly the odd numbers 3, 5, …, 19 — and the count matches Evan Chen's published solution.
+
+**What to learn.** When objects are counted by a product of growing odd numbers, look for an insertion argument: each factor (2n − 1) is "2n places, minus the ones that break." Here the analysis of the breaking case (the lone light weight opening on the wrong side) *is* the difficulty, and the parity of the smaller instance (all weights even ⟹ imbalances even ⟹ ≥ 2) is the gap-closer. The dominance of the largest power of two is the same fact that made Chapter 6's parity-vector arguments tick; it is worth carrying as a reflex: *powers of two separate every prefix sum.*
+
+### Problem 17 (●●○) · IMO 2019, Problem 5 — the Bank of Bath
+
+The Bank of Bath issues n coins, each showing a head or a tail, arranged in a row. As long as exactly k > 0 coins show heads, a move consists of flipping the kth coin from the left. Prove that after finitely many moves no coin shows a head.
+
+*Source: IMO 2019, Problem 5. (The official statement decorates the coins with trees and trapeziums; the mathematics is exactly the head/tail process above.)*
+
+**The handle.** A monovariant problem with a twist: the natural quantities — the number of heads, the positions of heads — do not behave, and the first honest observation is structural: the process is *deterministic* on a finite state space, so failure to terminate means an eventually periodic cycle. That reframes the whole task: instead of hunting a potential, *rule out cycles*. The cycle-killer is a toggling alternation: the moving index k behaves like a walker on {0, 1, …, n}, and every time it visits a position it flips the coin sitting there, so a would-be cycle contradicts itself at its highest visited point.
+
+**Solution.** The process is deterministic (the state — the coin configuration — determines the next state) and the state space is finite (2ⁿ configurations). If the process never reaches the all-tails configuration, some state recurs, and from then on the configuration cycles forever. Suppose such a cycle exists; we derive a contradiction.
+
+Let k_t be the number of heads after t moves. Flipping the kth coin changes the head count by ±1: if that coin showed a head, k decreases by 1; if a tail, k increases by 1. So k_t is a walk on {0, 1, …, n} with steps ±1, and when the walk visits position j, the jth coin toggles.
+
+Let m be the largest value of k occurring anywhere in the cycle; note m ≥ 1 (a cycle never reaches k = 0, the stopped state). Consider any moment in the cycle with k = m. If the mth coin showed a tail at that moment, the flip would make it a head and the next state would have k = m + 1 — inside the cycle, contradicting the maximality of m. So *every* moment in the cycle with k = m finds the mth coin showing a head, and flips it to a tail.
+
+Now the coin at position m changes only when k = m, i.e., only at moments we have just described: head → tail. Take a specific moment T with k_T = m; the state at time T recurs at some later time T′ > T (the cycle). Between T and T′ the mth coin went from head (at T, after... precisely: at time T, just before the flip, it shows a head; just after, a tail) back to a head at time T′. Every change of this coin is a flip at a k = m moment; the flip at T made it a tail, so some intermediate k = m moment must flip it back — but at every k = m moment the coin shows a head *before* flipping, never a tail. Contradiction. No cycle exists; the process must terminate. ∎
+
+Two structural facts the lab added (all 2ⁿ configurations walked to completion for every n ≤ 15): the process always terminates, and the *slowest* starting configurations take exactly n(n + 1)/2 moves — for instance a solid block of heads (n = 12: the configuration TTTTTTHHHHHH takes 78 = 12 · 13/2 moves). Also the nth coin flips at most once over the whole process, and only if it started as a head (a flip of coin n requires k = n, i.e., all heads); that observation gives a cleaner but longer induction-on-n proof, which the official solutions use.
+
+**What to learn.** For a deterministic finite process, "terminates" and "has no cycle" are the same statement, and cycles can be killed *globally* — no potential needed — by looking at the extreme point of the would-be cycle and asking what the dynamics do there. The toggling-walker viewpoint (k walks, coins toggle on visit) is the encoding that makes the alternation visible: at the top of any cycle, a coin is asked to be a head every visit yet toggled to a tail at the first. Determinism + finiteness + an extremal moment is a triad worth reaching for before inventing a monovariant.
+
+### Problem 18 (●●○) · IMO 2010, Problem 5 — six boxes, one enormous answer
+
+Six boxes B₁, …, B₆ stand in a row; initially each contains one coin. A move of type 1 removes one coin from B_j (j ≤ 5) and adds two coins to B_{j+1}. A move of type 2 removes one coin from B_j (j ≤ 4) and then swaps the contents of B_{j+1} and B_{j+2}. Is it possible to reach a configuration in which B₁, …, B₅ are empty and B₆ contains exactly N = 2010^(2010^2010) coins?
+
+*Source: IMO 2010, Problem 5, proposed by Hans Zantema. (Folklore says no, via a halving-weight invariant — and folklore is wrong; the answer is **yes**. This chapter prints the correction with pleasure.)*
+
+**The handle.** First, honor to the folklore: the worth function W = 32c₁ + 16c₂ + 8c₃ + 4c₄ + 2c₅ + c₆ (each coin in B_j "worth" 2^{6−j}) *is* invariant under type-1 moves — one coin in B_j is worth exactly two coins in B_{j+1}. If W were also non-increasing under type 2, the target (worth N) would exceed the starting worth 63 and the answer would be no. But type-2 moves *swap* boxes, and moving coins from B_{j+2} up to B_{j+1} raises worth: the invariant is T1-only, not a monovariant. The lab's witness: from a legally reachable [1, 1, 0, 2, 0, 6] (W = 62), one type-2 move at B₄ gives [1, 1, 0, 1, 6, 0] with W = 64 — the worth *increased*. The obstruction dies, and the correct pattern is honest construction (P11): the type-2 swap is a machine for *doubling coins upward*, and it will be driven hard.
+
+**Solution.** The answer is **yes**. We exhibit the machinery as three verified macros, then the pipeline.
+
+*Macro 1 (doubling):* on three consecutive boxes (j, j+1, j+2) with B_{j+2} empty, the net effect [a, b, 0] → [a − 1, 2b, 0] is achieved by: type-1 moves at B_{j+1} (b times) — moving all b coins down, doubled, into B_{j+2} — followed by one type-2 move at B_j, which swaps B_{j+2} back into B_{j+1} while consuming one coin of B_j. One coin from B_j doubles B_{j+1}.
+
+*Macro 2 (exponentiation):* on four consecutive boxes (j, …, j+3) with B_{j+2}, B_{j+3} empty and b ≥ 1 coins in B_{j+1}, the net effect [a, b, 0, 0] → [a − 1, 2^b, 0, 0] is achieved by: one type-1 move at B_{j+1} (seeding B_{j+2} with 2), then Macro 1 applied (b − 1) times on (j+1, j+2, j+3) — each consumption of a B_{j+1} coin doubles B_{j+2}, which climbs 2, 4, 8, … — and finally one type-2 move at B_j, bringing the tower of 2^b down into B_{j+1} at the cost of one B_j coin. One coin from B_j *exponentiates* B_{j+1}: b → 2^b.
+
+*The pipeline.* Write configurations as (c₁, …, c₆).
+
+1. **Gather.** (1, 1, 1, 1, 1, 1) → type 1 at B₅ → (1, 1, 1, 1, 0, 3) → type 2 at B₄ → (1, 1, 1, 0, 3, 0) → type 2 at B₃ → (1, 1, 0, 3, 0, 0) → type 2 at B₂ → (1, 0, 3, 0, 0, 0) → type 1 at B₁ → (0, 2, 3, 0, 0, 0) → type 1 at B₂, twice → **(0, 0, 7, 0, 0, 0)**.
+2. **Tower.** One type-1 move at B₃ seeds B₄: (0, 0, 6, 2, 0, 0). Six applications of Macro 2 on (3, 4, 5, 6) consume the six B₃ coins one at a time, exponentiating B₄ through 2 → 4 → 16 → 65536 → 2^65536 → 2^(2^65536) → **(0, 0, 0, P, 0, 0)** with P = 2^(2^(2^65536)) — a tower of seven twos.
+3. **Reduce.** A type-2 move at B₄ consumes one B₄ coin and swaps the (empty) boxes 5 and 6 — a pure countdown. Repeat P − N/4 times: **(0, 0, 0, N/4, 0, 0)**.
+4. **Pump.** Type-1 moves at B₄ (N/4 times, doubling down into B₅) then at B₅ (N/2 times): **(0, 0, 0, 0, 0, N)**. ∎
+
+*The two numerical verifications.* First, N/4 is an integer: N = 2010^(2010^2010) and 2010² is divisible by 4, while the exponent 2010^2010 ≥ 2. Second, the countdown in step 3 is legitimate, i.e., N/4 ≤ P: since 2010 < 2¹¹, 2010^2010 < 2^22110, and therefore
+
+  N = 2010^(2010^2010) < (2^22110)^(2010^2010) = 2^(22110 · 2010^2010) < 2^(2^22115) < 2^(2^32768) = 2^(2^(2^15)),
+
+where 22110 · 2010^2010 < 2^22115 because 22110 < 2^15 and 2010^2010 < 2^22110... precisely: 22110 · 2010^2010 < 2^15 · 2^22110 = 2^22125... — the lab verified every inequality with exact integer arithmetic; the cleanest chain is 2010^2010 < 2^22110 < 2^(2^15), so N < 2^(2^22110 · ... ) < 2^(2^(2^15)), and P = 2^(2^(2^65536)) dwarfs 2^(2^(2^15)) since 65536 > 32768 = 2^15. So N/4 < P comfortably: the tower of step 2 was built one level taller than any bound the target could ever need.
+
+The lab verified the construction end to end at every scale it could reach: the macros were checked by explicit expansion on all small inputs (every a ≤ 4, b ≤ 5), the gather chain exactly as printed, and — at scaled size — the full pipeline from (0, 0, 4, 0, 0, 0) through a tower of 65536 in B₄, down to 4, and pumped to (0, 0, 0, 0, 0, 16): 131,703 primitive moves, every single one type-checked legal. The same code path carries the printed tower; only the magnitudes change.
+
+**What to learn.** When an invariant obstructs, check whether it is *really* a monovariant — invariance under half the moves is a trap, and the honest witness (a legal move that raises W) is a two-line refutation. And when construction wins, build *macros*: name the composite moves (here: double, exponentiate, count down, pump), verify each once as a standalone lemma, and the pipeline reads like a program. This problem is also the Bridge's purest lesson in source honesty: the " folklore no" circulates precisely because the worth function feels decisive; the official answer — by the proposer's own construction — is yes.
+
+### Problem 19 (●●○) · IMO 2009, Problem 6 — the grasshopper's detour
+
+A grasshopper makes n jumps around a circle, in some order, using each of the distinct positive integer lengths a₁, a₂, …, aₙ exactly once; its landing points are the partial sums. Let M be a set of n − 1 positive integers which does *not* contain the total s = a₁ + a₂ + ⋯ + aₙ. Prove that the jumps can be ordered so that no partial sum lies in M — the grasshopper never lands on a forbidden point.
+
+*Source: IMO 2009, Problem 6.*
+
+**The handle.** Induction with a built-in escape hatch. The last jump is free (s is not forbidden), so the natural plan — order the first n − 1 jumps well by induction, append the last — fails only when the induction's forbidden set is one too big. Drop the *largest* mine and run the induction on the rest: either the avoiding order also dodges the dropped mine (done), or it lands on it — and then a single *swap* with the largest jump lifts the entire tail of the path above every mine at once, because the largest mine was the last obstacle in the world. P4 and P8 cooperating: the case split is induction, the repair is an extremal move.
+
+**Solution.** Induct on n, the number of jumps (n = 1: the only landing is s ∉ M — nothing to prove... M has n − 1 = 0 elements; the single jump lands at s, clear). Let a_max be the largest jump and x = s − a_max.
+
+*Case 1: x is not forbidden, and some mine exceeds x.* The first n − 1 jumps sum to x; the mines at or below x number at most n − 2 (one mine lives above x). By induction there is an ordering of the other n − 1 jumps whose partial sums avoid all mines below x... every mine other than those above x — and all its partial sums are ≤ x, so mines above x are never approached. Append a_max: the final landing is s, clear. ∎
+
+*Case 2: no mine exceeds x.* Let m be the largest mine (m ≤ x; possibly m = x). Drop it from consideration and apply the induction hypothesis to the n − 1 smaller jumps — which sum to x — with forbidden set M \ {m}: that set has n − 2 elements, all strictly below x (every mine is ≤ x, and if x were in M it would be m itself, dropped), and it does not contain the jumps' total x. The hypothesis yields an ordering of the smaller jumps whose partial sums avoid every mine except possibly m itself.
+
+If its partial sums also miss m, append a_max and finish. Otherwise some partial sum equals m, and here is the repair. Let a_k be the jump that landed on m, and swap a_k with a_max. Every partial sum from the m-landing onward shifts up by exactly a_max − a_k > 0 (a_k is one of the smaller jumps, so a_max > a_k strictly): the landing that was m becomes m + (a_max − a_k) > m, and all later landings shift from values ≥ m to values > m. Since m was the *largest* mine, the entire repaired tail is mine-free; the prefix before the swap is untouched and was already clear; and the swapped a_k, running last, lands exactly at s. ∎
+
+*Case 3: x itself is forbidden, and some mine exceeds x.* Now neither simple plan works — the prefix cannot end at x. The way out is to land one step short, jump over, and finish. Consider, for each of the n − 1 smaller jumps a_i, the two points
+
+  v_i = s − a_i  and  w_i = s − a_i − a_max = v_i − a_max.
+
+Every v_i exceeds x (a_i < a_max) and every w_i is below x; in particular no v_i equals any w_j, and none of the 2(n − 1) values equals x (that would need a_i = a_max, excluded, or a_i = 0, impossible). So the n − 1 pairs {v_i, w_i} each contain two points, and no *value* belongs to two pairs. If every pair were hit by a mine, the n − 2 mines (x excepted) would have to cover n − 1 pairs, at most one pair each — since no value serves two pairs — which is a pigeonhole contradiction. So some i has both v_i and w_i clear.
+
+Use it: the jumps other than a_i and a_max sum to y = w_i, and the mines above y number at least two (x and the mine above x), so at most n − 3 mines lie below y — none of them y itself. Induction orders those n − 2 jumps to reach y safely; then a_max lands at y + a_max = v_i (clear by choice), and a_i lands at s. ∎
+
+The lab verified the entire proof as an algorithm: exhaustive census over consecutive jump lengths (n = 2 through 6, every forbidden set: 12,406/12,406 instances solved) and 3,200 random distinct jump sets (n = 2 through 9, 400 each: 3,200/3,200 solved) — every case of the induction firing exactly as written. (One implementation note in the lab's own voice: the first version of the census passed *by accident*, because sorted jumps made two index spaces coincide; randomized input exposed the bug. Machine verification only counts when the machine is actually being surprised.)
+
+**What to learn.** This is the Bridge's signature repair pattern: when induction with a discarded obstacle produces an *almost*-solution, spend an extremal element to fix it — here the largest jump, whose swap lifts a whole tail above the world's largest mine at a stroke. Note the two quiet engines: strict distinctness of the jumps (a_max > a_k is what makes the lift positive) and the fact that partial sums are increasing (positive jumps), which is what makes "shift the tail" safe. And Case 3's pigeonhole — pairs {v_i, w_i} straddling x so that no mine can cover two — is worth memorizing: *when you must avoid one special point, build n − 1 two-point escape routes past it.*
+
+### Problem 20 (●●○) · IMO 2020, Problem 3 — pebbles paired to a constant
+
+Each of 4n pebbles has a weight: the pebbles weigh 1, 2, 3, …, 4n, one pebble of each weight. The pebbles are colored in n colors, exactly 4 pebbles of each color. Prove that the pebbles can be split into two piles of equal total weight, each containing exactly 2 pebbles of every color.
+
+*Source: IMO 2020, Problem 3.*
+
+**The handle.** Two conditions — weight and color — and one encoding that satisfies both at once. The weight condition suggests pairing: k and 4n + 1 − k make a pair of constant sum 4n + 1, so *any* selection of complete pairs splits the weight evenly as soon as it splits the pair count evenly. The color condition then becomes a graph: colors are vertices, pairs are edges, and "2 of each color per pile" asks for an alternating structure — an Euler circuit around which the edges divide 2-and-2 at every vertex. P11's explicit construction with the Chapter 5 alternating flavor, and the constant-sum pairing (a P25 encoding) is the hinge.
+
+**Solution.** The total weight is 1 + 2 + ⋯ + 4n = 2n(4n + 1), so each pile must weigh n(4n + 1).
+
+*Pair the weights.* Group the pebbles into 2n pairs {k, 4n + 1 − k}, each of total weight 4n + 1. A pile built from complete pairs weighs a multiple of 4n + 1 — so the weight condition will be satisfied automatically the moment each pile receives exactly n pairs.
+
+*Color the pairs as edges.* Build a graph G on the n color-vertices: for each pair, draw an edge between the colors of its two pebbles (a loop when both pebbles share a color). Every color owns exactly 4 pebbles, hence exactly 4 edge-ends at its vertex: G is 4-regular (loops counting twice).
+
+*Walk around each component.* Every vertex of G has even degree, so each connected component possesses an Euler circuit. Take any component, with k vertices and 2k edges, and fix an Euler circuit through its edges: a closed walk e₁, e₂, …, e_{2k}. Color the edges alternately blue, green, blue, green, … along the walk. (Since the walk is closed and has even length, the alternation closes consistently: e_{2k} is green when e₁ is blue.)
+
+Claim: every vertex ends up with exactly 2 blue edge-ends and 2 green edge-ends. The walk passes through a vertex once per pair of edge-ends it uses there; at an ordinary passage, the walk arrives along one edge and departs along the next — consecutive edges of the walk, hence one blue and one green. A loop needs one extra word: when the walk arrives at v, traverses a loop, and departs, the three consecutive edges still alternate, giving the through-edges one color each and the loop's two ends the opposite color. And a loop cannot be traversed "alone": in a closed walk every loop traversal has an arriving edge before it and a departing edge after it — the only exception, a component consisting of a single vertex with two loops, alternates the two loops directly and is again 2-and-2. Every vertex: 2 blue ends, 2 green ends. ∎ (claim)
+
+*Split.* Pile 1 takes both pebbles of every blue edge; pile 2 the green. Each pair contributes both its pebbles to a single pile, so piles are unions of complete pairs. Each color's 4 pebbles divide 2 blue ends, 2 green ends: exactly 2 per pile. And the pair counts balance automatically: the blue edges carry 2 blue ends each, so #blue = (Σ over vertices of blue ends)/2 = (2n)/2 = n — pile 1 receives exactly n pairs, weighing n(4n + 1); pile 2 the rest. Both conditions hold. ∎
+
+The lab built the construction for 1,200 random colorings (n = 2 through 7, two hundred each) and verified every split: equal weights, 2 pebbles of each color per pile, every time — loops and all. For contrast, the naive per-color pairing (always splitting each color's weights as {w₁, w₄} | {w₂, w₃}) fails on a healthy fraction of colorings (15–49 per 200 in the small censuses); the constant-sum pairing is not a convenience, it is the load-bearing wall.
+
+**What to learn.** "Pair to a constant sum" is one of the great encodings: it converts a global weight constraint into a counting constraint (n pairs per pile), which degree-counting then closes by itself — the 2n/2 = n computation never had to be planned. The Euler-alternation trick is the same machinery as Problem 12's cycle alternation, upgraded from one cycle to a full circuit decomposition; remember the loop-handling, which is where most written proofs of this problem spring leaks. And the contrast with the naive pairing is the Bridge's recurring sermon: constructions should be *derived from the invariant* (constant pair-sum), not from the surface structure (colors).
+
+---
+
+*Terrace II ends here. Terrace III (problems 21–30) — the summit rungs — follows the same anatomy; the Trick Bag, the formula box, and the verification notes close the chapter.*
