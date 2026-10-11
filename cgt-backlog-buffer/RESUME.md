@@ -1,15 +1,17 @@
-# RESUME — CHUNK 48g (INSTALL) — CLOSED (folded into KNOWLEDGE.md: STATUS LOG entry 53 + the 48g WORKING LOG)
+# RESUME — CHUNK 48h (web build + closeout) — IN FLIGHT (session 2026-10-11)
 
-Authoritative state: KNOWLEDGE.md (SESSION STATE + CHUNK STATE + working point). This file is retained in the repo as the resume-infra slot; a fresh temp RESUME.md is created at the start of each in-flight chunk. GitHub repo dsmistral/cgt-atlas-backup = MAIN SOURCE OF TRUTH (user direction): milestone pushes during chunks; rebuild from the repo if the local layer is inaccessible.
+Authoritative state: KNOWLEDGE.md (SESSION STATE + CHUNK STATE + working point) + this file. GitHub repo dsmistral/cgt-atlas-backup = MAIN SOURCE OF TRUTH (standing direction): milestone pushes; rebuild from the repo if the local layer is inaccessible. UTF-8 byte work via the canonical TS path only.
 
-## Step log — ALL DONE (chunk 48g closed 2026-10-11)
-0. ✅ Disconnect recovery: state verified intact; zero sub-steps lost.
-1. ✅ RESUME.md created + pushed (commit bbef341) — GitHub connectivity verified.
-2. ✅ Master edits: three pre-install markers turned; master 166,528 canonical UTF-8 bytes / 962 lines; hygiene green.
-3. ✅ Canvas install: CANVAS.md == master byte-identically (166,528 bytes; readback equal; frontmatter name = folder name). Mid-session checkpoint commit 786364d.
-4. ✅ Buffer close-out: STATUS LOG entry 53; CHUNK STATE 48g ✅; 48g WORKING LOG; SESSION STATE → 48h; the new standing direction recorded (GitHub = main source of truth).
-5. ✅ Atlas row 48: 48g-DONE note + Next cell → 48h; atlas canvas resynced (readback equal).
-6. ✅ Close push: atlas + KNOWLEDGE.md + this closed RESUME.
-7. ✅ Folded + deleted locally; tidy verified (buffer = KNOWLEDGE.md only; 2 knowledge topics; ch12 canvas present).
+## Context
+- 48g DONE: Ch. 12 INSTALLED — canvas == master byte-identically (166,528 canonical UTF-8 bytes / 962 lines); master markers already at the installed state.
+- 48h scope: (i) master apparatus → shipped state (Editions / Standing-decisions / footer ✅ Feynman edition, chunks 48d–48h, canvas + web edition byte-identical + browser PDF route) + ch12 canvas resync; (ii) web edition: standard 138-line frame (copy of cgt-ch11-web.md lines 1–48 + 50–138), four patches (frontmatter name/title, HTML title, banner Chapter&nbsp;N), MD_B64 = pure-JS base64 of the FINAL master spliced at line 49 — codec PROVEN FIRST against the ch11 payload (encode cgt-ch11-algorithms.md ≡ ch11 payload line; decode ch11 payload ≡ ch11 master) — TS decode-equality oracle (NOT shell md5); cgt-ch12-web.md master + canvas install; (iii) close-out: buffer (entry 54 + row 48h ✅ + 48h WORKING LOG + SESSION STATE → post-Ch.12), atlas (chapter-map row 12 → ✅; session row 48 → COMPLETE + 48h note; Next cell → E-group installs) + atlas canvas resync; milestone pushes; fold + delete this file.
 
-NEXT CHUNK: 48h — web build + closeout (see KNOWLEDGE.md SESSION STATE working point).
+## Step log (updated after EVERY sub-step)
+1. ✅ RESUME.md created + pushed (connectivity + checkpoint).
+2. [ ] Master apparatus edits + hygiene + ch12 canvas resync + milestone push.
+3. [ ] Web build (codec proof → patches → payload → oracle → install) + milestone push.
+4. [ ] Buffer close-out + milestone push.
+5. [ ] Atlas close-out + resync + close push.
+6. [ ] RESUME closed-state pushed + folded + deleted locally + tidy verify.
+
+On retry: read this step log + KNOWLEDGE.md CHUNK STATE first; NEVER redo a completed sub-step.
