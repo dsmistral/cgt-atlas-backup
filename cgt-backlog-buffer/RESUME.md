@@ -9,7 +9,7 @@ Authoritative state: KNOWLEDGE.md (SESSION STATE + CHUNK STATE + working point) 
 ## Step log (updated after EVERY sub-step)
 1. ✅ RESUME.md created + pushed (connectivity + checkpoint).
 2. ✅ Master apparatus → shipped state DONE (canonical path, single write, readback equal): Editions + Standing-decisions + footer 🟩 installed (48d–48g) → ✅ Feynman edition (chunks 48d–48h), canvas + web edition byte-identical + browser PDF route; master 166588 canonical UTF-8 bytes / 962 lines; hygiene green (1 H1, 7 H2, 30 problems, sections each 1, 0 CR, 0 mojibake, single trailing newline, footer = final line); ch12 canvas resynced (readback equal). Milestone push follows.
-3. [ ] Web build (codec proof → patches → payload → oracle → install) + milestone push.
+3. ✅ Web build DONE: codec PROVEN first against the ch11 payload roundtrip (encode ch11 body ≡ payload line, decode ≡ body — the convention pinned: payload = master minus frontmatter, leading blank line kept, final trailing newline dropped, single line, no semicolon); ch12 payload = 221,864 b64 chars; TS decode-equality oracle GREEN on the exact spliced string; standard 138-line frame, four patches (frontmatter name/title, HTML title, banner Chapter&nbsp;12); cgt-ch12-web.md master 228,259 bytes / 138 lines, payload at line 49, exactly 2 MD_B64 mentions, readback equal; canvas cgt-ch12-web == master byte-identically (228,259 bytes). Milestone push follows.
 4. [ ] Buffer close-out + milestone push.
 5. [ ] Atlas close-out + resync + close push.
 6. [ ] RESUME closed-state pushed + folded + deleted locally + tidy verify.
