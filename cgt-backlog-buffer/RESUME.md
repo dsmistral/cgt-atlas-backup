@@ -8,7 +8,7 @@ Authoritative state: KNOWLEDGE.md (SESSION STATE + CHUNK STATE + working point) 
 
 ## Step log (updated after EVERY sub-step)
 1. ✅ RESUME.md created + pushed (connectivity + checkpoint).
-2. [ ] Master apparatus edits + hygiene + ch12 canvas resync + milestone push.
+2. ✅ Master apparatus → shipped state DONE (canonical path, single write, readback equal): Editions + Standing-decisions + footer 🟩 installed (48d–48g) → ✅ Feynman edition (chunks 48d–48h), canvas + web edition byte-identical + browser PDF route; master 166588 canonical UTF-8 bytes / 962 lines; hygiene green (1 H1, 7 H2, 30 problems, sections each 1, 0 CR, 0 mojibake, single trailing newline, footer = final line); ch12 canvas resynced (readback equal). Milestone push follows.
 3. [ ] Web build (codec proof → patches → payload → oracle → install) + milestone push.
 4. [ ] Buffer close-out + milestone push.
 5. [ ] Atlas close-out + resync + close push.
