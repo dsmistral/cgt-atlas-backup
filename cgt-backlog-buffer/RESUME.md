@@ -48,6 +48,6 @@ A fresh canon-coverage audit BEFORE the E-group installs: verify that all load-b
 2. [✅] 49a machine survey + checkpoint + push. DONE this retry (survey re-run cheaply + all ambiguous hits role-verified in context; results recorded above).
 3. [✅] 49b reference sweep + checkpoint + push. DONE this retry (Diestel + Alon–Spencer + GRS + van Lint–Wilson + Engel, results above).
 4. [✅] 49c verdict assembly + checkpoint + push. DONE this retry (ranked report above).
-5. [ ] 49d buffer/atlas record + close push + fold + tidy.
+5. [✅] 49d buffer/atlas record + close push + fold + tidy. DONE this retry (entry 56 + the session-49 WORKING LOG + CHUNK STATE row 49 + atlas row 49 + the standing-to-do line + atlas canvas resync). CLOSED — this file is now the fold source: it is DELETED locally after this push and its evidence preserved at GitHub commit f8a2ab1 (and this final push).
 
 On retry: read this step log + KNOWLEDGE.md SESSION STATE first; NEVER redo a completed sub-step.
