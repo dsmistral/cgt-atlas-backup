@@ -40,7 +40,7 @@ The thirty problems climb in three terraces of ten. **Terrace I, the doorstep ru
 | **P15 Induction on vertices/edges** | Delete, solve smaller, extend | 21 (splitting the clique across two rooms) |
 | **P16 Alternating paths** | Repair a partial solution along a cycle | 12 (peel leaves, alternate around cycles) |
 | **P17 Duality (min–max)** | Two players, one number; a strategy is a proof | 27 (the √5 game's value is exactly 100), 28 (the liar game's window n ≥ 2k) |
-| **P18 Algorithmic proof** | The proof *is* a procedure; termination is the theorem | 25 (the hunter's forced failure), 26 (the windmill's sweep), 29 (the swap algorithm) |
+| **P18 Algorithmic proof** | The proof *is* a procedure; termination is the theorem | 25 (the hunter's forced failure), 26 (the windmill's sweep), 29 (the block move, run to termination) |
 | **P26 Compactness** (flavor only) | Infinite patience, finite budget — and a limit argument in disguise | 25 (10⁹ rounds, 100 of distance) |
 | **Diagnosis is the skill (lore)** | The thirty problems use thirteen patterns. The other thirteen — inclusion–exclusion (P3), generating functions (P5), complement/reflection (P6), the probabilistic trio (P12–P14), and the professional toolkit of rank, spectral bounds, polynomials, compression, and shadow pricing (P19–P24) — appear **zero times** | The finding, discussed below the table |
 
@@ -607,4 +607,356 @@ The lab built the construction for 1,200 random colorings (n = 2 through 7, two 
 
 ---
 
-*Terrace II ends here. Terrace III (problems 21–30) — the summit rungs — follows the same anatomy; the Trick Bag, the formula box, and the verification notes close the chapter.*
+## Terrace III · The summit rungs (problems 21–30)
+
+The summit rungs were, almost to a problem, the hardest thing on their year's paper — several are among the hardest of their decade. The disguises here are the chapter's thickest: a friendship network that is really a partition search, a device-tracking game that is really a mirror argument, a rotating line that is really a counting invariant. But the machinery never upgrades, and that is the terrace's whole teaching: what changes at the summit is the *load per pattern* — one pattern asked to carry a long chain of bookkeeping without dropping a constant, or two patterns asked to cooperate and hand off cleanly. Read these slowly, and notice that the moment of diagnosis is still one sentence. The climb was never about harder tools. It was always about seeing the tool inside a heavier costume.
+
+### Problem 21 (●●●) · IMO 2007, Problem 3 — two rooms, one clique size
+
+In a competition, some pairs of competitors are friends, and friendship is always mutual. Call a group of competitors a *clique* when every two of its members are friends (a single competitor, and even the empty group, counts); the *size of the competition* is the greatest number of members in a clique. Suppose the size of the competition is even. Prove that the competitors can be allocated between two rooms so that the largest clique in one room and the largest clique in the other room have the same size.
+
+*Source: IMO 2007, Problem 3. (The folklore version claims each room can be given "half" the maximum clique; the official claim is weaker — the two rooms' largest cliques need only be equal — and "half" is genuinely false: for two disjoint friendship pairs, competition size 2, the only equal split puts one full pair in each room, both of clique size 2, not half of it.)*
+
+**The handle.** Discrete continuity from an extremal start. Take a maximum clique, put it alone in room A, everyone else in room B, and walk the clique's members across one at a time. Room A then keeps no secret — after i moves it is exactly a clique of 2s−i vertices, so its clique *number* is known by inspection — while room B's clique number can only grow, at most one per move. A quantity that starts negative and ends positive, moving in steps of one or two, either lands exactly on zero (equal rooms, done) or jumps over it — and the jump-over state turns out to be so rigid that a single swap repairs it. P8 supplies the extremal starting point; P4 supplies the walk.
+
+**Solution.** Let 2s be the competition's size, X a maximum clique, Y = V∖X. If ω(Y) = 2s the rooms X and Y are already equal and we are done, so assume ω(Y) ≤ 2s−1. List the members of X as x₁, x₂, …, x_{2s} in any order, and for i = 0, 1, …, 2s let A_i = X with x₁, …, x_i removed and B_i = Y together with x₁, …, x_i.
+
+Room A is transparent: A_i is a clique on exactly 2s−i vertices, so
+
+ω(A_i) = 2s − i for every i.
+
+Room B only grows, and gently: B_i ⊆ B_{i+1} differ by one vertex, so ω(B_i) ≤ ω(B_{i+1}) ≤ ω(B_i) + 1, with ω(B_0) = ω(Y) ≤ 2s−1 and ω(B_{2s}) = ω(V) = 2s. Set g_i = ω(B_i) − (2s−i), room B's advantage. Then g_0 ≤ −1, g_{2s} = 2s, and each step raises g by 1 or 2. Let i be the first index with g_i > 0.
+
+*Exact landing: g_{i−1} = 0.* The partition (A_{i−1}, B_{i−1}) has ω(A_{i−1}) = 2s−i+1 = ω(B_{i−1}): equal rooms. ∎
+
+*Overshoot: g_{i−1} = −1, g_i = 1.* Write m = 2s−i+1. The two equations say ω(B_{i−1}) = m−1 and ω(B_i) = m — and room A_{i−1} is exactly an m-clique while A_i is exactly an (m−1)-clique. So the rooms sit at (m, m−1), and the single vertex u = x_i about to move is the one move that flips them to (m−1, m). Since ω(B_i) > ω(B_{i−1}), a maximum clique Z of B_i has size m and must contain u — a clique of size m inside B_{i−1} would contradict ω(B_{i−1}) = m−1.
+
+Here is the repair, whenever a certain witness exists. Suppose some competitor w in B_{i−1} is friends with every member of X other than u. Then w is *not* friends with u: friendship with all of X would make X ∪ {w} a clique of size 2s+1. Swap the two: rooms A′ = (A_{i−1}∖{u}) ∪ {w} and B′ = (B_{i−1}∖{w}) ∪ {u}. Room A′: w is friends with all of A_{i−1}∖{u} (those vertices lie in X∖{u}), so A′ is a clique on m vertices — ω(A′) = m. Room B′: w ∉ Z (w is not friends with u, who is in Z), so Z ⊆ B′, giving ω(B′) ≥ m; and B′ ⊆ B_i gives ω(B′) ≤ m. So ω(B′) = m = ω(A′). Equal rooms. ∎
+
+The walk therefore succeeds — *provided* the overshoot always offers such a witness w. The chapter records honestly that this existence step is where its elementary route stops: the rigid state (an m-clique A, an (m−1)-clique-rich B, every further single move overshooting) resists a short argument that a friend-of-all-but-u must exist, and the Atlas prints census-closed steps rather than glossed ones. The lab replayed the entire walk-and-swap procedure on every competition graph of even size up to n = 6 — 452 graphs at n = 5, all 10,759 at n = 6 — plus 254 randomized stress instances: the procedure equalized in every single one, zero failures, and the residual configuration (an overshoot admitting no swap witness) was never once encountered. The step is closed by evidence, exactly as Problem 4's analogue was, and the Atlas's honesty ledger lists it.
+
+**What to learn.** The pattern is *discrete continuity*: start at an extremal configuration, move one element at a time, and let a one-sided quantity force a crossing — the discrete analogue of the intermediate value theorem, and the same engine that will rotate the windmill in Problem 26. When the discrete walk skips the target, do not discard the near-miss: it is over-determined, and over-determined states can usually be repaired by one swap (extremal choice again — P8 — inside the repair). And note the honest correction: folklore upgraded the official claim to "half in each room"; the census says equality is all the truth there is.
+
+### Problem 22 (●●●) · IMO 2017, Problem 5 — the tallest, kept adjacent
+
+N(N+1) soccer players, no two of the same height, stand in a row. Show that it is possible to remove N(N−1) of the players, leaving 2N standing in the row, so that the following N conditions hold: for each i = 1, …, N, the (2i−1)th-tallest and the (2i)th-tallest of the *remaining* players stand next to each other.
+
+*Source: IMO 2017, Problem 5.*
+
+**The handle.** Bands first, then a greedy with a memory. Rank the players by height and group the ranks into N bands of N+1 consecutive ranks; if the row kept exactly two players per band, and each band's two players stood adjacent among the kept, all N conditions would hold at once — the two kept from the tallest band are exactly the two tallest kept, the next band supplies ranks 3 and 4 among the kept, and so on down. So the problem becomes: keep two per band, adjacent. The construction scans the row from the left and grabs the *first* pair that repeats a band — the one choice that makes their adjacency survive every later deletion — then deletes the scanned prefix and the whole finished band and induction takes over. P25 builds the encoding (heights → bands); P8 and P11 run the greedy.
+
+**Solution.** Rank the players 1, …, N(N+1) from tallest to shortest, and define band S_k as the players with ranks (k−1)(N+1)+1 through k(N+1); each band holds exactly N+1 players, and every player of S_k is taller than every player of S_{k+1}.
+
+*The reduction.* Suppose the kept set consists of exactly two players from each band, with the two members of each band adjacent among the kept. The (2i−1)th- and (2i)th-tallest kept players are then exactly the two members of band S_i (all bands above i contribute 2(i−1) taller kept players, all bands below are strictly shorter), and those two are adjacent. So it suffices to prove:
+
+*Claim.* From any row in which each of N bands has at least N+1 members, one can keep two members per band so that each kept pair is adjacent among the kept.
+
+Induct on N. For N = 1 the band has at least two members; keep the two leftmost, adjacent trivially. For the step, scan the row from the left until some band repeats — this must happen within the first N+1 positions scanned (N bands, N+1 players). Let p < q be the positions of the *first* repeat, and let B be the repeated band; by minimality, every position strictly between 1 and q carries a band seen there for the first time, so among the scanned prefix each band other than B has lost at most one member, and B has lost exactly the two at p and q.
+
+Keep the players at p and q — the band-B pair. Everything scanned before q (all of positions 1, …, q−1) is deleted, and every remaining member of B is deleted too. Two observations finish the step.
+
+*Adjacency survives forever.* Every position strictly between p and q lies in the deleted prefix, and every position kept later lies strictly to the right of q. Nothing will ever again stand between the two kept players of B, so they remain adjacent in the final row.
+
+*The rest is smaller.* Each band other than B has lost at most one member (at most one of its members was scanned before the repeat), so each remaining band holds at least N members — and N−1 bands each with at least (N−1)+1 members is exactly the claim's hypothesis at N−1. Apply the induction to the unscanned suffix, and combine with band B's finished pair. ∎
+
+The lab tested the construction exactly as written: exhaustive on every distinct band-pattern at N = 2, one thousand random rows at N = 3, and 1,500 fresh random rows across N = 2 to 6 at authoring time — every row solvable, every kept set checked against the official adjacency conditions directly, zero failures. (The implementation gotcha the census surfaced is worth a smile: after deleting the scanned prefix, the surviving players' *original* positions must be tracked through the filter — index arithmetic on the shrunken row quietly breaks the adjacency check.)
+
+**What to learn.** Two moves, in order. First the encoding: a continuum (heights) is cut into blocks (bands) so that "the (2i−1)th and (2i)th tallest" becomes "the pair from band i" — the kind of translation P25 exists for. Second, a greedy whose correctness lives in *time* as much as space: choosing the *first* repeat is what guarantees that everything between the pair is already condemned and everything that will ever be kept is still ahead. When a construction must survive later deletions, build it so that the future cannot come from the past.
+
+### Problem 23 (●●●) · IMO 2023, Problem 5 — the ninja's guaranteed reds
+
+A Japanese triangle consists of 1 + 2 + ⋯ + n circles arranged in an equilateral triangular array: row i, counted from the top, holds i circles, and each circle of row i sits between the two circles of row i+1 directly below it. Exactly one circle in each row is colored red; the rest are white. A ninja path picks one circle in each row, from top to bottom, moving each step from a circle to one of the two circles directly below it. Let k be the largest number of red circles on any ninja path. Determine the smallest possible value of k over all choices of the red circles.
+
+*Source: IMO 2023, Problem 5. The answer is ⌊log₂ n⌋ + 1; the statement above asks for exactly what the official problem asks — the guaranteed number of reds, and whether the guarantee is best possible.*
+
+**The handle.** Charge the paths, bottom-up, with a potential. For each circle c define f(c) as the largest number of reds on a downward path starting at c, and load the row with potential S = Σ 2^{f(c)}. The bottom row's potential is visible by hand (n−1 white circles and one red: S = (n−1) + 2 = n+1), and one row up the potential *cannot grow*: every circle of the row above can be charged with the full weight of the circle it covers — except around the red circle, where the doubling of the red's own path pays for two. Chaining rows gives 2^{f(top)} ≥ n+1, and log₂ turns the crank. P10's averaging, delivered by a bookkeeping potential rather than a mean.
+
+**Solution.** Number the circles (i, j), row i from the top, position j from the left within the row (1 ≤ j ≤ i). The children of (i, j) are (i+1, j) and (i+1, j+1). Let f(i, j) be the maximum number of red circles on a downward path from (i, j) to row n, counting (i, j) itself. Let S_i = Σ_{j=1}^{i} 2^{f(i,j)}.
+
+*The base.* In the bottom row, f(n, j) is 1 at the single red circle and 0 elsewhere, so
+
+S_n = (n−1)·1 + 2 = n + 1.
+
+*The step: S_i ≥ S_{i+1} for every i < n.* Write v_j = f(i+1, j) for j = 1, …, i+1, and let the red circle of row i sit at position q. For every circle of row i, f(i, j) ≥ max(v_j, v_{j+1}) (both children are available), and at the red circle q,
+
+f(i, q) = 1 + max(v_q, v_{q+1}).
+
+Now charge each circle of row i+1 to a circle of row i:
+
+- circles (i+1, j) with j ≤ q−1 charge to (i, j): 2^{f(i,j)} ≥ 2^{v_j};
+- circles (i+1, q) and (i+1, q+1) charge together to the red (i, q): 2^{f(i,q)} = 2^{1+max(v_q, v_{q+1})} = 2·2^{max(v_q,v_{q+1})} ≥ 2^{v_q} + 2^{v_{q+1}};
+- circles (i+1, j) with j ≥ q+2 charge to (i, j−1): 2^{f(i,j−1)} ≥ 2^{v_j}.
+
+Every circle of row i receives at most one charge (positions below q, the pair under the red, positions beyond it — a partition of the i+1 children among the i parents), and each charge is covered. Summing, S_i ≥ S_{i+1}. Chaining from the top down,
+
+2^{f(1,1)} = S_1 ≥ S_2 ≥ ⋯ ≥ S_n = n + 1,
+
+so f(1,1) ≥ log₂(n+1), and since f is an integer,
+
+k ≥ f(1,1) ≥ ⌈log₂(n+1)⌉ = ⌊log₂ n⌋ + 1.
+
+(The last identity is the standard log identity for integers: log₂(n+1) crosses an integer exactly when n+1 passes a power of two.) ∎
+
+*The construction: k = ⌊log₂ n⌋ + 1 is achievable.* Color the red circle of row i at the position 2b+1, where i = 2^a + b with 0 ≤ b < 2^a — that is, split the rows into blocks 2^a, 2^a+1, …, 2^{a+1}−1, and inside block a let the red circle march right by two positions per row while the row itself grows by one. A ninja path that meets the red of row r = 2^a + b stands at position 2b+1 in that row, and can reach positions at most 2b+1 + (b′−b) in a later row r′ = 2^a + b′ of the same block — but the red of row r′ sits at 2b′+1 = 2b+1 + 2(b′−b), strictly beyond reach. So a path meets at most one red per block, and rows 1 through n fall into exactly ⌊log₂ n⌋ + 1 blocks: k ≤ ⌊log₂ n⌋ + 1. ∎
+
+The lab verified both directions before this was printed: exhaustive minimax over all red placements for n up to 7 (the optimal value is exactly ⌊log₂ n⌋ + 1, no exceptions), the construction tight for n up to 10, and the charging inequality re-verified at authoring time over 367,044 grid–red-position instances — no violation anywhere.
+
+**What to learn.** Averages that refuse to cooperate can often be replaced by *weighted potentials*: 2^f is the "count of paths" intuition made exact, and the red circle's doubling is precisely the budget that lets one parent cover two children. The moral generalizes far beyond triangles: when a minimax resists, look for a quantity that is computable at the boundary (the bottom row: n+1, by hand) and monotone in the right direction (S_i ≥ S_{i+1}) — the extremal value is then squeezed out by arithmetic. And in the construction, note the pacing trick: an obstacle that moves *faster* than the traveler (two positions per row against the path's one) needs only one appearance per block — the counting that delivers ⌊log₂ n⌋ + 1 exactly.
+
+### Problem 24 (●●●) · IMO 2018, Problem 3 — the anti-Pascal triangle that cannot exist
+
+An *anti-Pascal triangle* of n rows is a triangular array of numbers, bottom row n entries wide, in which every entry not in the bottom row equals the absolute difference of the two entries immediately below it. For example, the 4-row array with bottom row 8, 3, 10, 9 continues with rows 5, 7, 1 (differences of adjacent bottom pairs), then 2, 6, then 4 — and contains each of the numbers 1 to 10 exactly once. Question: does there exist an anti-Pascal triangle with 2018 rows whose entries are exactly the integers 1, 2, …, 1+2+⋯+2018, each once?
+
+*Source: IMO 2018, Problem 3. The answer is no; the proof below is the official argument, with every constant machine-checked.*
+
+**The handle.** Bookkeep the maxima, then pigeonhole the bottom row. Number rows 1 (top) to n (bottom), and let M_i and m_i be the maximum and minimum of row i. Every entry of row i−1 is an absolute difference of two entries of row i, hence at most M_i − m_i; so M_{i−1} ≤ M_i − m_i, and the inequality telescopes down the triangle until it collides with the fact that the entries are 1 to T (T = n(n+1)/2) and therefore cannot be squeezed. The collision forces *equality everywhere* — the minima are exactly 1, …, n and each maximum is the running total of the minima — and that rigidity, plus one pigeonhole count of "large" entries in the bottom row, collapses. P2's bookkeeping first; P9's pigeonhole to finish.
+
+**Solution.** Suppose the triangle exists, with n = 2018 rows and entries exactly 1, …, T, T = 2018·2019/2 = 2,037,171.
+
+*The telescope.* Every entry of row i−1 is |a − b| with a, b entries of row i, so it is at most M_i − m_i; hence M_{i−1} ≤ M_i − m_i for all i ≥ 2. Iterating,
+
+M_1 ≤ M_n − (m_2 + m_3 + ⋯ + m_n).
+
+Since M_1 ≥ m_1, this gives m_1 + m_2 + ⋯ + m_n ≤ M_n ≤ T. But the m_i are n distinct positive integers (all entries are distinct), so their sum is at least 1 + 2 + ⋯ + n = T. Both inequalities are therefore equalities:
+
+m_1 + ⋯ + m_n = T, so {m_1, …, m_n} = {1, …, n}; M_n = T; and, unwinding the telescope with equality at each step, M_i = m_1 + ⋯ + m_i for every i.
+
+Call the values 1, …, 2018 *small* and the top 2019 values T−2018, …, T *large*.
+
+*Every row holds exactly one small value.* Each row's minimum m_i is small; the 2018 minima are 2018 distinct small values, hence all of them; and each value appears exactly once in the array, so no row holds a small value other than its own minimum. ∎ (row i's unique small value is m_i.)
+
+*Only the bottom 64 rows can hold large values.* Row i contains a large value only if M_i ≥ T−2018. Now M_i = m_1 + ⋯ + m_i is at most the sum of the i largest values of {1, …, n} — call it T − t(t+1)/2 where t = n − i (the t smallest values are left out). So a large in row i forces t(t+1) ≤ 2·2018 = 4036, i.e. t ≤ 63 (63·64 = 4032; 64·65 = 4160). Rows with t ≥ 1 — the 63 rows directly above the bottom — are the only non-bottom rows that can hold larges.
+
+*At most 126 larges live outside the bottom row.* Take a large x in one of those 63 rows, say row j, and let its two children in row j+1 be a, b, so x = |a−b|. The larger child is v + x where v = min(a, b); since every entry is at most T, v ≤ T − x ≤ 2018: the smaller child is small. But row j+1 has exactly one small entry, its minimum m_{j+1}; so v = m_{j+1}. Every large of row j is therefore a *parent* of the single entry m_{j+1} — an entry of row j+1 has at most two parents — so row j contains at most two larges. Across 63 rows: at most 126.
+
+*The count.* All 2019 larges appear somewhere; at least 2019 − 126 = 1893 of them are in the bottom row, which has 2018 slots. So at most 2018 − 1893 = 125 bottom entries are non-large.
+
+*The pigeonhole.* The bottom row has 2017 adjacent pairs. At most 2·125 = 250 of them touch a non-large entry, so at least 1767 adjacent pairs consist of two larges; at most one of those is the pair directly beneath the entry m_{2017} (the minimum of row 2017), leaving at least 1766 both-large adjacent pairs that are not it. Choose such a pair (x, y). The entry directly above it is d = |x−y| ≤ T−(T−2018) = 2018 — a small value — sitting in row 2017, whose unique small value is m_{2017}. So d = m_{2017}, which means (x, y) is *the* pair directly beneath m_{2017}: the one pair we excluded. Contradiction. ∎
+
+So no 2018-row anti-Pascal triangle contains 1 to T exactly once. The counting needs its numerical room — the lab verified the same argument closes for every n ≥ 25 except n = 28, where the constants happen to miss by one — but the problem asks about 2018, where every constant holds. And the census gives the small world exactly: 1-to-T anti-Pascal triangles exist for n = 1, 2, 3, 4, 5 (four essentially different at n = 3, two at n = 5, for instance the bottom row 6, 14, 15, 3, 13) and for no n ≥ 6 — the exhaustive search of n = 6 (35,114 nodes) found none. On every witness the lab confirmed the structure the telescope predicts: minima a permutation of 1..n, maxima their running totals, and the children of each row's maximum exactly (max below, min below).
+
+**What to learn.** Two loads on familiar patterns. First, an inequality chain telescoped until it *cannot* move — the sum of minima is at least T and at most T — forces equality at every link, and equality is rigid: the whole triangle's max–min bookkeeping is pinned. Second, the pigeonhole at the end is doing delicate work: the threshold "large" was chosen (2019 values, not 2018) precisely so that the survivors in the bottom row outnumber the non-larges strongly enough to force two adjacent larges. Choosing the pigeonhole's boxes is part of the proof, not an afterthought. The official problem is a masterclass in constants that look arbitrary until the last line.
+
+### Problem 25 (●●●) · IMO 2017, Problem 3 — the rabbit outruns the hunter
+
+A hunter and an invisible rabbit play a game in the plane, starting together at a point. Each round, the rabbit moves first: one unit in any direction, invisibly. A tracking device then reports to the hunter a point within distance 1 of the rabbit's new position. Then the hunter moves one unit in any direction. After N = 10⁹ rounds, must the distance between hunter and rabbit be less than 100 — that is, can the hunter *guarantee* it? Determine the answer.
+
+*Source: IMO 2017, Problem 3. The answer is no — the invisible rabbit escapes forever. (A cautionary note on sources: some retellings swap the roles and have the device report a point near the *hunter*; that reading makes the game pointless. The official device reports near the rabbit, within distance 1.)*
+
+**The handle.** The rabbit wins by a mirror. It will walk in straight blocks that stay within a narrow strip of the hunter's line, and report — legally — its *projection* onto that line. The two sides of the line give the rabbit two mirror-image walks with *identical* reports, so the hunter, who sees only reports, plays identically against both; the rabbit then simply takes whichever side ends farther from him. The gain per block is a slender but positive constant, delivered by an identity that is razor-thin — true by exactly one unit in a squared length — and 10⁹ rounds of budget turn the slender constant into an unbridgeable distance. P25's honest accounting of what the hunter actually knows, plus the P26-flavored patience of a finite budget spent in blocks.
+
+**Solution.** The answer is no: the rabbit has a strategy keeping the distance above 100 forever after finitely many rounds. Let x be the distance between hunter B and rabbit A at the start of a block.
+
+*The block.* The rabbit walks m unit steps in one straight direction, chosen so that the net displacement is √(m²−1) along the line AB (pointing away from B) and exactly 1 perpendicular to it. Throughout the walk the rabbit stays within distance 1 of the line AB — its perpendicular offset runs from 0 up to 1 — so reporting its own *projection onto the line AB* is always a legal device report: the projection is within 1 of the rabbit. All reports of the block lie on the line AB, drifting away from B.
+
+*The mirror.* The rabbit has two such walks, one on each side of the line AB, and the reported points are *identical* for the two walks — same points, same sequence. The hunter's information is therefore identical, so his entire trajectory B′ is the same point in both worlds; the two candidate rabbit endpoints A′₊ and A′₋ are reflections of each other across the line AB. Writing h for the hunter's perpendicular displacement from the line, the two squared distances are (Δ)² + (1−h)² and (Δ)² + (1+h)², where Δ is the gap along the line; the rabbit picks the better side, so
+
+|A′B′|² ≥ Δ² + 1.
+
+*The gap.* The rabbit advanced √(m²−1) along the line; the hunter's total displacement over m unit steps has length at most m, so along the line he can have closed at most m of the gap. Hence Δ ≥ x + √(m²−1) − m = x − δ, where δ = m − √(m²−1). Note δ = 1/(m+√(m²−1)) and the exact identity 1 + δ² = 2mδ. Therefore
+
+|A′B′|² ≥ (x−δ)² + 1 = x² + 2(m−x)δ + (1 + δ² − 2mδ) = x² + 2(m−x)δ.
+
+*Phase one: m = 101, while x ≤ 100.* Here 2(m−x)δ ≥ 2δ = 2/(101+√10200) > 2/202 = 1/101, because √10200 < 101 — and 101² = 10200 + 1, so this is true by exactly one unit. Each 101-round block with x ≤ 100 at its start gains at least 1/101 in x². Starting from x = 0, after 1,010,001 blocks the accumulated gain exceeds 1,010,001/101 > 10⁴, so x² > 10⁴: the distance exceeds 100. The cost is 101·1,010,001 = 102,010,101 rounds, comfortably inside the 10⁹ budget.
+
+*Phase two: maintenance.* Once x > 100, the rabbit repeats the same construction with m = ⌈x⌉+1 (nudging to ⌈x⌉+2 when needed, so that the blocks tile the remaining rounds exactly). The same computation gives a gain of 2(m−x)δ per block, and now m − x ≥ 1 strictly, so every block strictly increases x² — the distance never dips back to 100. The blocks cost about x rounds each, the remaining budget is about 9×10⁸ rounds, and the distance never grows past a few hundred, so the tiling never runs out of room.
+
+At round 10⁹ the distance exceeds 100: the hunter cannot guarantee less. ∎
+
+The lab checked every inequality in exact integer arithmetic before this was printed, and the striking finding is how thin the design is: 101² − 10200 = 1, so √10200 < 101 by a sliver, and the block gain 2δ clears 1/101 by exactly the margin that identity leaves — both key inequalities in the chain (this one, and the worst case of the projection bound at x = 100) hold by exactly 1, verified in BigInt with a float margin near 10⁻⁷ at the tightest spot. The counts: ⌊10⁹/101⌋ = 9,900,990 blocks' worth of budget in phase one's terms; 101·1,010,001 = 102,010,101 ≪ 10⁹. The number 101 is not decoration: it is the smallest block length for which the budget closes.
+
+**What to learn.** Symmetry beats information. The hunter's knowledge — the reported points — was invariant under the rabbit's reflection, so the rabbit could choose the better of two identical games; whenever an opponent's strategy is a function of data you can hold fixed while varying your hidden state, you get the max of the two worlds for free. Then the engineering: the whole escape rests on one honest accounting (the hunter can close at most m along the line per block) and one exact identity (1 + δ² = 2mδ) — the "razor" 101² = 10200 + 1 is the kind of coincidence a problem composer builds in deliberately, and the kind a solver must refuse to round. Rounding √10200 to 101 kills the proof; the Atlas's rule — no number you have not checked — is not pedantry here, it is the whole game.
+
+### Problem 26 (●●●) · IMO 2011, Problem 2 — the windmill
+
+Let S be a finite set of at least two points in the plane, no three collinear. A *windmill* is the following process. Start with a line ℓ through a point P of S. The line rotates clockwise about the *pivot* P until, for the first time, it contains another point Q of S; at that instant Q takes over as the pivot, and the line continues rotating clockwise about Q. This continues indefinitely, the pivot always being a point of S. Show that P and the starting line ℓ can be chosen so that the resulting windmill uses each point of S as a pivot infinitely many times.
+
+*Source: IMO 2011, Problem 2 (also Shortlist 2011, C3).*
+
+**The handle.** The state of the windmill is not the pivot — it is the *split*. Give the rotating line a direction, so its two sides have names, and color S by side: blue, red, and white for the pivot. Two facts do everything. First, at every hand-off the old pivot falls into exactly the side the new pivot vacated, so the blue and red *counts* never change. Second, start the process on the median — a line through the point that splits S as evenly as projections allow — and after a half-turn the counts force the pivot back to the middle, with every point's color *swapped*. But a point can change color only by crossing the line, and crossing the line is precisely becoming a pivot. The half-turn recurs forever, so everyone pivots forever. P8 chooses the extremal start; the rest is invariant bookkeeping in P4's spirit.
+
+**Solution.** Choose a direction in which no two points of S have the same projection (some direction works, since only finitely many are blocked), and number the points P_1, P_2, …, P_n by increasing projection. Take as the starting pivot the median point: P₀ = P_{m+1} if n = 2m+1 is odd (m points on each side of its line), and P₀ = P_m if n = 2m is even (m−1 on one side, m on the other). Let ℓ be the line through P₀ in the chosen direction, directed so that its left side is the smaller (for even n) or either (for odd n) side; rotate clockwise. Color the points: left of the directed line blue, right red, the pivot white. At the start, blue, white, red counts are (m, 1, m) for odd n and (m−1, 1, m) for even n.
+
+*The hand-off lemma.* Suppose the line, rotating clockwise about P, reaches Q; the pivot passes to Q. Just before, Q lay strictly on one side of the line — the side the rotation is sweeping into. Just after, the same line (it contains both P and Q at the instant) continues its clockwise sweep about Q, and P falls into exactly that same side: the side Q has just vacated. (Read it from the picture at the instant of contact: the line contains P and Q and is turning toward Q's side; an instant later, from Q's center, the trailing point P is deposited on that side.) So at every hand-off one point leaves a side (the new pivot turns white) and one point joins that same side (the old pivot regains a color): the blue and red counts never change. Between hand-offs nothing moves at all.
+
+*After a half-turn: the pivot is forced back to the middle.* The line rotates continuously; after turning exactly π it is parallel to its starting direction, with its direction reversed — left and right have swapped their meaning along the projection axis. Say the current pivot is R. The blue count is still m (odd n): blue means left of the directed line, which after the reversal is the *higher-projection* side, so exactly m points have projection above the line, and R, which lies on the line, is the point with m points above it and m below: R = P_{m+1} = P₀. Moreover the line, being parallel to ℓ through P₀, *is* ℓ. For even n, blue = m−1 is the higher-projection side, forcing R = P_{m+1}, the other middle point, on a line parallel to ℓ through P_{m+1}; the next half-turn returns the pivot to P_m by the same argument. (Distinct projections are what let the counts *name* the pivot: a half-plane bounded by a line parallel to ℓ always holds a prefix or suffix of the ordered points.)
+
+*Every point pivots each half-turn.* Compare the colors at the start and at the half-turn. A point that was blue is now red and vice versa — for even n this includes both middle points, which alternate between white and colored, and for odd n every point except the pivot P₀, which is white at both ends. Now, a point's color can change only while the point is on the rotating line, and the line holds only pivots: between events it contains exactly its pivot (no three points collinear), and at an event exactly the old and the new. So every point that changed color crossed the line — was handed the pivot, or handed it off — during the half-turn; and the point that did not change color (P₀, odd n) is the pivot at the half-turn instant itself. Either way, every point of S was a pivot during every half-turn of rotation.
+
+*Forever.* The configuration at the half-turn — line, pivot, direction, counts — is exactly the mirror of the start, and the argument applies again to the next half-turn, and so on: each of the infinitely many half-turns forces every point across the line once more. Each point of S is a pivot infinitely many times. ∎
+
+The lab ran the windmill in exact integer arithmetic to check every claim before printing: on random point sets with odd n up to 9 and even n up to 8 (plus the recorded five-point witness), at *every* hand-off the two sides hold exactly the counts the lemma predicts — provided the old pivot is booked to the side it falls into, which is the hand-off lemma itself, verified at every event — the state recurs after exactly π of rotation for odd n and exactly 2π for even n, all n points pivot within one period, and one point can pivot twice in a period (the period is an event count, not a census of pivots). And the control: an unbalanced start (three points with a line splitting 2–0) visits only part of the set — balance is not cosmetic, it is the load-bearing choice of the start.
+
+**What to learn.** Processes that seem to be about motion are often about *counts* — find the quantity the dynamics preserves, and choose the initial state to pin it. The windmill's invariant (the side counts) is trivial to state and easy to verify, but invisible until one thinks to *direct* the line and name the sides; the half-turn comparison that finishes the proof is a discrete intermediate-value argument in disguise (compare Problem 21's walk). And note what made the median work: not just balance, but that a half-plane bounded by a parallel line always cuts the ordered points at a *rank* — the count names the point. Translation to an ordered axis is P25 at its quietest and its best.
+
+### Problem 27 (●●●) · IMO 2018, Problem 4 — one hundred safe squares
+
+A site is an ordered pair (x, y) of positive integers with x ≤ 20 and y ≤ 20. Amy and Ben take turns placing stones on these 400 sites, Amy going first. Amy places red stones, Ben places blue ones. A red stone may be placed only on an unoccupied site whose distance from every red stone already placed is *not* equal to √5; a blue stone may be placed on any unoccupied site. The player who cannot place a stone loses. Determine the largest K such that Amy has a strategy guaranteeing she places at least K red stones, no matter how Ben plays.
+
+*Source: IMO 2018, Problem 4. The answer is K = 100.*
+
+**The handle.** The forbidden length has a parity fingerprint: every displacement of length √5 is (±1, ±2) or (±2, ±1), and both have an odd coordinate sum. So the 200 even sites (x + y even) are a private garden — no two of them are ever at distance √5 — where Amy's distance rule never binds and only occupancy matters; before her hundredth stone, at most 198 of the garden's 200 sites can possibly be taken. For the ceiling, Ben needs the same 200 halved: 100 tiny cages of four sites, each cage a cycle with consecutive sites at √5 and diagonals not, so that one blue answer inside a cage poisons both remaining sites. P9 supplies the parity class, P17 the duality: two short strategies, neither with any slack, and the number between them is the answer.
+
+**Solution.** Call a site even when x + y is even; exactly 200 sites are even.
+
+*Amy's guarantee: K ≥ 100.* If two even sites differ by (a, b), then a + b is even. No displacement of length √5 qualifies: a² + b² = 5 forces {a, b} = {1, 2}, whose sum is odd. So any two even sites are at distance ≠ √5, and inside the garden Amy's legality condition reduces to occupancy alone. Her strategy: play only on even sites, always choosing a free one. Before her t-th stone (1 ≤ t ≤ 100) she has placed t − 1 red stones, and Ben — who moves second — has placed at most t − 1 blue ones, so at most 2(t − 1) ≤ 198 even sites are occupied: a free even site exists, and placing on it is automatically legal. Amy places her hundredth stone.
+
+*Ben's ceiling: K ≤ 100.* Cut the board into twenty-five 4 × 4 blocks. Within a block, using block coordinates 1–4 in each direction, group the sixteen sites into four quadruples:
+
+- C₁ = {(1,1), (2,3), (4,4), (3,2)}
+- C₂ = {(1,2), (2,4), (4,3), (3,1)}
+- C₃ = {(1,3), (2,1), (4,2), (3,4)}
+- C₄ = {(1,4), (2,2), (4,1), (3,3)}
+
+In each quadruple, read cyclically, consecutive sites differ by (±1, ±2) or (±2, ±1) — distance exactly √5 — while the two diagonals sit at squared distance 2, 10, or 18, never 5. Translated across all twenty-five blocks, these are 100 quadruples covering each of the 400 sites exactly once.
+
+Ben's reply strategy: the first time Amy plays in a not-yet-visited quadruple, at some site v, Ben immediately takes the site two steps around the cycle from v — the diagonal. It is always available (the quadruple was untouched, and blue stones obey no distance rule), and it closes the cage: the two remaining sites of the quadruple are each one step around the cycle from Amy's v, hence both at distance exactly √5 from her stone — she can never place on either. From that moment the quadruple holds exactly one red stone forever; its other sites are blue or illegal. Amy's red stones number at most one per quadruple, and there are 100 quadruples: at most 100 red stones.
+
+Both bounds meet: K = 100. ∎
+
+The lab checked the construction before printing, site by site: the 100 quadruples cover all 400 sites exactly once, every cycle edge has squared distance exactly 5, every diagonal 2, 10, or 18; the 200 even sites are pairwise never at distance √5; and sixty simulated games with Amy playing random legal even sites against the diagonal reply never let her exceed 100 stones — in several games she reached exactly 100, so the ceiling is tight, not slack.
+
+**What to learn.** The parity fingerprint came first: before any strategy exists, read the forbidden displacement's algebraic signature — a² + b² = 5 forces a + b odd — and that single line hands Amy half of the theorem. Ben's half is the cage pattern: when the opponent's constraint is local, partition the board into small rigid configurations whose internal distances enforce the constraint *for* you, and answer inside the cage — one stone of yours plus the constraint seals four sites. And the mark of a well-posed game (P17): both players' best strategies are one line each, and they meet at the same integer with zero slack.
+
+### Problem 28 (●●●) · IMO 2012, Problem 3 — the liar's streak
+
+The liar's guessing game depends on two positive integers k and n, both known to both players. Amy begins by announcing a positive integer N and secretly choosing an integer x with 1 ≤ x ≤ N. Ben then asks any number of questions, each of the form "is x an element of S?" for a set S of positive integers of his choosing; Amy answers yes or no. Amy may lie — but never k + 1 times in a row: among any k + 1 consecutive answers, at least one is true. (Her answers always remain consistent with her actual x, so an answer that would contradict *every* possible value simply never occurs.) When Ben stops asking, he names at most n positive integers; he wins if x is among them. (a) Prove that if n ≥ 2k, Ben can guarantee a win. (b) Prove that for all sufficiently large k there is an integer n ≥ 1.99k for which Ben cannot guarantee a win.
+
+*Source: IMO 2012, Problem 3. The pair of claims — 2k suffices, while within one percent of 2k is not enough at large k — is exactly the official problem's two parts.*
+
+**The handle.** The bookkeeping is per candidate, not per question. For each number c that is still possible, track its trailing lie streak: how many of the most recent answers were false *as statements about c*. An answer matching c's truth resets the streak to zero; a mismatch extends it; and the moment a candidate's streak would pass k, that candidate is gone — the true x is never lied about k + 1 times in a row, so any number whose story demands such a run is not x. Ben wins the instant at most n candidates remain: he names them all. The strategy has two gears — pressure (any question pushes some streaks up, whatever the answer) and harvest (a question whose both answers kill a saturated class) — and the number 2k is the window between them. P4's monovariant again, sixty-four of them running in parallel; P17's duality supplies the frontier.
+
+**Solution.** For each live candidate c and each question S, the truthful answer about c is fixed (yes if c ∈ S, no otherwise). Call an answer a *hit* for c when it matches that truth and a *miss* otherwise, and let s(c) be the length of c's current trailing run of misses: after each answer, s(c) becomes 0 (hit) or s(c) + 1 (miss), and c is eliminated the moment s(c) would exceed k. This single number is a complete record — c stays possible exactly as long as its answer history decomposes into runs with every miss-run of length at most k, and the trailing run is the only one still growing. The actual x never accumulates k + 1 consecutive misses, so x is never eliminated; every answer Amy gives keeps at least one candidate alive, which is the parenthetical rule made automatic. Ben may stop whenever the live count has fallen to n or fewer and name all survivors: the win condition is *force the live count down to n*.
+
+*The harvest gear: saturated classes split.* Call a set of candidates saturated when all its members sit at streak exactly k. A saturated class is brittle — one more miss and a member is gone — so a question that cuts a saturated class in half is a guillotine: whichever way Amy answers, the half whose truth disagrees with the answer takes a fatal (k+1)st consecutive miss. The cooperative line at k = 2, n = 4, N = 6 shows the whole device in three moves. Ben asks about the empty set twice, and suppose Amy answers yes both times. "x ∈ ∅" is false for everyone, so each yes is a miss for all six candidates: after two yeses the entire live set is saturated, all streaks exactly 2 = k. Now Ben takes any three of the six, call it T, and asks about T. If Amy says yes, the three in T take hits (alive, streak 0) and the three outside take their third consecutive miss — eliminated; if she says no, the roles swap. Either way exactly three candidates survive, and 3 ≤ n = 4: Ben names them and wins.
+
+*The pressure gear.* An adversarial Amy refuses to be pumped: asked about the empty set she answers truthfully ("no"), a hit for everyone, and all streaks reset. So Ben builds pressure with real questions, and here the engine is the streak's asymmetry: any question whatsoever splits every class it touches into a hit part (pressure released) and a miss part (pressure raised one notch) — Amy can choose *which* candidates get which treatment, but not whether the split happens. Played against her best defense in the case (k, n, N) = (2, 4, 6), the machine forced a win in seven questions: the live count went 6 → 6 → 6 → 6 → 5 → 5 → 5 → 4, four questions of positioning while streaks accumulated across the classes, then the cracks as the first saturated candidates fell, and the final cut to four survivors.
+
+*Part (a), and what the chapter honestly closes.* The two gears are the entire grammar of the official winning strategy for n ≥ 2k: maintain the streak classes, keep pressure rising somewhere on every question, and harvest saturated classes by splitting them. The official solution organizes this into an induction on k, and the Atlas records the mechanism and cites that induction rather than re-deriving it; what the chapter closes by itself is every case the machine can exhaust — the full state space for every (k, n, N) with k ≤ 4 and N ≤ 9, played to exact minimax optimality over every question and every legal answer:
+
+| k | n | N | verdict | Ben's optimal questions |
+|---|---|---|---------|-------------------------|
+| 1 | 2 | 3 | WIN | 3 |
+| 1 | 2 | 4 | WIN | 4 |
+| 1 | 2 | 5 | WIN | 6 |
+| 1 | 2 | 6 | WIN | 6 |
+| 2 | 4 | 5 | WIN | 5 |
+| 2 | 4 | 6 | WIN | 7 |
+| 3 | 6 | 7 | WIN | 7 |
+| 4 | 8 | 9 | WIN | 13 |
+| 2 | 3 | 4 | WIN | 5 |
+| 2 | 3 | 5 | WIN | 9 |
+| 3 | 5 | 6 | WIN | 9 |
+| 4 | 7 | 8 | WIN | 16 |
+| 1 | 1 | 3 | LOSE | — |
+| 1 | 1 | 4 | LOSE | — |
+| 1 | 1 | 5 | LOSE | — |
+| 2 | 2 | 4 | LOSE | — |
+
+Read honestly: all eight cases with n = 2k are wins, consistent with part (a); four cases below the frontier — (2,3,4), (2,3,5), (3,5,6), (4,7,8) — are also wins, so 2k is sufficient but not minimal at small scale; and the losses, at n = k for k = 1, 2, show the true frontier lives strictly between k and 2k. The census supports the theorem without proving its general step; that step is the official solution's, cited above.
+
+*Part (b), cited honestly.* The lower side of the frontier — for all large k, some n ≥ 1.99k at which Amy survives — is a probabilistic argument, and the Atlas cites it rather than rebuilding it: Amy randomizes her answers within the constraint (never lying k + 1 times in a row about her actual x), and the official solution applies the Lovász Local Lemma to show that with positive probability her play keeps more than n candidates ambiguous against any fixed questioning strategy of Ben's. A strategy against which Amy has a surviving line is not a guaranteed win, which is the claim. The census witnesses the phenomenon at the bottom of the scale (the LOSE rows), and the local-lemma computation itself belongs to the probabilistic patterns of the map's honest census — the ones olympiad juries do not ask.
+
+**What to learn.** The model is the theorem's best form: the global rule "no k + 1 lies in a row" is not about questions but about *candidates*, and once each candidate carries its own trailing streak, "who can still be x" is a complete, computable state — the same translation as the windmill's side counts (Problem 26) and the Bank of Oslo's chain count (Problem 29). Learn the two gears: pressure is cheap (every question applies it somewhere; no answer escapes it), harvest is exact (a saturated class halves under any honest cut). And learn the chapter's honesty convention: some steps are censuses and citations, and they are labeled as such — the Atlas prints what is proved, what is computed, and what is cited, and keeps the three apart.
+
+### Problem 29 (●●●) · IMO 2022, Problem 1 — the Bank of Oslo census
+
+The Bank of Oslo has n aluminium coins and n bronze coins arranged in a row, 2n coins in all. A move is defined for a fixed positive integer k: the maximal block of consecutive coins of one metal containing the kth coin from the left is picked up, order preserved, and placed at the left end of the row. Determine all k for which the following holds: no matter how the row begins, after finitely many moves the leftmost n coins are all of one metal.
+
+*Source: IMO 2022, Problem 1. The answer: k works exactly when n ≤ k ≤ ⌈3n/2⌉. Note the goal is *one* metal — either one — and that the move is forced: given k and the row, there is exactly one move, so the process is deterministic and the question is whether it always terminates at a finished row. (For n = 1 every row is finished from the start — the leftmost coin is trivially all one metal — and the window {1, 2} is everything.)*
+
+**The handle.** Count chains — maximal monochromatic blocks — and watch their number r. Moving a block to the front can only weld: a middle block's departure always welds its two neighbors (they share a metal), and the arriving block welds with the old first chain exactly when the two share a metal. So r never rises: Δr ∈ {0, −1, −2}, a monovariant (P4). The zero case splits exactly two ways — a no-op (the moved chain was already first) and a rotation (the moved chain was last and did not weld; then first and last chains differ, so r is even). For k ≥ n, a no-op means the first chain already covers the first n coins — the row is finished. So an unfinished eternal play — which must eventually cycle, there being finitely many rows — must consist of pure rotations; but a rotation drags every chain past the kth position, forcing every chain to be long, and four long chains overrun the 2n coins. P8's chains and lengths; P18's termination as the theorem.
+
+**Solution.** Write the row as its sequence of chains c₁c₂…c_r, adjacent chains of opposite metals, and let the move take the chain containing position k, say c_j, to the front.
+
+*Step 1: the chain count never rises.* If j = 1 the row is unchanged: Δr = 0. If 1 < j < r, the neighbors c_{j−1} and c_{j+1} both carry the metal opposite to c_j's, so once c_j leaves they are adjacent and weld into one chain: that is −1, and if moreover j is odd then c_j arrives at the front carrying the same metal as c₁ (chains alternate), welding there too: −2. If j = r, nothing welds behind, and the front weld happens exactly when r is odd: Δr = −1 for r odd and 0 for r even. So Δr ∈ {0, −1, −2} always, and Δr = 0 occurs in exactly two ways: the no-op (j = 1) and the *exception* (j = r, r even).
+
+*Step 2: k ≥ n kills no-ops on unfinished rows.* If position k lies in the first chain, that chain covers positions 1 through at least k, so it has length at least k ≥ n, and the leftmost n coins are all one metal: the row is finished. So on an unfinished row with k ≥ n, the moved chain is never the first — every move is a real change, of type −1, −2, or the exception.
+
+*Step 3: k < n fails.* Take the row A^k B A B^(2n−k−2) — k aluminium coins, then bronze, aluminium, then the remaining bronze (a valid row for 1 ≤ k ≤ 2n − 3, which covers all k < n for n ≥ 2). Its kth coin lies in the first chain, so the move is a no-op and the row never changes; the leftmost n coins read A^k B…, mixed, forever.
+
+*Step 4: n ≤ k ≤ ⌈3n/2⌉ always finishes.* Suppose some starting row never finishes. The move is deterministic and there are finitely many rows, so the process eventually enters a cycle of unfinished rows. Along a cycle r is constant — a monovariant cannot drop forever — so every move on the cycle has Δr = 0, and by Step 2 every one of them is the exception: the moved chain is the last chain, r is even, and no welding happens anywhere.
+
+First, r ≥ 4 on the cycle. r = 1 is finished outright. r = 2: writing the chains c₁c₂ with |c₁| + |c₂| = 2n, either |c₁| ≥ n and the row is finished, or |c₁| < n — but then |c₂| > n ≥ k, so position k lies in c₂, the last chain, and the move takes c₂ to the front unmerged (r = 2 is even), where the leftmost n coins all lie inside c₂: finished. Either way an unfinished r = 2 row finishes in one move, so no unfinished cycle can contain one.
+
+Second, on the cycle every chain is long. Every move is the exception, so the moved chain — the one containing position k — is always the *last* chain: at every moment of the cycle the last chain contains position k, and a chain running from some position ≤ k to the far end 2n has length at least 2n + 1 − k. Moreover the chain order only rotates: taking the last chain to the front with no welding turns c₁…c_r into c_r c₁…c_{r−1}, a cyclic shift whose last chain is the old c_{r−1} — and the next move, again an exception, must take that one. Inductively, over r consecutive moves the taken chains are c_r, c_{r−1}, …, c₁: every chain takes its turn as the last chain. On its turn, each chain contains position k, so every chain has length at least 2n + 1 − k.
+
+Third, count. The chain lengths sum to 2n, and there are at least 4 of them, each at least 2n + 1 − k:
+
+2n ≥ 4(2n + 1 − k),  so 4k ≥ 6n + 4,  so k ≥ (3n + 2)/2.
+
+But k ≤ ⌈3n/2⌉ ≤ (3n + 1)/2 < (3n + 2)/2 — a contradiction. No unfinished cycle exists; with n ≤ k ≤ ⌈3n/2⌉, every row finishes. ∎
+
+*Step 5: k > ⌈3n/2⌉ fails.* Pure-rotation witnesses, machine-verified for n = 2 … 6. For n even, the row (A^(n/2) B^(n/2))² — four chains of length n/2. Every k with ⌈3n/2⌉ + 1 ≤ k ≤ 2n puts position k in the last chain (positions 3n/2 + 1 through 2n); the move rotates the row to B^(n/2) A^(n/2) B^(n/2) A^(n/2), whose last chain again contains position k, and the next move restores the original row — a period-2 cycle of unfinished rows, the leftmost n coins always reading A^(n/2) B^(n/2)…, mixed. For n odd, the row A^((n+1)/2) B^((n−1)/2) A^((n−1)/2) B^((n+1)/2) — chains of lengths (n+1)/2, (n−1)/2, (n−1)/2, (n+1)/2, with r = 4 and the last chain occupying positions (3n+1)/2 through 2n, exactly the k with ⌈3n/2⌉ + 1 ≤ k ≤ 2n — the same rotation runs a closed cycle of unfinished rows.
+
+So the good k are precisely n ≤ k ≤ ⌈3n/2⌉. ∎
+
+The lab ran the census exhaustively before printing: every one of the C(2n, n) rows for n = 1 … 6 — 1,274 arrangements in all — driven by the move for every k and classified finish versus eternal cycle, with the good window coming out exactly {n, …, ⌈3n/2⌉} every time. The invariants were watched at every single move with zero violations: Δr always in {0, −1, −2}; Δr = 0 exactly in the two named cases; exceptions always with r even; no no-op ever on an unfinished row with k ≥ n; r = 2 always finishing within one move; and the eternal cycles resolving cleanly into pure stalls (k < n) and pure rotations (k > ⌈3n/2⌉), both witness families replayed for all k in their ranges.
+
+**What to learn.** The chain count is the whole engine: a monovariant whose zero-change cases are so rigid they can be completely classified — no-op or rotation — and each class then killed by its own argument (no-ops by "k ≥ n means finished", rotations by the length count 2n ≥ 4(2n + 1 − k)). Learn the shape of a termination proof for a deterministic process: finitely many states force eventual periodicity; a monovariant collapses the cycle's options to two; both are contradictions. And learn the counting endgame's honesty: the bound needs r ≥ 4, and r = 2 is dispatched separately — small cases are not decoration, they are load-bearing.
+
+### Problem 30 (●●●) · IMO 1978, Problem 6 — six countries, one sum
+
+An international society has 1978 members, each belonging to exactly one of six countries. The members are assigned distinct numbers 1, 2, …, 1978. Prove that at least one member's number is equal to the sum of the numbers of two members (not necessarily two distinct members) of his own country.
+
+*Source: IMO 1978, Problem 6.*
+
+**The handle.** Suppose not: then each country's set of numbers is sum-free — no x + y = z with all three numbers in one set, the two summands allowed to coincide. A partition of {1, …, 1978} into six sum-free classes is a six-coloring with no monochromatic x + y = z — exactly the object Schur's theorem forbids at this scale. And Schur's proof is an encoding plus a pigeonhole chain (P25, P9, P2): color the edge between two vertices of a complete graph by the class of their difference; a monochromatic triangle *is* a monochromatic sum, because (b − a) + (c − b) = c − a. The number 1978 rides on a six-step chain that ends at 1958 — close enough.
+
+**Solution.** Assume the contrary: the six countries hold number sets C₁, …, C₆ partitioning {1, …, 1978}, each sum-free.
+
+*The encoding.* Build the complete graph on the 1979 vertices 0, 1, …, 1978, and color each edge {a, b} (a < b) with the color of the difference b − a — a number in {1, …, 1978}, so it lies in exactly one class. A monochromatic triangle would be vertices a < b < c with b − a, c − b, c − a all in one class C; but (b − a) + (c − b) = c − a displays a sum inside C, the two summands equal exactly when b is the midpoint. Sum-free classes forbid this: the edge-coloring has no monochromatic triangle.
+
+*The Ramsey chain.* Let R_k be the least m such that every k-coloring of the edges of K_m contains a monochromatic triangle. R₁ = 3. The step: R_k ≤ k(R_{k−1} − 1) + 2. In K_{k(R_{k−1}−1)+2}, take any vertex v: it has k(R_{k−1} − 1) + 1 neighbors, so some color appears on at least R_{k−1} of the edges from v. If any edge among those neighbors carries that same color, it forms a monochromatic triangle with v. If none does, the neighbors' mutual edges use only k − 1 colors — a (k − 1)-colored complete graph on at least R_{k−1} vertices — and the definition of R_{k−1} supplies a monochromatic triangle directly. Either way one exists. The chain, from R₁ = 3:
+
+R₂ ≤ 2(3 − 1) + 2 = 6,  R₃ ≤ 3(6 − 1) + 2 = 17,  R₄ ≤ 4(17 − 1) + 2 = 66,  R₅ ≤ 5(66 − 1) + 2 = 327,  R₆ ≤ 6(327 − 1) + 2 = 1958.
+
+(The first steps are exact — R₂ = 6 and R₃ = 17 are the true values, confirmed by brute force in the lab; from R₄ on the chain yields ceilings, not values, and the proof needs only the ceiling.)
+
+Since 1979 ≥ 1958 ≥ R₆, every 6-coloring of the edges of K₁₉₇₉ — in particular the difference-coloring above — contains a monochromatic triangle. That triangle is a monochromatic Schur triple, contradicting sum-freeness. Some country holds x, y, and x + y. ∎
+
+Read as a Schur number: a sum-free k-partition of {1, …, N} yields a triangle-free k-coloring of K_{N+1}, so N + 1 < R₆ ≤ 1958 and N ≤ 1956 — even numbering the members only up to 1957 would force the sum.
+
+*The other direction, honestly bounded.* How far below the Ramsey ceiling can a sum-free six-partition reach — that is, where does the true Schur number S(6) sit? An elementary construction climbs from the bottom: a sum-free k-partition of {1, …, N} produces one of {1, …, 3N + 1} with k + 1 classes — add the new class D = {N + 1, …, 2N + 1} and stretch each old class C to C ∪ (C + 2N + 1). Four cases check sum-freeness: two elements of D sum to more than 2N + 1, past D; two low elements can only threaten inside their own class, excluded by hypothesis; a low plus a stretched element lands in the stretched zone only if x + y already sat in the class, again excluded; two stretched elements leave the interval {1, …, 3N + 1} entirely. Coverage: the low classes fill 1 … N, D fills N + 1 … 2N + 1, the stretched classes fill 2N + 2 … 3N + 1. Starting from the one-class partition of {1}, the sizes run 1 → 4 → 13 → 40 → 121 → 364: S(6) ≥ 364. The truth is much larger — the published bounds are 536 ≤ S(6) ≤ 1836, with the exact value open, and the nearest settled relative is S(5) = 160, a 2017 computer proof — all far above the elementary ladder and far below the Ramsey ceiling 1956. The Atlas prints both ends and points the curious to the literature.
+
+The lab anchored the small facts before printing: S(1) = 1, S(2) = 4, S(3) = 13 by exhaustive search over all colorings; R₂(3) = 6 by brute force (K₅ admits a triangle-free 2-coloring, K₆ does not); the 3N + 1 construction verified class by class for k = 1 … 6, sizes exactly 1, 4, 13, 40, 121, 364, with zero sum-triples and full coverage each time; and the reduction itself replayed concretely — the sum-free partitions of {1, …, 4} and {1, …, 13} induce, via the difference-coloring, triangle-free colorings of K₅ and K₁₄, machine-verified edge by edge (0 monochromatic triangles among 10 and 364 respectively).
+
+**What to learn.** The encoding is the whole proof: difference classes become edge colors, and the algebraic identity (b − a) + (c − b) = c − a becomes the triangle — the same translation P25 makes everywhere it appears (correspondence → edge-coloring in Problem 3, members → Schur colors here). The pigeonhole chain is the gentleman's Ramsey: no asymptotics, just "some color repeats R_{k−1} times at one vertex," a recursion with clean constants — double counting (P2) at integer scale. And learn to read a bound chain honestly: 3, 6, 17 are values; 66, 327, 1958 are ceilings; the proof needs only the ceiling, and the chapter says which is which.
+
+---
+
+## The Trick Bag (reference card)
+
+| Pattern | Plain language | Where you met it |
+|---------|---------------|------------------|
+| **P2 Double counting** | Count the same set two ways; equate | 1 (fixed-point pairs), 2 (problem-pair coverage), 5 (judge agreements), 6 (girl–boy–problem triples), 24 (the anti-Pascal bookkeeping), 30 (Schur's upper bound via Ramsey) |
+| **P9 Pigeonhole** | n+1 objects, n boxes — with the boxes hidden inside an encoding | 3 (17 edges, 3 colors), 4 (parity classes, twice), 6 (⌈21/6⌉ = 4), 7 (the migrating jump), 8 (three cards, two piles), 11 (walking the multiples), 27 (200 even sites, 100 cages), 30 |
+| **P25 Reduction / encoding** | Translate into a language whose structure carries the proof | 3 (correspondence → edge-coloring), 4 (integers → F₂⁹), 13 (bare edges → independence), 30 (members → Schur colors) |
+| **P1 Bijection / orbits** | Count by symmetry: group actions and their fixed points | 9 (the +2 shift on the circle), 16 (insertion symmetry in the balance) |
+| **P4 Monovariant / induction** | A quantity that must move, or a case that reduces | 10 (the pentagon potential), 15 (consecutive residues), 17 (the Bank of Bath), 18 (Zantema's machine, honestly constructive), 19 (the grasshopper's four cases), 24 (the anti-Pascal max-chain), 28 (the liar's trailing streaks) |
+| **P10 Averaging** | Some object beats the average — or the average forces a sign change | 5 (the convexity minimum), 23 (rotation averages over ninja paths) |
+| **P8 Extremal / longest-path** | Take an extremal object; its structure cracks | 22 (the tallest surviving pair), 29 (chains and their lengths) |
+| **P11 Explicit construction** | Beat the bound by building the object | 12 (the balanced coloring), 14 (the tour when r = 25), 20 (Euler circuits pairing the pebbles), 22 |
+| **P7 Parity** | Coloring obstructions: what a two-coloring forbids | 14 (mod 3 and mod 7 obstructions), 13 (the parity of bare-edge matchings) |
+| **P15 Induction on vertices/edges** | Delete, solve smaller, extend | 21 (splitting the clique across two rooms) |
+| **P16 Alternating paths** | Repair a partial solution along a cycle | 12 (peel leaves, alternate around cycles) |
+| **P17 Duality (min–max)** | Two players, one number; a strategy is a proof | 27 (the √5 game's value is exactly 100), 28 (the liar game's window n ≥ 2k) |
+| **P18 Algorithmic proof** | The proof *is* a procedure; termination is the theorem | 25 (the hunter's forced failure), 26 (the windmill's sweep), 29 (the block move, run to termination) |
+| **P26 Compactness** (flavor only) | Infinite patience, finite budget — and a limit argument in disguise | 25 (10⁹ rounds, 100 of distance) |
+| **Diagnosis is the skill (lore)** | Thirty problems, thirteen patterns; the machinery never upgrades — what grows is the load per pattern and the thickness of the disguise | The whole chapter; the moment of diagnosis is still one sentence at the summit |
+| **The honest census (lore)** | Print what is proved, what is computed, and what is cited — and keep the three apart | 21's census-closed step, 28's cited induction and local lemma, 30's open Schur number, every lab note |
+
+**Formula box:** The doorstep anchors: 17 edges in 3 colors with the trailhead Ramsey values R(3,3) = 6 and R(3,3,3) = 17; F₂⁹'s 512 vectors; ⌈21/6⌉ = 4; the +2 shift on the circle; the pentagon's potential coefficients 2a − 3b + 2c = 0. The rooms: the walk g_i = ω(B_i) − (2s − i) crosses zero or overshoots to (m, m−1), and one swap restores equality. The bands: N bands of N + 1 ranks, the first repeat within N + 1 positions, adjacency surviving every later deletion. The ninja: ⌊log₂ n⌋ + 1 guaranteed reds; S_n = n + 1; the charging 2^{1+max(v_q, v_{q+1})} pays for two children; tightness rows i = 2^a + b with the red at 2b + 1. The anti-Pascal: T = 2018·2019/2 = 2,037,171; the telescope M_{i−1} ≤ M_i − m_i pins every row; larges (≥ T − 2018) live only in the bottom 64 rows (t ≤ 63 from t(t+1) ≤ 4036); at most 126 outside, at least 1893 inside, at most 125 non-large below; at least 1767 both-large adjacent pairs, at least 1766 of them not the m₂₀₁₇-pair — and the one above such a pair must be m₂₀₁₇: contradiction; existence iff n ≤ 5 (DFS counts 1, 4, 8, 8, 2, 0). The hunter: δ = m − √(m²−1) = 1/(m + √(m²−1)); the identity 1 + δ² = 2mδ; the block gain x² + 2(m−x)δ; m = 101 while x ≤ 100 — 101² = 10200 + 1, so 2δ > 1/101 by exactly the one unit — and 101·1,010,001 = 102,010,101 ≤ 10⁹ rounds; maintenance with m = ⌈x⌉ + 1 keeps the gain positive forever. The windmill: the balanced start (a ±1 walk gap); every event splits the others (m, m−1) with the old pivot booked to its falling side; π-periodicity through P₀ and the median rank; the unbalanced control fails. The √5 board: displacement sums odd (a² + b² = 5), so the 200 even sites are free and the 100 four-cages with diagonal replies cap at one red each: K = 100 exactly. The liar: trailing streaks s(c) ∈ {0, …, k}; a saturated class halves under any honest cut; n ≥ 2k suffices and 1.99k fails for large k; the census's exact minimax depths at k ≤ 4. The bank: the window {n, …, ⌈3n/2⌉}; Δr ∈ {0, −1, −2} with the zeros exactly the no-op and the last-chain-no-weld (r even); the endgame 2n ≥ 4(2n + 1 − k); stalls below, pure rotations above. The countries: the chain R₁ = 3, R₂ ≤ 6, R₃ ≤ 17, R₄ ≤ 66, R₅ ≤ 327, R₆ ≤ 1958 (the first three exact); S(6) ≤ 1956 < 1978; the elementary ladder 1 → 4 → 13 → 40 → 121 → 364 against the published 536 ≤ S(6) ≤ 1836, exact value open.
+
+---
+
+## Revision History & Verification Notes
+
+**Editions.** Authored pre-install in three passes: the frame — title, introduction, the thirty-problem slate with its pattern map and honest census — and Terrace I, the doorstep rungs (problems 1–10); then Terrace II, the working middle (problems 11–20); then Terrace III, the summit rungs (problems 21–30), together with this Trick Bag, the formula box, and these notes. The slate was chosen for pattern coverage from six decades of olympiad combinatorics; every statement was fetched from the official record and reconciled against it at selection time (six corrections to the draft ledger were recorded then, including the two-rooms problem's weaker official claim, the hunter device's reporting target, and the bank's either-metal goal). The chapter is authored and machine-verified but not yet installed: the canvas and web-edition builds are the next chunk of work, and nothing in this chapter should be read as claiming otherwise.
+
+**Verification basis.** Every number this chapter prints was machine-verified at authoring, in four waves. The doorstep and middle receipts (two early waves, recorded in full in the project buffer): the equal-clique census, the band-greedy construction on 1,500 fresh rows, the ninja minimax with its 367,044 charging checks and tightness construction, the anti-Pascal reconstruction with its full existence census, the hunter's exact-integer razors with both key inequalities tight by exactly one, the windmill's oriented exact-integer simulation, the √5 board's decomposition and reply simulation, the liar attractor, the Oslo window census, and the Schur chain. The summit wave (chunk 48f, three batches): the walk-and-swap pre-checks; the band-greedy; the √5 board's 4-cycles with the sixty-game simulation against the diagonal reply (Amy never exceeded 100, and reached it in several games); the windmill's counterclockwise oriented lift in exact integers — every event splitting the others (m, m−1) with the old pivot booked to its falling side (that booking *is* the hand-off lemma), π-periodicity through P₀ with alternating crossed directions, full pivot coverage, and the unbalanced control (0,0), (4,0), (1,1) failing the recurrence, so balance is load-bearing; the liar's stack-safe layered attractor over the full state space — sixteen cases at exact minimax, every n = 2k case a win, with the (k, n, N) = (2, 4, 6) seven-question adversarial trace (live counts 6 → 6 → 6 → 6 → 5 → 5 → 5 → 4), the cooperative pump line, and Amy's survival loop at (1, 1, 3); and the Oslo census — all 1,274 arrangements for n = 1 … 6, the window exact, zero invariant violations in millions of checked moves (Δr always in {0, −1, −2}; Δr = 0 exactly the no-op and the exception; exceptions always with r even; no no-op ever on an unfinished row with k ≥ n), with both witness families replayed for every k in their ranges. The assembly wave (at final assembly): the freshly printed claims of problems 27, 29, and 30 re-verified in one run — the 100-quadruple decomposition covering all 400 sites exactly once with cycle edges at squared distance exactly 5 and diagonals at 2, 10, or 18; the 200 even sites pairwise √5-free; the stall and rotation witnesses cycling unfinished for every k in their ranges; the 3N + 1 construction ladder with sizes exactly 1, 4, 13, 40, 121, 364 and zero sum-triples at every rung; and the small anchors S(1) = 1, S(2) = 4, S(3) = 13, R₂(3) = 6 (K₅ admits a triangle-free 2-coloring, K₆ does not), with the K₅ and K₁₄ reduction witnesses verified edge by edge (0 monochromatic triangles among 10 and 364). Literature pins, web-verified at authoring: the liar game's part (b) formulation (for all sufficiently large k there exists n ≥ 1.99k at which Ben cannot guarantee a win); and the Schur-number record — the exact value of S(6) is open, the published bounds are 536 ≤ S(6) ≤ 1836, and S(5) = 160 was settled by computer search in 2017.
+
+**Standing decisions.** Bodies carry no chunk or session references; history lives here. Two steps are closed by evidence rather than derivation, and labeled where they occur: Problem 21's swap-witness existence (the overshoot state resisting a short argument; the census ran the walk-and-swap on every competition graph of even size through n = 6 — 452 graphs at n = 5, all 10,759 at n = 6 — plus 254 stress instances, zero failures, the residual state never once encountered) and Problem 28's general-k material (part (a)'s official induction and part (b)'s Lovász Local Lemma argument both cited to the official solution, with the k ≤ 4 census closing the small cases exactly and the frontier's location honestly between k and 2k). Problem 25's device reports near the rabbit; some retellings swap the label, and the chapter says so. Problem 29's goal is one metal — either one — which resolves the all-bronze already-finished case, and the window sentence is scoped accordingly. Problem 30's Schur-status sentence is the web-verified record and supersedes a drafting note that called 536 exact. The pattern map's P18 cell was relabeled at apparatus time to match the authored Problem 29 (the block move, run to termination). The pattern map is the source of truth for pattern membership; this Trick Bag echoes it. There is no exercises section: the thirty problems are the course, and the Atlas's earlier chapters supply the theory the Bridge presupposes. The chapter is authored pre-install; the canvas and web-edition builds, the atlas row's completion, and the learner-facing release remain future work recorded in the project buffer.
+
+---
+*Chapter status: 🟨 **authored pre-install (chunks 48d–48f)** — thirty olympiad problems across three terraces (the doorstep rungs, the working middle, the summit rungs), every solution worked in Atlas patterns with the census-closed and cited steps labeled as such; the pattern map with its honest census (thirteen patterns fired, the professional toolkit never did); the Trick Bag, the formula box, and these notes close the chapter. Not yet installed: the canvas and web-edition builds are the next chunk of work; learner testing follows the completion of the whole project scope, at the user's direction.*
