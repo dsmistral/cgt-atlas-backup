@@ -15,8 +15,8 @@ FOUR new Volume III chapters (Ch. 14–17); NO shipped chapter rewritten (keeps 
 
 ## Step log (updated after EVERY sub-step)
 1. [✅] RESUME created + pushed.
-2. [ ] Buffer record: MASTER TASK LIST F-group + STATUS LOG entry 57 (approval + placement) + CHUNK STATE row 50 + SESSION STATE.
-3. [ ] Atlas record: chapter-map Volume III section (rows 14–17 ⮜) + session row 50 + standing-to-do Volume III line + canvas resync.
-4. [ ] Close push (buffer + atlas + RESUME final) + delete this file.
+2. [✅] Buffer record — DONE this retry (F-group + entry 57 + chunk row 50 + SESSION STATE; readback equal, 285,435 bytes).: MASTER TASK LIST F-group + STATUS LOG entry 57 (approval + placement) + CHUNK STATE row 50 + SESSION STATE.
+3. [✅] Atlas record — DONE this retry (Volume III map section rows 14–17 + session row 50 + standing-to-do line; canvas resynced byte-equal, 193,201 bytes).: chapter-map Volume III section (rows 14–17 ⮜) + session row 50 + standing-to-do Volume III line + canvas resync.
+4. [✅] Close push + delete this file — DONE this retry. CLOSED — folded into STATUS LOG entry 57; deleted locally after this push. (buffer + atlas + RESUME final) + delete this file.
 
 On retry: read this step log + KNOWLEDGE.md SESSION STATE first; NEVER redo a completed sub-step.
