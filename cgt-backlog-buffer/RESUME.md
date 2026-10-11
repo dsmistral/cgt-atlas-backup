@@ -10,8 +10,8 @@ Authoritative state: KNOWLEDGE.md (SESSION STATE + CHUNK STATE + working point) 
 ## Step log (updated after EVERY sub-step)
 0. ✅ Disconnect recovery: state verified — buffer holds only KNOWLEDGE.md (262,317 bytes / 354 lines); master untouched (footer still pre-install at line 962); no ch12 canvas (the pre-disconnect mkdir had not persisted — redone); atlas 257 lines. No 48g sub-step was lost.
 1. ✅ RESUME.md created; pushed to GitHub as this commit (connectivity check + source-of-truth checkpoint).
-2. [ ] Master edits: the three pre-install markers turned (anchor-asserted in-memory, single write, readback equal).
-3. [ ] Canvas install: CANVAS.md == master (readback string-equality) + hygiene gate re-run.
+2. ✅ Master edits DONE (canonical path, single write, readback string-equal): Editions paragraph + Standing-decisions tail + status footer 🟨 authored pre-install (48d–48f) → 🟩 installed (48d–48g); no "not yet installed" phrasing survives; master now 166528 canonical UTF-8 bytes / 962 lines; hygiene gate re-run green (1 H1, 7 H2, 30 problem headers, Terrace III / The Trick Bag / Revision each 1, 0 CR, 0 mojibake, single trailing newline, footer = final line).
+3. ✅ Canvas install DONE: /home/user/canvases/cgt-ch12-olympiad/CANVAS.md == master byte-identically (166528 bytes; readback string-equal on both copies; frontmatter name = folder name).
 4. [ ] Buffer close-out: entry 53, CHUNK STATE 48g ✅, 48g WORKING LOG, SESSION STATE → 48h (+ the new GitHub-source-of-truth standing direction recorded).
 5. [ ] Atlas row 48: 48g-DONE note + Next cell → 48h; atlas canvas resync (canonical copy + readback equality).
 6. [ ] Close push: atlas + KNOWLEDGE.md + RESUME (closed state).
