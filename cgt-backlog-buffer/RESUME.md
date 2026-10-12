@@ -15,7 +15,7 @@
 - [x] 52b — web canon-pin verification (four search batches)
 - [x] 52c — machine runs I (receipts 52runs-1..5; CHECKPOINT 52c-1)
 - [x] 52d — machine runs II + exercise/lab design lock (receipt 52runs-6; CHECKPOINT 52d-1)
-- [ ] 52e — authoring (scratch chunks in cgt-backlog-buffer/, per the 52d design lock) → NEXT
+- [ ] 52e — authoring IN FLIGHT (per the 52d design lock) → NEXT — c1 (frontmatter + intro + how-to-read + pattern map + L1 regularity) + c2 (L2 counting + removal) ✅ written + pushed (CHECKPOINT 52e-1); next: c3 (L3 Erdős–Stone + stability)
 - [ ] 52f — assembly + hygiene gate + INSTALL
 - [ ] 52g — web build + .html export + push
 - [ ] 52h — closeout (atlas row 52 COMPLETE, map row 15 ✅, P-ID proposals, KNOWLEDGE refresh, scratch tidy, close push)
