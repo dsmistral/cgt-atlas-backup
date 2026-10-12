@@ -1,30 +1,23 @@
-# RESUME — session 51 (F1: Ch. 14 The Probabilistic Method, Act II) — in-flight checkpoint
+# RESUME — CGT Atlas · session 52 (F2: Ch. 15 Regularity and Density) — IN FLIGHT
 
-**Read first on retry: the CH. 14 CHUNK STATE table + the CHECKPOINT 51x paragraphs in KNOWLEDGE.md; resume at the last ✅ row; never redo a completed sub-step.**
+**If this session is interrupted: read `cgt-backlog-buffer/KNOWLEDGE.md` first — STATUS LOG entry 60 + the CH. 15 CHUNK STATE + the SESSION STATE working point. Resume at the last ✅ CHECKPOINT; never redo a completed sub-step.**
 
-## Working point (updated 2026-10-12 after batches 2a-v2 + 3/3b — chunk 51c closed)
+## State at this checkpoint (52a-1 ✅, 2026-10-12)
 
-- 51a ✅ DONE: canvases restored (27), atlas row 51 IN PROGRESS + map row 14 🚧, buffer entry 58 + chunk state + RESUME, GitHub push db8619c.
-- 51b ✅ DONE: canon pins verified (CHECKPOINT 51b-1 — FKG/AD/Kleitman/Janson/JLR/Spencer-1985/Bregman-Minc/Moser-Tardos/Talagrand/Shamir-Spencer/Alon-Krivelevich/Banaszczyk/Lovett-Meka/ER/Gilbert/Bollobas-1984/Egorychev-Falikman/Kahn/Komlos).
-- 51c ✅ DONE (all three machine-run batches clean):
-  - Batch 1 (correlation + Hadamard) — CHECKPOINT 51c-1; receipts 51runs-1.md. Kleitman 0 violations (400 + 28,224 pairs); G(5,½) △/C₄ correlation 0.3818 vs 0.2887; rank-flattened μ log-supermodular 0/87,380; AD 0/3,000; FKG-under-nonproduct-μ 0/28,224; Hadamard FULL-system exact disc = 2/4/4/4/6 (Sylvester-4/8/16, Paley-12/20) all ≥ √n; sliced system disc 1 (design correction recorded).
-  - Batch 2a v2 (Janson/Poisson/thresholds) — CHECKPOINT 51c-3 (supersedes the defective v1 recorded at 51c-2); receipts 51runs-2.md v2. Tri-free fractions 0.987/0.833/0.303/0.980/0.830/0.317 (ALL six pass the Ch. 4 lab Part 2 gate); Poisson TV 0.0330 at n=120 c=1; K₄ threshold 0.000/0.030/0.410/1.000 at λ=0.6/1.0/1.6/2.5; Janson μ/Δ numbers + m(H) densities carried from v1.
-  - Batch 3/3b (Azuma/martingales) — CHECKPOINT 51c-4; receipts 51runs-3.md + 51runs-3b.md. Edge-Lipschitz 5,325 + vertex-deletion 5,404 checks, 0 violations; Hoeffding tails hold at all odd t; χ exhibits G(10,½) mean 3.984 {3:84 4:343 5:70 6:3}, G(12,½) mean 4.410 {3:8 4:107 5:80 6:5} vs Azuma ±√(n−1).
-- 51d 🚧 IN PROGRESS — batch 4 (evolution) ✅ CLEAN — CHECKPOINT 51d-1; receipts 51runs-4.md. E0 trace(A³)=6·#C₃ + DFS counter certified on all 33,792 graphs n=5,6 (236,544 checks, 0 violations). E1 giant G(1000, c/1000): largest-frac 0.0112/0.5706/0.7940/0.9405 vs ρ = 0/0.583/0.797/0.940. E2 connectivity G(400, (ln400+c)/400): 0.070/0.390/0.755 vs e^{−e^{−c}} = 0.0660/0.3679/0.6922; no-isolated ≈ connected everywhere. E3b cycles G(500, c/500) 200 samples: all within ~1σ of (n)_k p^k/(2k). OPERATIONAL: split machine runs per part at 40M+ step scale (whole-batch run hit the process deadline).
-- 51d 🚧 IN PROGRESS — batches 4 + 5 ✅ CLEAN (CHECKPOINTs 51d-1/51d-2; receipts 51runs-4.md + 51runs-5.md). Batch 4: trace identity 236,544 checks 0 viol; giant 0.0112/0.5706/0.7940/0.9405 vs ρ = 0/0.583/0.797/0.940; connectivity 0.070/0.390/0.755 vs 0.0660/0.3679/0.6922; cycles E3b within 1σ. Batch 5: 20 instances Gray-code exact opt (0–4, all even by parity) vs 6√n = 12–24; naive re-verification ALL MATCH; Hadamard cross-check reproduces batch-1 (2/4/4).
-- 51d ✅ DONE — batches 4/5/6 all CLEAN (CHECKPOINTs 51d-1/2/3; receipts 51runs-4/5/6.md). Batch 6 highlights: Brégman 74,954-graph census 0 violations, equality ⟺ complete-bipartite components verified BOTH directions (151 graphs); vdW per ≥ n!/nⁿ 0 violations on 2,800 doubly stochastic samples, per(J/n) exact; M–T resampler 100/100 terminate, e·p·(d+1) = 0.5097 ≤ 1 machine-verified (Ch. 4 §4.3 convention cross-ref).
-- 51d ✅ CLOSED — batch 7 v2 CLEAN (CHECKPOINT 51d-4; receipts 51runs-7.md): Janson pair identities + Δ asymptotics; factorial moments (gate caught the author’s vertex-sharing error — correct E[X(X−1)] = 200p⁶ + 180p⁵ at n=6, ratio → 1); Hadamard ‖Hχ‖₂ = n; Brégman corollary 0 violations/54 equalities. EXERCISE LIST (18 = 12G + 3◆ + 3◐) + LAB PLAN (6 parts) LOCKED — see 51d-4 for the full mapping.
-- 51e ✅ DONE — authoring complete (CHECKPOINT 51e-1): scratch chunks c1 (frontmatter+intro+pattern map) / c2 (L1–L2) / c3 (L3–L4) / c4 (L5–L6) / c5 (Trick Bag + formula box + 18 exercises; resequenced to lecture order, same locked topics) / c6 (lab 6 parts, all code certified) / c6b (15 answers + Revision History & Verification Notes + 🟨 footer) all in cgt-backlog-buffer. Batch 8 certification = 51runs-8.md (lab engines port-verified; M–T signs matrix reconstructed, reproduces 51runs-6 exactly; birthday exhibit verified; Shearer K₃ factor e; 9 authoring-time repairs: broken c6 code ×3, Ex 7 false orthogonality, Ex 12 formula, Ex 13 d=2, 6 cross-refs, phantom n-list, edge-window clause). NEXT: 51f assembly + hygiene + install; 51g web; 51h closeout.
-- 51f ✅ DONE — assembly + hygiene + install (CHECKPOINT 51f-1): master cgt-atlas-project/cgt-ch14-probabilistic-ii.md = c1..c6b, 91,450 bytes / 557 lines, hygiene GREEN (1 H1 + 13 H2 + 6 H3, 0 CR, 0 mojibake, receipt sweep 88 values); PRE-ASSEMBLY GATE CATCH: 3 fabricated lab histogram cells replaced with certified re-run values (51runs-8 (g)); 87,380 convention repaired (ordered pairs); footer 🟨→🟩 at install; canvas /home/user/canvases/cgt-ch14-probabilistic-ii/ == master byte-identical. NEXT: 51g web build cgt-ch14-web + .html export; 51h closeout.
-- 51g ✅ DONE — web build (CHECKPOINT 51g-1): codec proven against ch12 both ways; ch14 payload 91,242 chars → 125,900 b64 at line 49; TS decode-equality oracle GREEN; four patches; cgt-ch14-web.md 138 lines / 132,299 bytes; canvas byte-identical; cgt-ch14-web.html 132,198 bytes (doctype head, </html> tail). NEXT: 51h closeout.
-- 51h 🚧 IN PROGRESS — (1) ✅ Ch. 4 rounding repair EXECUTED (CHECKPOINT 51h-1): master line 249 0.852 → 0.846 + appendix "Rounding repair (session 51)" record; ch4-web REBUILT (payload 95,105 chars → 130,780 b64, existing frame + patches + its own "; convention kept; oracle GREEN; 137,141 chars) + cgt-ch4-web.html regenerated (137,042 chars) + both ch4 canvases resynced byte-identical. Remaining: (2) atlas updates (P27–P29 P-index rows + map row 14 → ✅ + session row 51 → COMPLETE + honest reverse-index open-item note + atlas canvas resync); (3) cgt-atlas-project/KNOWLEDGE.md refresh (ch14 inventory rows + heading → F2); (4) buffer close (entry 59 + entry 58 closed + row 51h ✅ + SESSION STATE → 51 CLOSED/F2 + RESUME fold/delete + scratch 51ch-c* delete); (5) final push; (6) closing summary with GitHub links.
-  - Platform drift noted: 14 chapter canvases lost their trailing \n (known benign drift; masters = source of truth; all 27 resynced 2026-10-12, verified diff-clean).
-- GitHub: …, ea9a757 (51e-1 + 51runs-8 + scratch + RESUME). This push: 51f-1 + the installed master cgt-ch14-probabilistic-ii.md + updated scratch (c2/c5/c6) + 51runs-8 (g) + RESUME (51g next).
+- **Integrity audit (user-directed) CLEAN:** all 42 durable files byte-identical to the GitHub master truth (blob-SHA-1, 42/42); session-51 close fully coherent; repo scratch finding recorded (entry 60).
+- **Session open executed:** 29 canvases restored (diff-verified); atlas row 52 IN PROGRESS + chapter-map row 15 🚧; buffer entry 60 + CH. 15 CHUNK STATE + SESSION STATE → 52 IN PROGRESS; RESUME.md = this file.
+- **House format (per Ch. 14):** 6 lectures; 18 exercises (12 graded + 3 ◆ + 3 ◐) + machine-verified answers; verified lab in seeded parts; Trick Bag + formula box; Revision History & Verification Notes. Files: `cgt-ch15-regularity` / `cgt-ch15-web` (+ .html export at 52g).
+- **Lecture plan (draft):** L1 regularity lemma · L2 counting + removal · L3 Erdős–Stone + stability · L4 triangle removal + Roth · L5 density Ramsey (Szemerédi AP + density HJ) · L6 cap set (CLP/EG slice rank, Ch. 6 cross-ref).
 
-## Chapter design (locked at 51a, see entry 58)
+## Chunk ladder
 
-6 lectures: L1 Correlation (FKG + Kleitman + four-functions); L2 Janson + Poisson paradigm; L3 Martingales + Azuma–Hoeffding + Talagrand (st.); L4 Random-graph evolution (thresholds, giant, phase transition); L5 Discrepancy (Spencer six standard deviations + partial coloring); L6 Entropy method (Brégman + Moser–Tardos entropy compression). 18 exercises (12 graded + 3◆ + 3◐), 15 answers, lab 6 parts, Trick Bag + formula box, appendix + footer. Master: cgt-atlas-project/cgt-ch14-probabilistic-ii.md; canvas folder cgt-ch14-probabilistic-ii; web cgt-ch14-web + .html export.
+- [x] 52a — session open (integrity audit, canvas restore, atlas row 52, buffer entry 60, RESUME, open push)
+- [ ] 52b — web canon-pin verification → NEXT
+- [ ] 52c — machine runs I
+- [ ] 52d — machine runs II + exercise/lab design lock
+- [ ] 52e — authoring (scratch chunks in cgt-backlog-buffer/)
+- [ ] 52f — assembly + hygiene gate + INSTALL
+- [ ] 52g — web build + .html export + push
+- [ ] 52h — closeout (atlas row 52 COMPLETE, map row 15 ✅, P-ID proposals, KNOWLEDGE refresh, scratch tidy, close push)
 
-## House rules in force
-
-Machine-verify every claim before install; checkpoint after every sub-step; GitHub = main source of truth (push after every milestone); canonical UTF-8 path (read → in-memory verify → write → readback-equal; bash ASCII-only); scratch in cgt-backlog-buffer; quiet mode; **NEW GOTCHA: JS/TS bitwise ops are 32-bit — use 31-bit words (`j >> 5`, `1 << (j & 31)`) for bitset adjacency, never `1 << (j & 63)`**.
+Fold this file into the buffer STATUS LOG and delete it at the session close (standing direction).
