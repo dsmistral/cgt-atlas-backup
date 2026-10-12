@@ -42,7 +42,7 @@ type: "text/html"
 </head>
 <body>
 <div class="banner no-print">
-  <strong>Reference web edition — the working export route.</strong> This page embeds the Chapter&nbsp;15 source <em>byte-identically</em> and renders it locally, with no network and no external pipeline. Every code block carries <code>white-space: pre</code> and <code>break-inside: avoid</code>, so <strong>printing this page to PDF</strong> (Ctrl/Cmd&nbsp;+&nbsp;P &rarr; Save as PDF) produces a PDF in which every code block keeps its exact indentation and stays on a single page. After printing, certify with the publishing toolkit's PDF gate — or simply extract the Python blocks from the printed PDF and compile them. This banner does not print.
+  <strong>Reference web edition — the working export route.</strong> This page embeds the Chapter&nbsp;14 source <em>byte-identically</em> and renders it locally, with no network and no external pipeline. Every code block carries <code>white-space: pre</code> and <code>break-inside: avoid</code>, so <strong>printing this page to PDF</strong> (Ctrl/Cmd&nbsp;+&nbsp;P &rarr; Save as PDF) produces a PDF in which every code block keeps its exact indentation and stays on a single page. After printing, certify with the publishing toolkit's PDF gate — or simply extract the Python blocks from the printed PDF and compile them. This banner does not print.
 </div>
 <main id="content"></main>
 <script>
