@@ -16,7 +16,7 @@ icon: 🔀
 ## MASTER TASK LIST
 
 - [x] R1. Session open: this buffer created + pushed; atlas row 56 IN PROGRESS + pushed.
-- [ ] R2. Masters renumbered: the 5 moved masters (Lean 13→17 with its §13.x sections; 14→13; 15→14; 16→15; 17→16) + ch10's single forward ref ("Where Chapter 13 will stand" → 17) + gates (self-refs match new numbers; cross-refs remapped; zero stale old-number patterns; zero numeric collateral).
+- [x] R2. Masters renumbered: the 5 moved masters (Lean 13→17 with its §13.x sections; 14→13; 15→14; 16→15; 17→16) + ch10's single forward ref ("Where Chapter 13 will stand" → 17) + gates (self-refs match new numbers; cross-refs remapped; zero stale old-number patterns; zero numeric collateral).
 - [ ] R3. Web editions rebuilt + byte-verified: ch10-web (ch10 edited) + the four renamed webs (ch13/14/15/16-web from the renamed masters) + 4 .html regenerated; gate: new frames differ from old only in name/title/payload lines; payload decode == new master (frontmatter stripped) byte-exact.
 - [ ] R4. Atlas updated: chapter map rows renumbered + reordered (Lean row to the end, its own subsection, history kept + session-56 note appended); forward-table home cells P27–P42 (14→13, 15→14, 16→15, 17→16); forward footnote (numbers updated + one renumbering parenthetical); reverse-index scope ¶ + the 18 empty-row notes (Ch. 14–17 → Ch. 13–16); §5 conventions renumbering note; row 56 → COMPLETE at close. Session-log history untouched.
 - [ ] R5. KNOWLEDGE.md updated (current-facing only): resume-protocol .html list + canvas-name examples, working point, scope-status line, inventory rows for the renamed files; historical session bullets untouched.
@@ -25,6 +25,7 @@ icon: 🔀
 ## STATUS LOG
 
 1. **SESSION 56 OPEN (chunk A = R1).** Census done at open (receipts below). NEXT: R2 — the masters.
+3. **R2 DONE (chunk B closed).** All six masters renumbered single-pass, context-anchored: Lean 13→17 (incl. §13.x → §17.x headers, ×6) · 14→13 · 15→14 (its two Chapter-14 cross-refs → 13) · 16→15 · 17→16; ch10’s “Where Chapter 13 will stand” → 17. Gates held: post-scan == pre-scan mapped; changed-line oracle — zero numeric collateral; anchors verified (cgt-ch17-lean name, H1, six §17.x). Masters (old paths; renames at R6) + this buffer pushed (chunk B checkpoint). NEXT: R3 — webs + .html.
 2. **R1 DONE (chunk A closed).** Atlas row 56 IN PROGRESS inserted above row 55; the atlas + this buffer pushed to GitHub in one commit (chunk A checkpoint). NEXT: R2 — the masters.
 
 ### Census receipt (at open, bash, 2026-10-12)

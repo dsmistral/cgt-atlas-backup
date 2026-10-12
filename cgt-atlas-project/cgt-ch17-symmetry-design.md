@@ -1,10 +1,10 @@
 ---
-name: "cgt-ch17-symmetry-design"
-title: "Ch. 17 — Symmetry, Inversion, and Design (A Lecture Course in the Feynman Style)"
+name: "cgt-ch16-symmetry-design"
+title: "Ch. 16 — Symmetry, Inversion, and Design (A Lecture Course in the Feynman Style)"
 type: "text/markdown"
 ---
 
-# Chapter 17 · Symmetry, Inversion, and Design
+# Chapter 16 · Symmetry, Inversion, and Design
 
 *Part of the Combinatorics & Graph Theory Atlas (see the Atlas canvas for the chapter map and progress report).*
 
@@ -539,4 +539,4 @@ Every run below was executed before a line of the chapter's prose was written; t
 
 ---
 
-**Status:** 🟩 Feynman edition — installed (session 54, chunks 54a–54f: session open, canon pins, verification campaign batches 1–11, design lock, authoring, assembly + install). The web edition `cgt-ch17-web` and the .html export follow at close. No claim in this chapter predates its receipt.
+**Status:** 🟩 Feynman edition — installed (session 54, chunks 54a–54f: session open, canon pins, verification campaign batches 1–11, design lock, authoring, assembly + install). The web edition `cgt-ch16-web` and the .html export follow at close. No claim in this chapter predates its receipt.

@@ -1,10 +1,10 @@
 ---
-name: "cgt-ch14-probabilistic-ii"
-title: "Ch. 14 — The Probabilistic Method, Act II: Correlation, Concentration, and the Entropy Ledger (A Lecture Course in the Feynman Style)"
+name: "cgt-ch13-probabilistic-ii"
+title: "Ch. 13 — The Probabilistic Method, Act II: Correlation, Concentration, and the Entropy Ledger (A Lecture Course in the Feynman Style)"
 type: "text/markdown"
 ---
 
-# Chapter 14 · The Probabilistic Method, Act II
+# Chapter 13 · The Probabilistic Method, Act II
 
 *Part of the Combinatorics & Graph Theory Atlas (see the Atlas canvas for the chapter map and progress report).*
 
@@ -553,4 +553,4 @@ The machine at n = 400: 0.070 / 0.390 / 0.755 at c = −1/0/1, against the limit
 
 ---
 
-**Status:** 🟩 Feynman edition — installed (session 51, chunks 51a–51f: verification campaign batches 1–8, design lock, authoring, assembly + install). The web edition `cgt-ch14-web` and the Chapter 4 rounding repair follow at close (chunks 51g–51h). No claim in this chapter predates its receipt.
+**Status:** 🟩 Feynman edition — installed (session 51, chunks 51a–51f: verification campaign batches 1–8, design lock, authoring, assembly + install). The web edition `cgt-ch13-web` and the Chapter 4 rounding repair follow at close (chunks 51g–51h). No claim in this chapter predates its receipt.

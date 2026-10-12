@@ -1,20 +1,20 @@
 ---
-name: "cgt-ch13-lean"
-title: "Ch. 13 — The Lean Formal Track: A Living Companion to the Whole Atlas"
+name: "cgt-ch17-lean"
+title: "Ch. 17 — The Lean Formal Track: A Living Companion to the Whole Atlas"
 type: "text/markdown"
 ---
 
-# Chapter 13 · The Lean Formal Track
+# Chapter 17 · The Lean Formal Track
 
 *Not a chapter of the book — a companion that shadows the whole book. As each chapter is written (or rewritten), its key statements get Lean 4 drafts here. One chapter, updated forever, covering everything before and after it.*
 
-## 13.0 Why this chapter exists
+## 17.0 Why this chapter exists
 
 The book you are reading is a human proof. A human proof is an argument designed to make another human say "ah, yes." A machine proof is an argument designed to leave a machine *no room to disagree*. Both are mathematics, but they are different crafts, and this century rewards the people who can speak both — because the communication channel between humans and provers is exactly the place where claims become checkable and errors become impossible to hide.
 
 The honest position, stated once and then enforced by the conventions below: **nobody knows whether an AI system "understands" a proof, and nobody knows what understanding even is in a human head. What we can have is verifiable communication** — formal artifacts that compile or don't. That is what this chapter produces. A lemma is *done* here only when it has compiled on a reader's machine; everything else is honestly labeled a draft.
 
-## 13.1 The contract (verification level 4 of the Atlas ladder)
+## 17.1 The contract (verification level 4 of the Atlas ladder)
 
 1. **The Atlas drafts** Lean 4 + Mathlib code for a theorem, with the human proof (and its home chapter) referenced beside it.
 2. **A reader compiles** the draft on their own machine — Lean needs a real toolchain and Mathlib, which cannot run in the authoring sandbox.
@@ -37,7 +37,7 @@ lake build
 
 ---
 
-## 13.2 Warm-up 1 · The Handshaking Lemma *(Atlas Ch. 2, Lecture 1)*
+## 17.2 Warm-up 1 · The Handshaking Lemma *(Atlas Ch. 2, Lecture 1)*
 
 **The math.** For every graph: Σ_{v} d(v) = 2m; consequently the number of odd-degree vertices is even. The human proof counts the ends-table two ways (P2) and peels parity (P7).
 
@@ -95,11 +95,11 @@ end Atlas.Handshaking
 
 ---
 
-## 13.3 Warm-up 2 · Sperner's theorem *(planned; home: Ch. 7)*
+## 17.3 Warm-up 2 · Sperner's theorem *(planned; home: Ch. 7)*
 
 Statement target: an antichain of subsets of a finite type has size at most the middle binomial coefficient; ideally prove the LYM inequality on the way (the human proof of Ch. 7 §7.1 chains through it). Mathlib's `Finset α` and `Sym` (symmetric group, for the chain-counting) are the natural setting; the cyclic-permutation counting of the LYM proof will need a `Finset.card_image_le`-style argument. Draft lands after Warm-up 1's loop closes — one warm-up in the air at a time.
 
-## 13.4 The statement bank (grows as chapters are written/rewritten)
+## 17.4 The statement bank (grows as chapters are written/rewritten)
 
 | # | Statement | Home | Status |
 |---|-----------|------|--------|
@@ -115,7 +115,7 @@ Statement target: an antichain of subsets of a finite type has size at most the 
 
 Ordering principle: one warm-up loop open at a time; each closed loop stamps its home chapter and trains the next.
 
-## 13.5 Conventions for this chapter
+## 17.5 Conventions for this chapter
 
 - Lean 4 + current Mathlib, nothing exotic; every draft self-contained in one file.
 - Every proof block labeled: **DRAFT — NOT YET COMPILED** → *(reader build: pending)* → **machine-verified (reader build N)** with date and reporter.

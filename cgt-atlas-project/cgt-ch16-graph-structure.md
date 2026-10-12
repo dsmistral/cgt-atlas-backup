@@ -1,10 +1,10 @@
 ---
-name: "cgt-ch16-graph-structure"
-title: "Ch. 16 — Graph Structure: Minors, Perfect Graphs, and the Limits of Coloring (A Lecture Course in the Feynman Style)"
+name: "cgt-ch15-graph-structure"
+title: "Ch. 15 — Graph Structure: Minors, Perfect Graphs, and the Limits of Coloring (A Lecture Course in the Feynman Style)"
 type: "text/markdown"
 ---
 
-# Chapter 16 · Graph Structure: Minors, Perfect Graphs, and the Limits of Coloring
+# Chapter 15 · Graph Structure: Minors, Perfect Graphs, and the Limits of Coloring
 
 *Part of the Combinatorics & Graph Theory Atlas (see the Atlas canvas for the chapter map and progress report).*
 
@@ -359,4 +359,4 @@ function hasKkMinor(n:number, adj:number[], k:number):boolean{
 
 ---
 
-**Status:** 🟩 Feynman edition — installed (session 53, chunks 53a–53f: corruption audit, canon pins, verification campaign batches 1–5, design lock, authoring, assembly + install). The web edition `cgt-ch16-web` and the .html export follow at close. No claim in this chapter predates its receipt.
+**Status:** 🟩 Feynman edition — installed (session 53, chunks 53a–53f: corruption audit, canon pins, verification campaign batches 1–5, design lock, authoring, assembly + install). The web edition `cgt-ch15-web` and the .html export follow at close. No claim in this chapter predates its receipt.
