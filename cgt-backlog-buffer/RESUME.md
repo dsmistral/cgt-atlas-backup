@@ -15,7 +15,7 @@
 - [x] 52b — web canon-pin verification (four search batches)
 - [x] 52c — machine runs I (receipts 52runs-1..5; CHECKPOINT 52c-1)
 - [x] 52d — machine runs II + exercise/lab design lock (receipt 52runs-6; CHECKPOINT 52d-1)
-- [ ] 52e — authoring IN FLIGHT (per the 52d design lock) → NEXT — c1–c4 ✅ written + pushed (CHECKPOINTS 52e-1/52e-2: frontmatter+intro+map+L1, L2 counting/removal, L3 Erdős–Stone+stability with the ex(6,C₅)=9 authoring-time catch, L4 Roth in full); next: c5 (L5 density Ramsey + L6 cap set)
+- [ ] 52e — authoring IN FLIGHT (per the 52d design lock) → NEXT — c1–c5 ✅ written + pushed (CHECKPOINTS 52e-1/52e-2/52e-3; ALL SIX LECTURES drafted: L1 regularity, L2 counting/removal, L3 Erdős–Stone+stability + the ex(6,C₅)=9 catch, L4 Roth, L5 density Ramsey, L6 cap set); next: c6 — the 18 exercises + machine-verified answers, then c6b — lab + Trick Bag + appendix
 - [ ] 52f — assembly + hygiene gate + INSTALL
 - [ ] 52g — web build + .html export + push
 - [ ] 52h — closeout (atlas row 52 COMPLETE, map row 15 ✅, P-ID proposals, KNOWLEDGE refresh, scratch tidy, close push)
