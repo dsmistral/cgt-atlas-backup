@@ -1,0 +1,38 @@
+---
+name: cgt-renumber-buffer
+description: "CGT Atlas session 56 — the renumbering pass: Ch. 13 (Lean) → Ch. 17 (the last chapter); Ch. 14–17 → Ch. 13–16; full file renames + all current-facing references updated; history kept + noted. Temp resume buffer: on retry read the STATUS LOG first; fate decided by the user at close."
+display_name: "CGT Atlas renumbering pass buffer (temp)"
+icon: 🔀
+---
+
+# CGT Atlas — session 56: the renumbering pass (RESUME POINT)
+
+**What this is.** Temp durable buffer for session 56 (user: deep Mity; org deepsudden), user-directed: **Ch. 13 (the Lean Formal Track) becomes Ch. 17 — the last chapter; Ch. 14–17 shift one step ahead to Ch. 13–16; all references everywhere updated.** User decisions at open: (1) **full file renames** (masters + web editions + .html + repo; session-37 precedent); (2) **historical session-log rows kept as written** — the renumbering recorded in atlas row 56 + the conventions, not by rewriting history; (3) **atlas-master-only pass** (canvases not restored; the canvas restore happens at the next session open from the renamed masters).
+
+**The mapping (single pass, context-anchored).** 13→17 · 14→13 · 15→14 · 16→15 · 17→16. Applied ONLY to chapter-context tokens: `Ch. N`, `Chapter N`, `chN` (file/canvas names), `Chapters N`, ranges (`Ch. 14–17` → `Ch. 13–16`), and the Lean master's section headers `## 13.x` → `## 17.x`. NEVER to bare numbers (numeric values like 367,614.8 or 12.0/17.0/20.8 in math are not chapter refs — verified contexts). A global map function is applied in one pass per file (no sequential replacement — sequential would collide).
+
+**Protocol (house rules).** (1) Machine-verify every claim before acting. (2) GitHub = main source of truth: checkpoint push after every chunk. (3) Atlas row 56: IN PROGRESS at open, COMPLETE at close. (4) Historical records (session-log rows, closed buffer records, completed-ledger lines) keep the numbering of their time; every current-facing surface (chapter texts, webs, .html, chapter map, pattern indexes, reverse index, KNOWLEDGE inventory/resume protocol/working point) is updated. (5) Update this buffer after every step. (6) A chapter edit ⇒ its web edition rebuilt + byte-verified; .html regenerated.
+
+## MASTER TASK LIST
+
+- [x] R1. Session open: this buffer created + pushed; atlas row 56 IN PROGRESS + pushed.
+- [ ] R2. Masters renumbered: the 5 moved masters (Lean 13→17 with its §13.x sections; 14→13; 15→14; 16→15; 17→16) + ch10's single forward ref ("Where Chapter 13 will stand" → 17) + gates (self-refs match new numbers; cross-refs remapped; zero stale old-number patterns; zero numeric collateral).
+- [ ] R3. Web editions rebuilt + byte-verified: ch10-web (ch10 edited) + the four renamed webs (ch13/14/15/16-web from the renamed masters) + 4 .html regenerated; gate: new frames differ from old only in name/title/payload lines; payload decode == new master (frontmatter stripped) byte-exact.
+- [ ] R4. Atlas updated: chapter map rows renumbered + reordered (Lean row to the end, its own subsection, history kept + session-56 note appended); forward-table home cells P27–P42 (14→13, 15→14, 16→15, 17→16); forward footnote (numbers updated + one renumbering parenthetical); reverse-index scope ¶ + the 18 empty-row notes (Ch. 14–17 → Ch. 13–16); §5 conventions renumbering note; row 56 → COMPLETE at close. Session-log history untouched.
+- [ ] R5. KNOWLEDGE.md updated (current-facing only): resume-protocol .html list + canvas-name examples, working point, scope-status line, inventory rows for the renamed files; historical session bullets untouched.
+- [ ] R6. Local renames (13 files) + repo sync (push new paths, delete the 13 old paths via delete_file) + repo == local verified + row 56 COMPLETE + buffer-fate question handed to the user.
+
+## STATUS LOG
+
+1. **SESSION 56 OPEN (chunk A = R1).** Census done at open (receipts below). NEXT: R2 — the masters.
+2. **R1 DONE (chunk A closed).** Atlas row 56 IN PROGRESS inserted above row 55; the atlas + this buffer pushed to GitHub in one commit (chunk A checkpoint). NEXT: R2 — the masters.
+
+### Census receipt (at open, bash, 2026-10-12)
+
+- Masters: Lean = name `cgt-ch13-lean` + title `Ch. 13 — …` + H1 `# Chapter 13 · …` + sections `## 13.0`–`## 13.5` + `Ch. 13` ×1; ex-14 = `Ch. 14` ×1 + `ch14` ×2 + `Chapter 14` ×1; ex-15 = `Ch. 15` ×1 + `ch15` ×2 + `Chapter 15` ×2 + **`Chapter 14` ×2 (cross-refs to Probabilistic II → 13)**; ex-16 = `Ch. 16` ×1 + `ch16` ×2 + `Chapter 16` ×1; ex-17 = `Ch. 17` ×1 + `ch17` ×2 + `Chapter 17` ×1. Numeric false positives excluded (367,614.8; 12.0/17.0/20.8 — math values, verified in context).
+- ch10-ramsey: `Chapter 13` ×1 — "Where Chapter 13 will stand" (Paris–Harrington → the Lean track) → 17. All other Ch. 1–12 masters: zero refs into Ch. 13–17. cgt-publishing.md: zero refs.
+- Web editions: each web .md = 6-line frontmatter + the .html byte-exact (verified: ch14-web.md lines 7–138 == ch14-web.html); frame chapter refs only at lines 2 (name), 3 (title), 12 (html <title>); payload = `var MD_B64 = "…"` (line 49), b64 of the master WITHOUT its frontmatter (decodes from the H1 line).
+- Rebuild set: ch10-web (edited master) + ch13/14/15/16-web (renamed masters); .html regenerated ×4 (ch13–16; ch10 has no .html export).
+- Atlas: 36 reference lines — current-facing: forward-table footnote + P27–P42 home cells + reverse-index scope ¶ + 18 empty-row notes (§1); chapter-map rows 13–17 (§2; reorder: Lean row → the end, its own subsection). Historical (keep): session-log rows (lines ~147–180), the F-group standing-to-do line, plus one line to classify at R4 (~262).
+- KNOWLEDGE.md: current-facing lines 17 (resume .html list), 24 (working point), 26 (scope status), 40 (inventory ch13-lean.md), 91–102 (inventory rows ch13–ch17); historical (keep): lines 44, 53–58 (session bullets 42, 51–54), 66, 114.
+- Lean web edition: none exists (by design) — nothing to build for Ch. 17.
