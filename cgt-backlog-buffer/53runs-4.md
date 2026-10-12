@@ -25,4 +25,11 @@ K4 self-dual 4=4; C4 2=2; octahedron/cube dual pair 2=2; wheelW5 self-dual 4=4; 
 - **n = 6 FULL (all 32,768 labeled graphs, two 16,384-mask runs):** 4,624 + 7,344 = **11,968 bridgeless graphs**; histogram first half {2:320, 3:3762, 4:542}, second half {2:400, 3:6199, 4:745} → totals **{2:720, 3:9961, 4:1287}; ZERO need k = 5.**
 - **Consequence (census-scoped, honest wording):** every 2-edge-connected graph on n ≤ 6 vertices has an NZ 5-flow (indeed an NZ 4-flow) — Tutte's 5-flow conjecture (1954, open) and the 4-flow case are machine-verified in census range only; Seymour's 6-flow theorem (1981) remains the proved general statement. The Petersen graph (n = 10) shows flow number 5 is attainable — outside the census range, as it must be.
 
-All numbers computed in-run (TS); no prior receipt reused. Seed: LCG 20261012 (stacked-6 embedding).
+
+### F6 — AUTHORING-TIME CORRECTION (recorded before any chapter prose quotes a witness)
+- The F2 witness arrays as first recorded ([2,2,3,−1,3,2,1,−2,1,2,−1,1,4,−2,−1] for Petersen, [3,−1,−2,2,1,1] for K4) do NOT balance under their recorded edge-order glosses — the compacted run-summary garbled the edge order. DEAD as quotable witnesses; the numbers stay on record.
+- Fresh re-derivation (independent solver, authoring chunk 53e), edge lists explicit, every vertex balance re-verified in-run:
+  - **Petersen NZ 5-flow** — edge order: outer cycle 0→1, 1→2, 2→3, 3→4, 4→0; spokes 0→5, 1→6, 2→7, 3→8, 4→9; inner star 5→7, 6→8, 7→9, 8→5, 9→6 — values **[1, −1, 1, −1, 2, 1, 2, −2, 2, −3, 4, 1, 2, 3, −1]**.
+  - **K4 NZ 4-flow** — edge order 01, 02, 03, 12, 13, 23 — values **[1, 1, −2, 2, −1, 3]**.
+- The full named flow-number table was independently re-verified by the fresh solver at the same time: C4→2, K5→2, K4→4, K_3,3→3, octahedron→2, cube→3, triangular prism→4, wheel W5→4, Petersen→5, icosahedron→3 — ALL MATCH F1. (Duality pair, both directions: phi(octahedron) = 2 = chi(cube); phi(cube) = 3 = chi(octahedron); phi(prism) = 4 = chi(triangular bipyramid).)
+- Standing lesson, added to the scars ledger: compacted witness arrays must be re-derived, never quoted from a session summary; the census-level numbers (tables, histograms) survived compaction intact — every one re-checked or consistent with the fresh solver.
