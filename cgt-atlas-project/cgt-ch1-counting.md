@@ -93,7 +93,7 @@ Drawn, the pair looks like this (x runs right, y runs up; **⊗** marks the rele
    The bad path  E N N E  (ends at (2,2)):
 
      y=2  ·    ⊗————●
-          ╱ │             ╱ = the forbidden line y = x + 1
+          ╱   │           ╱ = the forbidden line y = x + 1
      y=1  ·    ●    ·     │ = the walker's steps
      ╱        │
      y=0  ●————●    ·
@@ -103,7 +103,7 @@ Drawn, the pair looks like this (x runs right, y runs up; **⊗** marks the rele
 
      y=2  ·    ·    ·    ·
                     ╱          ╱ = the line x = y + 1
-     y=1  ●————⊗————●————●
+     y=1  ●————●————⊗————●
      │         ╱
      y=0  ●    ·    ·    ·
           0    1    2    3   (x)
@@ -116,7 +116,7 @@ The same pair, drawn as **Figure 1** — labelled axes, the swapped head in ambe
 ```svg
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 530" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
   <rect x="0" y="0" width="880" height="530" fill="#ffffff"/>
-  <!-- ================= FIGURE 1 Â· The reflection pair ================= -->
+  <!-- ================= FIGURE 1 · The reflection pair ================= -->
   <text x="40" y="34" font-size="17" font-weight="700" fill="#193e5c">Figure 1 &#183; The reflection pair &#8212; a bad path and its mirror</text>
 
   <!-- Panel A : bad path E N N E -->
@@ -242,7 +242,7 @@ The same cut, drawn as **Figure 2** — the wrapping pair E…N in purple, A in 
 ```svg
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 548 880 350" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
   <rect x="0" y="548" width="880" height="350" fill="#ffffff"/>
-  <!-- ================= FIGURE 2 Â· The first-return cut ================= -->
+  <!-- ================= FIGURE 2 · The first-return cut ================= -->
   <text x="40" y="568" font-size="17" font-weight="700" fill="#193e5c">Figure 2 &#183; The first-return cut &#8212; E [A] N [B]</text>
   <text x="40" y="590" font-size="12.5" fill="#64748b">the good path E E N N E N of size 3, cut at its first return to the diagonal</text>
 
@@ -531,7 +531,7 @@ The same table, drawn to scale as **Figure 3** — a true circle, the chord 1–
 ```svg
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 925 880 372" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
   <rect x="0" y="925" width="880" height="372" fill="#ffffff"/>
-  <!-- ================= FIGURE 3 Â· The chord-split ================= -->
+  <!-- ================= FIGURE 3 · The chord-split ================= -->
   <text x="40" y="950" font-size="17" font-weight="700" fill="#193e5c">Figure 3 &#183; The chord-split &#8212; handshakes around the table (exercise 13)</text>
 
   <circle cx="200" cy="1130" r="130" fill="none" stroke="#cbd5e1" stroke-width="1.5"/>
