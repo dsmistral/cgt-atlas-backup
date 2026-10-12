@@ -2,19 +2,20 @@
 
 **If this session is interrupted: read `cgt-backlog-buffer/KNOWLEDGE.md` first — STATUS LOG entry 60 + the CH. 15 CHUNK STATE + the SESSION STATE working point. Resume at the last ✅ CHECKPOINT; never redo a completed sub-step.**
 
-## State at this checkpoint (52c-1 ✅, 2026-10-12)
+## State at this checkpoint (52d-1 ✅, 2026-10-12)
 
-- **52a ✅** — integrity audit 42/42 clean (blob-SHA vs GitHub master truth); canvases restored (29); atlas row 52 IN PROGRESS + map row 15 🚧; buffer entry 60; open push `bc20715`.
-- **52b ✅** — canon pins verified in four search batches (CHECKPOINT 52b-1 in the buffer); push `48b8b4d`.
-- **52c ✅** — machine runs I complete (CHECKPOINT 52c-1 in the buffer; receipts **52runs-1..5.md KEPT in this buffer**): (A) regularity/energy census — exhaustive 4×4 bipartite (65,536 graphs) + variance inequality 1,125,000 checks 0 violations + the index ladder v3 authoritative with FIVE gate catches recorded; (B) counting-lemma exhibits — the XOR "lying densities" witness (0 triangles at density 1/2) + seeded tripartite counts inside the window; (C/D) the Roth reduction — **AP-free ⟺ every edge in exactly one triangle, 0 mismatches over all subsets at n = 5/7/9**, deletion minimum = #triangles (exhaustive 2^15), the v1 modulo bug corrected honestly in-receipt (v2 authoritative); (E) EG constant **2.755104613024** at the closed-form minimizer + the 3M monomial table + caps 2/4/**9 (exact, full-tree DFS)**/20 (exhibit, optimality flagged)/45 (exhibit, optimality flagged); (F) ex(5,K₄)=8 / ex(6,K₃)=9 / ex(6,K₄)=12 exhaustive, extremals EXACTLY Turán + the 240-graph stability tableau (180 K₂,₂,₂−e + 60 K₃,₂,₁); (G) the tower exhibit (10^619.82 at height 3) + the ε-table of the honest upper/lower gap. New gotchas recorded (Date.now metered, 1024; heavy-DFS deadline — split proof attempts). **Deferred to 52d: the RS induced-matching bipartite census.**
+- **52a ✅** — integrity audit 42/42 clean; canvases restored (29); atlas row 52 IN PROGRESS + map row 15 🚧; buffer entry 60; open push `bc20715`.
+- **52b ✅** — canon pins verified in four search batches (CHECKPOINT 52b-1); push `48b8b4d`.
+- **52c ✅** — machine runs I complete (CHECKPOINT 52c-1; receipts **52runs-1..5.md** kept): regularity/energy census; counting exhibits; Roth reduction v2 (AP-free ⟺ unique-triangle, 0 mismatches n = 5/7/9; deletion min = #triangles); EG constant 2.755104613024 + monomial table + caps 2/4/9-exact/20/45 (exhibits, optimality honestly flagged); ex(5,K₄)=8, ex(6,K₃)=9, ex(6,K₄)=12 exhaustive + the 240-graph stability tableau; the tower exhibit + ε-table. Push `c7526f9`.
+- **52d ✅** — machine runs II + design lock (CHECKPOINT 52d-1; receipt **52runs-6.md** kept): the (6,3) census (max 6 edges on 6 vertices; 90 bowties + 10 disjoint pairs; 121 total) + the bipartite induced-matching partition census (m = 3: 6/3; m = 4: 12/4/4; extremals exactly the complement-of-matching graphs, counts m!) — v3 authoritative after the honest v1/v2 count-defect log. Design lock: 18 exercises (12 graded + 3 ◆ + 3 ◐, receipt-mapped) + lab in 6 seeded Python parts (P1 regularity checker, P2 energy ladder, P3 counting sampler, P4 Roth explorer, P5 cap-set hunter, P6 extremal/RS/tower tables).
 
 ## Chunk ladder
 
 - [x] 52a — session open (integrity audit, canvas restore, atlas row 52, buffer entry 60, RESUME, open push)
 - [x] 52b — web canon-pin verification (four search batches)
 - [x] 52c — machine runs I (receipts 52runs-1..5; CHECKPOINT 52c-1)
-- [ ] 52d — machine runs II + exercise/lab design lock (incl. the deferred RS induced-matching bipartite census) → NEXT
-- [ ] 52e — authoring (scratch chunks in cgt-backlog-buffer/)
+- [x] 52d — machine runs II + exercise/lab design lock (receipt 52runs-6; CHECKPOINT 52d-1)
+- [ ] 52e — authoring (scratch chunks in cgt-backlog-buffer/, per the 52d design lock) → NEXT
 - [ ] 52f — assembly + hygiene gate + INSTALL
 - [ ] 52g — web build + .html export + push
 - [ ] 52h — closeout (atlas row 52 COMPLETE, map row 15 ✅, P-ID proposals, KNOWLEDGE refresh, scratch tidy, close push)
