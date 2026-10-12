@@ -2,7 +2,7 @@
 
 **If this session is interrupted: read `cgt-backlog-buffer/KNOWLEDGE.md` first — STATUS LOG entry 60 + the CH. 15 CHUNK STATE + the SESSION STATE working point. Resume at the last ✅ CHECKPOINT; never redo a completed sub-step.**
 
-## State at this checkpoint (52f-1 ✅, 2026-10-12)
+## State at this checkpoint (52g-1 ✅, 2026-10-12)
 
 - **52a ✅** — integrity audit 42/42 clean; canvases restored (29); atlas row 52 IN PROGRESS + map row 15 🚧; buffer entry 60; open push `bc20715`.
 - **52b ✅** — canon pins verified in four search batches (CHECKPOINT 52b-1); push `48b8b4d`.
@@ -10,6 +10,7 @@
 - **52d ✅** — machine runs II + design lock (CHECKPOINT 52d-1; receipt **52runs-6.md** kept): the (6,3) census (max 6 edges on 6 vertices; 90 bowties + 10 disjoint pairs; 121 total) + the bipartite induced-matching partition census (m = 3: 6/3; m = 4: 12/4/4; extremals exactly the complement-of-matching graphs, counts m!) — v3 authoritative after the honest v1/v2 count-defect log. Design lock: 18 exercises (12 graded + 3 ◆ + 3 ◐, receipt-mapped) + lab in 6 seeded Python parts (P1 regularity checker, P2 energy ladder, P3 counting sampler, P4 Roth explorer, P5 cap-set hunter, P6 extremal/RS/tower tables).
 - **52e ✅** — authoring COMPLETE (CHECKPOINTS 52e-1..52e-5): c1–c6b scratch chunks written + pushed (all six lectures, 18 exercises + answers, Trick Bag, 6-part verified lab, appendix, footer); certification batch receipt **52runs-7.md** kept (C0–C7, incl. the dead "73" honest catch); c2 repaired (3 anchored edits); the 52f assembly formula + section order locked in CHECKPOINT 52e-5.
 - **52f ✅** — assembly + hygiene gate + INSTALL (CHECKPOINT 52f-1): master cgt-ch15-regularity.md == canvas, 100,461 bytes / 777 lines, readback string-equal; 2 lecture-body session-ref repairs (c1/c5); gate all-green (details in CHECKPOINT 52f-1).
+- **52g ✅** — web edition built (CHECKPOINT 52g-1): cgt-ch15-web master == canvas (140,090 B / 138 lines, standard frame from ch14-web, 4 patches, oracle GREEN — decoded L49 = 100,276 bytes === payload); cgt-ch15-web.html export 139,987 B.
 
 ## Chunk ladder
 
@@ -19,7 +20,7 @@
 - [x] 52d — machine runs II + exercise/lab design lock (receipt 52runs-6; CHECKPOINT 52d-1)
 - [x] 52e — authoring COMPLETE (CHECKPOINTS 52e-1..52e-5; certification receipt 52runs-7; c2 repaired ×3; assembly formula locked — see CHECKPOINT 52e-5)
 - [x] 52f — assembly + hygiene gate + INSTALL (CHECKPOINT 52f-1; master == canvas 100,461 B / 777 lines)
-- [ ] 52g — web build cgt-ch15-web + .html export + push → NEXT
-- [ ] 52h — closeout (atlas row 52 COMPLETE, map row 15 ✅, P-ID proposals, KNOWLEDGE refresh, scratch tidy, close push)
+- [x] 52g — web build cgt-ch15-web + .html export + push (CHECKPOINT 52g-1; oracle GREEN)
+- [ ] 52h — closeout (atlas row 52 COMPLETE, map row 15 ✅, P30–P33, KNOWLEDGE refresh, RESUME fold + delete, scratch tidy, close push) → NEXT
 
 Fold this file into the buffer STATUS LOG and delete it at the session close (standing direction).
