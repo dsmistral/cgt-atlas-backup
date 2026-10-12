@@ -1,22 +1,17 @@
-# RESUME — SESSION 50: VOLUME III SCOPE INSTALL (user approval of ALL session-49 extension proposals; placement freedom granted) — IN FLIGHT (2026-10-11)
+# RESUME — session 51 (F1: Ch. 14 The Probabilistic Method, Act II) — in-flight checkpoint
 
-Standing context: GitHub repo dsmistral/cgt-atlas-backup = MAIN SOURCE OF TRUTH (milestone pushes; rebuild from the repo if the local layer fails). UTF-8 byte work via the canonical TS path only (bash = ASCII duties). Quiet mode: chat = decisions/blockers/closing summary only.
+**Read first on retry: the CH. 14 CHUNK STATE table in KNOWLEDGE.md; resume at the last ✅ row; never redo a completed sub-step.**
 
-## Mission (user direction, this session)
-The user approved ALL the session-49 audit extension proposals — RECOMMENDED (the Alon–Spencer methods arc beyond the LLL; perfect graphs) AND BELOW-THE-LINE (Pólya/Burnside, design theory, random-graph evolution/giant component, Szemerédi regularity + counting/removal, coding beyond Hamming, Möbius inversion, density Ramsey, nowhere-zero flows, graph minors/treewidth, list coloring/discharging/Hadwiger, discrepancy, entropy method, Erdős–Stone beyond the signpost, cap set) — with placement freedom granted. This session installs the SCOPE: the placement design + the durable records. NO authoring this session; F1 (Ch. 14) opens next session.
+## Working point (updated after every sub-step)
 
-## Placement decision (editorial freedom exercised)
-FOUR new Volume III chapters (Ch. 14–17); NO shipped chapter rewritten (keeps 12 verified masters + web editions untouched; the Volume II precedent). Order F1→F4, one chapter per session, full Feynman standard + web edition + machine verification before install.
-- **F1 = Ch. 14 The Probabilistic Method, Act II** — FKG/correlation (Kleitman); Janson + the Poisson paradigm; martingales + Azuma–Hoeffding + Talagrand (st.); random-graph evolution (G(n,p), thresholds, giant component, phase transition); discrepancy (Spencer six standard deviations + partial coloring); entropy method (Brégman + Moser–Tardos entropy compression).
-- **F2 = Ch. 15 Regularity and Density** — Szemerédi regularity + counting/removal lemmas; Erdős–Stone + Simonovits stability (beyond the Ch. 3 signpost); triangle removal + Roth; density Ramsey (Szemerédi’s AP theorem + density HJ, statements + hierarchy); cap set (CLP/Ellenberg–Gijswijt slice rank, Ch. 6 polynomial-method cross-ref).
-- **F3 = Ch. 16 Graph Structure: Minors, Perfect Graphs, and the Limits of Coloring** — treewidth + minors (Robertson–Seymour + grid, statements; DP on decompositions); Hadwiger (k = 4 proved; k = 5 ↔ 4CT st.); list coloring (Thomassen, Galvin, Voigt witness); discharging (via five-color; 4CT shape honestly sketched); nowhere-zero flows (Tutte 5-flow; 4-flow/3-flow conjectures; planar duality); **perfect graphs** (Lovász replication + WPGT proved in full; SPGT statement; Ch. 8 theta cross-ref — the carried-open s45 item lands here).
-- **F4 = Ch. 17 Symmetry, Inversion, and Design** — Pólya/Burnside (paying Ch. 2’s X1 seed); Möbius inversion on posets (incidence algebra); designs I (Steiner, Fisher cross-ref Ch. 6, projective planes, S(2,3,6)); designs II (Wilson + Keevash statements, constructions); coding beyond Hamming (Singleton/MDS, Plotkin, Gilbert–Varshamov; codes ↔ designs; Ch. 8 Delsarte cross-ref).
-- New pattern IDs (P27+) proposed per chapter at ship. Ch. 13 Lean + learner testing stay GLOBALLY last (E-group unchanged); the PDF pipeline stays platform-side.
+- 51a ✅ DONE (2026-10-12): canvases restored (all 27, diff-verified); atlas row 51 IN PROGRESS installed; chapter-map row 14 → 🚧; atlas canvas resynced; buffer entry 58 + CHUNK STATE table + SESSION STATE updated; this RESUME created. GitHub open push pending (do at 51a close = now).
+- 51b ☐ NEXT: web canon-pin verification (FKG 1971/Fortuin–Kasteleyn; Kleitman 1966; Janson 1990-ish + Janson–Łuczak–Ruciński; Azuma–Hoeffding; Talagrand 1995/96 convex distance; G(n,p) evolution: Erdős–Rényi 1959/60, thresholds/giant window c=1, diameter result; Spencer 1985 six standard deviations “six standard deviations suffice”; partial coloring Lovasz; Brégman 1973; Moser–Tardos 2010 entropy compression; Kahn entropy ~2001; Friedgut Kalai; check constants: 6·sqrt(n), e·s, 2^{n-1} for FKG extremes).
+- 51c ☐, 51d ☐ machine runs; 51e authoring; 51f install; 51g web; 51h closeout.
 
-## Step log (updated after EVERY sub-step)
-1. [✅] RESUME created + pushed.
-2. [✅] Buffer record — DONE this retry (F-group + entry 57 + chunk row 50 + SESSION STATE; readback equal, 285,435 bytes).: MASTER TASK LIST F-group + STATUS LOG entry 57 (approval + placement) + CHUNK STATE row 50 + SESSION STATE.
-3. [✅] Atlas record — DONE this retry (Volume III map section rows 14–17 + session row 50 + standing-to-do line; canvas resynced byte-equal, 193,201 bytes).: chapter-map Volume III section (rows 14–17 ⮜) + session row 50 + standing-to-do Volume III line + canvas resync.
-4. [✅] Close push + delete this file — DONE this retry. CLOSED — folded into STATUS LOG entry 57; deleted locally after this push. (buffer + atlas + RESUME final) + delete this file.
+## Chapter design (locked at 51a, see entry 58)
 
-On retry: read this step log + KNOWLEDGE.md SESSION STATE first; NEVER redo a completed sub-step.
+6 lectures: L1 Correlation (FKG + Kleitman + four-functions); L2 Janson + Poisson paradigm; L3 Martingales + Azuma–Hoeffding + Talagrand (st.); L4 Random-graph evolution (thresholds, giant, phase transition); L5 Discrepancy (Spencer six standard deviations + partial coloring); L6 Entropy method (Brégman + Moser–Tardos entropy compression). 18 exercises (12 graded + 3◆ + 3◐), 15 answers, lab 6 parts, Trick Bag + formula box, appendix + footer. Master: cgt-atlas-project/cgt-ch14-probabilistic-ii.md; canvas folder cgt-ch14-probabilistic-ii; web cgt-ch14-web + .html export.
+
+## House rules in force
+
+Machine-verify every claim before install; checkpoint after every sub-step (fold into the 51 WORKING LOG + this file); GitHub = main source of truth (push after every milestone); canonical UTF-8 path (TS/tools file I/O + readback string-equality; bash ASCII-only); scratch in cgt-backlog-buffer; quiet mode.
