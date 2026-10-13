@@ -5,7 +5,7 @@ Chunk 19 under work style v2: two sub-chunks (19a Q1-Q3; 19b Q4-Q5), each pushed
 | Sub-chunk | Papers | Status |
 |-----------|--------|--------|
 | 19a | Q1 Flajolet-Odlyzko origin; Q2 Bender pre-history; Q3 Banderier-Flajolet flagship | DONE (section below) |
-| 19b | Q4 Flajolet-Gourdon-Dumas Mellin; Q5 Jacquet-Szpankowski de-Poissonization | PENDING |
+| 19b | Q4 Flajolet-Gourdon-Dumas Mellin; Q5 Jacquet-Szpankowski de-Poissonization | DONE (section below) |
 
 ## Sub-chunk 19a (Q1-Q3) - gathered and mined 2026-10-13
 
@@ -34,3 +34,31 @@ All three papers metadata-verified (sources recorded per paper); NO SEED CORRECT
 - Coverage observation: THE KERNEL METHOD (Q3's own keyword - the algebraic solution of the walk GFs) matches no Atlas P-ID; single firing, recorded for synthesis, not a WATCH.
 - Forward cross-note: Q3's generalized ballot theorems touch the reflection-principle family - the U4 Andre reflection-origin test lands in Batch U.
 - The batch's notable metadata datum: ZERO seed corrections in this sub-chunk - the first extension-corpus sub-chunk with all three seed venues confirmed at first pass (after the O2/O6 and P1/P3/P4 corrections in the previous batches).
+
+## Sub-chunk 19b (Q4-Q5) - gathered and mined 2026-10-13
+
+Both papers metadata-verified (sources recorded per paper); ZERO seed corrections across the whole batch - the first extension batch confirmed at first pass end to end; moves at flagged-sketch level; zero paywalled fetches; no full texts needed under the scope rule (the open author PDFs and the ACM DL/ScienceDirect abstracts carry the pattern decisions). HEADLINE: the school's SECOND-ENGINE faces land - Q4 is the MELLIN face (the pole/term correspondence - the transfer theorems' structural analogue in the Mellin domain), Q5 is the POISSONIZATION face (the Poisson transform's sequence -> GF mapping + the depoissonization transfer theorems). CAND-C1's extension-corpus arc is COMPLETE with the honest THREE-FACES datum (singularity: Q1/Q3; Mellin: Q4; poissonization: Q5) plus the pre-history toolbox (Q2).
+
+### Verification table (sub-chunk 19b)
+
+| ID | Verified citation | Corrections vs seed |
+|----|------------------|---------------------|
+| Q4 | Flajolet, Gourdon, Dumas, "Mellin transforms and asymptotics: Harmonic sums", Theoret. Comput. Sci. 144(1-2) (1995) 3-58, DOI 10.1016/0304-3975(95)00002-E (ScienceDirect pii 030439759500002E - the dedication to Don Knuth and N.G. de Bruijn; the open specfun.inria.fr and algo.inria.fr PDFs - the journal header; Semantic Scholar; CiteSeerX) | CONFIRMED (venue Theoret. Comput. Sci. 144; pages and DOI pinned); the survey character recorded honestly (a methods article per the P2/Q2 precedent); the same-volume Flajolet-Sedgewick companion (144 (1995) 101-124) noted |
+| Q5 | Jacquet, Szpankowski, "Analytical de-Poissonization and its applications", Theoret. Comput. Sci. 201(1-2) (1998) 1-62, DOI 10.1016/S0304-3975(97)00167-9 (the ACM DL record - Volume 201, Issue 1-2, pages 1-62; ScienceDirect pii S0304397597001679; the Springer citing record; Purdue e-Pubs) | CONFIRMED (venue Theoret. Comput. Sci. 201; issues, pages and DOI pinned) |
+
+### Pattern census (sub-chunk 19b)
+
+| P-ID | Fires in | Notes |
+|------|----------|-------|
+| CAND-C1 (family) | Q4 (genuine, the Mellin face), Q5 (genuine, the poissonization face) | Q4: poles of the Mellin transform in direct correspondence with the asymptotic terms - the transfer theorems' structural analogue in the Mellin domain; Q5: the depoissonization theorems transferring asymptotics between the Poisson and Bernoulli models via complex-analytic bounds on the Poisson transform; the honest THREE-FACES datum (singularity Q1/Q3, Mellin Q4, poissonization Q5) - the promotion decision should name the umbrella or its singularity face; belongs to the user-approved Atlas session |
+| P5 | Q5 (genuine), Q4 (partial) | Q5: the Poisson transform's FIRST step is the sequence -> generating-function mapping (the paper's own abstract); Q4: partial - the harmonic-sums engine is transform-level (Dirichlet-type structures), the sequence-to-function conversion enters via the Dirichlet face |
+
+### Engine contrast and lineage (sub-chunk 19b)
+
+- The school's engine faces, one line each: SINGULARITY (Q1/Q3 - local transfer at the dominant singularity of the GF), MELLIN (Q4 - the pole/term correspondence for harmonic sums), POISSONIZATION (Q5 - solve in the Poisson domain, transfer back with contour bounds), with Q2 the toolbox pre-history.
+- The two-combinatorial-domains contrast (recorded for teaching): the enumeration face (Q1/Q3 - counts from GFs) vs the analysis-of-algorithms face (Q4/Q5 - asymptotics of parameters and models).
+- The same-volume companion datum: TCS 144's special volume dedicated to Don Knuth and N.G. de Bruijn carries BOTH the Q4 harmonic-sums survey and the Flajolet-Sedgewick "Finite differences and Rice's integrals" companion (101-124) - the Mellin school's paired surveys, recorded per the companion precedents.
+
+### BATCH Q result (2026-10-13) - COMPLETE
+
+5/5 papers metadata-verified; ZERO seed corrections across the whole batch - the first extension batch with every seed venue confirmed at first pass (Q1 216-240; Q2 485-515; Q3 37-80; Q4 3-58; Q5 1-62 - all pages + DOIs pinned); moves at flagged-sketch level; zero paywalled fetches; no full texts needed under the scope rule. **CAND-C1's extension-corpus arc COMPLETE: the pre-history (Q2 Bender 1974, the toolbox) -> the ORIGIN (Q1 Flajolet-Odlyzko 1990, the transfer theorems) -> the flagship application (Q3 Banderier-Flajolet 2002, lattice paths via the kernel method) -> the school's second-engine faces (Q4 Mellin 1995; Q5 de-Poissonization 1998). THE TWO-BATCH LOAD-BEARING GATE CROSSES IN-SURVEY (batch C + batch Q) - the chunk-15 external-evidence-only recommendation is superseded; the promotion decision (and the P43+ numbering) belongs to the user-approved Atlas session. The honest THREE-FACES datum: the candidate's original shape (extract asymptotics from the GF's singular expansion) is the singularity face; the Mellin and poissonization faces complete the umbrella - the promotion decision should name the umbrella or the face. P5 census: genuine at Q1/Q2/Q3/Q5, partial at Q4 (the transform-level engine). Coverage observations: the kernel method (Q3, single firing, not a WATCH). Honest notes: Q2 and Q4 are survey-type records in the METHODS sense (the P2/Q2 precedent, applied honestly); the Springer Q1 issue-number variant noted at 19a stands. The gather record: papers/Q1-Q5 per-paper files + this file; STATE.md row 19 + the Batch Q sub-chunk table; the touched dossiers (CAND-C1, P05) + INDEX.md (header through chunk 19; the CAND-C1 gate row CROSSED-in-extension; the P5 census row; Note 19).

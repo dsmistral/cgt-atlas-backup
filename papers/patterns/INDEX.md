@@ -1,4 +1,4 @@
-# Pattern index (through chunk 18 - Batch P, extension corpus)
+# Pattern index (through chunk 19 - Batch Q, extension corpus)
 
 Status wording is abbreviated here; the per-pattern files are authoritative. 'Census batches' = batches whose pattern census records a firing (partials included).
 
@@ -8,7 +8,7 @@ Status wording is abbreviated here; the per-pattern files are authoritative. 'Ce
 | P2 | Double counting | 01-counting | H, L, N |
 | P3 | Inclusion-exclusion | 01-counting | N (first firing) |
 | P4 | Recurrence + induction | 02-induction-extremal | A, C, D, F, G, H, I, L, M, N |
-| P5 | Generating function | 04-analytic-information | C, E |
+| P5 | Generating function | 04-analytic-information | C, E, Q |
 | P6 | Complement / reflection | 01-counting | - |
 | P7 | Parity & handshaking | 01-counting | D, N |
 | P8 | Longest-path / extremal | 02-induction-extremal | D, E, F, H, I |
@@ -56,7 +56,7 @@ Status wording is abbreviated here; the per-pattern files are authoritative. 'Ce
 | CAND-A3 threshold/window | CROSSED | A, B |
 | CAND-A4 entropy compression | NOT crossed in-corpus (final verdict); ORIGIN FIRING found in the extension corpus (O4 Moser 2009, the debut) | A, O (origin) (+ B9/Molloy-2019 lineage) |
 | CAND-B5 hypergraph containers | CROSSED in the extension corpus (chunk 18: the P1 origin + P2 bridge + P3/P4 flagships; batches B + P) - promotion to the user-approved Atlas session | B, P |
-| CAND-C1 analytic combinatorics | synthesis call | C |
+| CAND-C1 analytic combinatorics | CROSSED in the extension corpus (chunk 19: the Q1 origin + Q2 pre-history + Q3 flagship + Q4/Q5 second-engine faces; batches C + Q) - promotion to the user-approved Atlas session | C, Q |
 | CAND-G1 transference/dense-model | synthesis call | G |
 | WATCH Boolean influence | no firing in M; synthesis call on B3 alone | B |
 | WATCH spread induction | no firing in M; synthesis call on B6 alone | B |
@@ -97,3 +97,7 @@ THE SYNTHESIS IS DONE: papers/ANALYSIS.md is the survey's final analysis documen
 ## Note 18 (chunk 18 - Batch P, 2026-10-13)
 
 CAND-B5 hypergraph containers CROSSES the two-batch load-bearing gate in the extension corpus: the arc gathered complete - P1 Kleitman-Winston 1982 (the IMPLICIT ORIGIN, survey-level attribution; venue corrected to Discrete Math. 41(2): 167-172) -> B7/B8 (the 2015 general theorems, batch B) -> P2 Samotij 2015 (the expository bridge; EJC 48: 5-18) -> P3 Morris-Saxton 2016 (the even-cycle flagship: Erdos's conjecture confirmed; title/venue corrected to "The number of C_{2l}-free graphs", Adv. Math. 298: 534-580) -> P4 Balogh-Liu-Sharifzadeh-Treglown 2018 (the arithmetic flagship: the Cameron-Erdos maximal question closed sharply; "Sharp bound on the number of maximal sum-free subsets of integers", JEMS 20(8): 1885-1911; Green's container lemma - the ARITHMETIC face, with the companion's Lemma 2.1 derivable from B7/B8). The chunk-15 external-evidence-only recommendation is superseded by the in-survey crossing; the promotion decision belongs to the user-approved Atlas session. Census: P10 genuine at P3 (the balanced supersaturation theorem - the H5 supersaturation face modernized); P25 partials at P1/P2 (the certificate/profile encoding). See papers/BATCH-P.md.
+
+## Note 19 (chunk 19 - Batch Q, 2026-10-13)
+
+CAND-C1 analytic combinatorics CROSSES the two-batch load-bearing gate in the extension corpus: the school gathered complete - Q2 Bender 1974 (the pre-history toolbox; SIAM Rev. 16(4): 485-515 - a methods article, the honest partial) -> Q1 Flajolet-Odlyzko 1990 (the ORIGIN: the transfer theorems; SIAM J. Discrete Math. 3(2): 216-240) -> Q3 Banderier-Flajolet 2002 (the flagship application: the unified lattice-path theory, the kernel method + singularity analysis; Theoret. Comput. Sci. 281(1-2): 37-80) -> Q4 Flajolet-Gourdon-Dumas 1995 (the MELLIN face: the pole/term correspondence; Theoret. Comput. Sci. 144: 3-58) -> Q5 Jacquet-Szpankowski 1998 (the POISSONIZATION face: the Poisson transform's sequence -> GF mapping + the depoissonization theorems; Theoret. Comput. Sci. 201: 1-62). The chunk-15 external-evidence-only recommendation is superseded by the in-survey crossing (batch C + batch Q); the promotion decision - with the honest THREE-FACES datum (singularity Q1/Q3; Mellin Q4; poissonization Q5: name the umbrella or the face) - belongs to the user-approved Atlas session. ZERO seed corrections in the batch - the first extension batch confirmed at first pass. Census: P5 genuine at Q1/Q2/Q3/Q5, partial at Q4; coverage observation: the kernel method (Q3) matches no Atlas P-ID (single firing, not a WATCH); forward cross-note: Q3's generalized ballot theorems touch the reflection-principle family (the U4 Andre test, Batch U). See papers/BATCH-Q.md.
