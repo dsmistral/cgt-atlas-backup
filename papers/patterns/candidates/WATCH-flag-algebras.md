@@ -6,3 +6,7 @@
 - Status: WATCH (opened 2026-10-13, sub-chunk 13a; updated 13b) - the second firing LANDED at M4, but both firings are WITHIN batch M; the cross-batch recurrence test cannot be satisfied in-corpus (no other flag-algebra papers in the corpus). The chunk-14 synthesis call mirrors the CAND-B5 single-batch precedent: decide on external descendants.
 - Watch: external load-bearing evidence is strong (computer-assisted extremal combinatorics lines descending from the calculus), but the in-corpus rule as amended by the CAND-B5 precedent governs the chunk-14 synthesis: the cross-batch test is impossible in-corpus (both firings sit in batch M), so the external descendants decide.
 - Cross-links: P25 (the encoding is the framework's translation move); P19 partial (the sum-of-squares engine); P37 partial (the SDP certificates - the Delsarte-LP lineage's density-era descendant).
+
+## Synthesis call (chunk 15, 2026-10-13)
+
+**Verdict: RECOMMENDED on external evidence.** The cross-batch recurrence test is impossible in-corpus (both firings - M3 the framework, M4 the triangle-density landmark - sit within batch M), so the external descendants decide (Reiher's K_r theorem, the pentagons line, Hatami's complexity framework), and they are strong; the call mirrors the CAND-B5 single-batch precedent. The Atlas session decides adoption on that external evidence. Full reasoning: papers/ANALYSIS.md section 2.

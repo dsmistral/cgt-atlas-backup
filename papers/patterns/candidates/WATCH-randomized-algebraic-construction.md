@@ -6,3 +6,6 @@
 - Status: WATCH (opened 2026-10-13, sub-chunk 12c) - needs a second in-corpus batch firing before CAND status.
 - Watch: distinct from P22 (the algebra is finite-field linear algebra, not the polynomial method) and from CAND-A2 (the nibble is the random phase; the algebraic choice is the construction prior). External descendant: Keevash's subspace-designs line (PLMS 2025) reuses the engine outside the corpus. Chunk-14 synthesis call.
 
+## Synthesis call (chunk 15, 2026-10-13)
+
+**Verdict: NOT PROMOTED in-corpus.** Single origin firing (L8 Keevash's "Randomized Algebraic Construction"); the in-corpus recurrence test was never satisfiable. RECOMMENDED to the Atlas session on external evidence: the subspace-designs line reuses the engine outside the corpus. Full reasoning: papers/ANALYSIS.md section 2.

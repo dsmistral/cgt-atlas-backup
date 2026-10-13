@@ -3,7 +3,7 @@
 - Family: 11-symmetry-designs-codes
 - Atlas one-line: To count what symmetry identifies, average fixed points over the group; the cycle index prices each symmetry's orbit structure
 - Home chapters (Atlas): 16
-- Status (through chunk 11): FLAGGED - LEDGER DISCREPANCY (recorded at the patterns-layer build, 2026-10-13): the batch-C census fires P39 at C1 (cycle-index flagship) and C7, but the running silent-registry ledger in STATE.md never listed P39 as exited; reconcile at synthesis
+- Status (FINAL - chunk 15, RECONCILED 2026-10-13): P39 EXITED the silent registry at batch C (C1 cycle-index flagship, C7) - the STATE.md ledger omission was migration-era bookkeeping, not a census error; see the Synthesis resolution section and papers/ANALYSIS.md section 3
 - Migration: this dossier was machine-migrated 2026-10-13 from the batch files (the gather record and source of truth); every census row and hypothesis-test note below is QUOTED, not rewritten.
 
 ## Census rows (quoted; source = papers/BATCH-*.md)
@@ -19,3 +19,7 @@
 ## Cross-links (interdependence)
 
 (none recorded)
+
+## Synthesis resolution (chunk 15, 2026-10-13)
+
+The flagged ledger discrepancy is RESOLVED: P39 exited the silent registry at batch C (chunk 3) - C1 is the cycle-index flagship firing, C7 the two-group generalization. The STATE.md running ledger's failure to record the exit was a migration-era bookkeeping omission, not a census error; the batch-C census rows were correct all along. The chunk-15 STATE.md result paragraph and INDEX.md now record the exit with its exit point, with this dated note; no census text was altered (extend, never rewrite). Full reasoning: papers/ANALYSIS.md section 3.

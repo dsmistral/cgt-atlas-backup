@@ -3,7 +3,7 @@
 - Family: 10-graph-structure
 - Atlas one-line: Tree decompositions turn global problems into bag-local recurrences
 - Home chapters (Atlas): 15
-- Status (through chunk 13c): FIRST IN-CORPUS TOUCH (partial) at M9 Grohe (13c): the tractability direction of the homomorphism classification runs a dynamic program over tree decompositions of the left-hand structures (standard-tool credit; the paper's novelty is the classification). The registry entry stays open pending a genuine firing.
+- Status (FINAL - chunk 15 synthesis): NO GENUINE FIRING EXISTS in the corpus; the only touch is the M9 partial (standard-tool credit); the registry entry stays open (see the Synthesis call section)
 - Migration: this dossier was machine-migrated 2026-10-13 from the batch files (the gather record and source of truth); every census row and hypothesis-test note below is QUOTED, not rewritten.
 
 ## Census rows (quoted; source = papers/BATCH-*.md)
@@ -22,3 +22,7 @@
 ## Cross-links (interdependence)
 
 M9's classification links the pattern to P25 (the homomorphism/CSP encoding move); tree-width is the graph-structure family's bridge to the CSP world (external lineage: Freuder, Kolaitis-Vardi bounded-tree-width CSP tractability).
+
+## Synthesis call (chunk 15, 2026-10-13)
+
+**Final verdict: NO genuine firing exists in the corpus - the M9 question is answered NO.** The single touch remains the M9 partial (13c): a standard-tool dynamic program over tree decompositions, with the paper's novelty in the classification, not the DP. Nothing in Batch N or elsewhere touched the pattern. The registry entry stays open pending genuine usage evidence. Full reasoning: papers/ANALYSIS.md section 3.

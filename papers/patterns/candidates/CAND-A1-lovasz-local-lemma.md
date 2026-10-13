@@ -6,3 +6,7 @@
 - Evidence: A5 (debut, Erdos-Lovasz 1975), A7 (Shearer - the optimal-threshold lineage), A9 (Moser-Tardos algorithmization; Godel Prize 2020), B9 (Johansson - flagged PRESENTATION-LEVEL only; resolve the flag at synthesis)
 - Gate status: CROSSED (batches A and B). The survey's leading P43 candidate.
 - Synthesis tasks: resolve the B9 presentation-level flag (an open-exposition fetch is authorized under the scope rule if needed); confirm no existing P-ID names the move (P13 covers only the union bound).
+
+## Synthesis call (chunk 15, 2026-10-13)
+
+**Verdict: NOT PROMOTED in-corpus.** The B9 presentation-level flag is resolved AGAINST: the LLL step credited to Johansson lives in the Molloy-Reed expositions, not in Johansson's own DIMACS Technical Report 91-5 (itself never journal-published); by the letter of the load-bearing test the evidence is single-batch (A5/A7/A9). EXTERNAL-CANON RECOMMENDATION for the Atlas session: either name the Lovasz Local Lemma as its own Atlas entry or record it as P13's sparse-dependency strengthening. Full reasoning: papers/ANALYSIS.md section 1.
