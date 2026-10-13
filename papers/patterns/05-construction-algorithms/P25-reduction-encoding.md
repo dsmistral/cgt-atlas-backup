@@ -3,7 +3,7 @@
 - Family: 05-construction-algorithms
 - Atlas one-line: Translate one problem into another language; the target structure carries the proof or the hardness
 - Home chapters (Atlas): 3, 10, 11
-- Status (through chunk 22b): Atlas-named textbook-canon pattern; in-corpus firings recorded below. Batch M: the isomorphism column fires it twice (M1/M2 genuine), M3 the flagship encoding, M4 the second framework firing (genuine), M5/M6 the property-testing partials, and 13c M7 partial (DFS/path encoding) + M9 genuine (the CSP classification). Batch N 14a: N2 genuine - Zhao's bipartite-swapping reduction reused as the Kahn-conjecture settlement's step 1 - see the census rows. Batch N 14b: N5 flagship genuine (the SMP <-> Sudoku translation) + N4 partial (the base-k digit encoding). Batch N 14c: N8 genuine (the homomorphism encoding) + N7 partial (the orbit reduction). Batch O 17b (extension corpus): O4 partial (the witness-tree encoding). Batch P 18a (extension corpus): P1 partial (the KW certificate encoding) + P2 partial (the container algorithm's profile encoding). Batch R 20a (extension corpus): R1 genuine + R2 genuine - the flag-algebra translation move at the extremal level (the K_r density problem in the algebra's positivity language) and the meta level (inequalities as quantum-graph positivity statements); Batch R 20b (extension corpus): R3 genuine (the pentagons line's flag encoding) + R4 genuine (the homomorphism-counting framework encoding - the N8/M9 cross-notes); Batch T 22b (extension corpus): T5 partial (the graph-as-term encoding, unplanned by seed - standard-tool credit per the M9 precedent). Batch V 24b (extension corpus): V10 partial (the de Bruijn sequence - the encoding IS the object: all 2^n words of length n packed into one cyclic word of length 2^n; the object-vs-engine split, honestly partial). Batch V 24c: V13 partial (the forbidden-subdivision reduction) + V14 partial (the confusability-graph encoding - the zero-error origin)
+- Status (through chunk 22b): Atlas-named textbook-canon pattern; in-corpus firings recorded below. Batch M: the isomorphism column fires it twice (M1/M2 genuine), M3 the flagship encoding, M4 the second framework firing (genuine), M5/M6 the property-testing partials, and 13c M7 partial (DFS/path encoding) + M9 genuine (the CSP classification). Batch N 14a: N2 genuine - Zhao's bipartite-swapping reduction reused as the Kahn-conjecture settlement's step 1 - see the census rows. Batch N 14b: N5 flagship genuine (the SMP <-> Sudoku translation) + N4 partial (the base-k digit encoding). Batch N 14c: N8 genuine (the homomorphism encoding) + N7 partial (the orbit reduction). Batch O 17b (extension corpus): O4 partial (the witness-tree encoding). Batch P 18a (extension corpus): P1 partial (the KW certificate encoding) + P2 partial (the container algorithm's profile encoding). Batch R 20a (extension corpus): R1 genuine + R2 genuine - the flag-algebra translation move at the extremal level (the K_r density problem in the algebra's positivity language) and the meta level (inequalities as quantum-graph positivity statements); Batch R 20b (extension corpus): R3 genuine (the pentagons line's flag encoding) + R4 genuine (the homomorphism-counting framework encoding - the N8/M9 cross-notes); Batch T 22b (extension corpus): T5 partial (the graph-as-term encoding, unplanned by seed - standard-tool credit per the M9 precedent). Batch V 24b (extension corpus): V10 partial (the de Bruijn sequence - the encoding IS the object: all 2^n words of length n packed into one cyclic word of length 2^n; the object-vs-engine split, honestly partial). Batch V 24c: V13 partial (the forbidden-subdivision reduction) + V14 partial (the confusability-graph encoding - the zero-error origin). Batch W 25a: W3 partial (the cut-tree encoding - n-1 tree edges carrying every pairwise cut value)
 - Migration: this dossier was machine-migrated 2026-10-13 from the batch files (the gather record and source of truth); every census row and hypothesis-test note below is QUOTED, not rewritten.
 
 ## Census rows (quoted; source = papers/BATCH-*.md)
@@ -88,6 +88,10 @@
 - Fires in: V13 (partial), V14 (partial)
 - Notes: V13 - the forbidden-subdivision reduction: planarity reduced to two canonical obstructions (K5, K3,3) - the object-vs-engine datum again (the V10 precedent), the M7 planarity test's theorem-level ancestor. V14 - the confusability-graph encoding IS the theory: zero-error codes -> independent sets in strong powers, capacity -> asymptotic independence - the zero-error origin and the J2 lineage's birthplace (the pentagon problem born open here, solved by the corpus's J2 Lovasz 1979)
 
+### Batch W, sub-chunk 25a (chunk 25; extension corpus - NEXT100 seeds)
+- Fires in: W3 (partial)
+- Notes: the flow-equivalent tree IS the object: exponentially many pairwise cut values compressed into n-1 tree edges (the V10 de Bruijn precedent - the encoding as the contribution, the P18 algorithm its construction; the P17 duality the used black box, cross-noted no census row)
+
 ## Hypothesis-test notes (quoted; source = papers/BATCH-*.md)
 
 ### Batch M, sub-chunk 13a (chunk 13)
@@ -128,6 +132,9 @@
 
 ### Batch V, sub-chunk 24c (chunk 24)
 - V13 P25 partial UNPLANNED by seed (the NEXT100 row targeted the M7-ancestor role, not a P-ID census); V14 P25 partial CONFIRMED (expected by seed as the J2-lineage origin): the encoding-as-object at the planarity and information-theory origins
+
+### Batch W, sub-chunk 25a (chunk 25)
+- W3 P25 partial (UNPLANNED by seed - the seed expected P17): the encoding face fires at the cut tree - the survey's encoding family gains its optimization-era member (V10, M7-adjacent, and now W3 faces distinct)
 
 ## Cross-links (interdependence)
 

@@ -3,7 +3,7 @@
 - Family: 05-construction-algorithms
 - Atlas one-line: Beat the bound by building the object
 - Home chapters (Atlas): 3
-- Status (through chunk 12c): Atlas-named textbook-canon pattern; in-corpus firings recorded below
+- Status (through chunk 12c): Atlas-named textbook-canon pattern; in-corpus firings recorded below. Batch W 25a: W6 partial (the height-level antichain cover built explicitly)
 - Migration: this dossier was machine-migrated 2026-10-13 from the batch files (the gather record and source of truth); every census row and hypothesis-test note below is QUOTED, not rewritten.
 
 ## Census rows (quoted; source = papers/BATCH-*.md)
@@ -40,6 +40,10 @@
 - Fires in: L7 (flagship)
 - Notes: Teirlinck's explicit recursive scheme builds non-trivial simple t-designs for every t - pure build-the-object work, zero asymptotic counting; the all-t existence question settled constructively a generation before Keevash's Steiner-system theorem.
 
+### Batch W, sub-chunk 25a (chunk 25; extension corpus - NEXT100 seeds)
+- Fires in: W6 (partial)
+- Notes: the height function builds the antichain levels explicitly (each element's longest-chain-ending rank); the dual cover's construction IS the finite proof (the P9-family bottleneck pairing the theorem's face - V11's dual; the P17 min-max face cross-noted per the V11 precedent, no census row)
+
 ## Hypothesis-test notes (quoted; source = papers/BATCH-*.md)
 
 ### Batch J (chunk 10)
@@ -53,6 +57,9 @@
 
 ### Batch L, sub-chunk 12c (chunk 12)
 - L7 P11 CONFIRMED (expected): the explicit-construction flagship of the sub-chunk.
+
+### Batch W, sub-chunk 25a (chunk 25)
+- W6 P11 partial (UNPLANNED by seed): the explicit-construction face at the Dilworth dual - the corpus's V11-W6 poset pair complete
 
 ## Cross-links (interdependence)
 
