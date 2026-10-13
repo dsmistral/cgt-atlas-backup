@@ -3,7 +3,7 @@
 - Family: 06-duality-optimization
 - Atlas one-line: Improve a partial solution along a path
 - Home chapters (Atlas): 5
-- Status (through chunk 14b): Atlas-named textbook-canon pattern; in-corpus firings recorded below. Batch N 14b: N5 honest miss (expected by seed) - the accessibility datum: the SMP canon at the middle-school level runs on the proposing algorithm, not augmentation. Batch V 24a: V3 partial (the factor-theorem origin - the augmentation family's counting-existence theorem born before the augmenting-path engine existed). Batch V 24b: V7 partial (Menger's disjoint-paths theorem origin) + V8 partial (Hall's representatives-theorem origin). Batch V 24c: V15 partial (the 1-factor theorem origin - the origin quartet complete)
+- Status (through chunk 14b): Atlas-named textbook-canon pattern; in-corpus firings recorded below. Batch N 14b: N5 honest miss (expected by seed) - the accessibility datum: the SMP canon at the middle-school level runs on the proposing algorithm, not augmentation. Batch V 24a: V3 partial (the factor-theorem origin - the augmentation family's counting-existence theorem born before the augmenting-path engine existed). Batch V 24b: V7 partial (Menger's disjoint-paths theorem origin) + V8 partial (Hall's representatives-theorem origin). Batch V 24c: V15 partial (the 1-factor theorem origin - the origin quartet complete). Batch W 25b: W12 partial (the matching polyhedron - the augmenting family polyhedral face at the 1965 origin) + W9 honest miss (the seed expectation re-anchored: the designed target is the tree-packing theorem)
 - Migration: this dossier was machine-migrated 2026-10-13 from the batch files (the gather record and source of truth); every census row and hypothesis-test note below is QUOTED, not rewritten.
 
 ## Census rows (quoted; source = papers/BATCH-*.md)
@@ -28,6 +28,10 @@
 - Fires in: V15 (partial)
 - Notes: the 1-factor theorem's birth - the ORIGIN QUARTET completes: Petersen (V3, factors), Menger (V7, disjoint paths), Hall (V8, representatives), Tutte (V15, the general characterization: a 1-factor iff every S leaves at most |S| odd components - the Tutte condition, the family's workhorse certificate); all born before the augmenting-path engine (the D-batch flagship firings own the engine; no double credit); the seed conflation resolved per the U5 precedent (the 1-factor home is "The Factorization of Linear Graphs" JLMS s1-22(2) (1947) 107-111, not "A ring in graph theory" - the dichromate companion, uncorpus'd)
 
+### Batch W, sub-chunk 25b (chunk 25; extension corpus - NEXT100 seeds)
+- Fires in: W12 (partial)
+- Notes: the matching polyhedron odd-set (blossom) inequalities - the augmenting family POLYHEDRAL face at the origin (the LP dual read back as the combinatorial min-max certificate; P37 genuine the same paper); the D3 "Paths, Trees and Flowers" companion the same-year combinatorial twin - the engine stays D3, no double credit; W9 recorded as an HONEST MISS (see the hypothesis note), the origin quartet stays closed at V15
+
 ## Hypothesis-test notes (quoted; source = papers/BATCH-*.md)
 
 ### Batch N, sub-chunk 14b (chunk 14)
@@ -41,6 +45,9 @@
 
 ### Batch V, sub-chunk 24c (chunk 24)
 - V15 P16 partial CONFIRMED (expected by seed as "the 1-factor theorem"): the origin quartet closes - the family's four existence theorems (1891, 1927, 1935, 1947) all pre-dating the engine; the augmenting-path engine's earliest ancestors now gathered at every birth
+
+### Batch W, sub-chunk 25b (chunk 25)
+- W12 P16 partial CONFIRMED (expected by seed as "P16; P37" - both fire): the polyhedral face credited alongside the P37 origin firing; W9 P16 MISSED (expected by seed as "the n-factor theorem" - EXPECTATION RE-ANCHORED, the V15 two-Tutte-papers conflation class): the 1961 JLMS paper is the TREE-PACKING theorem (k edge-disjoint spanning trees iff every r-partition crossed by at least k(r-1) edges) and no augmentation move is load-bearing - the partition-crossing condition a counting certificate (P9 partial); the 1952 "The factors of graphs" (the actual f-factor theorem) uncorpus'd
 
 ## Cross-links (interdependence)
 

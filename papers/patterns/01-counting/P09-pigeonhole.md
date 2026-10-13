@@ -3,7 +3,7 @@
 - Family: 01-counting
 - Atlas one-line: n+1 objects, n boxes
 - Home chapters (Atlas): 3
-- Status (through chunk 14a): Atlas-named textbook-canon pattern; in-corpus firings recorded below. Batch N 14a: N2 honest miss (expected by seed). Batch N 14b: N5 genuine (the key-function pigeonhole). Batch V 24c: V11 genuine (the Dilworth origin - the antichain bottleneck IS the theorem)
+- Status (through chunk 14a): Atlas-named textbook-canon pattern; in-corpus firings recorded below. Batch N 14a: N2 honest miss (expected by seed). Batch N 14b: N5 genuine (the key-function pigeonhole). Batch V 24c: V11 genuine (the Dilworth origin - the antichain bottleneck IS the theorem). Batch W 25b: W9 partial (the tree-packing theorem partition-crossing necessity)
 - Migration: this dossier was machine-migrated 2026-10-13 from the batch files (the gather record and source of truth); every census row and hypothesis-test note below is QUOTED, not rewritten.
 
 ## Census rows (quoted; source = papers/BATCH-*.md)
@@ -40,6 +40,10 @@
 - Fires in: V11 (genuine)
 - Notes: the antichain bottleneck IS the theorem - max antichain = min chain cover (the width theorem, Ann. of Math. (2) 51(1) (1950) 161-166); the poset-Sperner family's structural companion to I1 (the NEXT100 row's "P9-family poset structure" expectation met); the original argument's short-proofs literature (the Israel J. Math. 1963 note; the Dantzig-Hoffman 1956 linear-inequalities route) the proof-history datum; the P17 min-max face cross-noted, no census row
 
+### Batch W, sub-chunk 25b (chunk 25; extension corpus - NEXT100 seeds)
+- Fires in: W9 (partial)
+- Notes: the partition-crossing necessity IS pigeonhole: k edge-disjoint spanning trees must cross any r-partition in at least k(r-1) edges (each tree needs r-1 crossing edges, disjointness forbids sharing); the sufficiency the hard direction (the modern matroid-union route, retrospective); the seed gloss corrected (the 1961 paper is the TREE-PACKING theorem, not the n-factor theorem - see the P16 hypothesis note)
+
 ## Hypothesis-test notes (quoted; source = papers/BATCH-*.md)
 
 ### Batch K (chunk 11)
@@ -56,6 +60,9 @@
 
 ### Batch V, sub-chunk 24c (chunk 24)
 - V11 P9 genuine CONFIRMED (expected by seed as "P9-family poset structure (I1's structural companion)"): the antichain bottleneck at its origin - the width theorem IS the bottleneck statement, and the cover side certifies the cap is achieved; Mirsky's 1971 dual and the Erdos-Szekeres corollary recorded as lineage
+
+### Batch W, sub-chunk 25b (chunk 25)
+- W9 P9 partial CONFIRMED (unplanned by seed - the seed row P16 gloss re-anchored at gather): the necessity direction a clean pigeonhole count at a classic origin; the P17 min-max face cross-noted, no census row, per the V7 precedent
 
 ## Cross-links (interdependence)
 

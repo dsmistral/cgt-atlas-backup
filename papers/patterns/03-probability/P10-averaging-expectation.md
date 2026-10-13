@@ -3,7 +3,7 @@
 - Family: 03-probability
 - Atlas one-line: Some object beats the average
 - Home chapters (Atlas): 3, 4
-- Status (through chunk 14c): Atlas-named textbook-canon pattern; in-corpus firings recorded below. Batch N 14a: N3 genuine (the density-transfer move) + N2 partial (the Holder/convexity face). Batch N 14c: N8 genuine (the graphical Brascamp-Lieb machinery - the Holder lineage promoted from verification step to whole engine). Batch P 18b (extension corpus): P3 genuine (the balanced supersaturation theorem - the H5 supersaturation face modernized as the container algorithm's input form)
+- Status (through chunk 14c): Atlas-named textbook-canon pattern; in-corpus firings recorded below. Batch N 14a: N3 genuine (the density-transfer move) + N2 partial (the Holder/convexity face). Batch N 14c: N8 genuine (the graphical Brascamp-Lieb machinery - the Holder lineage promoted from verification step to whole engine). Batch P 18b (extension corpus): P3 genuine (the balanced supersaturation theorem - the H5 supersaturation face modernized as the container algorithm's input form). Batch W 25b: W8 partial (the Erdos-Renyi connectivity threshold - the Poisson/moment engine)
 - Migration: this dossier was machine-migrated 2026-10-13 from the batch files (the gather record and source of truth); every census row and hypothesis-test note below is QUOTED, not rewritten.
 
 ## Census rows (quoted; source = papers/BATCH-*.md)
@@ -52,6 +52,10 @@
 - Fires in: P3 (genuine)
 - Notes: the balanced supersaturation theorem for even cycles - supersaturation refined to a roughly-uniformly-spread subcollection of copies (no edge in too many members), the input form the container algorithm needs; the H5 supersaturation precedent (batch H) extended to its balanced form.
 
+### Batch W, sub-chunk 25b (chunk 25; extension corpus - NEXT100 seeds)
+- Fires in: W8 (partial)
+- Notes: the moment/Poisson engine at the random-graph origin: the isolated-vertex count Poisson limit locates the connectivity threshold at about (n/2) log n edges - the obstruction IS the isolated vertices (the last-obstruction phenomenon, the citing canon standard account); partial honestly: the threshold statement the theorem, the moments the interior machinery
+
 ## Hypothesis-test notes (quoted; source = papers/BATCH-*.md)
 
 ### Batch I (chunk 9)
@@ -76,6 +80,9 @@
 
 ### Batch P, sub-chunk 18b (chunk 18)
 - P3 P10 genuine confirmed UNPLANNED by seed (the P3 seed row expected the container datum only): the paper's own "new" ingredient (the balanced supersaturation theorem) is co-equal load-bearing with the container engine per the abstract's framing.
+
+### Batch W, sub-chunk 25b (chunk 25)
+- W8 P10 partial CONFIRMED (expected by seed as "the A2/A3 threshold-arc extension"): the expectation/moment analysis carries the threshold location and its isolation obstruction; the threshold-arc lineage cross-noted (CAND-A3 gate already crossed at A/B - this origin-era firing recorded as lineage, no gate event)
 
 ## Cross-links (interdependence)
 
