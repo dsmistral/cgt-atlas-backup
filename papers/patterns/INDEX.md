@@ -1,22 +1,22 @@
-# Pattern index (through chunk 13c)
+# Pattern index (through chunk 14a)
 
 Status wording is abbreviated here; the per-pattern files are authoritative. 'Census batches' = batches whose pattern census records a firing (partials included).
 
 | P-ID | Pattern | Family | Census batches |
 |------|---------|--------|----------------|
 | P1 | Bijection | 01-counting | C |
-| P2 | Double counting | 01-counting | H, L |
+| P2 | Double counting | 01-counting | H, L, N |
 | P3 | Inclusion-exclusion | 01-counting | - |
-| P4 | Recurrence + induction | 02-induction-extremal | A, C, D, F, G, H, I, L, M |
+| P4 | Recurrence + induction | 02-induction-extremal | A, C, D, F, G, H, I, L, M, N |
 | P5 | Generating function | 04-analytic-information | C, E |
 | P6 | Complement / reflection | 01-counting | - |
 | P7 | Parity & handshaking | 01-counting | D |
 | P8 | Longest-path / extremal | 02-induction-extremal | D, E, F, H, I |
 | P9 | Pigeonhole | 01-counting | A, F, G, H, I, K |
-| P10 | Averaging / expectation | 03-probability | A, B, D, G, H, I, K, L |
+| P10 | Averaging / expectation | 03-probability | A, B, D, G, H, I, K, L, N |
 | P11 | Explicit construction | 05-construction-algorithms | A, E, G, I, J, L |
 | P12 | Random construction | 03-probability | A, B, D, F, H, L |
-| P13 | Union bound | 03-probability | A |
+| P13 | Union bound | 03-probability | A, N |
 | P14 | Alteration | 03-probability | A |
 | P15 | Induction on vertices/edges | 02-induction-extremal | E, H, I, J |
 | P16 | Alternating paths / augmentation | 06-duality-optimization | D, E |
@@ -28,10 +28,10 @@ Status wording is abbreviated here; the per-pattern files are authoritative. 'Ce
 | P22 | Polynomial method | 07-linear-algebra-polynomial | I |
 | P23 | Compression / shifting | 08-canonicalization | I, K |
 | P24 | Shadow pricing (Kruskal-Katona) | 08-canonicalization | K |
-| P25 | Reduction / encoding | 05-construction-algorithms | B, D, E, F, G, H, L, M |
+| P25 | Reduction / encoding | 05-construction-algorithms | B, D, E, F, G, H, L, M, N |
 | P26 | Compactness (finite vs infinite) | 02-induction-extremal | F |
 | P27 | Correlation | 03-probability | - |
-| P28 | Concentration | 03-probability | B |
+| P28 | Concentration | 03-probability | B, N |
 | P29 | Entropy counting | 04-analytic-information | B |
 | P30 | Regularity partitioning | 09-density-structure | F, G, M |
 | P31 | Counting-removal | 09-density-structure | G |
@@ -84,3 +84,5 @@ Ledger note: P39 carries a FLAGGED LEDGER DISCREPANCY (batch-C census fires it a
 13b note (2026-10-13): P30's designed watch-M firing LANDS - M5 Alon-Shapira (genuine) + M6 AFNS (flagship; the subtitle IS the pattern: "It's all about regularity"; SIAM J. Comput. 39(1): 143-167 (2009)). The flag-algebras WATCH fires a second time at M4 (Razborov's triangle-density theorem; venue corrected Algebra i Analiz -> CP&C 17(4): 603-618 (2008)) - both firings within batch M; the cross-batch test cannot be satisfied in-corpus (synthesis call mirrors CAND-B5). P18 fires twice more (the testers ARE the procedures); P25 three times (M4 genuine; M5/M6 partials); P19/P37 repeat their M3 partial faces at M4. CAND-A4 / Boolean influence / spread induction: not fired; final chance 13c. See the dossiers and BATCH-M.md.
 
 13c note (2026-10-13) - BATCH M COMPLETE: P35 records its FIRST in-corpus touch (M9 Grohe, partial - DP over tree decompositions on the tractability side; standard-tool credit; the registry entry stays open). M7 Hopcroft-Tarjan (J. ACM 21(4):549-568 (1974)) fires P18 flagship + P25 partial (the DFS/path encoding); M8 Kruskal (PAMS 7(1):48-50 (1956); full title pinned) fires P18 genuine, with the greedy-exchange engine recorded as a coverage observation; M9 Grohe (title corrected: "seen from the other side" added; J. ACM 54(1) Art. 1 (2007)) fires P25 genuine. FINAL WATCH-M VERDICTS: CAND-A4 entropy compression NOT fired in M - the gate stays uncrossed (synthesis decides on the B9 lineage); Boolean influence and spread induction NOT fired in M - synthesis calls on B3/B6 alone. The batch's grand contrast recorded for synthesis: isomorphism by symmetry (M1/M2) vs homomorphism by structure (M9). See the dossiers and BATCH-M.md.
+
+14a note (2026-10-13): Batch N opens (youth-authored ACCEPTED papers; SOURCES.md section 4). P28 fires in its SECOND census batch (N3 Jain-Sah-Sawhney - the sharp binomial small-ball comparison, the Littlewood-Offord lineage's modern face; the K1 engine was the P9 antichain face), and P13 fires in its second batch too (the interior union bound at the sup over A, confirmed against the fetched open PDF). N2 Sah-Sawhney-Stoner-Zhao settles Kahn's conjecture with an accessible skeleton: P25 genuine (Zhao's swapping), P4 genuine unplanned (the freshman-level independent-set recursion at a maximum-degree vertex), P10 partial (the layered Holder verification); HONEST MISS P29 (the proof AVOIDS Kahn's entropy - the convexity face credited under P10 with the Lubetzky-Zhao note) and P9. N1 Jackson-Johnson (the HIGH-SCHOOL pair; the Monthly's lead article) fires NO Atlas P-ID - the designed domain-outlier datum for the accessibility question. Author-level honesty notes: N2 includes the faculty mentor; N3 includes a graduate student. See the dossiers and BATCH-N.md.

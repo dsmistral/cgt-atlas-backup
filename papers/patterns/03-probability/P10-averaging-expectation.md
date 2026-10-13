@@ -3,7 +3,7 @@
 - Family: 03-probability
 - Atlas one-line: Some object beats the average
 - Home chapters (Atlas): 3, 4
-- Status (through chunk 12b): Atlas-named textbook-canon pattern; in-corpus firings recorded below
+- Status (through chunk 14a): Atlas-named textbook-canon pattern; in-corpus firings recorded below. Batch N 14a: N3 genuine (the density-transfer move) + N2 partial (the Holder/convexity face)
 - Migration: this dossier was machine-migrated 2026-10-13 from the batch files (the gather record and source of truth); every census row and hypothesis-test note below is QUOTED, not rewritten.
 
 ## Census rows (quoted; source = papers/BATCH-*.md)
@@ -40,6 +40,10 @@
 - Fires in: L6 (partial)
 - Notes: the nibble's maintenance averaging - second-moment/equidistribution estimates keep each random step near-uniform; the averaging engine works inside the P12 flagship, not as the headline move.
 
+### Batch N, sub-chunk 14a (chunk 14)
+- Fires in: N3 (genuine), N2 (partial)
+- Notes: N3 - the paper's own novelty vs Nederlof et al.: the uniform measure on B is dominated by the n-fold product of Bin(k) up to 2^{k epsilon n}, so the largeness of the popular-value preimage set is exploited directly, then everything averages over x ~ Bin(k) (n-fold product). N2 - the local inequality verified by Holder + computation: the convexity face (per Lubetzky-Zhao, Holder reinterprets Kahn's entropy proof for the regular case; the convexity face stands in for entropy in the irregular case).
+
 ## Hypothesis-test notes (quoted; source = papers/BATCH-*.md)
 
 ### Batch I (chunk 9)
@@ -55,6 +59,9 @@
 
 ### Batch L, sub-chunk 12b (chunk 12)
 - L6 P10 partial (unplanned): the quasirandomness bookkeeping of the nibble.
+
+### Batch N, sub-chunk 14a (chunk 14)
+- N3 P10 CONFIRMED (expected by seed; genuine - the density transfer); N2 P10 partial confirmed (expected by seed - the Holder/convexity face).
 
 ## Cross-links (interdependence)
 

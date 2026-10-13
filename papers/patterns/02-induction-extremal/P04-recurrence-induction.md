@@ -3,7 +3,7 @@
 - Family: 02-induction-extremal
 - Atlas one-line: Relate case n to smaller cases
 - Home chapters (Atlas): 1, 2, 3
-- Status (through chunk 13a): Atlas-named textbook-canon pattern; in-corpus firings recorded below. Batch M 13a: the isomorphism column's recursions (M1 partial composition-series divide-and-conquer; M2 genuine aggregate-consumption)
+- Status (through chunk 14a): Atlas-named textbook-canon pattern; in-corpus firings recorded below. Batch M 13a: the isomorphism column's recursions (M1 partial composition-series divide-and-conquer; M2 genuine aggregate-consumption). Batch N 14a: N2 genuine - the freshman-level independent-set recursion at a maximum-degree vertex is the Kahn-conjecture proof's skeleton (the accessibility datum)
 - Migration: this dossier was machine-migrated 2026-10-13 from the batch files (the gather record and source of truth); every census row and hypothesis-test note below is QUOTED, not rewritten.
 
 ## Census rows (quoted; source = papers/BATCH-*.md)
@@ -48,6 +48,10 @@
 - Fires in: M1 (partial), M2 (genuine)
 - Notes: M1: divide-and-conquer down the composition series (the trivalent case P = G with elementary analysis; higher valence via primitive-group observations). M2: the aggregate-consumption recursion over the permutation domain is load-bearing in the quasipolynomial bound.
 
+### Batch N, sub-chunk 14a (chunk 14)
+- Fires in: N2 (genuine)
+- Notes: induction on the vertex count via i(G) = i(G-w) + i(G-w-N(w)) at a maximum-degree vertex w - the recursion reduces the theorem to the local inequality j(G-w) + j(G-w-N(w)) <= j(G); the recursion itself is freshman-level (Batch N's accessibility datum).
+
 ## Hypothesis-test notes (quoted; source = papers/BATCH-*.md)
 
 ### Batch I (chunk 9)
@@ -64,6 +68,9 @@
 
 ### Batch M, sub-chunk 13a (chunk 13)
 - M2 P4 confirmed (unplanned by seed); M1 P4 partial - the recursion is the vehicle, but the analysis's novel content is group-theoretic (bounded simple sections), matching no Atlas pattern.
+
+### Batch N, sub-chunk 14a (chunk 14)
+- N2 P4 confirmed (UNPLANNED by seed; the seed expected P29/P25/P10/P9): the accessible skeleton of the Kahn-conjecture settlement.
 
 ## Cross-links (interdependence)
 

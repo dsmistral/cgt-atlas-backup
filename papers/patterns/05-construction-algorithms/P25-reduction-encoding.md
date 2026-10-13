@@ -3,7 +3,7 @@
 - Family: 05-construction-algorithms
 - Atlas one-line: Translate one problem into another language; the target structure carries the proof or the hardness
 - Home chapters (Atlas): 3, 10, 11
-- Status (through chunk 13b): Atlas-named textbook-canon pattern; in-corpus firings recorded below. Batch M: the isomorphism column fires it twice (M1/M2 genuine), M3 the flagship encoding, M4 the second framework firing (genuine), M5/M6 the property-testing partials, and 13c M7 partial (DFS/path encoding) + M9 genuine (the CSP classification) - see the census rows
+- Status (through chunk 14a): Atlas-named textbook-canon pattern; in-corpus firings recorded below. Batch M: the isomorphism column fires it twice (M1/M2 genuine), M3 the flagship encoding, M4 the second framework firing (genuine), M5/M6 the property-testing partials, and 13c M7 partial (DFS/path encoding) + M9 genuine (the CSP classification). Batch N 14a: N2 genuine - Zhao's bipartite-swapping reduction reused as the Kahn-conjecture settlement's step 1 - see the census rows
 - Migration: this dossier was machine-migrated 2026-10-13 from the batch files (the gather record and source of truth); every census row and hypothesis-test note below is QUOTED, not rewritten.
 
 ## Census rows (quoted; source = papers/BATCH-*.md)
@@ -48,6 +48,10 @@
 - Fires in: M7 (partial), M9 (genuine)
 - Notes: M7 partial (unplanned): the graph encoded into DFS/path structures - the path decomposition makes the iterative path-addition embedding tractable (the paper's own Auslander-Parter framing). M9 (expected by seed): homomorphism <-> CSP <-> conjunctive-query evaluation as one problem in three languages, with the complexity encoded as a structural invariant (bounded tree-width of cores) - the "other side" perspective is itself a translation.
 
+### Batch N, sub-chunk 14a (chunk 14)
+- Fires in: N2 (genuine)
+- Notes: Zhao's bipartite-swapping trick (the double cover G x K2: i(G)^2 <= i(G x K2) via the explicit injection, and j(G)^2 = j(G x K2)) reduces the general theorem to the bipartite case - inherited machinery doing load-bearing work at the youth-research frontier.
+
 ## Hypothesis-test notes (quoted; source = papers/BATCH-*.md)
 
 ### Batch M, sub-chunk 13a (chunk 13)
@@ -58,6 +62,9 @@
 
 ### Batch M, sub-chunk 13c (chunk 13)
 - M9 P25 CONFIRMED (expected by seed, genuine); M7 P25 partial confirmed (unplanned - the DFS/path encoding).
+
+### Batch N, sub-chunk 14a (chunk 14)
+- N2 P25 CONFIRMED (expected by seed): the swapping reduction is step 1 of the Kahn-conjecture settlement.
 
 ## Cross-links (interdependence)
 

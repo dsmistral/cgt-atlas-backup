@@ -3,7 +3,7 @@
 - Family: 01-counting
 - Atlas one-line: n+1 objects, n boxes
 - Home chapters (Atlas): 3
-- Status (through chunk 11): Atlas-named textbook-canon pattern; in-corpus firings recorded below
+- Status (through chunk 14a): Atlas-named textbook-canon pattern; in-corpus firings recorded below. Batch N 14a: N2 honest miss (expected by seed)
 - Migration: this dossier was machine-migrated 2026-10-13 from the batch files (the gather record and source of truth); every census row and hypothesis-test note below is QUOTED, not rewritten.
 
 ## Census rows (quoted; source = papers/BATCH-*.md)
@@ -39,6 +39,9 @@
 
 ### Batch K (chunk 11)
 - K2, K5, K8: seeds confirmed (P23, P9, P23 respectively, K8 at flagged sketch from the open PDF).
+
+### Batch N, sub-chunk 14a (chunk 14)
+- N2 P9 MISSED (expected by seed): no pigeonhole move is load-bearing in the Kahn-conjecture settlement - the double-cover counting content is the injection recorded under P25.
 
 ## Cross-links (interdependence)
 
