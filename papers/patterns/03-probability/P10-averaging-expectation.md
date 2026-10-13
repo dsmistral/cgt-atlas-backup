@@ -3,7 +3,7 @@
 - Family: 03-probability
 - Atlas one-line: Some object beats the average
 - Home chapters (Atlas): 3, 4
-- Status (through chunk 14c): Atlas-named textbook-canon pattern; in-corpus firings recorded below. Batch N 14a: N3 genuine (the density-transfer move) + N2 partial (the Holder/convexity face). Batch N 14c: N8 genuine (the graphical Brascamp-Lieb machinery - the Holder lineage promoted from verification step to whole engine)
+- Status (through chunk 14c): Atlas-named textbook-canon pattern; in-corpus firings recorded below. Batch N 14a: N3 genuine (the density-transfer move) + N2 partial (the Holder/convexity face). Batch N 14c: N8 genuine (the graphical Brascamp-Lieb machinery - the Holder lineage promoted from verification step to whole engine). Batch P 18b (extension corpus): P3 genuine (the balanced supersaturation theorem - the H5 supersaturation face modernized as the container algorithm's input form)
 - Migration: this dossier was machine-migrated 2026-10-13 from the batch files (the gather record and source of truth); every census row and hypothesis-test note below is QUOTED, not rewritten.
 
 ## Census rows (quoted; source = papers/BATCH-*.md)
@@ -48,6 +48,10 @@
 - Fires in: N8 (genuine)
 - Notes: the graphical Brascamp-Lieb machinery is the reverse-Sidorenko paper's ENGINE: Lemma 3.1 (L^p duality + Cauchy-Schwarz), the mixed L^{p,q} matrix-norm reformulation, Lemma 3.2, and the local inequality Lemma 3.3 the main theorem reduces to (the K_{a,b} norms) - every edge of G assigned a two-variable function. The Lubetzky-Zhao Holder lineage promoted from N2's verification step to a whole engine.
 
+### Batch P, sub-chunk 18b (chunk 18; extension corpus - NEXT100 seeds)
+- Fires in: P3 (genuine)
+- Notes: the balanced supersaturation theorem for even cycles - supersaturation refined to a roughly-uniformly-spread subcollection of copies (no edge in too many members), the input form the container algorithm needs; the H5 supersaturation precedent (batch H) extended to its balanced form.
+
 ## Hypothesis-test notes (quoted; source = papers/BATCH-*.md)
 
 ### Batch I (chunk 9)
@@ -69,6 +73,9 @@
 
 ### Batch N, sub-chunk 14c (chunk 14)
 - N8 P10 CONFIRMED (expected by seed; genuine): the functional-analysis face (math.FA in the subject line) carrying the Kahn arc's Inventiones landing - the graphical Brascamp-Lieb inequality as P10's convexity face, load-bearing as the whole engine (a synthesis note for the P10 Atlas entry, mirroring the slice-rank face-of-P19/P22 treatment).
+
+### Batch P, sub-chunk 18b (chunk 18)
+- P3 P10 genuine confirmed UNPLANNED by seed (the P3 seed row expected the container datum only): the paper's own "new" ingredient (the balanced supersaturation theorem) is co-equal load-bearing with the container engine per the abstract's framing.
 
 ## Cross-links (interdependence)
 

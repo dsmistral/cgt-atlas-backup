@@ -1,4 +1,4 @@
-# Pattern index (through chunk 17 - Batch O, extension corpus)
+# Pattern index (through chunk 18 - Batch P, extension corpus)
 
 Status wording is abbreviated here; the per-pattern files are authoritative. 'Census batches' = batches whose pattern census records a firing (partials included).
 
@@ -13,7 +13,7 @@ Status wording is abbreviated here; the per-pattern files are authoritative. 'Ce
 | P7 | Parity & handshaking | 01-counting | D, N |
 | P8 | Longest-path / extremal | 02-induction-extremal | D, E, F, H, I |
 | P9 | Pigeonhole | 01-counting | A, F, G, H, I, K, N |
-| P10 | Averaging / expectation | 03-probability | A, B, D, G, H, I, K, L, N |
+| P10 | Averaging / expectation | 03-probability | A, B, D, G, H, I, K, L, N, P |
 | P11 | Explicit construction | 05-construction-algorithms | A, E, G, I, J, L |
 | P12 | Random construction | 03-probability | A, B, D, F, H, L, O |
 | P13 | Union bound | 03-probability | A, N |
@@ -28,7 +28,7 @@ Status wording is abbreviated here; the per-pattern files are authoritative. 'Ce
 | P22 | Polynomial method | 07-linear-algebra-polynomial | I |
 | P23 | Compression / shifting | 08-canonicalization | I, K |
 | P24 | Shadow pricing (Kruskal-Katona) | 08-canonicalization | K |
-| P25 | Reduction / encoding | 05-construction-algorithms | B, D, E, F, G, H, L, M, N, O |
+| P25 | Reduction / encoding | 05-construction-algorithms | B, D, E, F, G, H, L, M, N, O, P |
 | P26 | Compactness (finite vs infinite) | 02-induction-extremal | F |
 | P27 | Correlation | 03-probability | O (first touch, partial - dependency-graph face; the FKG face test moves to Batch U) |
 | P28 | Concentration | 03-probability | B, N |
@@ -55,7 +55,7 @@ Status wording is abbreviated here; the per-pattern files are authoritative. 'Ce
 | CAND-A2 semi-random nibble | CROSSED + origin L6 + formalization L9 + application L8 (12c) - strongest P43+ case | A, B, L |
 | CAND-A3 threshold/window | CROSSED | A, B |
 | CAND-A4 entropy compression | NOT crossed in-corpus (final verdict); ORIGIN FIRING found in the extension corpus (O4 Moser 2009, the debut) | A, O (origin) (+ B9/Molloy-2019 lineage) |
-| CAND-B5 hypergraph containers | synthesis call | B |
+| CAND-B5 hypergraph containers | CROSSED in the extension corpus (chunk 18: the P1 origin + P2 bridge + P3/P4 flagships; batches B + P) - promotion to the user-approved Atlas session | B, P |
 | CAND-C1 analytic combinatorics | synthesis call | C |
 | CAND-G1 transference/dense-model | synthesis call | G |
 | WATCH Boolean influence | no firing in M; synthesis call on B3 alone | B |
@@ -94,3 +94,6 @@ Ledger note (RECONCILED at chunk 15, 2026-10-13): P39 exited the silent registry
 ## Note 15 (chunk 15 - synthesis, 2026-10-13)
 
 THE SYNTHESIS IS DONE: papers/ANALYSIS.md is the survey's final analysis document. PROPOSED P43 = CAND-A2 semi-random nibble with parameter tracking (five batches: A6/A8 ancestors, B4, L6 origin, L9 formalization, L8 application - the strongest load-bearing case). PROPOSED P44 = CAND-A3 threshold/window (A2/A3, B3, B5, B6 - "the window is the theorem"; a phenomenon-pattern in the P26 manner). NOT promoted: CAND-A1 (the B9 flag resolved against - the LLL step lives in the Molloy-Reed expositions; external-canon recommendation), CAND-B5 and CAND-C1 (single-batch; external-evidence recommendations), WATCH flag algebras (RECOMMENDED on external evidence - both firings within batch M; the descendants decide), WATCH absorption and WATCH randomized algebraic construction (external-evidence recommendations). DIES in-corpus: CAND-A4 entropy compression, WATCH Boolean influence, WATCH spread induction, WATCH Kempe chains. FACES, not separate patterns: transference -> P30/P31; slice rank -> P19/P22; sign-reversing involution -> P1; monovariant -> P4. The Luks framework = a coverage-gap engine. Silent ledger FINAL: P27/P36 fully silent (P36 = corpus-sampling gap), P35 partial-touch only (entry open), P20 genuinely under-used, P6 ZERO firings, P39 RECONCILED (exited at batch C). Workhorses: P4 (10 batches), P25 (9), P10 (9), P9 (7). The gate-status table above records the PRE-synthesis state; this note's verdicts are final. Full reasoning and the Atlas recommendations (all pending a user-approved Atlas session): papers/ANALYSIS.md.
+## Note 18 (chunk 18 - Batch P, 2026-10-13)
+
+CAND-B5 hypergraph containers CROSSES the two-batch load-bearing gate in the extension corpus: the arc gathered complete - P1 Kleitman-Winston 1982 (the IMPLICIT ORIGIN, survey-level attribution; venue corrected to Discrete Math. 41(2): 167-172) -> B7/B8 (the 2015 general theorems, batch B) -> P2 Samotij 2015 (the expository bridge; EJC 48: 5-18) -> P3 Morris-Saxton 2016 (the even-cycle flagship: Erdos's conjecture confirmed; title/venue corrected to "The number of C_{2l}-free graphs", Adv. Math. 298: 534-580) -> P4 Balogh-Liu-Sharifzadeh-Treglown 2018 (the arithmetic flagship: the Cameron-Erdos maximal question closed sharply; "Sharp bound on the number of maximal sum-free subsets of integers", JEMS 20(8): 1885-1911; Green's container lemma - the ARITHMETIC face, with the companion's Lemma 2.1 derivable from B7/B8). The chunk-15 external-evidence-only recommendation is superseded by the in-survey crossing; the promotion decision belongs to the user-approved Atlas session. Census: P10 genuine at P3 (the balanced supersaturation theorem - the H5 supersaturation face modernized); P25 partials at P1/P2 (the certificate/profile encoding). See papers/BATCH-P.md.
