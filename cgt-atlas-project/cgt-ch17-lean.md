@@ -27,8 +27,8 @@ The corollary to keep in mind: a wrong-but-compiling proof is impossible here (t
 **Setting up (reader's machine, e.g. a Raspberry Pi 5 with ≥ 4 GB RAM — expect the first Mathlib build to take a long while; use the pre-built cache via `lake exe cache get`):**
 ```
 curl -L https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh
-mkdir atlas-lean && cd atlas-lean
-lake new . mathlib      # creates a project depending on Mathlib
+lake +leanprover-community/mathlib4:lean-toolchain new Atlas math   # creates a project depending on Mathlib
+cd Atlas
 lake update && lake exe cache get   # fetches prebuilt Mathlib
 # paste a draft into Atlas.lean, then:
 lake build
@@ -65,6 +65,9 @@ theorem handshaking (G : SimpleGraph V) [DecidableRel G.Adj] :
   --   `sum_degrees_eq`.
 
 /-- Corollary: an even number of vertices have odd degree.
+    Tier A: Mathlib already ships this too — `SimpleGraph.even_card_odd_degree_vertices`
+    (the DegreeSum file's own handshaking corollary); the `sorry` below stays
+    deliberately open as the first repair target for the reader loop.
     DRAFT — plan: split the sum over odd/even-degree vertices using
     `Finset.sum_filter` (or sum over `Finset.filter (fun v => ¬Even (G.degree v))`)
     and apply `handshaking`; the odd part's parity is forced. -/
@@ -97,7 +100,7 @@ end Atlas.Handshaking
 
 ## 17.3 Warm-up 2 · Sperner's theorem *(planned; home: Ch. 7)*
 
-Statement target: an antichain of subsets of a finite type has size at most the middle binomial coefficient; ideally prove the LYM inequality on the way (the human proof of Ch. 7 §7.1 chains through it). Mathlib's `Finset α` and `Sym` (symmetric group, for the chain-counting) are the natural setting; the cyclic-permutation counting of the LYM proof will need a `Finset.card_image_le`-style argument. Draft lands after Warm-up 1's loop closes — one warm-up in the air at a time.
+Statement target: an antichain of subsets of a finite type has size at most the middle binomial coefficient; ideally prove the LYM inequality on the way (the human proof of Ch. 7 §7.1 chains through it). Mathlib's `Finset α` and `Equiv.Perm` (the symmetric group, for the chain-counting) are the natural setting; the cyclic-permutation counting of the LYM proof will need a `Finset.card_image_le`-style argument. Tier A, stated now for honesty as with Warm-up 1: Mathlib already ships Sperner's theorem and both LYM inequalities (`Mathlib.Combinatorics.SetFamily.LYM`) — the Atlas target is the Tier-B exercise of rebuilding them via the cyclic-permutation proof. Draft lands after Warm-up 1's loop closes — one warm-up in the air at a time.
 
 ## 17.4 The statement bank (grows as chapters are written/rewritten)
 
