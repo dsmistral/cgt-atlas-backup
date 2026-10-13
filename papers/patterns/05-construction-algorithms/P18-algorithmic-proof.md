@@ -3,7 +3,7 @@
 - Family: 05-construction-algorithms
 - Atlas one-line: The proof is a procedure; termination = theorem
 - Home chapters (Atlas): 2, 5
-- Status (through chunk 13c): Atlas-named textbook-canon pattern; in-corpus firings recorded below. Batch M: the isomorphism column M1/M2 (proof = procedure at its largest scale), the property-testing column M5/M6 (the testers), and 13c the classic-algorithms column (M7 flagship, M8 genuine, M9 partial). Batch N 14b: N6 partial (the Gale-Shapley round traces)
+- Status (through chunk 13c): Atlas-named textbook-canon pattern; in-corpus firings recorded below. Batch M: the isomorphism column M1/M2 (proof = procedure at its largest scale), the property-testing column M5/M6 (the testers), and 13c the classic-algorithms column (M7 flagship, M8 genuine, M9 partial). Batch N 14b: N6 partial (the Gale-Shapley round traces). Batch O 17a (extension corpus): O2 genuine - the LLL's first algorithmization
 - Migration: this dossier was machine-migrated 2026-10-13 from the batch files (the gather record and source of truth); every census row and hypothesis-test note below is QUOTED, not rewritten.
 
 ## Census rows (quoted; source = papers/BATCH-*.md)
@@ -40,6 +40,10 @@
 - Fires in: N6 (partial)
 - Notes: Propositions 1, 2, 7 - the Gale-Shapley round traces (exactly n rounds under shared preferences; one round iff each woman is exactly one man's first choice; n-1 soulmate pairs force a unique matching reached in j rounds); the trace IS the proof, with the honest caveat that the algorithm is the object of study (mirror of the M9 caveat).
 
+### Batch O, sub-chunk 17a (chunk 17; extension corpus - NEXT100 seeds)
+- Fires in: O2 (genuine)
+- Notes: Beck 1991 - the LLL's first algorithmization: the existence proof replaced by an explicit search procedure with a complexity analysis, under a stronger constant (the constant-loss datum that 17b's O4/O5 erase); the direct ancestor of A9's resampling proof.
+
 ## Hypothesis-test notes (quoted; source = papers/BATCH-*.md)
 
 ### Batch M, sub-chunk 13a (chunk 13)
@@ -50,6 +54,9 @@
 
 ### Batch N, sub-chunk 14b (chunk 14)
 - N6 P18 partial confirmed UNPLANNED by seed (the seed expected P5/P2/P23).
+
+### Batch O, sub-chunk 17a (chunk 17)
+- O2 P18 CONFIRMED (expected by seed - "the first constructive version").
 
 ## Cross-links (interdependence)
 
