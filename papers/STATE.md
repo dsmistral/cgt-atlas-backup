@@ -4,8 +4,8 @@ One chunk per session. Update this file in the same push_files commit as the bat
 
 | Chunk | Scope | Status | Session | Commit |
 |-------|-------|--------|---------|--------|
-| 0 | Bootstrap: charter, seed corpus, ledger | DONE | 2026-10-13 | this commit |
-| 1 | Batch A - probabilistic method, random graphs (9) | PENDING | - | - |
+| 0 | Bootstrap: charter, seed corpus, ledger | DONE | 2026-10-13 | 62ba5757 (chunk-0 commit) |
+| 1 | Batch A - probabilistic method, random graphs (9) | DONE | 2026-10-13 | this commit |
 | 2 | Batch B - thresholds, entropy, containers (9) | PENDING | - | - |
 | 3 | Batch C - enumerative counting (7) | PENDING | - | - |
 | 4 | Batch D - matching, flows, algorithms (10) | PENDING | - | - |
@@ -21,3 +21,5 @@ One chunk per session. Update this file in the same push_files commit as the bat
 | 14 | Synthesis: ANALYSIS.md, P43+ proposal, silent-P usage evidence | PENDING | - | - |
 
 **How to run a gather chunk (per batch):** 1) verify each seed row against a web source, recording the URL; 2) gather abstract or faithful summary; 3) extract the decisive moves and tag Atlas P-IDs; 4) log candidate new patterns with the load-bearing test in mind; 5) fetch an open-access full text only if a new pattern needs it (scope rule); 6) push papers/BATCH.md + per-paper files + updated STATE.md in ONE push_files commit; 7) update the knowledge topic current-state paragraph.
+
+**Candidate ledger (running, for the load-bearing test):** CAND-A1 Lovasz Local Lemma (A5/A7/A9; test in B, L) - LEADING; CAND-A2 semi-random nibble + parameter tracking (A6/A8; test in L6, L9); CAND-A3 threshold/window (A2/A3; test in B3, B5, B6); CAND-A4 entropy compression (A9; test in D, M) - demotion candidate.
