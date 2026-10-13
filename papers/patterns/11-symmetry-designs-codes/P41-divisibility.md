@@ -3,7 +3,7 @@
 - Family: 11-symmetry-designs-codes
 - Atlas one-line: Integrality of the replication numbers r and lambda is a design's birth certificate: non-integral parameters forbid existence before any search
 - Home chapters (Atlas): 16
-- Status (through chunk 12a): EXITED the silent registry (sub-chunk 12a, the designed home): L2 flagship (the Bruck-Ryser origin paper - arithmetic forbids existence before any search), L3 genuine (admissibility shown SUFFICIENT - the converse direction), L1 partial (admissibility checks inside Witt's construction); L4 continuation (sub-chunk 12b): the existence conjecture itself - divisibility becomes the WHOLE story asymptotically
+- Status (through chunk 12c): EXITED the silent registry (sub-chunk 12a, the designed home): L2 flagship (the Bruck-Ryser origin paper - arithmetic forbids existence before any search), L3 genuine (admissibility shown SUFFICIENT - the converse direction), L1 partial (admissibility checks inside Witt's construction); L4 continuation (sub-chunk 12b): the existence conjecture itself - divisibility becomes the WHOLE story asymptotically; L8 continuation (sub-chunk 12c): the Existence Conjecture - divisibility is the whole story for Steiner systems (lambda=1, all t)
 - Migration: this dossier was machine-migrated 2026-10-13 from the batch files (the gather record and source of truth); every census row and hypothesis-test note below is QUOTED, not rewritten.
 
 ## Census rows (quoted; source = papers/BATCH-*.md)
@@ -17,6 +17,10 @@
 - Fires in: L4 (genuine: the existence conjecture itself)
 - Notes: continuation - Wilson's theorem makes divisibility the whole story asymptotically: for a fixed block-size set K, the necessary congruence conditions are sufficient for all large v. The pattern grows from arithmetic-nonexistence (L2) and fixed-family sufficiency (L3) into an asymptotic completeness theorem.
 
+### Batch L, sub-chunk 12c (chunk 12)
+- Fires in: L8 (genuine: the Existence Conjecture's statement); honest negative at L7
+- Notes: the Keevash continuation - for fixed t,k the necessary divisibility conditions are sufficient for large n (Steiner systems, lambda=1, all t); the exact lambda=1 analogue of Wilson's theorem, settling the 19th-century existence problem with divisibility as the whole story. At L7 Teirlinck P41 does NOT fire: lambda is free, so the divisibility story is bypassed (not violated) - Teirlinck sits on a different axis (all t, unbounded lambda).
+
 ## Hypothesis-test notes (quoted; source = papers/BATCH-*.md)
 
 ### Batch L, sub-chunk 12a (chunk 12)
@@ -26,6 +30,9 @@
 
 ### Batch L, sub-chunk 12b (chunk 12)
 - L4 P41 CONTINUATION CONFIRMED (per the 12a lineage plan): the sufficiency direction generalizes from Hanani's fixed families to all PBD-closed block-size sets.
+
+### Batch L, sub-chunk 12c (chunk 12)
+- L8 P41 CONTINUATION CONFIRMED (the Existence Conjecture's statement); the L4 -> L8 arc completes inside the batch. Honest negative at L7 (bypassed, not violated).
 
 ## Cross-links (interdependence)
 

@@ -40,6 +40,10 @@
 - Fires in: L3, L1 (partial)
 - Notes: L3 Hanani: the whole existence proof is an induction on v via recursive PBD/hole constructions. L1 Witt partial: stepwise extension S(5,6,12) from S(4,5,11) - the recursive skeleton is present but the blocks are placed by hand.
 
+### Batch L, sub-chunk 12c (chunk 12)
+- Fires in: L7 (partial)
+- Notes: Teirlinck's construction reduces t to t-1 recursively (large-set-style machinery), but the placement is explicit handwork - partial, as at L1.
+
 ## Hypothesis-test notes (quoted; source = papers/BATCH-*.md)
 
 ### Batch I (chunk 9)
@@ -50,6 +54,9 @@
 
 ### Batch L, sub-chunk 12b (chunk 12)
 - L4 P4 partial only (not credited): the recursive hole/PBD machinery is inherited from Hanani (L3) and lives inside Wilson's composition theorems; the headline existence-conjecture proof runs on elementary number theory (finite basis for PBD-closed sets), not induction on v.
+
+### Batch L, sub-chunk 12c (chunk 12)
+- L7 P4 partial confirmed: the recursive skeleton carries the construction; no new genuine firing.
 
 ## Cross-links (interdependence)
 

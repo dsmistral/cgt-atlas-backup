@@ -1,4 +1,4 @@
-# Pattern index (through chunk 12b)
+# Pattern index (through chunk 12c)
 
 Status wording is abbreviated here; the per-pattern files are authoritative. 'Census batches' = batches whose pattern census records a firing (partials included).
 
@@ -52,7 +52,7 @@ Status wording is abbreviated here; the per-pattern files are authoritative. 'Ce
 | Item | Gate status | Batches |
 |------|-------------|---------|
 | CAND-A1 Lovasz Local Lemma | CROSSED | A, B |
-| CAND-A2 semi-random nibble | CROSSED + ORIGIN firing L6 (12b); watch L9/L8 (12c) | A, B, L |
+| CAND-A2 semi-random nibble | CROSSED + origin L6 + formalization L9 + application L8 (12c) - strongest P43+ case | A, B, L |
 | CAND-A3 threshold/window | CROSSED | A, B |
 | CAND-A4 entropy compression | NOT crossed - watch M | A (+ B9 lineage) |
 | CAND-B5 hypergraph containers | synthesis call | B |
@@ -64,9 +64,13 @@ Status wording is abbreviated here; the per-pattern files are authoritative. 'Ce
 | WATCH Kempe-chain recoloring | likely dies at synthesis | E |
 | WATCH monovariant/potential | synthesis call | D, G |
 | WATCH slice rank | synthesis call (face of P19/P22) | I |
+| WATCH absorption | WATCH - L8 origin (12c), needs 2nd batch | L |
+| WATCH randomized algebraic construction | WATCH - L8 origin (12c), needs 2nd batch | L |
 
 Ledger note: P39 carries a FLAGGED LEDGER DISCREPANCY (batch-C census fires it at C1/C7; the running STATE.md silent-registry ledger never recorded its exit) - reconcile at synthesis.
 
 12a note (2026-10-13): P41 exited the silent registry (L2 flagship origin / L3 sufficiency converse / L1 partial). P42's designed-home expectation L1 MISSED (the words-as-designs engine is retrospective for Witt; real home L10, pending). See the dossiers and BATCH-L.md.
 
 12b note (2026-10-13): CAND-A2 origin paper landed - L6 Rodl (the nibble born; third batch A/B/L). P41 continuation at L4 (the existence conjecture: divisibility is the whole story asymptotically); P11 flagship at L4; P12 flagship at L6 with a P10 partial. L5 CONFIRMED DUPLICATE of I3 (year corrected 1971 -> 1975; corpus distinct count 126 -> 125 - synthesis flag). L4 P24 MISSED (seed direction-wrong). See the dossiers and BATCH-L.md.
+
+12c note (2026-10-13): the semi-random arc COMPLETE - CAND-A2 origin (L6) + formalization (L9 Pippenger-Spencer, venue corrected Ser. B -> Ser. A) + application (L8 Keevash); promotion to P43+ recommended at synthesis. P41 continuation at L8 (the Existence Conjecture); P11 flagship + P4 partial at L7 Teirlinck (title pinned; venue confirmed). TWO new WATCH items opened at the L8 origin: absorption; randomized algebraic construction (the seed's own candidate expectation executed). Honest misses: L8 P30 (no regularity partition load-bearing); honest negative: L7 P41 (lambda free). See the dossiers and BATCH-L.md.

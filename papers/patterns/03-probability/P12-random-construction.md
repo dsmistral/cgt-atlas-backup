@@ -3,7 +3,7 @@
 - Family: 03-probability
 - Atlas one-line: Prove existence by sampling
 - Home chapters (Atlas): 4
-- Status (through chunk 12b): Atlas-named textbook-canon pattern; in-corpus firings recorded below
+- Status (through chunk 12c): Atlas-named textbook-canon pattern; in-corpus firings recorded below
 - Migration: this dossier was machine-migrated 2026-10-13 from the batch files (the gather record and source of truth); every census row and hypothesis-test note below is QUOTED, not rewritten.
 
 ## Census rows (quoted; source = papers/BATCH-*.md)
@@ -32,11 +32,18 @@
 - Fires in: L6 (flagship: the nibble's origin)
 - Notes: the semi-random nibble born here - a packing built in many small random greedy steps with quasi-uniformity tracked across steps; the Erdos-Hanani conjecture proved asymptotically (the counting bound C(v,t)/C(k,t) reached in the limit).
 
+### Batch L, sub-chunk 12c (chunk 12)
+- Fires in: L8, L9 (flagships)
+- Notes: L9: the nibble FORMALIZED - the Pippenger-Spencer parameter-tracking framework is the canonical "nibble lemma" (near-regular small-codegree hypergraphs have chromatic index asymptotic to the degree; strengthens the Frankl-Rodl packing to chromatic index). L8: the nibble as workhorse inside the randomized-algebraic designs proof.
+
 ## Hypothesis-test notes (quoted; source = papers/BATCH-*.md)
 
 ### Batch L, sub-chunk 12b (chunk 12)
 - L6 P12 CONFIRMED (expected): the nibble's origin paper.
 
+
+### Batch L, sub-chunk 12c (chunk 12)
+- L8 P12 CONFIRMED (randomized template + nibble phase); L9 P12 CONFIRMED (the nibble formalized - the sub-chunk's designed flagship).
 
 ## Cross-links (interdependence)
 

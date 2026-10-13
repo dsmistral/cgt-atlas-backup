@@ -3,7 +3,7 @@
 - Family: 05-construction-algorithms
 - Atlas one-line: Beat the bound by building the object
 - Home chapters (Atlas): 3
-- Status (through chunk 12b): Atlas-named textbook-canon pattern; in-corpus firings recorded below
+- Status (through chunk 12c): Atlas-named textbook-canon pattern; in-corpus firings recorded below
 - Migration: this dossier was machine-migrated 2026-10-13 from the batch files (the gather record and source of truth); every census row and hypothesis-test note below is QUOTED, not rewritten.
 
 ## Census rows (quoted; source = papers/BATCH-*.md)
@@ -36,6 +36,10 @@
 - Fires in: L4 (flagship)
 - Notes: Wilson's fundamental construction - PBDs assembled from ingredient designs and transversal-design templates, with morphisms between PBD-closed sets; the composition machinery is design theory's constructive backbone.
 
+### Batch L, sub-chunk 12c (chunk 12)
+- Fires in: L7 (flagship)
+- Notes: Teirlinck's explicit recursive scheme builds non-trivial simple t-designs for every t - pure build-the-object work, zero asymptotic counting; the all-t existence question settled constructively a generation before Keevash's Steiner-system theorem.
+
 ## Hypothesis-test notes (quoted; source = papers/BATCH-*.md)
 
 ### Batch J (chunk 10)
@@ -46,6 +50,9 @@
 
 ### Batch L, sub-chunk 12b (chunk 12)
 - L4 P11 CONFIRMED (expected): the composition / fundamental construction machinery.
+
+### Batch L, sub-chunk 12c (chunk 12)
+- L7 P11 CONFIRMED (expected): the explicit-construction flagship of the sub-chunk.
 
 ## Cross-links (interdependence)
 

@@ -6,7 +6,7 @@ Chunk 12 under work style v2: four sub-chunks of three papers, each pushed as it
 |-----------|--------|--------|
 | 12a | L1 Witt; L2 Bruck-Ryser; L3 Hanani | DONE (sections below) |
 | 12b | L4 Wilson; L5 Ray-Chaudhuri-Wilson; L6 Rodl | DONE (sections below) |
-| 12c | L7 Teirlinck; L8 Keevash; L9 Pippenger-Spencer | PENDING |
+| 12c | L7 Teirlinck; L8 Keevash; L9 Pippenger-Spencer | DONE (sections below) |
 | 12d | L10 Assmus-Mattson; L11 MacWilliams; L12 Gleason | PENDING |
 
 ## Sub-chunk 12a (L1-L3) - gathered and mined 2026-10-13
@@ -90,4 +90,45 @@ All 3 papers metadata-verified; moves at flagged-sketch level from publisher/rep
 
 Metadata: web-verified (sources per paper: L4 ScienceDirect records for all three parts + the designtheory.org PBD encyclopedia; L5 ProjectEuclid + MathSciNet MR + the Osaka-U repository first-page PDF; L6 ScienceDirect + the Oxford nibble survey notes + citing papers arXiv math/9511224 and West's Illinois page). Moves: flagged-sketch summaries (L5's first page partly quoted). Zero full-text fetches. Page-range honesty: L4-III, L5, L6 page ranges NOT independently pinned and recorded as such (never guessed).
 
-(Sub-chunks 12c-12d extend this file at their own closes.)
+## Sub-chunk 12c (L7-L9) - gathered and mined 2026-10-13
+
+All 3 papers metadata-verified; moves at flagged-sketch level from publisher/author/arXiv records and standard survey material; zero paywalled fetches. HEADLINES: the SEMI-RANDOM ARC IS COMPLETE (A6 -> L6 origin -> L9 formalization -> L8 application) - CAND-A2 is now the survey's strongest P43+ case; P41's continuation lands a second time at L8 (the Existence Conjecture: divisibility is the whole story for Steiner systems); TWO new WATCH items open at the L8 origin (absorption; randomized algebraic construction).
+
+### Verification table
+
+| ID | Verified citation | Corrections vs seed |
+|----|------------------|---------------------|
+| L7 | Teirlinck, "Non-trivial t-designs without repeated blocks exist for all t", Discrete Math. 65(3): 301-311 (1987), DOI 10.1016/0012-365X(87)90061-6 | TITLE pinned (adds "without repeated blocks"; hyphenation "Non-trivial"); venue CONFIRMED; DOI pinned |
+| L8 | Keevash, "The existence of designs", arXiv:1401.3665 (v1 Jan 2014; v3 2024 on the arXiv record); Bourbaki text 1100 "DESIGNS EXIST!" (June 2015) | Journal version NOT PINNED - the seed's "J. Amer. Math. Soc." UNCONFIRMED, recorded honestly (the paper is widely cited as the arXiv, e.g. by the 2024 short-proof paper); arXiv ID and dates pinned |
+| L9 | Pippenger-Spencer, "Asymptotic behavior of the chromatic index for hypergraphs", JCTA 51(1): 24-42 (1989), DOI 10.1016/0097-3165(89)90074-5 | VENUE corrected: Ser. B (seed) -> Ser. A; title confirmed ("behavior" spelling pinned); DOI pinned |
+
+### Pattern census (sub-chunk 12c)
+
+| P-ID | Fires in | Notes |
+|------|----------|-------|
+| P11 explicit construction | L7 (flagship) | Teirlinck's explicit recursive scheme builds non-trivial SIMPLE t-designs for every t - pure build-the-object work, zero asymptotic counting; the all-t existence question settled constructively a generation before Keevash's Steiner-system theorem |
+| P4 recurrence + induction | L7 (partial) | the construction reduces t to t-1 recursively (large-set-style machinery), but the placement is explicit handwork - partial as at L1 |
+| P41 double-counting & divisibility | L8 (genuine: the Existence Conjecture's statement) | the Keevash continuation: for fixed t,k the necessary divisibility conditions are sufficient for large n (Steiner systems, lambda=1, ALL t) - the exact lambda=1 analogue of Wilson's theorem; the 19th-century existence problem settled with divisibility as the whole story |
+| P12 random construction | L8, L9 (flagships) | L9: the nibble FORMALIZED - the Pippenger-Spencer parameter-tracking framework is the canonical "nibble lemma" (near-regular small-codegree hypergraphs have chromatic index asymptotic to the degree). L8: the nibble as workhorse inside the randomized-algebraic designs proof |
+| CAND-A2 semi-random nibble (candidate) | L9 (the formalization), L8 (the application) | FOURTH/FIFTH batches: A6/A8, B4, L6 (origin, 12b), now L9 (parameter tracking made explicit and general - the method itself) and L8 (the nibble inside the designs proof). The candidate's arc is complete in-corpus: origin -> formalization -> application |
+| WATCH absorption (new) | L8 (ORIGIN firing) | the template absorbs the nibble's leftovers via pre-arranged local trades - single batch so far; external descendants confirm load-bearing status (Glock-Kuhn-Lo-Osthus iterative absorption, Mem. AMS 284 (2023); the 2024 short proof) |
+| WATCH randomized algebraic construction (new) | L8 (ORIGIN firing) | choose the random object from an algebraically structured family (random linear maps over finite fields) so the template carries guaranteed trade properties - the seed's own expected candidate at L8, executed honestly; single batch so far |
+
+### Honest hypothesis-test results (sub-chunk 12c's yield)
+
+- L7 P11 CONFIRMED (expected); P4 partial confirmed; and an honest NEGATIVE: P41 does NOT fire at L7 - Teirlinck's lambda is free, so the divisibility story is bypassed, not violated; the P41 arc runs Wilson (L4) -> Keevash (L8), with Teirlinck on a different axis (all t, unbounded lambda).
+- L8 P30 MISSED (expected by seed; direction-wrong): no regularity partition is load-bearing; the counting is handled by template + nibble + absorption. P41 CONTINUATION CONFIRMED (the Existence Conjecture's statement); P12 CONFIRMED; CAND-A2 application firing; TWO new WATCH items opened (absorption; randomized algebraic construction) - the seed's own "candidate: randomized algebraic construction" expectation executed honestly. P22 NOT credited (finite-field linear algebra, not the polynomial method - recorded under the WATCH item).
+- L9 P12 CONFIRMED (expected); CAND-A2's FORMALIZATION test PASSED (fourth batch); venue correction Ser. B -> Ser. A logged.
+
+### Lineages recorded for teaching
+
+- The SEMI-RANDOM ARC, complete: Ajtai-Komlos-Szemeredi 1981 (A6, the ancestor) -> Rodl 1985 (L6, the nibble born) -> Pippenger-Spencer 1989 (L9, formalized) -> Keevash 2014 (L8, the application to designs). Three sub-chunks of one batch close the method's origin story - the survey's cleanest engine lineage.
+- The EXISTENCE-SPECTRUM arc: Hanani L3 (small t, exact) -> Wilson L4 (fixed K, t=2, large v) -> Teirlinck L7 (all t, unbounded lambda) -> Keevash L8 (Steiner systems, all admissible large v). The 19th-century problem (per the AMS memoir's framing) ends with divisibility as the whole story.
+- Frankl-Rodl 1985 (the 12b companion record) -> L9: the single almost-perfect packing generalized to chromatic index.
+- L4 -> L8 engine contrast INSIDE the batch: Wilson's deterministic-asymptotic number theory vs Keevash's randomized-algebraic + nibble + absorption; and the Glock-Kuhn-Lo-Osthus memoir (Mem. AMS 284 (2023)) gives the pure-absorption alternative proof - an engine-contrast pair inside one theorem.
+
+### Verification levels statement (12c)
+
+Metadata: web-verified (sources per paper: L7 ScienceDirect + dblp; L8 arXiv abstract page + the author's Oxford page + the Bourbaki text 1100 + the Aperiodical Proof News post; L9 ScienceDirect + NYU Scholars + the Harvey Mudd scholarship record). Moves: flagged-sketch summaries. Zero full-text fetches. Honesty record: L8's journal version unpinned (recorded, never guessed); L7/L9 fully pinned with DOIs.
+
+(Sub-chunk 12d extends this file at its own close.)
