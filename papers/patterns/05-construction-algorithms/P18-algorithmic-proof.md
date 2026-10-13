@@ -3,7 +3,7 @@
 - Family: 05-construction-algorithms
 - Atlas one-line: The proof is a procedure; termination = theorem
 - Home chapters (Atlas): 2, 5
-- Status (through chunk 13c): Atlas-named textbook-canon pattern; in-corpus firings recorded below. Batch M: the isomorphism column M1/M2 (proof = procedure at its largest scale), the property-testing column M5/M6 (the testers), and 13c the classic-algorithms column (M7 flagship, M8 genuine, M9 partial). Batch N 14b: N6 partial (the Gale-Shapley round traces). Batch O 17a (extension corpus): O2 genuine - the LLL's first algorithmization
+- Status (through chunk 13c): Atlas-named textbook-canon pattern; in-corpus firings recorded below. Batch M: the isomorphism column M1/M2 (proof = procedure at its largest scale), the property-testing column M5/M6 (the testers), and 13c the classic-algorithms column (M7 flagship, M8 genuine, M9 partial). Batch N 14b: N6 partial (the Gale-Shapley round traces). Batch O 17a (extension corpus): O2 genuine - the LLL's first algorithmization; 17b: O4, O5 genuine (the constructive arc)
 - Migration: this dossier was machine-migrated 2026-10-13 from the batch files (the gather record and source of truth); every census row and hypothesis-test note below is QUOTED, not rewritten.
 
 ## Census rows (quoted; source = papers/BATCH-*.md)
@@ -44,6 +44,10 @@
 - Fires in: O2 (genuine)
 - Notes: Beck 1991 - the LLL's first algorithmization: the existence proof replaced by an explicit search procedure with a complexity analysis, under a stronger constant (the constant-loss datum that 17b's O4/O5 erase); the direct ancestor of A9's resampling proof.
 
+### Batch O, sub-chunk 17b (chunk 17; extension corpus - NEXT100 seeds)
+- Fires in: O4 (genuine), O5 (genuine)
+- Notes: O4 Moser 2009 - the resampling loop's termination analysis IS the theorem (A9's "the resampling proof IS the algorithm" line extends to the solo debut); O5 Kolipaka-Szegedy 2011 - the efficiency analysis up to the abstract lemma's exact Shearer boundary.
+
 ## Hypothesis-test notes (quoted; source = papers/BATCH-*.md)
 
 ### Batch M, sub-chunk 13a (chunk 13)
@@ -57,6 +61,9 @@
 
 ### Batch O, sub-chunk 17a (chunk 17)
 - O2 P18 CONFIRMED (expected by seed - "the first constructive version").
+
+### Batch O, sub-chunk 17b (chunk 17)
+- O4/O5 P18 CONFIRMED (expected by seed); the constructive arc's payoff datum: O2's constant loss erased at O4, closed at O5.
 
 ## Cross-links (interdependence)
 

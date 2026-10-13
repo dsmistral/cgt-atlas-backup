@@ -1,4 +1,4 @@
-# Pattern index (through chunk 15 - synthesis)
+# Pattern index (through chunk 17 - Batch O, extension corpus)
 
 Status wording is abbreviated here; the per-pattern files are authoritative. 'Census batches' = batches whose pattern census records a firing (partials included).
 
@@ -15,22 +15,22 @@ Status wording is abbreviated here; the per-pattern files are authoritative. 'Ce
 | P9 | Pigeonhole | 01-counting | A, F, G, H, I, K, N |
 | P10 | Averaging / expectation | 03-probability | A, B, D, G, H, I, K, L, N |
 | P11 | Explicit construction | 05-construction-algorithms | A, E, G, I, J, L |
-| P12 | Random construction | 03-probability | A, B, D, F, H, L |
+| P12 | Random construction | 03-probability | A, B, D, F, H, L, O |
 | P13 | Union bound | 03-probability | A, N |
 | P14 | Alteration | 03-probability | A |
 | P15 | Induction on vertices/edges | 02-induction-extremal | E, H, I, J |
 | P16 | Alternating paths / augmentation | 06-duality-optimization | D, E |
 | P17 | Duality (min-max) | 06-duality-optimization | D |
-| P18 | Algorithmic proof | 05-construction-algorithms | A, D, E, G, M, N |
+| P18 | Algorithmic proof | 05-construction-algorithms | A, D, E, G, M, N, O |
 | P19 | Rank / linear algebra | 07-linear-algebra-polynomial | C, F, I, J, L, M |
 | P20 | Weight shifting / symmetrization | 08-canonicalization | E |
 | P21 | Spectral / Rayleigh | 07-linear-algebra-polynomial | J |
 | P22 | Polynomial method | 07-linear-algebra-polynomial | I |
 | P23 | Compression / shifting | 08-canonicalization | I, K |
 | P24 | Shadow pricing (Kruskal-Katona) | 08-canonicalization | K |
-| P25 | Reduction / encoding | 05-construction-algorithms | B, D, E, F, G, H, L, M, N |
+| P25 | Reduction / encoding | 05-construction-algorithms | B, D, E, F, G, H, L, M, N, O |
 | P26 | Compactness (finite vs infinite) | 02-induction-extremal | F |
-| P27 | Correlation | 03-probability | - |
+| P27 | Correlation | 03-probability | O (first touch, partial - dependency-graph face; the FKG face test moves to Batch U) |
 | P28 | Concentration | 03-probability | B, N |
 | P29 | Entropy counting | 04-analytic-information | B |
 | P30 | Regularity partitioning | 09-density-structure | F, G, M |
@@ -51,10 +51,10 @@ Status wording is abbreviated here; the per-pattern files are authoritative. 'Ce
 
 | Item | Gate status | Batches |
 |------|-------------|---------|
-| CAND-A1 Lovasz Local Lemma | CROSSED | A, B |
+| CAND-A1 Lovasz Local Lemma | CROSSED; external arc gathered and COMPLETE (chunk 17) - recommendation strengthened | A, B, O |
 | CAND-A2 semi-random nibble | CROSSED + origin L6 + formalization L9 + application L8 (12c) - strongest P43+ case | A, B, L |
 | CAND-A3 threshold/window | CROSSED | A, B |
-| CAND-A4 entropy compression | NOT crossed - NO firing in M (13a-13c scanned); final in-corpus verdict; synthesis decides on the B9 external lineage | A (+ B9 lineage) |
+| CAND-A4 entropy compression | NOT crossed in-corpus (final verdict); ORIGIN FIRING found in the extension corpus (O4 Moser 2009, the debut) | A, O (origin) (+ B9/Molloy-2019 lineage) |
 | CAND-B5 hypergraph containers | synthesis call | B |
 | CAND-C1 analytic combinatorics | synthesis call | C |
 | CAND-G1 transference/dense-model | synthesis call | G |

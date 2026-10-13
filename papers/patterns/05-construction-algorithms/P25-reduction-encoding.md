@@ -3,7 +3,7 @@
 - Family: 05-construction-algorithms
 - Atlas one-line: Translate one problem into another language; the target structure carries the proof or the hardness
 - Home chapters (Atlas): 3, 10, 11
-- Status (through chunk 14a): Atlas-named textbook-canon pattern; in-corpus firings recorded below. Batch M: the isomorphism column fires it twice (M1/M2 genuine), M3 the flagship encoding, M4 the second framework firing (genuine), M5/M6 the property-testing partials, and 13c M7 partial (DFS/path encoding) + M9 genuine (the CSP classification). Batch N 14a: N2 genuine - Zhao's bipartite-swapping reduction reused as the Kahn-conjecture settlement's step 1 - see the census rows. Batch N 14b: N5 flagship genuine (the SMP <-> Sudoku translation) + N4 partial (the base-k digit encoding). Batch N 14c: N8 genuine (the homomorphism encoding) + N7 partial (the orbit reduction)
+- Status (through chunk 14a): Atlas-named textbook-canon pattern; in-corpus firings recorded below. Batch M: the isomorphism column fires it twice (M1/M2 genuine), M3 the flagship encoding, M4 the second framework firing (genuine), M5/M6 the property-testing partials, and 13c M7 partial (DFS/path encoding) + M9 genuine (the CSP classification). Batch N 14a: N2 genuine - Zhao's bipartite-swapping reduction reused as the Kahn-conjecture settlement's step 1 - see the census rows. Batch N 14b: N5 flagship genuine (the SMP <-> Sudoku translation) + N4 partial (the base-k digit encoding). Batch N 14c: N8 genuine (the homomorphism encoding) + N7 partial (the orbit reduction). Batch O 17b (extension corpus): O4 partial (the witness-tree encoding)
 - Migration: this dossier was machine-migrated 2026-10-13 from the batch files (the gather record and source of truth); every census row and hypothesis-test note below is QUOTED, not rewritten.
 
 ## Census rows (quoted; source = papers/BATCH-*.md)
@@ -60,6 +60,10 @@
 - Fires in: N8 (genuine), N7 (partial)
 - Notes: N8 - the whole-problem move: i(G) = hom(G, H_ind), c_q(G) = hom(G, K_q), the Ising/Potts partition functions as hom counts into looped/weighted H; Question 1.3 (maximize hom(G,H)^{1/|V(G)|} among d-regular G) unifies Questions 1.1-1.2. N7 - the Klein-four orbit reduction (composing every pattern with the reversal and the value-complement preserves the class structure - one representative per orbit counted) + the section-4 pattern-avoidance connection (avoiders are trivial classes; when all non-avoiders merge, class counting reduces to avoidance counting).
 
+### Batch O, sub-chunk 17b (chunk 17; extension corpus - NEXT100 seeds)
+- Fires in: O4 (partial)
+- Notes: Moser's witness trees - execution logs encoded as labeled rooted trees, the counted object that makes the entropy-compression contradiction quantitative (the encoding face of the CAND-A4 origin).
+
 ## Hypothesis-test notes (quoted; source = papers/BATCH-*.md)
 
 ### Batch M, sub-chunk 13a (chunk 13)
@@ -79,6 +83,9 @@
 
 ### Batch N, sub-chunk 14c (chunk 14)
 - N8 P25 CONFIRMED (expected by seed): the homomorphism encoding is the problem-unification move (independent sets, colorings, and statistical-mechanics partition functions as one object). N7 P25 partial confirmed UNPLANNED (the seed expected P1/P5/P23): the orbit reduction + the avoidance connection.
+
+### Batch O, sub-chunk 17b (chunk 17)
+- O4 P25 partial confirmed UNPLANNED by seed (the O4 seed row expected the CAND-A4/P13/P18 family only).
 
 ## Cross-links (interdependence)
 
