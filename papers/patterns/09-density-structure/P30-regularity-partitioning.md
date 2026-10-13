@@ -3,7 +3,7 @@
 - Family: 09-density-structure
 - Atlas one-line: Every large graph is a bounded quasirandom blow-up; refine until the noise is uniform
 - Home chapters (Atlas): 14
-- Status (through chunk 11): EXITED the silent registry (chunk 7): G1 named-lemma flagship (F6 was the birthplace - no double credit)
+- Status (through chunk 13b): EXITED the silent registry (chunk 7): G1 named-lemma flagship (F6 was the birthplace - no double credit); Batch M 13b: the designed watch-M firing - M5 genuine, M6 flagship (the subtitle names the pattern)
 - Migration: this dossier was machine-migrated 2026-10-13 from the batch files (the gather record and source of truth); every census row and hypothesis-test note below is QUOTED, not rewritten.
 
 ## Census rows (quoted; source = papers/BATCH-*.md)
@@ -16,6 +16,10 @@
 - Fires in: G1 (named-lemma flagship: the Orsay statement; F6 was the birthplace - no double credit), G5 (engine inside the (6,3) proof), G6 (limits face), G7 (algorithmic face), G10 (hypergraph flagship), G11 (host-verification layer), G12 (analyst face)
 - Notes: FIRST GENUINE USAGE EVIDENCE for silent P30 - the designed flagship batch: six faces of one pattern
 
+### Batch M, sub-chunk 13b (chunk 13)
+- Fires in: M5 (genuine), M6 (flagship)
+- Notes: THE DESIGNED-BATCH FIRING of the watch-M test: the property-testing column is regularity-powered end to end - M5: monotone testability via a regularity-based sampler (the finite forbidden-coloring characterization); M6: the title move - testability characterized by regular-reducibility, and the Szemeredi-partition property itself testable with a constant number of queries.
+
 ## Hypothesis-test notes (quoted; source = papers/BATCH-*.md)
 
 ### Batch I (chunk 9)
@@ -23,6 +27,9 @@
 
 ### Batch M, sub-chunk 13a (chunk 13)
 - M2 P30 MISSED (expected by seed; direction-wrong): no regularity partition is load-bearing in Babai's GI proof; the Design Lemma's combinatorial regularization outputs hereditary quasirandomness or a canonical Johnson-type structure (UPC configurations) - quasirandomness as an OUTPUT property, not the Szemeredi machinery (mirrors the L8 miss).
+
+### Batch M, sub-chunk 13b (chunk 13)
+- M5/M6 P30 CONFIRMED (both expected by seed - the designed watch-M firing; M6 flagship: the subtitle IS the pattern).
 
 ## Cross-links (interdependence)
 

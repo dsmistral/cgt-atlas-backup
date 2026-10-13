@@ -3,7 +3,7 @@
 - Family: 07-linear-algebra-polynomial
 - Atlas one-line: Encode sets as vectors; dimension bounds
 - Home chapters (Atlas): 6
-- Status (through chunk 13a): Atlas-named (Ch. 6). First genuine in-corpus firings at chunk 9 (I3/I4/I10/I11) after the H3/H10 hypothesis misses; second batch J4 (minrank); third batch L2 Bruck-Ryser (12a); FOURTH batch L11 MacWilliams (12d, genuine - character orthogonality), with L10/L12 partials; FIFTH batch touch M3 Razborov flag algebras (13a, partial - the sum-of-squares/Cauchy-Schwarz positivity engine). The L5 seed row is a CONFIRMED DUPLICATE of I3 (12b) - no double credit; see the 12b hypothesis note
+- Status (through chunk 13a): Atlas-named (Ch. 6). First genuine in-corpus firings at chunk 9 (I3/I4/I10/I11) after the H3/H10 hypothesis misses; second batch J4 (minrank); third batch L2 Bruck-Ryser (12a); FOURTH batch L11 MacWilliams (12d, genuine - character orthogonality), with L10/L12 partials; FIFTH batch touch M3 Razborov flag algebras (13a, partial), the same partial face repeating at M4 (13b) - the sum-of-squares/Cauchy-Schwarz positivity engine. The L5 seed row is a CONFIRMED DUPLICATE of I3 (12b) - no double credit; see the 12b hypothesis note
 - Migration: this dossier was machine-migrated 2026-10-13 from the batch files (the gather record and source of truth); every census row and hypothesis-test note below is QUOTED, not rewritten.
 
 ## Census rows (quoted; source = papers/BATCH-*.md)
@@ -35,6 +35,10 @@
 ### Batch M, sub-chunk 13a (chunk 13)
 - Fires in: M3 (partial)
 - Notes: the flag algebra's sum-of-squares positivity lives in the inner-product algebra of the flag vector space - Cauchy-Schwarz as the framework's fundamental inequality; a fifth-batch touch (C4/F5, I, J, L2/L11, now M3 partial).
+
+### Batch M, sub-chunk 13b (chunk 13)
+- Fires in: M4 (partial)
+- Notes: the sum-of-squares/Cauchy-Schwarz engine inside the flag-algebra proof of the triangle-density formula - the same partial face as at M3.
 
 ## Hypothesis-test notes (quoted; source = papers/BATCH-*.md)
 

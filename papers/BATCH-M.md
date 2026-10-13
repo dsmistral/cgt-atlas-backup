@@ -5,7 +5,7 @@ Chunk 13 under work style v2: three sub-chunks of three papers, each pushed as i
 | Sub-chunk | Papers | Status |
 |-----------|--------|--------|
 | 13a | M1 Luks; M2 Babai; M3 Razborov flag algebras | DONE (section below) |
-| 13b | M4 Razborov triangle density; M5 Alon-Shapira; M6 Alon-Fischer-Newman-Shapira | PENDING |
+| 13b | M4 Razborov triangle density; M5 Alon-Shapira; M6 Alon-Fischer-Newman-Shapira | DONE (section below) |
 | 13c | M7 Hopcroft-Tarjan; M8 Kruskal MST; M9 Grohe | PENDING |
 
 ## Sub-chunk 13a (M1-M3) - gathered and mined 2026-10-13
@@ -51,4 +51,45 @@ All 3 papers metadata-verified; moves at flagged-sketch level from publisher/aut
 
 Metadata: web-verified (sources per paper: M1 ScienceDirect + the author's open Oregon PDF + the ADS record; M2 the arXiv abstract page + the author's Chicago publications page (DOI/pages) + the ICALP 2020 and SIAM J. Comput. citing bibliographies + Babai's own "update, January 9, 2017" note + the Aperiodical/Quanta timeline; M3 Project Euclid + Cambridge Core + the Bulletin of Symbolic Logic review). Moves: flagged-sketch summaries. Zero full-text fetches. Honesty record: M2's journal version unpinned (recorded, never guessed); M1/M3 fully pinned.
 
-(13b and 13c pending; file extended at each sub-chunk close.)
+(13c pending; file extended at each sub-chunk close.)
+
+## Sub-chunk 13b (M4-M6) - gathered and mined 2026-10-13
+
+All 3 papers metadata-verified; moves at flagged-sketch level from publisher records, the author's research pages, and standard survey material; zero paywalled fetches. HEADLINES: the flag-algebras WATCH lands its second firing at M4 - but both firings are within Batch M (the cross-batch recurrence test cannot be satisfied in-corpus; the synthesis call mirrors the CAND-B5 single-batch precedent); P30's designed watch-M firing LANDS in the property-testing column (M5 genuine + M6 flagship - the subtitle IS the pattern).
+
+### Verification table
+
+| ID | Verified citation | Corrections vs seed |
+|----|------------------|---------------------|
+| M4 | Razborov, "On the minimal density of triangles in graphs", Combin. Probab. Comput. 17(4): 603-618 (2008) | VENUE CORRECTED: Algebra i Analiz (seed) -> CP&C; vol/issue/pages pinned (Cambridge Core + the author's research page; the author's verification Maple worksheet noted) |
+| M5 | Alon-Shapira, "Every monotone graph property is testable", SIAM J. Comput. 38(2): 505-522 (2008); STOC 2005 preliminary | Title/venue/year CONFIRMED; vol(2)/pages pinned (the Princeton record + the M6 bibliography); the conference-version priority noted |
+| M6 | Alon-Fischer-Newman-Shapira, "A combinatorial characterization of the testable graph properties: It's all about regularity", SIAM J. Comput. 39(1): 143-167 (2009); STOC'06 preliminary | SUBTITLE pinned; vol/issue/pages pinned (two bibliographies agreeing); year CONFIRMED |
+
+### Pattern census (sub-chunk 13b)
+
+| P-ID | Fires in | Notes |
+|------|----------|-------|
+| P30 regularity partitioning | M5 (genuine), M6 (flagship) | THE DESIGNED-BATCH FIRING: the property-testing column is regularity-powered end to end - M5: monotone testability via a regularity-based sampler (the finite forbidden-coloring characterization); M6: the title move - testability characterized by regular-reducibility, and the Szemeredi-partition property itself testable with a constant number of queries |
+| P25 reduction / encoding | M4 (genuine), M5 (partial), M6 (partial) | M4: the flag-algebra encoding again (the framework's second in-corpus firing). M5/M6 partials: the finite forbidden-coloring encoding (M5); the regularity-profile encoding (M6) |
+| P18 algorithmic proof | M5, M6 (genuine) | the property-testing column: the randomized tester IS the procedure - constant queries decide the property |
+| P19 rank / linear algebra | M4 (partial) | the sum-of-squares/Cauchy-Schwarz engine inside the triangle-density proof - the same partial face as at M3 |
+| P37 duality | M4 (partial) | the SDP certificates carry the triangle-density inequality - the same partial face as at M3; the Delsarte-LP lineage's density-era descendant repeats |
+| WATCH flag algebras | M4 (SECOND firing) | the calculus's landmark application (the explicit piecewise formula for g3(rho)); both firings within batch M - the cross-batch test cannot be satisfied in-corpus; the synthesis call mirrors the CAND-B5 single-batch precedent |
+
+### Honest hypothesis-test results (sub-chunk 13b's yield)
+
+- M4 P25 CONFIRMED (expected by seed); P19/P37 partials confirmed (unplanned, same faces as at M3); the flag-algebras WATCH second firing recorded with the single-batch caveat (extend-never-guess: no cross-batch credit claimed).
+- M5 P30 CONFIRMED (expected by seed, genuine); P18 genuine + P25 partial confirmed (unplanned).
+- M6 P30 CONFIRMED (expected by seed, FLAGSHIP - the subtitle names the pattern); P18 genuine + P25 partial confirmed (unplanned).
+- CAND-A4 entropy compression, WATCH Boolean influence, WATCH spread induction: NOT fired at 13b (no plausible firing in the flag-algebra or property-testing engines); final in-corpus chance 13c.
+
+### Lineages recorded for teaching
+
+- M3 -> M4: the origin-to-application arc inside one batch, complete - the flag-algebra calculus's landmark theorem; the external descendants carry the load-bearing story (the K_r clique-density program completed by Reiher's theorem; the pentagons-in-triangle-free-graphs line; Hatami's inequality-complexity framework) - recorded in the WATCH dossier.
+- M5 -> M6: monotone testability as the special case feeding the combinatorial characterization; the sibling Alon-Shapira one-sided-error paper (SIAM J. Comput. 37 (2008): 1703-1727) is the companion record - the pair splits the characterization problem by error model, mirroring the Assmus-Mattson companion precedent.
+- G7 -> M5/M6: the "regularity as algorithmic data" face that Frieze-Kannan opened in Batch G is realized here - the P30 family's algorithmic face, six batches later (cross-batch family continuity: F birthplace -> G flagship -> M application era).
+- H5 -> M4: the triangle-density formula refines the supersaturation story - the exact boundary curve between the classic extremal era (Turan/Erdos-Stone, G2/H) and the modern density era.
+
+### Verification levels statement (13b)
+
+Metadata: web-verified (sources per paper: M4 Cambridge Core + the author's research page; M5 the Princeton research record + the M6 bibliography + citing papers; M6 two independent bibliographies (DROPS; Theory of Computing) agreeing on 39(1):143-167). Moves: flagged-sketch summaries. Zero full-text fetches. All three papers fully pinned (title + venue + vol/pages + year).

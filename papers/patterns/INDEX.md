@@ -1,4 +1,4 @@
-# Pattern index (through chunk 13a)
+# Pattern index (through chunk 13b)
 
 Status wording is abbreviated here; the per-pattern files are authoritative. 'Census batches' = batches whose pattern census records a firing (partials included).
 
@@ -33,7 +33,7 @@ Status wording is abbreviated here; the per-pattern files are authoritative. 'Ce
 | P27 | Correlation | 03-probability | - |
 | P28 | Concentration | 03-probability | B |
 | P29 | Entropy counting | 04-analytic-information | B |
-| P30 | Regularity partitioning | 09-density-structure | F, G |
+| P30 | Regularity partitioning | 09-density-structure | F, G, M |
 | P31 | Counting-removal | 09-density-structure | G |
 | P32 | Stability | 08-canonicalization | G |
 | P33 | Density increment | 09-density-structure | F |
@@ -66,7 +66,7 @@ Status wording is abbreviated here; the per-pattern files are authoritative. 'Ce
 | WATCH slice rank | synthesis call (face of P19/P22) | I |
 | WATCH absorption | WATCH - L8 origin (12c), needs 2nd batch | L |
 | WATCH randomized algebraic construction | WATCH - L8 origin (12c), needs 2nd batch | L |
-| WATCH flag algebras | WATCH - M3 origin (13a); built-in 2nd-batch test at M4 (13b) | M |
+| WATCH flag algebras | WATCH - M3 origin + M4 second firing, both within batch M; cross-batch test impossible in-corpus - synthesis call (mirrors CAND-B5 precedent) | M |
 | WATCH Luks-framework group recursion | WATCH - M1 origin + M2 second firing (13a); NO Atlas P-ID (coverage-gap engine) | M |
 
 Ledger note: P39 carries a FLAGGED LEDGER DISCREPANCY (batch-C census fires it at C1/C7; the running STATE.md silent-registry ledger never recorded its exit) - reconcile at synthesis.
@@ -80,3 +80,5 @@ Ledger note: P39 carries a FLAGGED LEDGER DISCREPANCY (batch-C census fires it a
 12d note (2026-10-13) - BATCH L COMPLETE: P42 EXITS the silent registry at its designed home L10 (Assmus-Mattson - the origin paper: few dual weights => each weight class carries a t-design; the Golay code's weight classes recover the Witt designs; the 12a L1 miss vindicated). P19 fourth-batch firing at L11 MacWilliams (genuine), partials at L10/L12. Honest miss: L12 P40 (engine = classical invariant theory - a coverage gap for synthesis). Silent registry after Batch L: P27, P35, P36 (+ P20 under-used). See the dossiers and BATCH-L.md.
 
 13a note (2026-10-13): the isomorphism column M1 -> M2 fires ONE engine twice (the Luks framework: permutation-group recursion on bounded simple sections) - opened as a WATCH item because it matches NO Atlas pattern (a coverage-gap engine with two in-corpus firings in one sub-chunk). THREE more honest seed misses logged: M1 P19 (group theory, not rank bounds) and M2 P8 AND P30 (the Design Lemma's split-or-Johnson dichotomy, not extremal analysis or regularity partitions). M3 opens the flag-algebras WATCH at its origin, with the M4 second-batch test pending (13b). P25 fires in all three papers; P18 twice; P4 (M1 partial, M2 genuine); P19/P37 partials at M3 (the Delsarte-LP lineage's density-era descendant). See the dossiers and BATCH-M.md.
+
+13b note (2026-10-13): P30's designed watch-M firing LANDS - M5 Alon-Shapira (genuine) + M6 AFNS (flagship; the subtitle IS the pattern: "It's all about regularity"; SIAM J. Comput. 39(1): 143-167 (2009)). The flag-algebras WATCH fires a second time at M4 (Razborov's triangle-density theorem; venue corrected Algebra i Analiz -> CP&C 17(4): 603-618 (2008)) - both firings within batch M; the cross-batch test cannot be satisfied in-corpus (synthesis call mirrors CAND-B5). P18 fires twice more (the testers ARE the procedures); P25 three times (M4 genuine; M5/M6 partials); P19/P37 repeat their M3 partial faces at M4. CAND-A4 / Boolean influence / spread induction: not fired; final chance 13c. See the dossiers and BATCH-M.md.
