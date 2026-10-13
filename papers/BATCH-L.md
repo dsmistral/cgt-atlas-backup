@@ -7,7 +7,7 @@ Chunk 12 under work style v2: four sub-chunks of three papers, each pushed as it
 | 12a | L1 Witt; L2 Bruck-Ryser; L3 Hanani | DONE (sections below) |
 | 12b | L4 Wilson; L5 Ray-Chaudhuri-Wilson; L6 Rodl | DONE (sections below) |
 | 12c | L7 Teirlinck; L8 Keevash; L9 Pippenger-Spencer | DONE (sections below) |
-| 12d | L10 Assmus-Mattson; L11 MacWilliams; L12 Gleason | PENDING |
+| 12d | L10 Assmus-Mattson; L11 MacWilliams; L12 Gleason | DONE (sections below) |
 
 ## Sub-chunk 12a (L1-L3) - gathered and mined 2026-10-13
 
@@ -131,4 +131,42 @@ All 3 papers metadata-verified; moves at flagged-sketch level from publisher/aut
 
 Metadata: web-verified (sources per paper: L7 ScienceDirect + dblp; L8 arXiv abstract page + the author's Oxford page + the Bourbaki text 1100 + the Aperiodical Proof News post; L9 ScienceDirect + NYU Scholars + the Harvey Mudd scholarship record). Moves: flagged-sketch summaries. Zero full-text fetches. Honesty record: L8's journal version unpinned (recorded, never guessed); L7/L9 fully pinned with DOIs.
 
-(Sub-chunk 12d extends this file at its own close.)
+## Sub-chunk 12d (L10-L12) - gathered and mined 2026-10-13 - BATCH L COMPLETE
+
+All 3 papers metadata-verified; moves at flagged-sketch level from publisher records, the Clemson bibliography, the Celebratio Mathematica record, and survey literature; zero paywalled fetches. HEADLINE: P42 words-as-designs EXITS the silent registry AT ITS DESIGNED HOME - L10 is the engine's origin paper, and the retrospective Golay -> Witt arc recorded at 12a lands. Batch L closes with both designed-home exits (P41 at 12a, P42 at 12d).
+
+### Verification table
+
+| ID | Verified citation | Corrections vs seed |
+|----|------------------|---------------------|
+| L10 | Assmus-Mattson, "Error-correcting codes: An axiomatic approach", Inform. and Control 6: 315-330 (1963), ScienceDirect pii S0019995863800108 | TITLE PINNED (the seed's "Error-correcting codes and designs" was a paraphrase); venue + pages pinned (ScienceDirect + the Clemson bibliography) |
+| L11 | MacWilliams, "A theorem on the distribution of weights in a systematic code", Bell System Tech. J. 42(1): 79-94 (1963), DOI 10.1002/j.1538-7305.1963.tb04003.x | Title/venue/year CONFIRMED as seeded; vol/issue/pages/DOI pinned; the 1962 Harvard-thesis priority noted |
+| L12 | Gleason, "Weight polynomials of self-dual codes and the MacWilliams identities", Actes du Congres International des Mathematiciens (Nice 1970), vol. 3: 211-215, Gauthier-Villars (1971) | VENUE PINNED (per the Celebratio Mathematica bibliography - the ICM 1970 Nice proceedings vol. 3); seed year 1971 confirmed as the publication year, congress year 1970 recorded |
+
+### Pattern census (sub-chunk 12d)
+
+| P-ID | Fires in | Notes |
+|------|----------|-------|
+| P42 words-as-designs | L10 (flagship: the designed home - the ORIGIN paper), L11 (partial) | THE DESIGNED-HOME HARVEST: P42 exits the silent registry in its origin paper - the Assmus-Mattson criterion (few dual weights => each weight class carries a t-design); the Golay code's weight classes recover the Witt designs S(5,8,24) / S(4,7,23) - the retrospective Golay -> Witt arc recorded at 12a, now landed. L11 partial: the MacWilliams transform is the bookkeeping the criterion reads off |
+| P19 rank / linear algebra | L11 (genuine), L10 (partial), L12 (partial) | L11: the MacWilliams identity is proven via additive-character orthogonality - a fourth batch firing (I, J, L2, L11). L10 partial: character sums under the weight-class argument. L12 partial: the invariant-ring argument - representation-theoretic linear algebra, the family's broadest sibling |
+| P40 Mobius inversion | (no firing - honest miss at L12) | direction-wrong: Gleason's engine is CLASSICAL INVARIANT THEORY (finite matrix groups, Molien-type counting) - no Mobius inversion in the argument; a genuine Atlas-coverage gap for the chunk-14 synthesis (the second in Batch L, after Wilson's PBD-closure number theory) |
+
+### Honest hypothesis-test results (sub-chunk 12d's yield)
+
+- L10 P42 CONFIRMED (expected - the designed home, the origin paper); the 12a honest miss at L1 is vindicated as a direction miss: Witt's route was designs -> groups, and the engine's home was here all along, exactly as the 12a lineage planned.
+- L11 P19 CONFIRMED (expected - the identity IS linear algebra in character dress); P42 partial confirmed.
+- L12 P19 partial confirmed; P40 MISSED (expected by seed; direction-wrong) - the engine is classical invariant theory, an honest Atlas-coverage gap for synthesis.
+- P41 does not fire in the codes trio (no divisibility move; no expectation either) - the batch's P41 story closed at 12b/12c.
+
+### Lineages recorded for teaching
+
+- L11 -> L10 (same year, 1963): the MacWilliams identities are the tool the Assmus-Mattson criterion reads off the dual weight enumerator.
+- L10 -> L1 (retrospective, now landed): the Witt designs recovered from the Golay code's weight classes - the P42 engine's flagship arc (Golay -> Witt), retrospective for Witt's 1938 hand construction; the companion "Perfect codes and the Mathieu groups" (Arch. Math. 17 (1966)) carries the arc to the Mathieu groups.
+- L11/L12 -> I11 Delsarte: the weight enumerator becomes the objective data of the association-scheme LP - the P19/LP lineage from I11 completes.
+- L12 -> modern: the Gleason-theorem generalizations via invariant theory (per the survey literature) - the engine's descendants outside the corpus.
+
+### Verification levels statement (12d)
+
+Metadata: web-verified (sources per paper: L10 ScienceDirect + the Clemson Assmus bibliography; L11 Wiley DOI record + the Internet Archive scan + the Resonance survey; L12 the Celebratio Mathematica curated bibliography). Moves: flagged-sketch summaries (L11's abstract partly quoted). Zero full-text fetches. All three papers fully pinned (title + venue + pages + year); the only unpinned items in Batch L remain the 12b page-ranges and the L8 journal version, all recorded honestly at their gathers.
+
+(Batch L complete: all four sub-chunks gathered and mined. File closed 2026-10-13.)

@@ -3,7 +3,7 @@
 - Family: 07-linear-algebra-polynomial
 - Atlas one-line: Encode sets as vectors; dimension bounds
 - Home chapters (Atlas): 6
-- Status (through chunk 11): Atlas-named (Ch. 6). First genuine in-corpus firings at chunk 9 (I3/I4/I10/I11) after the H3/H10 hypothesis misses; second batch J4 (minrank); third batch L2 Bruck-Ryser (12a). The L5 seed row is a CONFIRMED DUPLICATE of I3 (12b) - no double credit; see the 12b hypothesis note
+- Status (through chunk 12d): Atlas-named (Ch. 6). First genuine in-corpus firings at chunk 9 (I3/I4/I10/I11) after the H3/H10 hypothesis misses; second batch J4 (minrank); third batch L2 Bruck-Ryser (12a); FOURTH batch L11 MacWilliams (12d, genuine - character orthogonality), with L10/L12 partials. The L5 seed row is a CONFIRMED DUPLICATE of I3 (12b) - no double credit; see the 12b hypothesis note
 - Migration: this dossier was machine-migrated 2026-10-13 from the batch files (the gather record and source of truth); every census row and hypothesis-test note below is QUOTED, not rewritten.
 
 ## Census rows (quoted; source = papers/BATCH-*.md)
@@ -28,6 +28,10 @@
 - Fires in: L2
 - Notes: L2 Bruck-Ryser: the incidence-matrix identity NN^T = nI + J and the determinant/quadratic-form integrality argument - the matrix algebra is the engine of the nonexistence theorem. A THIRD BATCH firing for P19 (batch I: I3/I4/I10/I11; batch J: J4).
 
+### Batch L, sub-chunk 12d (chunk 12)
+- Fires in: L11 (genuine), L10 (partial), L12 (partial)
+- Notes: L11: the MacWilliams identity is proven via additive-character orthogonality - a fourth batch firing (I, J, L2, L11). L10 partial: character sums under the Assmus-Mattson weight-class argument. L12 partial: the invariant-ring argument - representation-theoretic linear algebra, the family's broadest sibling.
+
 ## Hypothesis-test notes (quoted; source = papers/BATCH-*.md)
 
 ### Batch I (chunk 9)
@@ -50,6 +54,9 @@
 
 ### Batch L, sub-chunk 12b (chunk 12)
 - L5 == I3 DUPLICATE (confirmed at gather, as the seed instructed): the seed's L5 row ("1971 t-designs existence bound") is the same Osaka 1975 "On t-designs" paper already censused at I3 - P19's first genuine firing. P19 credit stays at I3; the L5 gather records the year correction (1971 -> 1975) and flags the corpus distinct-count (126 -> 125) for the chunk-14 synthesis.
+
+### Batch L, sub-chunk 12d (chunk 12)
+- L11 P19 CONFIRMED (expected - the identity IS linear algebra in character dress); L10/L12 partials recorded. The I11 Delsarte LP lineage completes: the weight enumerator becomes the LP's objective data.
 
 ## Cross-links (interdependence)
 

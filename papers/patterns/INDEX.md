@@ -1,4 +1,4 @@
-# Pattern index (through chunk 12c)
+# Pattern index (through chunk 12d)
 
 Status wording is abbreviated here; the per-pattern files are authoritative. 'Census batches' = batches whose pattern census records a firing (partials included).
 
@@ -45,7 +45,7 @@ Status wording is abbreviated here; the per-pattern files are authoritative. 'Ce
 | P39 | Symmetry averaging | 11-symmetry-designs-codes | C |
 | P40 | Mobius inversion | 11-symmetry-designs-codes | C |
 | P41 | Double-counting & divisibility | 11-symmetry-designs-codes | L |
-| P42 | Words-as-designs | 11-symmetry-designs-codes | - |
+| P42 | Words-as-designs | 11-symmetry-designs-codes | L |
 
 ## Candidates and watch-items
 
@@ -74,3 +74,5 @@ Ledger note: P39 carries a FLAGGED LEDGER DISCREPANCY (batch-C census fires it a
 12b note (2026-10-13): CAND-A2 origin paper landed - L6 Rodl (the nibble born; third batch A/B/L). P41 continuation at L4 (the existence conjecture: divisibility is the whole story asymptotically); P11 flagship at L4; P12 flagship at L6 with a P10 partial. L5 CONFIRMED DUPLICATE of I3 (year corrected 1971 -> 1975; corpus distinct count 126 -> 125 - synthesis flag). L4 P24 MISSED (seed direction-wrong). See the dossiers and BATCH-L.md.
 
 12c note (2026-10-13): the semi-random arc COMPLETE - CAND-A2 origin (L6) + formalization (L9 Pippenger-Spencer, venue corrected Ser. B -> Ser. A) + application (L8 Keevash); promotion to P43+ recommended at synthesis. P41 continuation at L8 (the Existence Conjecture); P11 flagship + P4 partial at L7 Teirlinck (title pinned; venue confirmed). TWO new WATCH items opened at the L8 origin: absorption; randomized algebraic construction (the seed's own candidate expectation executed). Honest misses: L8 P30 (no regularity partition load-bearing); honest negative: L7 P41 (lambda free). See the dossiers and BATCH-L.md.
+
+12d note (2026-10-13) - BATCH L COMPLETE: P42 EXITS the silent registry at its designed home L10 (Assmus-Mattson - the origin paper: few dual weights => each weight class carries a t-design; the Golay code's weight classes recover the Witt designs; the 12a L1 miss vindicated). P19 fourth-batch firing at L11 MacWilliams (genuine), partials at L10/L12. Honest miss: L12 P40 (engine = classical invariant theory - a coverage gap for synthesis). Silent registry after Batch L: P27, P35, P36 (+ P20 under-used). See the dossiers and BATCH-L.md.
