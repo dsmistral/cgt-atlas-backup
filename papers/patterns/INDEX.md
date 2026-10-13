@@ -1,25 +1,25 @@
-# Pattern index (through chunk 23 - Batch U, extension corpus)
+# Pattern index (through chunk 24 - Batch V, extension corpus)
 
 Status wording is abbreviated here; the per-pattern files are authoritative. 'Census batches' = batches whose pattern census records a firing (partials included).
 
 | P-ID | Pattern | Family | Census batches |
 |------|---------|--------|----------------|
-| P1 | Bijection | 01-counting | C, N, U |
-| P2 | Double counting | 01-counting | H, L, N |
+| P1 | Bijection | 01-counting | C, N, U, V |
+| P2 | Double counting | 01-counting | H, L, N, V |
 | P3 | Inclusion-exclusion | 01-counting | N (first firing) |
-| P4 | Recurrence + induction | 02-induction-extremal | A, C, D, F, G, H, I, L, M, N |
+| P4 | Recurrence + induction | 02-induction-extremal | A, C, D, F, G, H, I, L, M, N, V |
 | P5 | Generating function | 04-analytic-information | C, E, Q |
 | P6 | Complement / reflection | 01-counting | U (exit at 23b: U4 the designed home - the ballot-problem origin, with the honest attribution note; U5 scanned, not credited) |
 | P7 | Parity & handshaking | 01-counting | D, N |
 | P8 | Longest-path / extremal | 02-induction-extremal | D, E, F, H, I |
-| P9 | Pigeonhole | 01-counting | A, F, G, H, I, K, N |
+| P9 | Pigeonhole | 01-counting | A, F, G, H, I, K, N, V |
 | P10 | Averaging / expectation | 03-probability | A, B, D, G, H, I, K, L, N, P |
 | P11 | Explicit construction | 05-construction-algorithms | A, E, G, I, J, L |
 | P12 | Random construction | 03-probability | A, B, D, F, H, L, O, S |
 | P13 | Union bound | 03-probability | A, N |
 | P14 | Alteration | 03-probability | A |
 | P15 | Induction on vertices/edges | 02-induction-extremal | E, H, I, J |
-| P16 | Alternating paths / augmentation | 06-duality-optimization | D, E |
+| P16 | Alternating paths / augmentation | 06-duality-optimization | D, E, V |
 | P17 | Duality (min-max) | 06-duality-optimization | D |
 | P18 | Algorithmic proof | 05-construction-algorithms | A, D, E, G, M, N, O, T |
 | P19 | Rank / linear algebra | 07-linear-algebra-polynomial | C, F, I, J, L, M, R |
@@ -28,7 +28,7 @@ Status wording is abbreviated here; the per-pattern files are authoritative. 'Ce
 | P22 | Polynomial method | 07-linear-algebra-polynomial | I |
 | P23 | Compression / shifting | 08-canonicalization | I, K |
 | P24 | Shadow pricing (Kruskal-Katona) | 08-canonicalization | K |
-| P25 | Reduction / encoding | 05-construction-algorithms | B, D, E, F, G, H, L, M, N, O, P, R, T |
+| P25 | Reduction / encoding | 05-construction-algorithms | B, D, E, F, G, H, L, M, N, O, P, R, T, V |
 | P26 | Compactness (finite vs infinite) | 02-induction-extremal | F |
 | P27 | Correlation | 03-probability | O (first touch, partial - dependency-graph face), U (exit at 23a: U1 the FKG origin flagship, U2 the combinatorial face, U3 the disjoint-occurrence face) |
 | P28 | Concentration | 03-probability | B, N |
@@ -42,7 +42,7 @@ Status wording is abbreviated here; the per-pattern files are authoritative. 'Ce
 | P36 | Discharging | 10-graph-structure | T (exit at the designed repair batch: T1 flagship, T2/T3, T4 human-scale) |
 | P37 | Duality | 06-duality-optimization | E, H, I, J, M, R |
 | P38 | Replication | 10-graph-structure | H |
-| P39 | Symmetry averaging | 11-symmetry-designs-codes | C |
+| P39 | Symmetry averaging | 11-symmetry-designs-codes | C, V |
 | P40 | Mobius inversion | 11-symmetry-designs-codes | C |
 | P41 | Double-counting & divisibility | 11-symmetry-designs-codes | L, S |
 | P42 | Words-as-designs | 11-symmetry-designs-codes | L |
@@ -61,7 +61,7 @@ Status wording is abbreviated here; the per-pattern files are authoritative. 'Ce
 | WATCH Boolean influence | no firing in M; synthesis call on B3 alone | B |
 | WATCH spread induction | no firing in M; synthesis call on B6 alone | B |
 | WATCH sign-reversing involution | synthesis call | C |
-| WATCH Kempe-chain recoloring | REOPENED in the extension corpus (chunk 22: genuine at T2/T3 - the reducibility engine of both computer proofs; T4 scanned at 22b, not credited - the H11 precedent; origin-lineage test in Batch V) | E, T |
+| WATCH Kempe-chain recoloring | REOPENED in the extension corpus (chunk 22: genuine at T2/T3 - the reducibility engine of both computer proofs; T4 scanned at 22b, not credited - the H11 precedent; chunk 24: the origin-lineage test LANDS - V2 Kempe 1879 a GENUINE ORIGIN FIRING, the chain-swap engine IS the 1879 proof's central device; V4 Heawood scanned, not credited; V5 Birkhoff partial, the diamond's ring-colouring reducibility) | E, T, V |
 | WATCH monovariant/potential | synthesis call | D, G |
 | WATCH slice rank | synthesis call (face of P19/P22) | I |
 | WATCH absorption | CROSSED in the extension corpus (chunk 21: S1 the named-engine monograph + S2 the distributive face + S3 the resolvable-decomposition flagship + S4 the STS downstream; batches L + S) - promotion to the user-approved Atlas session | L, S |
@@ -117,3 +117,7 @@ Batch T (discharging and tree-decomposition DP, extension corpus, NEXT100 seeds)
 ## Note 23 (chunk 23 - Batch U, 2026-10-13)
 
 Batch U (correlation inequalities and the reflection principle, extension corpus, NEXT100 seeds) COMPLETE 5/5 in two sub-chunks (23a: fa686243; 23b: pinned at the next push per protocol). BOTH designed tests landed at their designed homes: P27 (correlation) EXITS the silent registry at 23a - U1 the FKG origin flagship (the Atlas one-line IS the theorem), U2 the four-functions combinatorial master, U3 the BK disjoint-occurrence face (the opposite-sign ceiling recorded honestly); P6 (complement / reflection) EXITS THE ZERO-FIRING REGISTRY at 23b - U4 the ballot-problem origin, the pattern's Atlas one-line IS the proof's structure, and the exit EMPTIES THE FULLY-SILENT REGISTRY: after chunk 23 every Atlas pattern has fired somewhere in the survey or the extension corpus (four extension exits: P36, P35, P27, P6 - the chunk-15 usage-datum reading vindicated a fourth time). Honest notes: Andre's own engine is the first-tie-swap bijection (P1 partial unplanned; the geometric "reflection" is the later textbook repackaging - the Renault misattribution study); U5 scanned for P6 and NOT credited (the noncrossing adjacency is the modern Dyck bijections, not the 1972 paper's engine); P1 partial also at U5 (the Kreweras complement, the self-duality anti-isomorphism); the U5 seed correction logged (the seed conflated the 1965 integer-partition-lattice paper with the 1972 noncrossing origin - the designed target gathered). Census: P27 genuine at U1/U2/U3; P6 genuine at U4; P1 partial at U4/U5. Remaining open calls: P20's under-use and the WATCH items (the Kempe origin-lineage test arrives in Batch V). See papers/BATCH-U.md.
+
+## Note 24 (chunk 24 - Batch V, 2026-10-13)
+
+Batch V (pre-1960 foundations, extension corpus, NEXT100 seeds) COMPLETE 15/15 in three sub-chunks (24a: da893f34; 24b: d7ef48c4; 24c: pinned at the next push per protocol). HEADLINES: (1) THE WATCH-KEMPE ORIGIN-LINEAGE TEST LANDS at 24a - V2 Kempe 1879 a GENUINE ORIGIN FIRING (the chain-swap engine IS the 1879 proof's central device; the fallacy elsewhere - Heawood's two-chain interference); V5 Birkhoff partial (the diamond's ring-colouring reducibility); V4 Heawood scanned, not credited - the watch's arc origin-anchored: E-batch presentation level -> T2/T3 genuine at scale -> V2 genuine at the origin (1879-1977); the promotion call stays with the user-approved Atlas session. (2) P39's TRUE ORIGIN anchored at 24b - V6 Redfield 1927, a decade before Polya 1937, neglected until Littlewood 1950/Harary 1960; the P39 line gathered end-to-end (V6 origin -> C1 rediscovery -> C7 two-group generalization); the neglect datum recorded for teaching (Redfield, Flye Sainte-Marie). (3) THE P16 ORIGIN QUARTET COMPLETES at 24c: Petersen (V3, 1891), Menger (V7, 1927), Hall (V8, 1935), Tutte (V15, 1947) - the augmentation family's existence theorems all born before the augmenting-path engine (the D-batch firings own the engine). (4) THE J2 LINEAGE'S ORIGIN at 24c: V14 Shannon 1956 (the venue corrected to the IRE Transactions record IT-2(3) September 1956 8-19) founds zero-error information theory with the confusability-graph encoding (P25 partial, the V10 object-vs-engine precedent), exhibits the pentagon's five two-letter words (the sqrt(5) achievability), and leaves the upper bound open - solved by the corpus's J2 (Lovasz 1979, theta(C5) = sqrt(5)). Other census: P9 genuine at V11 Dilworth (the antichain bottleneck IS the theorem; Mirsky's 1971 dual uncorpus'd); P4 genuine + P1 partial at V12 Redei (the insertion induction; the parity-pairing face - every tournament has an ODD number of Hamiltonian paths, the stronger-statement datum per the Milestones-related revisiting literature); P25 partial at V13 Kuratowski (the forbidden-subdivision reduction - two canonical obstructions; the M7 planarity test's theorem-level ancestor; the Frink-Smith independent proof never published); V9 Whitney recorded as a coverage-gap engine (the matroid abstraction; no P-ID fires; Y7's ancestor). Seed corrections: three, all at 24c (V12 the Redei spelling; V14 Shannon title + venue; V15 the two-Tutte-1947-papers conflation resolved per the U5 precedent - the designed 1-factor target "The Factorization of Linear Graphs" JLMS s1-22(2) 107-111 gathered, "A ring in graph theory" the dichromate companion, uncorpus'd). Citation figures remain seed ESTIMATES (the 2026-10-13 API incident, SOURCES.md section 6). Next: chunk 25 = Batch W - 1950-1990 classics (12 papers: Gale-Shapley; Hoffman-Singleton; Gomory-Hu; Graham-Pollak; Gerencser-Gyarfas; Mirsky; Erdos-Selfridge; Erdos-Renyi 1961 connectivity; Tutte 1961 n-factor; Seymour regular matroids; Bregman permanents; Edmonds matching polyhedron).

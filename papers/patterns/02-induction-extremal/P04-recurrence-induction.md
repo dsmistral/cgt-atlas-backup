@@ -3,7 +3,7 @@
 - Family: 02-induction-extremal
 - Atlas one-line: Relate case n to smaller cases
 - Home chapters (Atlas): 1, 2, 3
-- Status (through chunk 14c): Atlas-named textbook-canon pattern; in-corpus firings recorded below. Batch M 13a: the isomorphism column's recursions (M1 partial composition-series divide-and-conquer; M2 genuine aggregate-consumption). Batch N 14a: N2 genuine - the freshman-level independent-set recursion at a maximum-degree vertex is the Kahn-conjecture proof's skeleton (the accessibility datum). Batch N 14b: N4 genuine (the chip-firing paper's spine) + N5 genuine (the soulmate-removal induction). Batch N 14c: N7 genuine (the class-count recurrences) + N8 genuine (the strengthened list-coloring induction on |V(G)|). Batch V 24a: V2 partial (the minimal-counterexample induction frame) + V5 partial (the reducibility concept institutionalizing it)
+- Status (through chunk 14c): Atlas-named textbook-canon pattern; in-corpus firings recorded below. Batch M 13a: the isomorphism column's recursions (M1 partial composition-series divide-and-conquer; M2 genuine aggregate-consumption). Batch N 14a: N2 genuine - the freshman-level independent-set recursion at a maximum-degree vertex is the Kahn-conjecture proof's skeleton (the accessibility datum). Batch N 14b: N4 genuine (the chip-firing paper's spine) + N5 genuine (the soulmate-removal induction). Batch N 14c: N7 genuine (the class-count recurrences) + N8 genuine (the strengthened list-coloring induction on |V(G)|). Batch V 24a: V2 partial (the minimal-counterexample induction frame) + V5 partial (the reducibility concept institutionalizing it). Batch V 24c: V12 genuine (the tournament insertion induction - the parity classic's spine)
 - Migration: this dossier was machine-migrated 2026-10-13 from the batch files (the gather record and source of truth); every census row and hypothesis-test note below is QUOTED, not rewritten.
 
 ## Census rows (quoted; source = papers/BATCH-*.md)
@@ -64,6 +64,10 @@
 - Fires in: V2 (partial), V5 (partial)
 - Notes: V2 - the minimal-counterexample frame: remove a low-degree region from a smallest five-chromatic map and extend the colouring (the extension step fails - Heawood's two-chain interference - but the frame survives into every later proof of the saga). V5 - reducibility institutionalized: a configuration is reducible if no minimal counterexample can contain it, proved by ring analysis - the minimal-counterexample frame made into the reducibility half of the eventual computer proofs (unavoidability the other half)
 
+### Batch V, sub-chunk 24c (chunk 24; extension corpus - NEXT100 seeds)
+- Fires in: V12 (genuine)
+- Notes: the insertion induction - a new vertex slots into a Hamiltonian path of the preceding subtournament; the parity refinement's spine and the proof every standard treatment of Redei's theorem runs (the odd-count statement: every tournament has an ODD number of directed Hamiltonian paths)
+
 ## Hypothesis-test notes (quoted; source = papers/BATCH-*.md)
 
 ### Batch I (chunk 9)
@@ -92,6 +96,9 @@
 
 ### Batch V, sub-chunk 24a (chunk 24)
 - V2/V5 P4 partials UNPLANNED by seed (the NEXT100 rows targeted the Kempe-watch and reducibility lineage, not a P-ID census): the induction frame is the four-colour saga's skeleton from its 1879 origin
+
+### Batch V, sub-chunk 24c (chunk 24)
+- V12 P4 genuine CONFIRMED (expected by seed as "an induction classic"): the founding-century induction classic - the tournament insertion argument at its 1934 origin
 
 ## Cross-links (interdependence)
 
