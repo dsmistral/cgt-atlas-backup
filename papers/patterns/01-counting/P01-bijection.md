@@ -3,7 +3,7 @@
 - Family: 01-counting
 - Atlas one-line: Count A by matching it 1-to-1 with a set B you can count
 - Home chapters (Atlas): 1, 2
-- Status (through chunk 14c): Atlas-named textbook-canon pattern; in-corpus firings recorded below. Batch N 14b: N6 genuine (the joint-profiles count) + N5 partial (the key-function bijective structure). Batch N 14c: N7 genuine (the pattern-replacement class enumerations matched to counted structures) Batch U 23b: U4 partial (Andre's first-tie-swap bijection - the actual engine behind the reflection name) + U5 partial (the Kreweras complement, the noncrossing lattice's self-duality anti-isomorphism)
+- Status (through chunk 14c): Atlas-named textbook-canon pattern; in-corpus firings recorded below. Batch N 14b: N6 genuine (the joint-profiles count) + N5 partial (the key-function bijective structure). Batch N 14c: N7 genuine (the pattern-replacement class enumerations matched to counted structures) Batch U 23b: U4 partial (Andre's first-tie-swap bijection - the actual engine behind the reflection name) + U5 partial (the Kreweras complement, the noncrossing lattice's self-duality anti-isomorphism). Batch V 24a: V1 partial (the tree-counting origin; the Prufer bijection face retrospective)
 - Migration: this dossier was machine-migrated 2026-10-13 from the batch files (the gather record and source of truth); every census row and hypothesis-test note below is QUOTED, not rewritten.
 
 ## Census rows (quoted; source = papers/BATCH-*.md)
@@ -24,6 +24,10 @@
 - Fires in: U4 (partial), U5 (partial)
 - Notes: U4: the explicit first-tie-swap bijection matching the two unfavourable ballot-sequence cases - Andre's own engine (the geometric "reflection" of the textbook canon is this bijection's repackaging; see the P6 dossier's attribution note); U5: the Kreweras complement - the noncrossing partition lattice's self-duality anti-isomorphism, the 1972 origin's structural move
 
+### Batch V, sub-chunk 24a (chunk 24; extension corpus - NEXT100 seeds)
+- Fires in: V1 (partial)
+- Notes: the labelled-tree count's origin - Cayley states n^(n-2) with the degree-refined multinomial extension, crediting Borchardt; the note's own argument is a flagged sketch and the bijection face arrives with Prufer 1918 (uncorpus'd, retrospective) - the census credits the counting origin, not a bijective engine
+
 ## Hypothesis-test notes (quoted; source = papers/BATCH-*.md)
 
 ### Batch N, sub-chunk 14b (chunk 14)
@@ -34,6 +38,9 @@
 
 ### Batch U, sub-chunk 23b (chunk 23)
 - U4/U5 P1 partials UNPLANNED by seed (the NEXT100 rows expected P6's reflection family at U4 and the reflection-adjacent lattice at U5): the bijection is the origin's actual engine at U4 and the lattice's structural move at U5
+
+### Batch V, sub-chunk 24a (chunk 24)
+- V1 P1 partial CONFIRMED (expected by seed as the "Prufer-adjacent flagship" - the counting origin): the honest split - the count originates at V1, the bijection engine is Prufer's 1918 form; Borchardt 1860's determinant first-discovery recorded as uncorpus'd lineage
 
 ## Cross-links (interdependence)
 

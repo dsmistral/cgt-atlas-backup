@@ -3,7 +3,7 @@
 - Family: 01-counting
 - Atlas one-line: Count the same set two ways; equate
 - Home chapters (Atlas): 1, 2, 3
-- Status (through chunk 14a): Atlas-named textbook-canon pattern; in-corpus firings recorded below. Batch N 14a: N3 partial (the injective sumset identity). Batch N 14b: N4 partial (the chip-flow accounting identity) + N6 partial (staged products + the (n^2)! encoding bound)
+- Status (through chunk 14a): Atlas-named textbook-canon pattern; in-corpus firings recorded below. Batch N 14a: N3 partial (the injective sumset identity). Batch N 14b: N4 partial (the chip-flow accounting identity) + N6 partial (staged products + the (n^2)! encoding bound). Batch V 24a: V4 partial (the Heawood bound's Euler-formula counting)
 - Migration: this dossier was machine-migrated 2026-10-13 from the batch files (the gather record and source of truth); every census row and hypothesis-test note below is QUOTED, not rewritten.
 
 ## Census rows (quoted; source = papers/BATCH-*.md)
@@ -24,6 +24,10 @@
 - Fires in: N4 (partial), N6 (partial)
 - Notes: N4: Lemma 4.1's chip-flow accounting identity (chips sent to children = descendant chips + k x child fires - the same flow counted two ways) and Theorem 5.1's total-fires double-sum re-indexing. N6: the staged product decompositions (choose pairs, match, complete) and the (n^2)! encoding bound of Proposition 3.
 
+### Batch V, sub-chunk 24a (chunk 24; extension corpus - NEXT100 seeds)
+- Fires in: V4 (partial)
+- Notes: the Heawood bound's Euler-formula counting - the vertex/edge/face counts combined through the Euler characteristic deliver the genus-to-colours bound (floor((7 + sqrt(1 + 48g))/2) for genus g > 0); double counting in Euler-formula clothes
+
 ## Hypothesis-test notes (quoted; source = papers/BATCH-*.md)
 
 ### Batch N, sub-chunk 14a (chunk 14)
@@ -31,6 +35,9 @@
 
 ### Batch N, sub-chunk 14b (chunk 14)
 - N6 P2 partial confirmed (expected by seed as the double counting of matchings); N4 P2 partial confirmed UNPLANNED: the accounting and staged-counting faces of the freshman canon, at the middle-school level.
+
+### Batch V, sub-chunk 24a (chunk 24)
+- V4 P2 partial UNPLANNED by seed (the NEXT100 row targeted the Heawood bound and the T-batch ancestor role, not a P-ID census): the bound is a counting argument in Euler-formula clothes
 
 ## Cross-links (interdependence)
 

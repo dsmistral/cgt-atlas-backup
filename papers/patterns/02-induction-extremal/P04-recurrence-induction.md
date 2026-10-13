@@ -3,7 +3,7 @@
 - Family: 02-induction-extremal
 - Atlas one-line: Relate case n to smaller cases
 - Home chapters (Atlas): 1, 2, 3
-- Status (through chunk 14c): Atlas-named textbook-canon pattern; in-corpus firings recorded below. Batch M 13a: the isomorphism column's recursions (M1 partial composition-series divide-and-conquer; M2 genuine aggregate-consumption). Batch N 14a: N2 genuine - the freshman-level independent-set recursion at a maximum-degree vertex is the Kahn-conjecture proof's skeleton (the accessibility datum). Batch N 14b: N4 genuine (the chip-firing paper's spine) + N5 genuine (the soulmate-removal induction). Batch N 14c: N7 genuine (the class-count recurrences) + N8 genuine (the strengthened list-coloring induction on |V(G)|)
+- Status (through chunk 14c): Atlas-named textbook-canon pattern; in-corpus firings recorded below. Batch M 13a: the isomorphism column's recursions (M1 partial composition-series divide-and-conquer; M2 genuine aggregate-consumption). Batch N 14a: N2 genuine - the freshman-level independent-set recursion at a maximum-degree vertex is the Kahn-conjecture proof's skeleton (the accessibility datum). Batch N 14b: N4 genuine (the chip-firing paper's spine) + N5 genuine (the soulmate-removal induction). Batch N 14c: N7 genuine (the class-count recurrences) + N8 genuine (the strengthened list-coloring induction on |V(G)|). Batch V 24a: V2 partial (the minimal-counterexample induction frame) + V5 partial (the reducibility concept institutionalizing it)
 - Migration: this dossier was machine-migrated 2026-10-13 from the batch files (the gather record and source of truth); every census row and hypothesis-test note below is QUOTED, not rewritten.
 
 ## Census rows (quoted; source = papers/BATCH-*.md)
@@ -60,6 +60,10 @@
 - Fires in: N7 (genuine), N8 (genuine)
 - Notes: N7 - the class-count recurrences for the cases with no clean closed form: f(n) = f(n-1) + (n-2) f(n-2) + 1 ({123,132,312}), f(n) = f(n-1) + (n-1) f(n-2) ({123,132}{213,312}), and the two-parameter recursion g(n,k) (a three-fold case analysis with a binomial double-sum interior) summed as f(n) = sum_k g(n+1,k) + n - 2 ({123,231}{213,312}). N8 - induction on the number of vertices of G under a STRENGTHENED hypothesis (the list-coloring form, Theorem 4.1; the C6/K3 toy calculation conditioning on the leftmost vertex's color; the dimension-reduction step) - the strengthening is the load-bearing move (the P15 induction-on-vertices form noted, no double credit).
 
+### Batch V, sub-chunk 24a (chunk 24; extension corpus - NEXT100 seeds)
+- Fires in: V2 (partial), V5 (partial)
+- Notes: V2 - the minimal-counterexample frame: remove a low-degree region from a smallest five-chromatic map and extend the colouring (the extension step fails - Heawood's two-chain interference - but the frame survives into every later proof of the saga). V5 - reducibility institutionalized: a configuration is reducible if no minimal counterexample can contain it, proved by ring analysis - the minimal-counterexample frame made into the reducibility half of the eventual computer proofs (unavoidability the other half)
+
 ## Hypothesis-test notes (quoted; source = papers/BATCH-*.md)
 
 ### Batch I (chunk 9)
@@ -85,6 +89,9 @@
 
 ### Batch N, sub-chunk 14c (chunk 14)
 - N7 P4 confirmed UNPLANNED (the seed expected P1/P5/P23); N8 P4 confirmed UNPLANNED (the seed expected P10/P25/P30/P31): the strengthened-induction move carries the reverse-Sidorenko proof's skeleton.
+
+### Batch V, sub-chunk 24a (chunk 24)
+- V2/V5 P4 partials UNPLANNED by seed (the NEXT100 rows targeted the Kempe-watch and reducibility lineage, not a P-ID census): the induction frame is the four-colour saga's skeleton from its 1879 origin
 
 ## Cross-links (interdependence)
 
