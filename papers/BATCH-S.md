@@ -5,7 +5,7 @@ Chunk 21 under work style v2: two sub-chunks (21a S1-S2; 21b S3-S4), each pushed
 | Sub-chunk | Papers | Status |
 |-----------|--------|--------|
 | 21a | S1 Glock-Kuhn-Lo-Osthus iterative absorption; S2 Montgomery spanning trees | DONE (section below) |
-| 21b | S3 Glock-Joos resolvable designs; S4 Kwan Steiner triple systems perfect matchings | PENDING |
+| 21b | S3 Glock-Joos resolvable designs; S4 Kwan Steiner triple systems perfect matchings | DONE (section below) |
 
 ## Sub-chunk 21a (S1-S2) - gathered and mined 2026-10-13
 
@@ -34,3 +34,31 @@ Both papers metadata-verified (sources recorded per paper); ONE SEED CORRECTION 
 - S2's threshold datum: the universality threshold at the anticipated optimal order log n/n (Kahn's conjecture confirmed; the single-tree lower bounds) - a P44 cross-note, no census row (the O5 precedent).
 - S2's pre-history: Montgomery 2014 (arXiv:1405.6559, "Embedding bounded degree spanning trees in random graphs", G(n, Delta log^5 n/n)) - the gap closed from log^5 to log by the new framework.
 - The absorption family's faces, now plural in-corpus: L8 the randomized-algebraic template; S1 the iterative cascade; S2 the distributive reservoirs - the WATCH's shape line holds, the faces differ per engine.
+
+## Sub-chunk 21b (S3-S4) - gathered and mined 2026-10-13
+
+Both papers metadata-verified (sources recorded per paper); TWO SEED CORRECTIONS (S3 title/venue - the seed's own resolvable-designs target confirmed via the journal's keywords; S4 title/venue/year - logged below); moves at flagged-sketch level; zero paywalled fetches; no full texts needed under the scope rule (the EMS Press record, the Wiley/arXiv abstract pages and the open arXiv HTML carry the pattern decisions). HEADLINE: the batch closes with the WATCH's two designed faces landing - S3 the resolvable-decomposition application (the Oberwolfach problem resolved for all large n) and S4 the STS downstream (almost all Steiner triple systems have perfect matchings) - THE TWO-BATCH LOAD-BEARING GATE (batches L + S) IS CROSSED IN-SURVEY AND CLOSED; the chunk-15 external-evidence-only recommendation is superseded by the in-survey crossing; the promotion decision belongs to the user-approved Atlas session.
+
+### Verification table
+
+| ID | Verified citation | Corrections vs seed |
+|----|------------------|---------------------|
+| S3 | Glock, Joos, Kim, Kuhn, Osthus, "Resolution of the Oberwolfach problem", J. Eur. Math. Soc. 23(8) (2021) 2511-2547, DOI 10.4171/JEMS/1060 (the EMS Press record - submitted 19 June 2018, accepted 9 February 2021, published 31 March 2021, open access, keywords "Decompositions, resolvable designs, 2-factors, cycles"; arXiv:1806.04644; the Birmingham research portal) | TITLE AND VENUE CORRECTED: the seed said "Glock-Joos (2018/20) Existence of resolvable designs (verify), J. Combin. Theory Ser. A (verify)". No paper titled "Existence of resolvable designs" by Glock-Joos was found (searched 2026-10-13); the verified paper is the five-author Oberwolfach resolution - the EMS record's own keywords name "resolvable designs", the arXiv posting is June 2018 (the seed's "2018" anchor) and the journal form is 2021. The seed's title fragment resolves to the COMPANION line (Keevash's designs II - the actual "resolvable designs" existence framework, arXiv-only), recorded below per the R2 seed-swap precedent (logged, never silent; the companion gets no census credit) |
+| S4 | Kwan, "Almost all Steiner triple systems have perfect matchings", Proc. London Math. Soc. 121(5) (2020) 1468-1495, DOI 10.1112/plms.12373 (the Wiley record pinning "Kwan, M. (2020), Proc. London Math. Soc., 121: 1468-1495"; the arXiv abstract page 1611.02246 - v1 November 2016, v5 June 2020) | TITLE, VENUE AND YEAR CORRECTED: the seed said "Kwan (2018/20) Nearly all Steiner triple systems have perfect matchings (verify), J. Eur. Math. Soc. (verify)". Verified: the title is "Almost all..." (not "Nearly all..."); the venue is PLMS (not JEMS); the arXiv v1 is November 2016 (the seed's "2018" has no anchor) with the journal form 2020 |
+
+### Pattern census (sub-chunk 21b)
+
+| P-ID | Fires in | Notes |
+|------|----------|-------|
+| WATCH absorption | S3 (genuine, the resolvable-decomposition application), S4 (genuine, the STS downstream) | S3: the chunk-15 call's absorption-application face - the Oberwolfach problem resolved for all large n via approximate decomposition (the Alon-Yuster nibble-based matching argument + the Condon-Kim-Kuhn-Osthus bandwidth theorem) then an absorption procedure keyed on a very special case of Keevash's resolvable-designs result; the Hamilton-Waterloo problem resolved as a corollary; S4: the absorbing structure with a flexible set (Lemma 5.5 in the arXiv PDF, flagged-sketch) - the random-STS downstream |
+| P12 | S3 (partial), S4 (genuine) | S3: the nibble-family approximate-decomposition machinery (Alon-Yuster via Pippenger-Spencer; machinery-level, mirroring the S1 partial note, the CAND-A2 adjacency); S4: the random-structure comparison theorem - a uniformly random STS compared to the outcome of the triangle removal process; the almost-all statement IS existence-by-sampling at measure one |
+| P41 | S4 (partial) | the divisibility-boundary face: divisibility by 3 is the necessary condition for a parallel class and delimits the theorem's whole range (all n divisible by 3); framing-level credit, no divisibility machinery |
+| P42 | S4 (honest miss) | the seed row expected the "P41/P42 family"; no words-as-designs face at abstract level - a direction miss, recorded per the L1 precedent |
+
+### Engine contrast and lineage (sub-chunk 21b; BATCH S closes)
+
+- The resolvability arc inside the batch: S3's resolvable decompositions (the Oberwolfach problem - copies of one 2-factor partitioning K_2n+1) and S4's single-class case (a perfect matching = one parallel class; the Ferber-Kwan companion "Almost all Steiner triple systems are almost resolvable", Forum Math. Sigma 8 (2020) e39, recorded per the Assmus-Mattson precedent - the almost-full-resolution case). One class (S4) -> almost all classes (the companion) -> all classes for one factor type (S3).
+- The S3 companion datum: Keevash, "The existence of designs II", arXiv:1802.05900 (2018) - the subset-sums-in-lattices framework whose Baranyai-type generalisations are the actual "resolvable designs" existence results (resolvable hypergraph designs, large sets, decompositions of designs by designs); STILL A PREPRINT per the author's own publication list (checked 2026-10-13); the S3 absorption procedure consumes its very special case. Lineage context: designs I (the corpus's L8) was accepted by Annals of Mathematics (10 July 2026, the Annals record).
+- The three-layer S3 engine stack (flagged sketch, the paper's own introduction): approximate decomposition via the nibble (Alon-Yuster) + the bandwidth theorem (Condon-Kim-Kuhn-Osthus), then absorption consuming Keevash's resolvable-designs special case - the modern decomposition template the S1 monograph named.
+- Honest misses: S3 P11 (seed-expected "explicit construction"; the proof is an approximate-then-absorb existence argument, no explicit-construction face); S4 P42 (above).
+- The absorption family's faces, batch-closed: L8 the randomized-algebraic template; S1 the iterative cascade; S2 the distributive reservoirs; S3 the decomposition-application flagship; S4 the random-structure downstream - the WATCH's shape line holds across all five.

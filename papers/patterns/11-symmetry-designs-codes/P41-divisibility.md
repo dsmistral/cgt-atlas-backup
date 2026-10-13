@@ -3,7 +3,7 @@
 - Family: 11-symmetry-designs-codes
 - Atlas one-line: Integrality of the replication numbers r and lambda is a design's birth certificate: non-integral parameters forbid existence before any search
 - Home chapters (Atlas): 16
-- Status (through chunk 21a): EXITED the silent registry (sub-chunk 12a, the designed home): L2 flagship (the Bruck-Ryser origin paper - arithmetic forbids existence before any search), L3 genuine (admissibility shown SUFFICIENT - the converse direction), L1 partial (admissibility checks inside Witt's construction); L4 continuation (sub-chunk 12b): the existence conjecture itself - divisibility becomes the WHOLE story asymptotically; L8 continuation (sub-chunk 12c): the Existence Conjecture - divisibility is the whole story for Steiner systems (lambda=1, all t); S1 continuation (chunk 21a, extension corpus): the GKLO monograph - divisibility SUFFICIENT for arbitrary F
+- Status (through chunk 21b): EXITED the silent registry (sub-chunk 12a, the designed home): L2 flagship (the Bruck-Ryser origin paper - arithmetic forbids existence before any search), L3 genuine (admissibility shown SUFFICIENT - the converse direction), L1 partial (admissibility checks inside Witt's construction); L4 continuation (sub-chunk 12b): the existence conjecture itself - divisibility becomes the WHOLE story asymptotically; L8 continuation (sub-chunk 12c): the Existence Conjecture - divisibility is the whole story for Steiner systems (lambda=1, all t); S1 continuation (chunk 21a, extension corpus): the GKLO monograph - divisibility SUFFICIENT for arbitrary F; S4 partial (chunk 21b, extension corpus): the divisibility boundary delimits the STS perfect-matching range
 - Migration: this dossier was machine-migrated 2026-10-13 from the batch files (the gather record and source of truth); every census row and hypothesis-test note below is QUOTED, not rewritten.
 
 ## Census rows (quoted; source = papers/BATCH-*.md)
@@ -25,6 +25,10 @@
 - Fires in: S1 (genuine)
 - Notes: the GKLO continuation - the abstract's own statement: the trivially necessary divisibility conditions are SUFFICIENT for a decomposition into edge-disjoint copies of any given r-uniform hypergraph F, answering a question of Keevash; the L4 -> L8 -> S1 arc extends divisibility-is-the-whole-story beyond fixed (t,k) to arbitrary hypergraphs (the monograph's host side: the supercomplexes - typical or large-minimum-degree hosts, per Keevash's designsII description)
 
+### Batch S, sub-chunk 21b (chunk 21; extension corpus - NEXT100 seeds)
+- Fires in: S4 (partial)
+- Notes: the divisibility-boundary face at the random-structures setting: a parallel class needs divisibility by 3, and the S4 theorem's range is exactly all divisible orders ("for any n divisible by 3, almost all order-n STS have a perfect matching"); framing-level credit - no divisibility machinery, the birth certificate read off the statement's boundary
+
 ## Hypothesis-test notes (quoted; source = papers/BATCH-*.md)
 
 ### Batch L, sub-chunk 12a (chunk 12)
@@ -40,6 +44,9 @@
 
 ### Batch S, sub-chunk 21a (chunk 21)
 - S1 P41 CONTINUATION CONFIRMED (per the L4 -> L8 lineage plan, now out-of-batch): the F-designs statement is the birth-certificate pattern's sufficiency face at full generality - the monograph's own headline.
+
+### Batch S, sub-chunk 21b (chunk 21)
+- S4 P41 partial confirmed UNPLANNED (the seed row's "P41/P42 family" expectation: the P41 face lands framing-level - the divisibility boundary respected, not overcome; the P42 face MISSED, no words-as-designs evidence at abstract level - a direction miss recorded per the L1 precedent).
 
 ## Cross-links (interdependence)
 

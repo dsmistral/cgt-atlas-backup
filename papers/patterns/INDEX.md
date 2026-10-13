@@ -1,4 +1,4 @@
-# Pattern index (through chunk 20 - Batch R, extension corpus)
+# Pattern index (through chunk 21 - Batch S, extension corpus)
 
 Status wording is abbreviated here; the per-pattern files are authoritative. 'Census batches' = batches whose pattern census records a firing (partials included).
 
@@ -15,7 +15,7 @@ Status wording is abbreviated here; the per-pattern files are authoritative. 'Ce
 | P9 | Pigeonhole | 01-counting | A, F, G, H, I, K, N |
 | P10 | Averaging / expectation | 03-probability | A, B, D, G, H, I, K, L, N, P |
 | P11 | Explicit construction | 05-construction-algorithms | A, E, G, I, J, L |
-| P12 | Random construction | 03-probability | A, B, D, F, H, L, O |
+| P12 | Random construction | 03-probability | A, B, D, F, H, L, O, S |
 | P13 | Union bound | 03-probability | A, N |
 | P14 | Alteration | 03-probability | A |
 | P15 | Induction on vertices/edges | 02-induction-extremal | E, H, I, J |
@@ -44,7 +44,7 @@ Status wording is abbreviated here; the per-pattern files are authoritative. 'Ce
 | P38 | Replication | 10-graph-structure | H |
 | P39 | Symmetry averaging | 11-symmetry-designs-codes | C |
 | P40 | Mobius inversion | 11-symmetry-designs-codes | C |
-| P41 | Double-counting & divisibility | 11-symmetry-designs-codes | L |
+| P41 | Double-counting & divisibility | 11-symmetry-designs-codes | L, S |
 | P42 | Words-as-designs | 11-symmetry-designs-codes | L |
 
 ## Candidates and watch-items
@@ -64,7 +64,7 @@ Status wording is abbreviated here; the per-pattern files are authoritative. 'Ce
 | WATCH Kempe-chain recoloring | likely dies at synthesis | E |
 | WATCH monovariant/potential | synthesis call | D, G |
 | WATCH slice rank | synthesis call (face of P19/P22) | I |
-| WATCH absorption | WATCH - L8 origin (12c), needs 2nd batch | L |
+| WATCH absorption | CROSSED in the extension corpus (chunk 21: S1 the named-engine monograph + S2 the distributive face + S3 the resolvable-decomposition flagship + S4 the STS downstream; batches L + S) - promotion to the user-approved Atlas session | L, S |
 | WATCH randomized algebraic construction | WATCH - L8 origin (12c), needs 2nd batch | L |
 | WATCH flag algebras | CROSSED in the extension corpus (chunk 20: the R1 program-completing flagship + R2 undecidability boundary + R3 pentagons line; R4 the honest miss - the graph-limits companion; batches M + R) - promotion to the user-approved Atlas session | M, R |
 | WATCH Luks-framework group recursion | WATCH - M1 origin + M2 second firing (13a); NO Atlas P-ID (coverage-gap engine) | M |
@@ -105,3 +105,7 @@ CAND-C1 analytic combinatorics CROSSES the two-batch load-bearing gate in the ex
 ## Note 20 (chunk 20 - Batch R, 2026-10-13)
 
 WATCH flag algebras CROSSES the two-batch load-bearing gate in the extension corpus: the "descendants decide" arc gathered complete - R1 Reiher 2016 (the K_r density program COMPLETED for all r; Ann. of Math. 184(3): 683-707 - the chunk-15 call's named centerpiece), R2 Hatami-Norine 2011 (the DECIDABILITY BOUNDARY: linear homomorphism-density inequality validity undecidable; J. Amer. Math. Soc. 24(2): 547-565 - the honest META firing, about the calculus), R3 Grzesik 2012 (the PENTAGONS LINE: Erdos's 1984 conjecture settled, at most (n/5)^5 five-cycles in a triangle-free graph; JCTB 102(5): 1061-1066, title/venue corrected at gather - with the independent HHKNR companion, JCTA 120(3): 722-732, recorded without double credit), R4 Borgs-Chayes-Lovasz-Sos-Vesztergombi 2006 (the HONEST MISS: the graph-limits companion - the homomorphism-counting language, not the calculus; the Topics in Discrete Mathematics chapter, Algorithms Combin. 26: 315-371, venue/year corrected at gather). The chunk-15 external-evidence-only recommendation is superseded by the in-survey crossing (batches M + R: the M3 origin + M4 triangle landmark + the R1/R2/R3 descendants); the promotion decision (and the P43+ numbering question, joining CAND-B5 and CAND-C1) belongs to the user-approved Atlas session. Census: P25 genuine at R1/R2/R3/R4 (the translation move at the extremal, meta, encoding and framework levels); P19/P37 partials at R1 (the SOS/SDP machinery faces); coverage observations: the Matiyasevich reduction (R2) and the graph-limits framework (R4) match no Atlas P-ID (single firings, not WATCH items). Seed corrections batch-wide: the R2 SEED SWAP (the conflated "Hatami-Hatami (2024)" row resolved to Hatami-Norine + the Zhao companion), R3 title/venue, R4 venue/year. See papers/BATCH-R.md.
+
+## Note 21 (chunk 21 - Batch S, 2026-10-13)
+
+Batch S (absorption, extension corpus, NEXT100 seeds) COMPLETE 4/4 in two sub-chunks (21a: be3a7354; 21b: pinned at the 22a push per protocol). WATCH absorption's two-batch load-bearing gate CROSSED IN-SURVEY and CLOSED (batches L + S): L8 the randomized-algebraic template origin; S1 the named-engine designs monograph (Mem. Amer. Math. Soc. 284(1406) (2023) - the seed's Invent. Math. venue corrected); S2 the distributive face born here (Adv. Math. 356 (2019), Kahn's conjecture confirmed); S3 the resolvable-decomposition flagship (Glock-Joos-Kim-Kuhn-Osthus, J. Eur. Math. Soc. 23(8) (2021) 2511-2547 - the seed's "Existence of resolvable designs / JCTA" title and venue corrected; Ringel's Oberwolfach problem resolved for all large n, Hamilton-Waterloo as a corollary; the Keevash designs II companion recorded per the R2 seed-swap precedent, arXiv-only per the author's own list); S4 the STS downstream (Kwan, Proc. London Math. Soc. 121(5) (2020) 1468-1495 - the seed's "Nearly all / JEMS" title, venue and year corrected; almost all order-n Steiner triple systems have a perfect matching for any n divisible by 3; the Ferber-Kwan almost-resolvable companion recorded per the Assmus-Mattson precedent). Census: P41 genuine at S1 + partial at S4 (the divisibility-boundary face); P12 partial at S1/S3 (the nibble-family machinery) + genuine at S2/S4 (existence-by-sampling); honest misses: S3 P11 (seed-expected), S4 P42 (seed-expected, a direction miss per the L1 precedent). The promotion decision (and the P43+ numbering question, joining CAND-B5, CAND-C1 and WATCH flag algebras) belongs to the user-approved Atlas session. See papers/BATCH-S.md.
