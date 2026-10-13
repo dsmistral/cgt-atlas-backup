@@ -3,7 +3,7 @@
 - Family: 01-counting
 - Atlas one-line: n+1 objects, n boxes
 - Home chapters (Atlas): 3
-- Status (through chunk 14a): Atlas-named textbook-canon pattern; in-corpus firings recorded below. Batch N 14a: N2 honest miss (expected by seed)
+- Status (through chunk 14a): Atlas-named textbook-canon pattern; in-corpus firings recorded below. Batch N 14a: N2 honest miss (expected by seed). Batch N 14b: N5 genuine (the key-function pigeonhole)
 - Migration: this dossier was machine-migrated 2026-10-13 from the batch files (the gather record and source of truth); every census row and hypothesis-test note below is QUOTED, not rewritten.
 
 ## Census rows (quoted; source = papers/BATCH-*.md)
@@ -32,6 +32,10 @@
 - Fires in: K1, K5
 - Notes: Erdos's antichain map to Sperner (the L-O lemma); Bollobas's permutation double counting (disjoint events of probability 1/C(a+b,a))
 
+### Batch N, sub-chunk 14b (chunk 14)
+- Fires in: N5 (genuine)
+- Notes: Proposition 2 - if the key function repeated a value, men would be ranked j at least 2n times, forcing a man ranked j by two women; the pigeonhole contradiction proves the key is a bijection (the structural step under the N6 counting content).
+
 ## Hypothesis-test notes (quoted; source = papers/BATCH-*.md)
 
 ### Batch K (chunk 11)
@@ -42,6 +46,9 @@
 
 ### Batch N, sub-chunk 14a (chunk 14)
 - N2 P9 MISSED (expected by seed): no pigeonhole move is load-bearing in the Kahn-conjecture settlement - the double-cover counting content is the injection recorded under P25.
+
+### Batch N, sub-chunk 14b (chunk 14)
+- N5 P9 CONFIRMED (expected by seed): the 2n-into-n pigeonhole at the heart of the Sudoku-SMP correspondence.
 
 ## Cross-links (interdependence)
 

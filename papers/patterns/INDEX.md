@@ -1,18 +1,18 @@
-# Pattern index (through chunk 14a)
+# Pattern index (through chunk 14b)
 
 Status wording is abbreviated here; the per-pattern files are authoritative. 'Census batches' = batches whose pattern census records a firing (partials included).
 
 | P-ID | Pattern | Family | Census batches |
 |------|---------|--------|----------------|
-| P1 | Bijection | 01-counting | C |
+| P1 | Bijection | 01-counting | C, N |
 | P2 | Double counting | 01-counting | H, L, N |
-| P3 | Inclusion-exclusion | 01-counting | - |
+| P3 | Inclusion-exclusion | 01-counting | N (first firing) |
 | P4 | Recurrence + induction | 02-induction-extremal | A, C, D, F, G, H, I, L, M, N |
 | P5 | Generating function | 04-analytic-information | C, E |
 | P6 | Complement / reflection | 01-counting | - |
-| P7 | Parity & handshaking | 01-counting | D |
+| P7 | Parity & handshaking | 01-counting | D, N |
 | P8 | Longest-path / extremal | 02-induction-extremal | D, E, F, H, I |
-| P9 | Pigeonhole | 01-counting | A, F, G, H, I, K |
+| P9 | Pigeonhole | 01-counting | A, F, G, H, I, K, N |
 | P10 | Averaging / expectation | 03-probability | A, B, D, G, H, I, K, L, N |
 | P11 | Explicit construction | 05-construction-algorithms | A, E, G, I, J, L |
 | P12 | Random construction | 03-probability | A, B, D, F, H, L |
@@ -21,7 +21,7 @@ Status wording is abbreviated here; the per-pattern files are authoritative. 'Ce
 | P15 | Induction on vertices/edges | 02-induction-extremal | E, H, I, J |
 | P16 | Alternating paths / augmentation | 06-duality-optimization | D, E |
 | P17 | Duality (min-max) | 06-duality-optimization | D |
-| P18 | Algorithmic proof | 05-construction-algorithms | A, D, E, G, M |
+| P18 | Algorithmic proof | 05-construction-algorithms | A, D, E, G, M, N |
 | P19 | Rank / linear algebra | 07-linear-algebra-polynomial | C, F, I, J, L, M |
 | P20 | Weight shifting / symmetrization | 08-canonicalization | E |
 | P21 | Spectral / Rayleigh | 07-linear-algebra-polynomial | J |
@@ -86,3 +86,5 @@ Ledger note: P39 carries a FLAGGED LEDGER DISCREPANCY (batch-C census fires it a
 13c note (2026-10-13) - BATCH M COMPLETE: P35 records its FIRST in-corpus touch (M9 Grohe, partial - DP over tree decompositions on the tractability side; standard-tool credit; the registry entry stays open). M7 Hopcroft-Tarjan (J. ACM 21(4):549-568 (1974)) fires P18 flagship + P25 partial (the DFS/path encoding); M8 Kruskal (PAMS 7(1):48-50 (1956); full title pinned) fires P18 genuine, with the greedy-exchange engine recorded as a coverage observation; M9 Grohe (title corrected: "seen from the other side" added; J. ACM 54(1) Art. 1 (2007)) fires P25 genuine. FINAL WATCH-M VERDICTS: CAND-A4 entropy compression NOT fired in M - the gate stays uncrossed (synthesis decides on the B9 lineage); Boolean influence and spread induction NOT fired in M - synthesis calls on B3/B6 alone. The batch's grand contrast recorded for synthesis: isomorphism by symmetry (M1/M2) vs homomorphism by structure (M9). See the dossiers and BATCH-M.md.
 
 14a note (2026-10-13): Batch N opens (youth-authored ACCEPTED papers; SOURCES.md section 4). P28 fires in its SECOND census batch (N3 Jain-Sah-Sawhney - the sharp binomial small-ball comparison, the Littlewood-Offord lineage's modern face; the K1 engine was the P9 antichain face), and P13 fires in its second batch too (the interior union bound at the sup over A, confirmed against the fetched open PDF). N2 Sah-Sawhney-Stoner-Zhao settles Kahn's conjecture with an accessible skeleton: P25 genuine (Zhao's swapping), P4 genuine unplanned (the freshman-level independent-set recursion at a maximum-degree vertex), P10 partial (the layered Holder verification); HONEST MISS P29 (the proof AVOIDS Kahn's entropy - the convexity face credited under P10 with the Lubetzky-Zhao note) and P9. N1 Jackson-Johnson (the HIGH-SCHOOL pair; the Monthly's lead article) fires NO Atlas P-ID - the designed domain-outlier datum for the accessibility question. Author-level honesty notes: N2 includes the faculty mentor; N3 includes a graduate student. See the dossiers and BATCH-N.md.
+
+14b note (2026-10-13): Batch N's middle-school trio: **P3 fires for the FIRST time in the corpus (N6 - the exact-soulmate inclusion-exclusion, from a PRIMES STEP team in grades 6-9)**; P4 genuine at N4 (the chip-firing paper's spine) and N5 (the soulmate-removal induction); P25 flagship at N5 (the SMP <-> Sudoku translation) and partial at N4 (the base-k digit encoding); P9 genuine at N5 (the key-function pigeonhole); P1 genuine at N6 + partial at N5; P2/P7/P41/P18 partials (N4/N6). Honest misses: P5 at BOTH N4 and N6 (no generating function in either paper - the seed shorthand conflated sequences with GFs), P16 at N5 (no augmentation - the accessibility datum), P23 at N6. Coverage-gap observation for the synthesis: N4's k-adic-valuation digit engine (fractal difference sequences, schizophrenic numbers) matches no Atlas P-ID. See the dossiers and BATCH-N.md.

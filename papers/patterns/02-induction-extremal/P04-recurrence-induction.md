@@ -3,7 +3,7 @@
 - Family: 02-induction-extremal
 - Atlas one-line: Relate case n to smaller cases
 - Home chapters (Atlas): 1, 2, 3
-- Status (through chunk 14a): Atlas-named textbook-canon pattern; in-corpus firings recorded below. Batch M 13a: the isomorphism column's recursions (M1 partial composition-series divide-and-conquer; M2 genuine aggregate-consumption). Batch N 14a: N2 genuine - the freshman-level independent-set recursion at a maximum-degree vertex is the Kahn-conjecture proof's skeleton (the accessibility datum)
+- Status (through chunk 14a): Atlas-named textbook-canon pattern; in-corpus firings recorded below. Batch M 13a: the isomorphism column's recursions (M1 partial composition-series divide-and-conquer; M2 genuine aggregate-consumption). Batch N 14a: N2 genuine - the freshman-level independent-set recursion at a maximum-degree vertex is the Kahn-conjecture proof's skeleton (the accessibility datum). Batch N 14b: N4 genuine (the chip-firing paper's spine) + N5 genuine (the soulmate-removal induction)
 - Migration: this dossier was machine-migrated 2026-10-13 from the batch files (the gather record and source of truth); every census row and hypothesis-test note below is QUOTED, not rewritten.
 
 ## Census rows (quoted; source = papers/BATCH-*.md)
@@ -52,6 +52,10 @@
 - Fires in: N2 (genuine)
 - Notes: induction on the vertex count via i(G) = i(G-w) + i(G-w-N(w)) at a maximum-degree vertex w - the recursion reduces the theorem to the local inequality j(G-w) + j(G-w-N(w)) <= j(G); the recursion itself is freshman-level (Batch N's accessibility datum).
 
+### Batch N, sub-chunk 14b (chunk 14)
+- Fires in: N4 (genuine), N5 (genuine)
+- Notes: N4 - the paper's spine: induction on n for the stable configurations (Prop 3.1, the parallel firing strategy + subtree-isomorphism reduction), backward induction for the fire counts (Thm 4.1), the d0 recurrence (Prop 4.1) + the double induction of Thm 4.2, the recursive root-fire formula (Cor 4.3), the partial-sums recurrence (Prop 5.3). N5 - Prop 1: the forced soulmate pair removed, recursion on n (unique stable matching under shared preferences).
+
 ## Hypothesis-test notes (quoted; source = papers/BATCH-*.md)
 
 ### Batch I (chunk 9)
@@ -71,6 +75,9 @@
 
 ### Batch N, sub-chunk 14a (chunk 14)
 - N2 P4 confirmed (UNPLANNED by seed; the seed expected P29/P25/P10/P9): the accessible skeleton of the Kahn-conjecture settlement.
+
+### Batch N, sub-chunk 14b (chunk 14)
+- N4 P4 CONFIRMED (expected by seed); N5 P4 confirmed UNPLANNED (the seed expected P25/P9/P16): induction is the middle-school engine after the encoding.
 
 ## Cross-links (interdependence)
 

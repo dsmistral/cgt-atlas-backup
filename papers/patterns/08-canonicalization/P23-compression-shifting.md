@@ -3,7 +3,7 @@
 - Family: 08-canonicalization
 - Atlas one-line: Replace sets by canonical heavier ones without losing the property
 - Home chapters (Atlas): 7
-- Status (through chunk 11): Atlas-named (Ch. 7). First genuine classic-paper firings at chunk 11 (K2 flagship, K8; partials I1/K3/K6)
+- Status (through chunk 11): Atlas-named (Ch. 7). First genuine classic-paper firings at chunk 11 (K2 flagship, K8; partials I1/K3/K6). Batch N 14b: N6 honest miss (expected by seed)
 - Migration: this dossier was machine-migrated 2026-10-13 from the batch files (the gather record and source of truth); every census row and hypothesis-test note below is QUOTED, not rewritten.
 
 ## Census rows (quoted; source = papers/BATCH-*.md)
@@ -36,8 +36,10 @@
 ### Batch K (chunk 11)
 - K2, K5, K8: seeds confirmed (P23, P9, P23 respectively, K8 at flagged sketch from the open PDF).
 
-### Batch K (chunk 11)
-- K2, K5, K8: seeds confirmed (P23, P9, P23 respectively, K8 at flagged sketch from the open PDF).
+[2026-10-13 correction note, sub-chunk 14b: this note was duplicated in the 2026-10-13 dossier migration; the duplicate collapsed at this sub-chunk's dossier-hygiene pass - the quoted content is unchanged.]
+
+### Batch N, sub-chunk 14b (chunk 14)
+- N6 P23 MISSED (expected by seed as P23?): the counting engine is inclusion-exclusion + staged products + algorithm traces; no compression/shifting appears. P3 fires instead (its first corpus firing - see the P3 dossier).
 
 ## Cross-links (interdependence)
 

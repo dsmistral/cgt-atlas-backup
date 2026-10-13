@@ -3,7 +3,7 @@
 - Family: 04-analytic-information
 - Atlas one-line: Turn a sequence into a function; let algebra work
 - Home chapters (Atlas): 1
-- Status (through chunk 11): Atlas-named textbook-canon pattern; in-corpus firings recorded below
+- Status (through chunk 14b): Atlas-named textbook-canon pattern; in-corpus firings recorded below. Batch N 14b: honest misses at BOTH N4 and N6 (no generating function in either paper - the seed shorthand conflated sequence generation with P5)
 - Migration: this dossier was machine-migrated 2026-10-13 from the batch files (the gather record and source of truth); every census row and hypothesis-test note below is QUOTED, not rewritten.
 
 ## Census rows (quoted; source = papers/BATCH-*.md)
@@ -18,7 +18,8 @@
 
 ## Hypothesis-test notes (quoted; source = papers/BATCH-*.md)
 
-(none)
+### Batch N, sub-chunk 14b (chunk 14)
+- N4 AND N6 P5 MISSED (both expected by seed): no generating function appears in either paper - N4's closed forms come from direct summation + the k-adic-valuation digit engine; N6's sequences come from inclusion-exclusion formulas + brute-force programs + the OEIS. The seed's shorthand is recorded, never silently; the honest accessibility datum: at the middle-school level, sequences are WORKED, not converted to functions.
 
 ## Cross-links (interdependence)
 

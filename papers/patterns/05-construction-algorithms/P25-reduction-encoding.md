@@ -3,7 +3,7 @@
 - Family: 05-construction-algorithms
 - Atlas one-line: Translate one problem into another language; the target structure carries the proof or the hardness
 - Home chapters (Atlas): 3, 10, 11
-- Status (through chunk 14a): Atlas-named textbook-canon pattern; in-corpus firings recorded below. Batch M: the isomorphism column fires it twice (M1/M2 genuine), M3 the flagship encoding, M4 the second framework firing (genuine), M5/M6 the property-testing partials, and 13c M7 partial (DFS/path encoding) + M9 genuine (the CSP classification). Batch N 14a: N2 genuine - Zhao's bipartite-swapping reduction reused as the Kahn-conjecture settlement's step 1 - see the census rows
+- Status (through chunk 14a): Atlas-named textbook-canon pattern; in-corpus firings recorded below. Batch M: the isomorphism column fires it twice (M1/M2 genuine), M3 the flagship encoding, M4 the second framework firing (genuine), M5/M6 the property-testing partials, and 13c M7 partial (DFS/path encoding) + M9 genuine (the CSP classification). Batch N 14a: N2 genuine - Zhao's bipartite-swapping reduction reused as the Kahn-conjecture settlement's step 1 - see the census rows. Batch N 14b: N5 flagship genuine (the SMP <-> Sudoku translation) + N4 partial (the base-k digit encoding)
 - Migration: this dossier was machine-migrated 2026-10-13 from the batch files (the gather record and source of truth); every census row and hypothesis-test note below is QUOTED, not rewritten.
 
 ## Census rows (quoted; source = papers/BATCH-*.md)
@@ -52,6 +52,10 @@
 - Fires in: N2 (genuine)
 - Notes: Zhao's bipartite-swapping trick (the double cover G x K2: i(G)^2 <= i(G x K2) via the explicit injection, and j(G)^2 = j(G x K2)) reduces the general theorem to the bipartite case - inherited machinery doing load-bearing work at the youth-research frontier.
 
+### Batch N, sub-chunk 14b (chunk 14)
+- Fires in: N5 (flagship), N4 (partial)
+- Notes: N5 - the whole-paper move: the bidirectional SMP <-> Sudoku translation (preference profiles drawn in Sudoku grids; blocking pairs and the Gale-Shapley algorithm in Sudoku language; mutually Latin / disjoint / joint profiles; the new joint-groups Sudoku invented to carry the correspondence). N4 - the base-k digit encoding of the stable configuration (Prop 3.2: chips per layer = 1 + the k-ary digits of N - (k^n-1)/(k-1)), the representation that carries the fire-count section.
+
 ## Hypothesis-test notes (quoted; source = papers/BATCH-*.md)
 
 ### Batch M, sub-chunk 13a (chunk 13)
@@ -65,6 +69,9 @@
 
 ### Batch N, sub-chunk 14a (chunk 14)
 - N2 P25 CONFIRMED (expected by seed): the swapping reduction is step 1 of the Kahn-conjecture settlement.
+
+### Batch N, sub-chunk 14b (chunk 14)
+- N5 P25 CONFIRMED (expected by seed; the flagship encoding); N4 P25 partial confirmed UNPLANNED (the seed expected P5/P7/P4): the digit translation as the representation move.
 
 ## Cross-links (interdependence)
 
