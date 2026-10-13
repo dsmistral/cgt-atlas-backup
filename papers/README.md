@@ -29,3 +29,14 @@
     - New-pattern candidates: shape, move, recurrence evidence so far
     - Full text: fetched (URL) or not needed - per the scope rule
     - Corrections log: what the gather verification changed vs the seed row
+
+
+---
+
+## Work style v2 (2026-10-13, user-directed - adopted after the chunk-11 session's retry)
+
+Two structural changes, adopted as the standing method and recorded here so every new chat resumes into them directly:
+
+1. **Sub-chunked gathering.** Batches are gathered in sub-chunks of about three papers, and EVERY sub-chunk is pushed as its own commit (per-paper files + the batch file's section + the STATE.md marker + the touched pattern files). A session may complete one or more sub-chunks; no gather work is ever carried unpushed across a turn boundary. Chunk numbering: chunk 12 = Batch L in sub-chunks 12a (L1-L3), 12b (L4-L6), 12c (L7-L9), 12d (L10-L12); chunk 13 = Batch M likewise (13a M1-M3, 13b M4-M6, 13c M7-M9).
+2. **The pattern layer (papers/patterns/).** One file per Atlas pattern P1-P42 plus candidate/watch dossiers, grouped into family folders by similarity and interdependence. Census rows and hypothesis-test notes are quoted from the batch files, which remain the gather record. Updated incrementally at every sub-chunk close; the chunk-14 synthesis builds ANALYSIS.md from these dossiers.
+3. **Light resume.** Survey sessions restore NO canvases (the Atlas light set in this repo is read-only for the survey). Resume = read the knowledge topic, then papers/STATE.md, then only the active batch's files and the touched pattern dossiers. Never load all batch files at once.
