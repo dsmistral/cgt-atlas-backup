@@ -44,3 +44,32 @@ Purpose (user-directed, 2026-10-13): the view of Atlas patterns ACCESSIBLE enoug
 ### Standing extension rule
 
 Future books or papers append their rows here (with verification status) before gather. Entries are never removed silently; superseded or excluded entries carry dated notes.
+
+## 5. Instructional and contest sources (user-directed, 2026-10-13)
+
+Three new source classes open the extension phase. They feed teaching evidence and pattern-usage evidence only; none of them ever enters CORPUS.md, and the accepted-papers rule (section 3) is unchanged for paper rows. The Atlas's Feynman-style presentation method remains the standing method for any teaching aids these tracks recommend (the survey recommends; it never edits the Atlas).
+
+### 5.1 Courseware and free instructional texts
+
+- Track A (teaching aids): scour free instructional texts - MIT OpenCourseWare and comparable open university courses (candidates to pin at use: MIT 18.212 Algebraic Combinatorics, MIT 6.042J Mathematics for Computer Science), plus freely available texts (candidates to pin at use: Flajolet-Sedgewick "Analytic Combinatorics" author PDF, Jukna "Extremal Combinatorics" author PDF, Levin-Peres "Markov Chains and Mixing Times" author PDF, Lovasz "Combinatorial Problems and Exercises", van Lint-Wilson "A Course in Combinatorics") - for EXPLANATION aids that make existing Atlas patterns clearer to human learners (worked micro-proofs, intuition-first walkthroughs, visual scaffolds), recorded per text with title, units used, availability, and the patterns exercised.
+- Track B (instructional pattern census): mine course problem sets and solution notes for pattern usage at the instructional level, using the corpus census method (pattern ID + the decisive move + honest miss), recorded as a separate instructional census - never as paper firings.
+- Register rule: every text or course enters here before use, with verification status (availability and edition); entries are never removed silently.
+
+### 5.2 Contest canon (SAT excluded)
+
+- Purpose (user-directed): pattern usage at the competition level - which Atlas patterns appear in prestigious exams and known question collections, and at what level.
+- SAT EXCLUDED (2026-10-13): the SAT's mathematics is aptitude-level multiple-choice; it does not carry research-grade problem-solving patterns at the Atlas's granularity. The canon is: the Putnam competition (free archives), the IMO and its shortlists (imo-official.org), USAMO/USAJMO (MAA), the Kurschak competition (Hungary), and comparable national olympiads - free official sources only; zero paywalled fetches.
+- Contest problems are NOT papers: they never enter CORPUS.md or NEXT100.md; a separate contest census records pattern usage under the same honesty rules (hypothesis -> test -> honest miss).
+
+### 5.3 Free-access portals (paper hunting)
+
+- For the citation-driven hunt: OpenAlex and Google Scholar (citation counts), Semantic Scholar (counts + metadata), zbMATH Open and mathnet.ru (verification), arXiv / EuDML / DOAJ and publisher open records (metadata and open full text). Policy unchanged: ACCEPTED papers only, zero paywalled fetches, full text only under the standing scope rule.
+
+## 6. Selection rule for the next 100 papers (user-directed, 2026-10-13)
+
+1. Half by citation mass, half by strategic target. About 50 rows are citation-driven classics: >=100 citations for pre-2010 papers, >=50 for 2010+ papers (the user may lower the bar to 50 later to widen the scope; any change is recorded with a dated note). About 50 rows are strategic targets: the silent registry (P27, P36, and the open P35), the under-used patterns (P20, P6), coverage-gap engines, and the P43+ WATCH descendants (absorption, randomized algebraic construction, flag algebras, containers, the Lovasz Local Lemma external canon).
+2. ACCEPTED papers only (section 3, binding); never proposals, never mere surveys.
+3. NEXT100.md deviation note: the chunk-16 scout delivers 74 seed rows (batches O-Y), not 100 - the remaining slots are deliberately held open for courseware-driven finds (5.1), contest-census finds (5.2), and future corpus needs. NEXT100.md rows have exactly CORPUS.md's seed status: unverified until gather pins them.
+4. Incidents recorded honestly: on 2026-10-13 OpenAlex (shared-IP daily budget exhausted), Semantic Scholar (rate-limited) and the anonymous GitHub REST API (rate-limited) were all unavailable; NEXT100.md's citation figures are seed estimates from general knowledge, to be pinned at gather.
+5. Dedupe pass (2026-10-13): all 74 rows were checked against CORPUS.md (126 rows / 125 distinct) and this register. Near-collisions EXCLUDED from NEXT100.md: A5 (Erdos-Lovasz, the LLL origin), A9 (Moser-Tardos), B7/B8 (containers origins), C1 (Polya), D3 (Edmonds paths-trees-flowers), D7 (Karp), G12 (Lovasz-Szegedy), H2 (Erdos-Gallai), H10 (Lovasz normal hypergraphs). Same-author DISTINCT continuations kept, flagged: V10 de Bruijn 1946 (after C7's 1959 paper), V15/W9 Tutte (after C3/E4), W12 Edmonds 1965 (after D3/D5), X1 Alon 1986 (after J3), V14 Shannon 1956 (before J2), W10 Seymour 1980 (after E6).
+6. Pipeline convention (chunk-16 technical finding, binding for future pushes): the repo listing's blob sha is the git blob sha - SHA-1 of the header "blob <byte-length>" followed by a NUL byte, then the content; a plain-content SHA-1 does NOT match it. The open_url fetch route wraps raw text (a newline every 2,000 original characters; truncation at 32,768 chars with a 25-char marker) - unwrap() repairs it; the apparent "stray newlines" it caused during chunk 16 were wrap artifacts, not file defects.
