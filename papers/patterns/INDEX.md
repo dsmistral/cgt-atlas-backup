@@ -1,4 +1,4 @@
-# Pattern index (through chunk 13b)
+# Pattern index (through chunk 13c)
 
 Status wording is abbreviated here; the per-pattern files are authoritative. 'Census batches' = batches whose pattern census records a firing (partials included).
 
@@ -38,7 +38,7 @@ Status wording is abbreviated here; the per-pattern files are authoritative. 'Ce
 | P32 | Stability | 08-canonicalization | G |
 | P33 | Density increment | 09-density-structure | F |
 | P34 | Minor chasing | 10-graph-structure | E, H |
-| P35 | Dynamic programming on structure | 10-graph-structure | - |
+| P35 | Dynamic programming on structure | 10-graph-structure | M (partial touch) |
 | P36 | Discharging | 10-graph-structure | - |
 | P37 | Duality | 06-duality-optimization | E, H, I, J, M |
 | P38 | Replication | 10-graph-structure | H |
@@ -54,12 +54,12 @@ Status wording is abbreviated here; the per-pattern files are authoritative. 'Ce
 | CAND-A1 Lovasz Local Lemma | CROSSED | A, B |
 | CAND-A2 semi-random nibble | CROSSED + origin L6 + formalization L9 + application L8 (12c) - strongest P43+ case | A, B, L |
 | CAND-A3 threshold/window | CROSSED | A, B |
-| CAND-A4 entropy compression | NOT crossed - watch M | A (+ B9 lineage) |
+| CAND-A4 entropy compression | NOT crossed - NO firing in M (13a-13c scanned); final in-corpus verdict; synthesis decides on the B9 external lineage | A (+ B9 lineage) |
 | CAND-B5 hypergraph containers | synthesis call | B |
 | CAND-C1 analytic combinatorics | synthesis call | C |
 | CAND-G1 transference/dense-model | synthesis call | G |
-| WATCH Boolean influence | watch M | B |
-| WATCH spread induction | watch M | B |
+| WATCH Boolean influence | no firing in M; synthesis call on B3 alone | B |
+| WATCH spread induction | no firing in M; synthesis call on B6 alone | B |
 | WATCH sign-reversing involution | synthesis call | C |
 | WATCH Kempe-chain recoloring | likely dies at synthesis | E |
 | WATCH monovariant/potential | synthesis call | D, G |
@@ -82,3 +82,5 @@ Ledger note: P39 carries a FLAGGED LEDGER DISCREPANCY (batch-C census fires it a
 13a note (2026-10-13): the isomorphism column M1 -> M2 fires ONE engine twice (the Luks framework: permutation-group recursion on bounded simple sections) - opened as a WATCH item because it matches NO Atlas pattern (a coverage-gap engine with two in-corpus firings in one sub-chunk). THREE more honest seed misses logged: M1 P19 (group theory, not rank bounds) and M2 P8 AND P30 (the Design Lemma's split-or-Johnson dichotomy, not extremal analysis or regularity partitions). M3 opens the flag-algebras WATCH at its origin, with the M4 second-batch test pending (13b). P25 fires in all three papers; P18 twice; P4 (M1 partial, M2 genuine); P19/P37 partials at M3 (the Delsarte-LP lineage's density-era descendant). See the dossiers and BATCH-M.md.
 
 13b note (2026-10-13): P30's designed watch-M firing LANDS - M5 Alon-Shapira (genuine) + M6 AFNS (flagship; the subtitle IS the pattern: "It's all about regularity"; SIAM J. Comput. 39(1): 143-167 (2009)). The flag-algebras WATCH fires a second time at M4 (Razborov's triangle-density theorem; venue corrected Algebra i Analiz -> CP&C 17(4): 603-618 (2008)) - both firings within batch M; the cross-batch test cannot be satisfied in-corpus (synthesis call mirrors CAND-B5). P18 fires twice more (the testers ARE the procedures); P25 three times (M4 genuine; M5/M6 partials); P19/P37 repeat their M3 partial faces at M4. CAND-A4 / Boolean influence / spread induction: not fired; final chance 13c. See the dossiers and BATCH-M.md.
+
+13c note (2026-10-13) - BATCH M COMPLETE: P35 records its FIRST in-corpus touch (M9 Grohe, partial - DP over tree decompositions on the tractability side; standard-tool credit; the registry entry stays open). M7 Hopcroft-Tarjan (J. ACM 21(4):549-568 (1974)) fires P18 flagship + P25 partial (the DFS/path encoding); M8 Kruskal (PAMS 7(1):48-50 (1956); full title pinned) fires P18 genuine, with the greedy-exchange engine recorded as a coverage observation; M9 Grohe (title corrected: "seen from the other side" added; J. ACM 54(1) Art. 1 (2007)) fires P25 genuine. FINAL WATCH-M VERDICTS: CAND-A4 entropy compression NOT fired in M - the gate stays uncrossed (synthesis decides on the B9 lineage); Boolean influence and spread induction NOT fired in M - synthesis calls on B3/B6 alone. The batch's grand contrast recorded for synthesis: isomorphism by symmetry (M1/M2) vs homomorphism by structure (M9). See the dossiers and BATCH-M.md.

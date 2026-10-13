@@ -3,7 +3,7 @@
 - Family: 05-construction-algorithms
 - Atlas one-line: Translate one problem into another language; the target structure carries the proof or the hardness
 - Home chapters (Atlas): 3, 10, 11
-- Status (through chunk 13b): Atlas-named textbook-canon pattern; in-corpus firings recorded below. Batch M: the isomorphism column fires it twice (M1/M2 genuine), M3 the flagship encoding, M4 the second framework firing (genuine), M5/M6 the property-testing partials - see the census rows
+- Status (through chunk 13b): Atlas-named textbook-canon pattern; in-corpus firings recorded below. Batch M: the isomorphism column fires it twice (M1/M2 genuine), M3 the flagship encoding, M4 the second framework firing (genuine), M5/M6 the property-testing partials, and 13c M7 partial (DFS/path encoding) + M9 genuine (the CSP classification) - see the census rows
 - Migration: this dossier was machine-migrated 2026-10-13 from the batch files (the gather record and source of truth); every census row and hypothesis-test note below is QUOTED, not rewritten.
 
 ## Census rows (quoted; source = papers/BATCH-*.md)
@@ -44,6 +44,10 @@
 - Fires in: M4 (genuine), M5 (partial), M6 (partial)
 - Notes: M4: the flag-algebra encoding again (the density problem translated into the algebra's positivity constraints - the framework's second in-corpus firing). M5 partial: a monotone property reduced to a finite set of forbidden colorings of reduced graphs. M6 partial: a property encoded by its regularity profile - the characterization is an encoding statement.
 
+### Batch M, sub-chunk 13c (chunk 13)
+- Fires in: M7 (partial), M9 (genuine)
+- Notes: M7 partial (unplanned): the graph encoded into DFS/path structures - the path decomposition makes the iterative path-addition embedding tractable (the paper's own Auslander-Parter framing). M9 (expected by seed): homomorphism <-> CSP <-> conjunctive-query evaluation as one problem in three languages, with the complexity encoded as a structural invariant (bounded tree-width of cores) - the "other side" perspective is itself a translation.
+
 ## Hypothesis-test notes (quoted; source = papers/BATCH-*.md)
 
 ### Batch M, sub-chunk 13a (chunk 13)
@@ -51,6 +55,9 @@
 
 ### Batch M, sub-chunk 13b (chunk 13)
 - M4 P25 CONFIRMED (expected by seed); M5/M6 P25 partials confirmed (unplanned - the seeds expected only P30).
+
+### Batch M, sub-chunk 13c (chunk 13)
+- M9 P25 CONFIRMED (expected by seed, genuine); M7 P25 partial confirmed (unplanned - the DFS/path encoding).
 
 ## Cross-links (interdependence)
 

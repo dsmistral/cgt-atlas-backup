@@ -6,7 +6,7 @@ Chunk 13 under work style v2: three sub-chunks of three papers, each pushed as i
 |-----------|--------|--------|
 | 13a | M1 Luks; M2 Babai; M3 Razborov flag algebras | DONE (section below) |
 | 13b | M4 Razborov triangle density; M5 Alon-Shapira; M6 Alon-Fischer-Newman-Shapira | DONE (section below) |
-| 13c | M7 Hopcroft-Tarjan; M8 Kruskal MST; M9 Grohe | PENDING |
+| 13c | M7 Hopcroft-Tarjan; M8 Kruskal MST; M9 Grohe | DONE (section below) |
 
 ## Sub-chunk 13a (M1-M3) - gathered and mined 2026-10-13
 
@@ -51,7 +51,46 @@ All 3 papers metadata-verified; moves at flagged-sketch level from publisher/aut
 
 Metadata: web-verified (sources per paper: M1 ScienceDirect + the author's open Oregon PDF + the ADS record; M2 the arXiv abstract page + the author's Chicago publications page (DOI/pages) + the ICALP 2020 and SIAM J. Comput. citing bibliographies + Babai's own "update, January 9, 2017" note + the Aperiodical/Quanta timeline; M3 Project Euclid + Cambridge Core + the Bulletin of Symbolic Logic review). Moves: flagged-sketch summaries. Zero full-text fetches. Honesty record: M2's journal version unpinned (recorded, never guessed); M1/M3 fully pinned.
 
-(13c pending; file extended at each sub-chunk close.)
+(13c gathered below - Batch M complete.)
+
+## Sub-chunk 13c (M7-M9) - gathered and mined 2026-10-13 - BATCH M COMPLETE
+
+All 3 papers metadata-verified; moves at flagged-sketch level from publisher/author records and standard survey material; zero paywalled fetches. HEADLINES: the classic-algorithms column (M7/M8) fires P18 twice more; **M9 gives P35 - a silent-registry pattern - its FIRST in-corpus touch (partial, standard-tool credit)**; ALL THREE watch-M items come up EMPTY in their final in-corpus scan (CAND-A4 entropy compression, Boolean influence, spread induction - the verdicts recorded for synthesis).
+
+### Verification table
+
+| ID | Verified citation | Corrections vs seed |
+|----|------------------|---------------------|
+| M7 | Hopcroft-Tarjan, "Efficient planarity testing", J. ACM 21(4): 549-568 (1974) | Title/venue/year CONFIRMED; vol(4)/pages pinned (Princeton record + dblp + the J. ACM errata note's citation); the IFIP 1971 extended-abstract priority noted |
+| M8 | Kruskal, "On the shortest spanning subtree of a graph and the traveling salesman problem", Proc. Amer. Math. Soc. 7(1): 48-50 (1956) | FULL TITLE pinned (the seed truncated at "of a graph"); vol(1)/pages pinned (three records agreeing); the open Yale PDF located |
+| M9 | Grohe, "The complexity of homomorphism and constraint satisfaction problems seen from the other side", J. ACM 54(1), Article 1 (March 2007), DOI 10.1145/1206035.1206036; FOCS 2003 preliminary | TITLE corrected: "seen from the other side" added; venue CONFIRMED (J. ACM); vol/article/DOI pinned; the FOCS 2003 conference-version priority noted |
+
+### Pattern census (sub-chunk 13c)
+
+| P-ID | Fires in | Notes |
+|------|----------|-------|
+| P18 algorithmic proof | M7 (flagship), M8 (genuine), M9 (partial) | M7: the linear-time planarity test - the batch's classic proof = procedure paper; M8: Constructions A and B ARE the proof (quoted from the paper's own text via the open record); M9 partial: the tractability side is an algorithm, but the theorem is the classification |
+| P25 reduction / encoding | M7 (partial), M9 (genuine - expected by seed) | M7 partial (unplanned): the graph encoded into DFS/path structures for the iterative path-addition embedding (an iterative version of the Auslander-Parter method, per the paper's own framing); M9: the homomorphism <-> CSP <-> conjunctive-query equivalence plus the classification-by-structure (complexity encoded as bounded tree-width of cores) - the "other side" perspective is itself the translation |
+| P35 dynamic programming on structure | M9 (partial) | THE SILENT-REGISTRY EVENT of the sub-chunk: the tractability direction of Grohe's classification runs a dynamic program over tree decompositions of the left-hand structures - P35's FIRST in-corpus touch (partial; standard-tool credit only - the novelty is the classification); the registry entry stays open pending a genuine firing |
+| (coverage observation, no P-ID) | M8 | the greedy-exchange correctness argument (the cut property) has no dedicated Atlas pattern among the 42 - a synthesis observation (single firing here; Batch D's scope line mentions greedy - whether its papers recorded related evidence is a synthesis-reconciliation question) |
+
+### Honest hypothesis-test results (sub-chunk 13c's yield)
+
+- M7 P18 CONFIRMED (expected by seed, flagship); P25 partial confirmed (unplanned). No P8/P4 credit - the algorithm is not extremal analysis; the DFS machinery is the vehicle.
+- M8 P18 CONFIRMED (expected by seed); the greedy-exchange engine recorded as a coverage observation (honest: no Atlas pattern names it).
+- M9 P25 CONFIRMED (expected by seed, genuine); P35 partial (unplanned - the silent-registry pattern's first in-corpus touch); P18 partial (unplanned). The Luks-framework WATCH does NOT fire on the hardness side (parameterized reductions, not group recursion) - stays at two firings (M1/M2).
+- CAND-A4 entropy compression: NOT fired in M (13a/13b/13c all scanned) - the final in-corpus verdict: the gate stays UNCROSSED; chunk-14 synthesis decides on the B9/Molloy-2019 external lineage. WATCH Boolean influence and WATCH spread induction: NOT fired in M - synthesis calls on B3/B6 alone.
+
+### Lineages recorded for teaching
+
+- Auslander-Parter -> M7: HT's own framing - "an iterative version of a method originally proposed by Auslander and Parter"; the IFIP 1971 V log V abstract -> the 1974 linear-time J. ACM paper; a J. ACM errata note exists (verification hygiene: cite the corrected text).
+- M8 -> Batch D: Kruskal's greedy is the founding member of the greedy family that Batch D's scope line names; the later matroid-greedy generalization is external lineage.
+- M9 -> M1/M2: the batch's GRAND CONTRAST recorded for synthesis - graph isomorphism tamed by SYMMETRY (permutation groups, M1/M2) vs homomorphism problems classified by STRUCTURE (tree-width, M9): the two roads to tractability, one batch apart.
+- Freuder/Kolaitis-Vardi -> M9 (external): bounded-tree-width CSP tractability predates Grohe; Grohe's contribution is the matching hardness side (cores + W[1]-hardness under FPT != W[1]).
+
+### Verification levels statement (13c - Batch M complete)
+
+Metadata: web-verified (sources per paper: M7 the Princeton record + dblp + the J. ACM text/errata references; M8 the PAMS/PDF record + three citing bibliographies agreeing on 7(1):48-50 + the open Yale PDF; M9 the J. ACM/ACM DL record via a citing SIAM bibliography carrying the DOI + the FOCS 2003 conference-version record). Moves: flagged-sketch summaries. Zero full-text fetches.
 
 ## Sub-chunk 13b (M4-M6) - gathered and mined 2026-10-13
 

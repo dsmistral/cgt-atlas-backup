@@ -3,7 +3,7 @@
 - Family: 05-construction-algorithms
 - Atlas one-line: The proof is a procedure; termination = theorem
 - Home chapters (Atlas): 2, 5
-- Status (through chunk 13b): Atlas-named textbook-canon pattern; in-corpus firings recorded below. Batch M: the isomorphism column M1/M2 - proof = procedure at its largest scale - and the property-testing column M5/M6 (the testers)
+- Status (through chunk 13c): Atlas-named textbook-canon pattern; in-corpus firings recorded below. Batch M: the isomorphism column M1/M2 (proof = procedure at its largest scale), the property-testing column M5/M6 (the testers), and 13c the classic-algorithms column (M7 flagship, M8 genuine, M9 partial)
 - Migration: this dossier was machine-migrated 2026-10-13 from the batch files (the gather record and source of truth); every census row and hypothesis-test note below is QUOTED, not rewritten.
 
 ## Census rows (quoted; source = papers/BATCH-*.md)
@@ -32,10 +32,17 @@
 - Fires in: M5, M6 (genuine)
 - Notes: the property-testing column: the randomized tester IS the procedure - constant queries decide the property; the theorem is the algorithm's correctness with a constant query bound.
 
+### Batch M, sub-chunk 13c (chunk 13)
+- Fires in: M7 (flagship), M8 (genuine), M9 (partial)
+- Notes: the classic-algorithms column: M7 - the linear-time planarity test (the batch's classic proof = procedure paper); M8 - Kruskal's Constructions A and B ARE the proof; M9 partial - the tractability side is an algorithm, but the theorem is the classification.
+
 ## Hypothesis-test notes (quoted; source = papers/BATCH-*.md)
 
 ### Batch M, sub-chunk 13a (chunk 13)
 - M1/M2 P18 confirmed (unplanned by seed - the M1/M2 seed rows expected P25/P19 and P8/P30; the algorithmic character of the whole batch is the surprise the census records).
+
+### Batch M, sub-chunk 13c (chunk 13)
+- M7/M8 P18 CONFIRMED (both expected by seed; M7 the flagship); M9 P18 partial (unplanned).
 
 ## Cross-links (interdependence)
 
