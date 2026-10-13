@@ -1,15 +1,15 @@
-# Pattern index (through chunk 22 - Batch T, extension corpus)
+# Pattern index (through chunk 23 - Batch U, extension corpus)
 
 Status wording is abbreviated here; the per-pattern files are authoritative. 'Census batches' = batches whose pattern census records a firing (partials included).
 
 | P-ID | Pattern | Family | Census batches |
 |------|---------|--------|----------------|
-| P1 | Bijection | 01-counting | C, N |
+| P1 | Bijection | 01-counting | C, N, U |
 | P2 | Double counting | 01-counting | H, L, N |
 | P3 | Inclusion-exclusion | 01-counting | N (first firing) |
 | P4 | Recurrence + induction | 02-induction-extremal | A, C, D, F, G, H, I, L, M, N |
 | P5 | Generating function | 04-analytic-information | C, E, Q |
-| P6 | Complement / reflection | 01-counting | - |
+| P6 | Complement / reflection | 01-counting | U (exit at 23b: U4 the designed home - the ballot-problem origin, with the honest attribution note; U5 scanned, not credited) |
 | P7 | Parity & handshaking | 01-counting | D, N |
 | P8 | Longest-path / extremal | 02-induction-extremal | D, E, F, H, I |
 | P9 | Pigeonhole | 01-counting | A, F, G, H, I, K, N |
@@ -30,7 +30,7 @@ Status wording is abbreviated here; the per-pattern files are authoritative. 'Ce
 | P24 | Shadow pricing (Kruskal-Katona) | 08-canonicalization | K |
 | P25 | Reduction / encoding | 05-construction-algorithms | B, D, E, F, G, H, L, M, N, O, P, R, T |
 | P26 | Compactness (finite vs infinite) | 02-induction-extremal | F |
-| P27 | Correlation | 03-probability | O (first touch, partial - dependency-graph face; the FKG face test moves to Batch U) |
+| P27 | Correlation | 03-probability | O (first touch, partial - dependency-graph face), U (exit at 23a: U1 the FKG origin flagship, U2 the combinatorial face, U3 the disjoint-occurrence face) |
 | P28 | Concentration | 03-probability | B, N |
 | P29 | Entropy counting | 04-analytic-information | B |
 | P30 | Regularity partitioning | 09-density-structure | F, G, M |
@@ -113,3 +113,7 @@ Batch S (absorption, extension corpus, NEXT100 seeds) COMPLETE 4/4 in two sub-ch
 ## Note 22 (chunk 22 - Batch T, 2026-10-13)
 
 Batch T (discharging and tree-decomposition DP, extension corpus, NEXT100 seeds) COMPLETE 6/6 in two sub-chunks (22a: 471a4d62; 22b: pinned at the 23a push per protocol). BOTH designed repair patterns EXITED the silent registry in their designed batch: P36 (discharging) at 22a - T1 the Appel-Haken origin-at-scale flagship, T2 partial, T3 the Robertson-Sanders-Seymour-Thomas 32-rule second proof, T4 Borodin the human-scale face (Grunbaum's 1973 acyclic 5-coloring conjecture resolved, Discrete Math. 25(3) (1979) 211-236 - the seed's volume 26 corrected); P35 (dynamic programming on structure) at 22b - T5 Courcelle's MSO metatheorem the designed flagship (the automaton-over-tree-decomposition run IS the DP; Inform. and Comput. 85(1) (1990) 12-75), T6 Bodlaender's linear-time treewidth construction the companion enabler (SIAM J. Comput. 25(6) (1996) 1305-1317). The chunk-15 corpus-sampling-gap diagnoses CONFIRMED twice: both patterns field-current all along, only unsampled. WATCH Kempe-chain recoloring REOPENED at T2/T3 (the reducibility engine of both computer proofs) and holds through the T4 scan (not credited, the H11 precedent); the origin-lineage test arrives in Batch V. Census: P18 genuine at T2 (proof-by-execution) and T6 (proof-equals-procedure); P25 partial at T5 (the graph-as-term encoding); P36 genuine at T1/T3/T4. Remaining fully silent after Batch T: P27 only - plus P6's zero-firing and P20's under-use standing open. See papers/BATCH-T.md.
+
+## Note 23 (chunk 23 - Batch U, 2026-10-13)
+
+Batch U (correlation inequalities and the reflection principle, extension corpus, NEXT100 seeds) COMPLETE 5/5 in two sub-chunks (23a: fa686243; 23b: pinned at the next push per protocol). BOTH designed tests landed at their designed homes: P27 (correlation) EXITS the silent registry at 23a - U1 the FKG origin flagship (the Atlas one-line IS the theorem), U2 the four-functions combinatorial master, U3 the BK disjoint-occurrence face (the opposite-sign ceiling recorded honestly); P6 (complement / reflection) EXITS THE ZERO-FIRING REGISTRY at 23b - U4 the ballot-problem origin, the pattern's Atlas one-line IS the proof's structure, and the exit EMPTIES THE FULLY-SILENT REGISTRY: after chunk 23 every Atlas pattern has fired somewhere in the survey or the extension corpus (four extension exits: P36, P35, P27, P6 - the chunk-15 usage-datum reading vindicated a fourth time). Honest notes: Andre's own engine is the first-tie-swap bijection (P1 partial unplanned; the geometric "reflection" is the later textbook repackaging - the Renault misattribution study); U5 scanned for P6 and NOT credited (the noncrossing adjacency is the modern Dyck bijections, not the 1972 paper's engine); P1 partial also at U5 (the Kreweras complement, the self-duality anti-isomorphism); the U5 seed correction logged (the seed conflated the 1965 integer-partition-lattice paper with the 1972 noncrossing origin - the designed target gathered). Census: P27 genuine at U1/U2/U3; P6 genuine at U4; P1 partial at U4/U5. Remaining open calls: P20's under-use and the WATCH items (the Kempe origin-lineage test arrives in Batch V). See papers/BATCH-U.md.
