@@ -3,7 +3,7 @@
 - Family: 09-density-structure
 - Atlas one-line: Every large graph is a bounded quasirandom blow-up; refine until the noise is uniform
 - Home chapters (Atlas): 14
-- Status (through chunk 13b): EXITED the silent registry (chunk 7): G1 named-lemma flagship (F6 was the birthplace - no double credit); Batch M 13b: the designed watch-M firing - M5 genuine, M6 flagship (the subtitle names the pattern)
+- Status (through chunk 14c): EXITED the silent registry (chunk 7): G1 named-lemma flagship (F6 was the birthplace - no double credit); Batch M 13b: the designed watch-M firing - M5 genuine, M6 flagship (the subtitle names the pattern). Batch N 14c: N8 honest miss (expected by seed as the quasirandomness family)
 - Migration: this dossier was machine-migrated 2026-10-13 from the batch files (the gather record and source of truth); every census row and hypothesis-test note below is QUOTED, not rewritten.
 
 ## Census rows (quoted; source = papers/BATCH-*.md)
@@ -30,6 +30,9 @@
 
 ### Batch M, sub-chunk 13b (chunk 13)
 - M5/M6 P30 CONFIRMED (both expected by seed - the designed watch-M firing; M6 flagship: the subtitle IS the pattern).
+
+### Batch N, sub-chunk 14c (chunk 14)
+- N8 P30 MISSED (expected by seed as the P30/P31 quasirandomness family): the reverse-Sidorenko inequality lives in the Sidorenko-comparison PROBLEM SPACE but the proof is functional inequalities + a strengthened induction - no regularity partition anywhere (mirrors the L8/M2/I5 misses). The synthesis datum: the G-batch patterns own the problem space, not this proof.
 
 ## Cross-links (interdependence)
 

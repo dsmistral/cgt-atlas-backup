@@ -3,7 +3,7 @@
 - Family: 03-probability
 - Atlas one-line: Some object beats the average
 - Home chapters (Atlas): 3, 4
-- Status (through chunk 14a): Atlas-named textbook-canon pattern; in-corpus firings recorded below. Batch N 14a: N3 genuine (the density-transfer move) + N2 partial (the Holder/convexity face)
+- Status (through chunk 14c): Atlas-named textbook-canon pattern; in-corpus firings recorded below. Batch N 14a: N3 genuine (the density-transfer move) + N2 partial (the Holder/convexity face). Batch N 14c: N8 genuine (the graphical Brascamp-Lieb machinery - the Holder lineage promoted from verification step to whole engine)
 - Migration: this dossier was machine-migrated 2026-10-13 from the batch files (the gather record and source of truth); every census row and hypothesis-test note below is QUOTED, not rewritten.
 
 ## Census rows (quoted; source = papers/BATCH-*.md)
@@ -44,6 +44,10 @@
 - Fires in: N3 (genuine), N2 (partial)
 - Notes: N3 - the paper's own novelty vs Nederlof et al.: the uniform measure on B is dominated by the n-fold product of Bin(k) up to 2^{k epsilon n}, so the largeness of the popular-value preimage set is exploited directly, then everything averages over x ~ Bin(k) (n-fold product). N2 - the local inequality verified by Holder + computation: the convexity face (per Lubetzky-Zhao, Holder reinterprets Kahn's entropy proof for the regular case; the convexity face stands in for entropy in the irregular case).
 
+### Batch N, sub-chunk 14c (chunk 14)
+- Fires in: N8 (genuine)
+- Notes: the graphical Brascamp-Lieb machinery is the reverse-Sidorenko paper's ENGINE: Lemma 3.1 (L^p duality + Cauchy-Schwarz), the mixed L^{p,q} matrix-norm reformulation, Lemma 3.2, and the local inequality Lemma 3.3 the main theorem reduces to (the K_{a,b} norms) - every edge of G assigned a two-variable function. The Lubetzky-Zhao Holder lineage promoted from N2's verification step to a whole engine.
+
 ## Hypothesis-test notes (quoted; source = papers/BATCH-*.md)
 
 ### Batch I (chunk 9)
@@ -62,6 +66,9 @@
 
 ### Batch N, sub-chunk 14a (chunk 14)
 - N3 P10 CONFIRMED (expected by seed; genuine - the density transfer); N2 P10 partial confirmed (expected by seed - the Holder/convexity face).
+
+### Batch N, sub-chunk 14c (chunk 14)
+- N8 P10 CONFIRMED (expected by seed; genuine): the functional-analysis face (math.FA in the subject line) carrying the Kahn arc's Inventiones landing - the graphical Brascamp-Lieb inequality as P10's convexity face, load-bearing as the whole engine (a synthesis note for the P10 Atlas entry, mirroring the slice-rank face-of-P19/P22 treatment).
 
 ## Cross-links (interdependence)
 

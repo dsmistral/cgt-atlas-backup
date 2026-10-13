@@ -6,7 +6,7 @@ Chunk 14 under work style v2: three sub-chunks (14a N1-N3; 14b N4-N6; 14c N7-N8)
 |-----------|--------|--------|
 | 14a | N1 Jackson-Johnson; N2 Sah-Sawhney-Stoner-Zhao; N3 Jain-Sah-Sawhney | DONE (section below) |
 | 14b | N4 PRIMES STEP chip-firing; N5 stable marriage and Sudoku; N6 sequences of stable matching | DONE (section below) |
-| 14c | N7 Kuszmaul; N8 reverse Sidorenko | PENDING |
+| 14c | N7 Kuszmaul; N8 reverse Sidorenko | DONE (section below) |
 
 ## Sub-chunk 14a (N1-N3) - gathered and mined 2026-10-13
 
@@ -92,3 +92,44 @@ All 3 papers metadata-verified against journal/arXiv records; two open full text
 ### Verification-levels statement
 
 All three papers metadata-verified against journal/arXiv records (sources described in the per-paper files); N4 and N6 proof interiors verified against the fetched open PDFs (the journal versions); N5 verified against the open arXiv HTML (the CMJ full-text page Cloudflare-blocked - the published version's interior not fetched, honestly). Moves at flagged-sketch level per the standing convention; zero paywalled fetches.
+
+## Sub-chunk 14c (N7-N8) - gathered and mined 2026-10-13 - BATCH N COMPLETE
+
+Both papers metadata-verified; one open full text fetched per paper under the scope rule (N7's open arXiv HTML v2 - the P5/P23 decisions; N8's open arXiv PDF v3 - the P10/P30/P31 decisions); zero paywalled fetches. HEADLINES: the batch closes with its two research-extremes - the solo high-school paper (N7) and the Morgan-Prize undergrad team's Inventiones landing (N8). N7 runs on the freshman canon's structural trio (invariants + bijections + recurrences); N8 runs the Kahn arc's modern engine to its culmination (the Holder/Brascamp-Lieb machinery as the WHOLE engine - the convexity face that stood in for entropy at N2 now carries a paper by itself). Honest misses at both ends: P5 at N7 (the third consecutive youth-paper P5 miss), P23 at N7, and P30/P31 at N8 (the Sidorenko problem space WITHOUT the regularity engine - the family/engine mismatch datum for the synthesis). BATCH N COMPLETE: 8/8 gathered and mined.
+
+### Verification table
+
+| ID | Verified citation | Corrections vs seed |
+|----|------------------|---------------------|
+| N7 | William Kuszmaul, "Counting Permutations Modulo Pattern-Replacement Equivalences for Three-Letter Patterns", The Electronic Journal of Combinatorics 20(4), Article #P10 (2013); arXiv:1304.5667 (v1 Apr 2013, v2 Mar 2014) | Volume/issue/article PINNED at gather (the seed said only "The Electronic Journal of Combinatorics (2013; fully refereed)"); verified at the EJC Volume 20 Issue 4 contents page and the arXiv journal reference; the MIT PRIMES affiliation printed in the paper; the fetched full text is the open arXiv HTML v2, which postdates the EJC publication - the version difference noted honestly |
+| N8 | Ashwin Sah, Mehtaab Sawhney, David Stoner, and Yufei Zhao, "A reverse Sidorenko inequality", Inventiones mathematicae 221(2): 665-711 (2020), DOI 10.1007/s00222-020-00956-9; arXiv:1809.09462 (v1 Sept 2018, v3 May 2020) | CONFIRMED as seeded (the NSF PAR record, MIT DSpace, and the authors' pages pin the DOI and page range); author-level note: Sah and Sawhney MIT undergraduates (the 2021 Morgan Prize), Stoner a Harvard undergraduate (Morgan Honorable Mention the same year), Zhao the MIT faculty mentor - recorded honestly |
+
+### Pattern census (sub-chunk 14c)
+
+| P-ID | Fires in | Notes |
+|------|----------|-------|
+| P1 bijection | N7 (genuine) | the class enumerations matched to counted structures: complete invariants (property A_k; position parity) characterize classes, then the counts land on subsets (2^{n-1}, three two-part cases), the sum of the first n-1 Motzkin numbers ({123,132}{213,321}), and binomial/double-factorial closed forms ({123,132,321}: (n-1)!! + (n-2)!! + n - 2; {123,321}{132,213}: binomial(n, floor(n/2)) + binomial(n-2, floor((n-2)/2)) + 3) |
+| P4 recurrence + induction | N7 (genuine, unplanned), N8 (genuine, unplanned) | N7: the class-count recurrences - f(n) = f(n-1) + (n-2) f(n-2) + 1 ({123,132,312}), f(n) = f(n-1) + (n-1) f(n-2) ({123,132}{213,312}), and the two-parameter recursion g(n,k) summed as f(n) = sum_k g(n+1,k) + n - 2 ({123,231}{213,312}). N8: induction on the number of vertices of G under a STRENGTHENED hypothesis (the list-coloring form, Theorem 4.1; the C6/K3 toy calculation conditioning on the leftmost vertex's color; the dimension-reduction step) - the strengthening is the load-bearing move (the P15 form noted, no double credit) |
+| P10 averaging / expectation | N8 (genuine) | the graphical Brascamp-Lieb machinery is the paper's ENGINE: Lemma 3.1 (L^p duality + Cauchy-Schwarz), the mixed L^{p,q} matrix-norm reformulation, Lemma 3.2, and the local inequality Lemma 3.3 the main theorem reduces to (the K_{a,b} norms) - the Lubetzky-Zhao Holder lineage promoted from N2's verification step to a whole engine; every edge of G assigned a two-variable function |
+| P25 reduction / encoding | N8 (genuine), N7 (partial) | N8: the homomorphism encoding - i(G) = hom(G, H_ind), c_q(G) = hom(G, K_q), the Ising/Potts partition functions as hom counts into looped/weighted H; Question 1.3 unifies Questions 1.1-1.2 (the whole-problem move). N7: the Klein-four orbit reduction (composing every pattern with the reversal and the value-complement preserves the class structure - one representative per orbit counted) + the section-4 pattern-avoidance connection (avoiders are trivial classes; when all non-avoiders merge, class counting reduces to avoidance counting) |
+
+### Honest hypothesis-test results (sub-chunk 14c)
+
+- N7 P1 CONFIRMED (expected by seed as "bijections on equivalence classes"): the enumerations are exactly that.
+- N7 P5 MISSED (expected by seed): ZERO generating functions in the full text (the phrase never appears); the formulas are closed forms, known-sequence identifications (Motzkin), and recurrences - the THIRD consecutive youth-paper P5 miss (N4, N6, N7): at pre-doctoral levels sequences are worked directly, never converted to functions.
+- N7 P23 MISSED (expected by seed as "shuffling-like equivalence moves"): the pattern-replacement transformations GENERATE the equivalence but the counting engine is complete invariants + recurrences + bijections - no compression/shifting/canonicalization anywhere; the seed conflated rearrangement moves with the compression pattern.
+- N8 P10 CONFIRMED and P25 CONFIRMED (both expected by seed): the engine and the encoding respectively.
+- N8 P30 AND P31 BOTH MISSED (expected by seed as "the P30/P31 quasirandomness family (the G-batch lineage)"): the Sidorenko-comparison PROBLEM SPACE, but the proof is functional inequalities + a strengthened induction - no regularity partition, no counting-removal/supersaturation; the family/engine mismatch mirrors the L8/M2/I5 P30 misses. The synthesis datum: the G-batch patterns own the problem space, not this proof.
+- N8 entropy note (continuing the N2 datum): Kahn's entropy method is again bypassed - the Holder/Brascamp-Lieb convexity face carries the Kahn arc's Inventiones landing; P29 stays single-batch (B4).
+- Coverage observation for the synthesis: N8's graphical Brascamp-Lieb inequality is the functional-analysis face of P10 (math.FA in the subject line), load-bearing as the whole engine - the slice-rank treatment's precedent (a named face inside an existing Atlas entry), a synthesis note for the P10 Atlas entry.
+- Author-level honesty notes: N7 is a solo high-school paper (the MIT PRIMES affiliation printed in the paper); N8 is the same mentor structure as N2 (Sah-Sawhney-Stoner undergraduates + Zhao) - recorded never silently.
+
+### Lineages (sub-chunk 14c)
+
+- The pattern-replacement arc: Knuth 1970 (the plactic relation, built for RSK) -> the forgotten relation (Novelli-Schilling 2008) -> the two prior systematic programs (the paper's references [2]/[3], which solved all but seven of the one-part three-letter cases - their names not pinned, the references section beyond the fetched text, honestly) -> N7 (the remaining seven one-part cases + 13 of the 14 two-part cases). The paper's own mystery datum: two two-part cases yield enumerations identical to the Knuth and forgotten relations' ("the reasons are still largely a mystery") - an open-problem pointer for the synthesis. External descendants: the rotational equivalences (Kuszmaul-Zhou) and the adjacent-position replacement programs cited in the later literature.
+- The Kahn arc's Inventiones landing: Granville 1988 -> Alon 1991 (asymptotic) -> Kahn 2001 (entropy, bipartite; the B4 P29 flagship) -> Zhao 2009/2010 (bipartite swapping - N2's step 1) -> Galvin-Tetali (the homomorphism extension, bipartite) -> Lubetzky-Zhao (the Holder/Brascamp-Lieb reinterpretation) -> Zhao's partial bipartite removals -> N8 (the reverse Sidorenko inequality for triangle-free G; the colorings bipartite hypothesis dropped; conjectures of Galvin-Tetali, Galvin, and Cohen-Csikvari-Perkins-Tetali settled; an alternate proof of a Kahn conjecture). The SAME team as N2 - the youth-authored pair brackets the Kahn arc's modern era (N2: the irregular settlement; N8: the homomorphism/colorings side).
+- The Sidorenko family note for the synthesis: the corpus's G-batch owns the forward (minimum-density) direction; N8 proves the reverse (maximum) direction for triangle-free hosts - the two directions meet at the synthesis with DIFFERENT engines (regularity vs functional inequalities).
+
+### Verification-levels statement
+
+Both papers metadata-verified against journal/publisher/award records (sources described in the per-paper files: the EJC issue page; the NSF PAR / MIT DSpace / author-page records). Moves at flagged-sketch level: N7 verified against the open arXiv HTML v2 (the published EJC PDF is open but not separately fetched - the version difference noted); N8 verified against the open arXiv PDF v3, with the fetch truncated around Section 3 (the tool's content cap) - the main-theorem statements, the proof-overview toy calculation, and the Section-3 functional lemmas verified; the deeper Sections 4+ interior not fetched, honestly. The Springer journal page not fetched (paywalled). Zero paywalled fetches.

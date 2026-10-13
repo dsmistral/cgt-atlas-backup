@@ -3,7 +3,7 @@
 - Family: 09-density-structure
 - Atlas one-line: Regular structure multiplies densities; few copies imply few deletions
 - Home chapters (Atlas): 14
-- Status (through chunk 11): EXITED the silent registry (chunk 7): G5 origin, G8 flagship, G9/G10/G11
+- Status (through chunk 14c): EXITED the silent registry (chunk 7): G5 origin, G8 flagship, G9/G10/G11. Batch N 14c: N8 honest miss (expected by seed as the quasirandomness family)
 - Migration: this dossier was machine-migrated 2026-10-13 from the batch files (the gather record and source of truth); every census row and hypothesis-test note below is QUOTED, not rewritten.
 
 ## Census rows (quoted; source = papers/BATCH-*.md)
@@ -14,7 +14,8 @@
 
 ## Hypothesis-test notes (quoted; source = papers/BATCH-*.md)
 
-(none)
+### Batch N, sub-chunk 14c (chunk 14)
+- N8 P31 MISSED (expected by seed as the P30/P31 quasirandomness family): no counting-removal/supersaturation engine - the reverse-Sidorenko proof runs on functional inequalities + induction. (The first hypothesis-test note in this dossier.)
 
 ## Cross-links (interdependence)
 

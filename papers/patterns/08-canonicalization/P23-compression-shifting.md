@@ -3,7 +3,7 @@
 - Family: 08-canonicalization
 - Atlas one-line: Replace sets by canonical heavier ones without losing the property
 - Home chapters (Atlas): 7
-- Status (through chunk 11): Atlas-named (Ch. 7). First genuine classic-paper firings at chunk 11 (K2 flagship, K8; partials I1/K3/K6). Batch N 14b: N6 honest miss (expected by seed)
+- Status (through chunk 14c): Atlas-named (Ch. 7). First genuine classic-paper firings at chunk 11 (K2 flagship, K8; partials I1/K3/K6). Batch N 14b: N6 honest miss (expected by seed). Batch N 14c: N7 honest miss (expected by seed)
 - Migration: this dossier was machine-migrated 2026-10-13 from the batch files (the gather record and source of truth); every census row and hypothesis-test note below is QUOTED, not rewritten.
 
 ## Census rows (quoted; source = papers/BATCH-*.md)
@@ -40,6 +40,9 @@
 
 ### Batch N, sub-chunk 14b (chunk 14)
 - N6 P23 MISSED (expected by seed as P23?): the counting engine is inclusion-exclusion + staged products + algorithm traces; no compression/shifting appears. P3 fires instead (its first corpus firing - see the P3 dossier).
+
+### Batch N, sub-chunk 14c (chunk 14)
+- N7 P23 MISSED (expected by seed as "shuffling-like equivalence moves"): the pattern-replacement transformations GENERATE the equivalence but the counting engine is complete invariants + recurrences + bijections - no compression/shifting/canonicalization anywhere. The seed conflated rearrangement moves with the compression pattern.
 
 ## Cross-links (interdependence)
 
