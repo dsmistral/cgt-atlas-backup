@@ -3,7 +3,7 @@
 - Family: 05-construction-algorithms
 - Atlas one-line: Translate one problem into another language; the target structure carries the proof or the hardness
 - Home chapters (Atlas): 3, 10, 11
-- Status (through chunk 22b): Atlas-named textbook-canon pattern; in-corpus firings recorded below. Batch M: the isomorphism column fires it twice (M1/M2 genuine), M3 the flagship encoding, M4 the second framework firing (genuine), M5/M6 the property-testing partials, and 13c M7 partial (DFS/path encoding) + M9 genuine (the CSP classification). Batch N 14a: N2 genuine - Zhao's bipartite-swapping reduction reused as the Kahn-conjecture settlement's step 1 - see the census rows. Batch N 14b: N5 flagship genuine (the SMP <-> Sudoku translation) + N4 partial (the base-k digit encoding). Batch N 14c: N8 genuine (the homomorphism encoding) + N7 partial (the orbit reduction). Batch O 17b (extension corpus): O4 partial (the witness-tree encoding). Batch P 18a (extension corpus): P1 partial (the KW certificate encoding) + P2 partial (the container algorithm's profile encoding). Batch R 20a (extension corpus): R1 genuine + R2 genuine - the flag-algebra translation move at the extremal level (the K_r density problem in the algebra's positivity language) and the meta level (inequalities as quantum-graph positivity statements); Batch R 20b (extension corpus): R3 genuine (the pentagons line's flag encoding) + R4 genuine (the homomorphism-counting framework encoding - the N8/M9 cross-notes); Batch T 22b (extension corpus): T5 partial (the graph-as-term encoding, unplanned by seed - standard-tool credit per the M9 precedent)
+- Status (through chunk 22b): Atlas-named textbook-canon pattern; in-corpus firings recorded below. Batch M: the isomorphism column fires it twice (M1/M2 genuine), M3 the flagship encoding, M4 the second framework firing (genuine), M5/M6 the property-testing partials, and 13c M7 partial (DFS/path encoding) + M9 genuine (the CSP classification). Batch N 14a: N2 genuine - Zhao's bipartite-swapping reduction reused as the Kahn-conjecture settlement's step 1 - see the census rows. Batch N 14b: N5 flagship genuine (the SMP <-> Sudoku translation) + N4 partial (the base-k digit encoding). Batch N 14c: N8 genuine (the homomorphism encoding) + N7 partial (the orbit reduction). Batch O 17b (extension corpus): O4 partial (the witness-tree encoding). Batch P 18a (extension corpus): P1 partial (the KW certificate encoding) + P2 partial (the container algorithm's profile encoding). Batch R 20a (extension corpus): R1 genuine + R2 genuine - the flag-algebra translation move at the extremal level (the K_r density problem in the algebra's positivity language) and the meta level (inequalities as quantum-graph positivity statements); Batch R 20b (extension corpus): R3 genuine (the pentagons line's flag encoding) + R4 genuine (the homomorphism-counting framework encoding - the N8/M9 cross-notes); Batch T 22b (extension corpus): T5 partial (the graph-as-term encoding, unplanned by seed - standard-tool credit per the M9 precedent). Batch V 24b (extension corpus): V10 partial (the de Bruijn sequence - the encoding IS the object: all 2^n words of length n packed into one cyclic word of length 2^n; the object-vs-engine split, honestly partial)
 - Migration: this dossier was machine-migrated 2026-10-13 from the batch files (the gather record and source of truth); every census row and hypothesis-test note below is QUOTED, not rewritten.
 
 ## Census rows (quoted; source = papers/BATCH-*.md)
@@ -80,6 +80,10 @@
 - Fires in: T5 (partial)
 - Notes: the graph-as-term encoding: the graph's parse-tree (algebraic-term) representation is what the MSO automaton consumes - standard-tool credit, unplanned by seed, per the M9 precedent; the definability framework's encoding face
 
+### Batch V, sub-chunk 24b (chunk 24; extension corpus - NEXT100 seeds)
+- Fires in: V10 (partial)
+- Notes: the encoding IS the object: the maximal cyclic sequence packing all 2^n binary words of length n into one cyclic word of length 2^n (the count 2^(2^(n-1)-n)); the shift-register/de Bruijn-graph frame retrospective; partial credit for the object-vs-engine reason (the encoding is studied, not deployed as a proof device) - the same-author continuation of C7 resolved at gather: distinct papers, distinct engines (P25 here vs P39's averaging at C7)
+
 ## Hypothesis-test notes (quoted; source = papers/BATCH-*.md)
 
 ### Batch M, sub-chunk 13a (chunk 13)
@@ -114,6 +118,9 @@
 
 ### Batch T, sub-chunk 22b (chunk 22)
 - T5 P25 partial UNPLANNED by seed (the seed rows expected only P35 at T5): the graph-as-term encoding is the definability framework's reduction move - partial credit, the M9 precedent (the pattern's 13c co-touch at the same paper line)
+
+### Batch V, sub-chunk 24b (chunk 24)
+- V10 P25 partial CONFIRMED (expected by seed as "P25 encoding"): the object-vs-engine datum - the paper studies encodings rather than deploying one; partial, honestly
 
 ## Cross-links (interdependence)
 
