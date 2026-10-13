@@ -3,9 +3,19 @@
 - Family: candidates (watch-item)
 - Sources: E3 (Vizing fans), E8 (migration chains), E9 (chain-flavored induction)
 - Silent in F/G/H; H11's proof unverified at flagged sketch - not credited; I6's Alon-Tarsi engine is algebraic, not Kempe
-- Status: remaining coloring-paper supply in J-M is scarce; LIKELY DIES AT SYNTHESIS (recorded).
+- Status: remaining coloring-paper supply in J-M is scarce; LIKELY DIES AT SYNTHESIS (recorded). SUPERSEDED AT CHUNK 22a (extension corpus, NEXT100 Batch T): REOPENED - genuine firings at T2/T3 (the reducibility engine of both computer proofs); the origin-lineage test arrives in Batch V.
 - Cross-link: P16 is the closest named pattern (augmentation in coloring clothes).
 
 ## Synthesis call (chunk 15, 2026-10-13)
 
 **Verdict: DIES in-corpus - as pre-recorded.** The E-batch coloring papers were the only supply; the J-M scan found no further firing (H11 stays uncredited at flagged sketch; I6's engine is algebraic). No promotion: the recoloring engine remains a textbook move without load-bearing field recurrence in this corpus. Cross-link kept: P16 is the closest named pattern. Full reasoning: papers/ANALYSIS.md section 2.
+
+
+## Extension-corpus record (chunk 22a, 2026-10-13) - REOPENED BY THE DESCENDANTS
+
+The chunk-15 DIES-in-corpus verdict STANDS (that census was correct: E3/E8/E9 carried the engine at presentation level only, and H11 stayed uncredited at flagged sketch). The extension corpus (NEXT100 Batch T, the four-color lineage) supplies the load-bearing field recurrence the corpus lacked: the reducibility engine of BOTH computer proofs is Kempe's 1879 chain argument.
+
+- T2 Appel-Haken-Koch (genuine): reducibility at industrial scale - "the proof was achieved by Appel and Haken, basing their methods on reducibility using Kempe chains" (MacTutor); "the tests for reducibility used Kempe chain arguments but some configurations had obstacles to prevent reduction" - the obstacles Koch's algorithms handled; descended from Birkhoff 1913's reducible configurations (V5).
+- T3 Robertson-Sanders-Seymour-Thomas (genuine): the same engine at 633-configuration scale, "simpler than Appel and Haken's in several respects"; the STOC 1996 companion's quadratic coloring algorithm the constructive payoff.
+- Status: the watch reopens with a two-firing external arc INSIDE batch T (the cross-batch recurrence test impossible within the batch, mirroring the WATCH flag-algebras single-batch precedent); the origin-lineage test arrives in Batch V (V2 Kempe 1879 the origin; V4 Heawood 1890 the flaw's discovery; V5 Birkhoff 1913 reducibility's father). The promotion call (and the P43+ numbering question) belongs to the user-approved Atlas session.
+- The 2026 datum: the near-linear descendant (Inoue-Kawarabayashi-Miyashita-Mohar-Thomassen-Thorup, arXiv:2603.24880; the Quanta report of 10 September 2026) still works by reducing and recoloring configurations - the Kempe inheritance fifty years on; "isn't it interesting that you make a mistake which is so interesting that it is named after you" (Thomassen, on Kempe).

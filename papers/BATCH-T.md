@@ -1,0 +1,36 @@
+# Batch T - discharging and tree-decomposition DP (extension corpus; gathered and mined; work style v2)
+
+Chunk 22 under work style v2: two sub-chunks (22a T1-T3; 22b T4-T6), each pushed as its own commit. Seeded from NEXT100.md (chunk 16 scouting, user-directed): P36 (discharging) is fully silent - the chunk-15 synthesis diagnosed a corpus-sampling gap (the planar-discharging tradition was never sampled); P35's only in-corpus touch was a partial at M9. This batch is the silent registry's REPAIR batch: the four-color discharging lineage (22a) and the tree-decomposition DP column (22b, P35's designed flagship). ACCEPTED papers only; the chunk-16 citation figures remain ESTIMATES (the 2026-10-13 API incident, SOURCES.md section 6) - this gather verifies METADATA against web sources, not citation counts.
+
+| Sub-chunk | Papers | Status |
+|-----------|--------|--------|
+| 22a | T1 Appel-Haken discharging; T2 Appel-Haken-Koch reducibility; T3 Robertson-Sanders-Seymour-Thomas the second proof | DONE (section below) |
+| 22b | T4 Borodin acyclic colorings; T5 Courcelle MSO logic of graphs; T6 Bodlaender linear-time treewidth | PENDING |
+
+## Sub-chunk 22a (T1-T3) - gathered and mined 2026-10-13
+
+All three papers metadata-verified (sources recorded per paper); ZERO SEED CORRECTIONS - the designed-home seeds all CONFIRMED (the first sub-chunk with no corrections since 19a); moves at flagged-sketch level; zero paywalled fetches; no full texts needed under the scope rule (the open Project Euclid PDFs, the author's summary page and the historical accounts carry the pattern decisions). HEADLINE: P36 (discharging) EXITS THE SILENT REGISTRY AT ITS DESIGNED REPAIR BATCH - T1 the origin-at-scale flagship (P36's first firing anywhere in the survey), T2 partial, T3 the 32-rule second proof; the chunk-15 corpus-sampling-gap diagnosis CONFIRMED (the pattern was never silent in the field, only unsampled). AND: WATCH Kempe-chain recoloring - pronounced dead in-corpus at chunk 15 - REOPENS on extension evidence: the reducibility engine of BOTH computer proofs is Kempe's 1879 chain argument.
+
+### Verification table
+
+| ID | Verified citation | Corrections vs seed |
+|----|------------------|---------------------|
+| T1 | Appel, Haken, "Every planar map is four colorable. Part I: Discharging", Illinois J. Math. 21(3) (1977) 429-490, DOI 10.1215/ijm/1256049011 (Project Euclid - the journal record, September 1977, open PDF; the Illinois Mathematics Library resource page; the Celebratio Mathematica Appel account; MacTutor; the Quanta 2026 report). Issue-date variant noted: Celebratio says "the December 1977 issue"; the Project Euclid masthead stands authoritative (the Q1 precedent) | NONE - CONFIRMED (issue/pages pinned) |
+| T2 | Appel, Haken, Koch, "Every planar map is four colorable. Part II: Reducibility", Illinois J. Math. 21(3) (1977) 491-567, DOI 10.1215/ijm/1256049012 (Project Euclid; the Illinois Mathematics Library resource page; the Semantic Scholar record; MacTutor; the Bondy-Murty treatment 15.2) | NONE - CONFIRMED (the three-author list with Koch pinned) |
+| T3 | Robertson, Sanders, Seymour, Thomas, "The four-colour theorem", J. Combin. Theory Ser. B 70(1) (May 1997) 2-44, DOI 10.1006/jctb.1997.1750 (the ACM DL record; the Princeton portal record; the author's Georgia Tech summary page; the Illinois J. Math. Haken retrospective 60(1) (2016) 149-178; the Quanta 2026 report) | NONE - CONFIRMED (issue/pages/DOI pinned) |
+
+### Pattern census (sub-chunk 22a)
+
+| P-ID | Fires in | Notes |
+|------|----------|-------|
+| P36 | T1 (flagship), T2 (partial), T3 (genuine) | T1: the origin-at-scale firing - Euler-formula total charge (average degree below 6) + local discharging rules + the unavoidable-set extraction; the method-level pre-history honestly credited to Heesch (uncorpus'd; the Thomas summary page's own attribution), with Heawood 1890 (V4) and the Wernicke/Franklin line as fragment ancestors; the set-size datum recorded honestly at the ~1400-1500 level (1482 Celebratio vs 1476 the Thomas page; ring size up to 14; over 1200 IBM 370 hours); T2: the configurations are the discharging output; T3: the human-simplification face - 32 discharging rules vs 300+, 633 configurations vs ~1400-1500, quadratic vs quartic coloring (the Thomas page's own comparison) |
+| P18 | T2 (genuine), T1 (partial), T3 (partial) | T2: a NEW FACE of the pattern recorded honestly - PROOF-BY-EXECUTION (the first major theorem proved by use of a computer; the verification program's execution IS the proof's core; the surveyability/trust debate, Tymoczko's non-surveyability line, as the epistemology datum); T1: the set-verification bookkeeping; T3: the computer-checked second proof (the quadratic algorithm is the STOC 1996 companion's, cross-noted per the companion precedent) |
+| WATCH Kempe chains | T2 (genuine), T3 (genuine) | the reducibility engine of both proofs: Kempe's chain argument at industrial scale ("basing their methods on reducibility using Kempe chains" - MacTutor; the obstacles-to-reduction datum Koch's algorithms handled; the Birkhoff 1913 descent, V5); the chunk-15 DIES-in-corpus verdict STANDS (that census was correct); the extension corpus supplies the load-bearing recurrence the corpus lacked; the origin-lineage test arrives in Batch V (V2 Kempe 1879, V4 Heawood 1890, V5 Birkhoff 1913) |
+
+### Engine contrast and lineage (sub-chunk 22a)
+
+- The two-proof engine contrast: T1/T2 (1977) vs T3 (1997) - the same discharging + reducibility architecture, the simplification race: 300+ vs 32 discharging rules, ~1400-1500 vs 633 configurations, quartic vs quadratic coloring algorithms; the verification attempt that became a simpler proof (the 633-account); the Gonthier 2005 Coq formalization as the trust-answer descendant.
+- The 2026 descendant (lineage context, uncorpus'd): Inoue-Kawarabayashi-Miyashita-Mohar-Thomassen-Thorup, "The Four Color Theorem with Linearly Many Reducible Configurations and Near-Linear Time Coloring" (arXiv:2603.24880, March 2026; SWAT 2026 per citing records; the Quanta report of 10 September 2026): the 8,202-configuration unavoidable set in the flat areas (all-degree-6 regions) the earlier proofs left unmined, with PARALLEL reducibility (non-interfering configurations reduced simultaneously), yielding a near-linear-time coloring algorithm - the discharging/Kempe lineage alive fifty years on; recorded honestly as single-firing context, not a candidate.
+- Coverage observation (recorded for synthesis, not a WATCH): the computer-assisted-proof epistemology (proof-by-execution, program trust, formal verification) is recorded as P18's machine-verification face - the face-naming discipline (the N8 graphical-BL precedent).
+- Honest note on the seed's "discharging's computer-assisted origin": the origin is honest pre-history (Heesch's discharging idea, uncorpus'd; Kempe's chains; Birkhoff's reducibility); T1/T2 are the first COMPLETE large-scale deployment - the flagship credit stands with the pre-history logged, never silent.
+- The 1976-1977 calendar: announced 1976 (the University of Illinois "four colors suffice" postal meter; the initial New York Times refusal recorded in the literature), the journal publication September 1977 (the Project Euclid masthead).
