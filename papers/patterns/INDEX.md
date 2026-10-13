@@ -1,4 +1,4 @@
-# Pattern index (through chunk 19 - Batch Q, extension corpus)
+# Pattern index (through chunk 20 - Batch R, extension corpus)
 
 Status wording is abbreviated here; the per-pattern files are authoritative. 'Census batches' = batches whose pattern census records a firing (partials included).
 
@@ -22,13 +22,13 @@ Status wording is abbreviated here; the per-pattern files are authoritative. 'Ce
 | P16 | Alternating paths / augmentation | 06-duality-optimization | D, E |
 | P17 | Duality (min-max) | 06-duality-optimization | D |
 | P18 | Algorithmic proof | 05-construction-algorithms | A, D, E, G, M, N, O |
-| P19 | Rank / linear algebra | 07-linear-algebra-polynomial | C, F, I, J, L, M |
+| P19 | Rank / linear algebra | 07-linear-algebra-polynomial | C, F, I, J, L, M, R |
 | P20 | Weight shifting / symmetrization | 08-canonicalization | E |
 | P21 | Spectral / Rayleigh | 07-linear-algebra-polynomial | J |
 | P22 | Polynomial method | 07-linear-algebra-polynomial | I |
 | P23 | Compression / shifting | 08-canonicalization | I, K |
 | P24 | Shadow pricing (Kruskal-Katona) | 08-canonicalization | K |
-| P25 | Reduction / encoding | 05-construction-algorithms | B, D, E, F, G, H, L, M, N, O, P |
+| P25 | Reduction / encoding | 05-construction-algorithms | B, D, E, F, G, H, L, M, N, O, P, R |
 | P26 | Compactness (finite vs infinite) | 02-induction-extremal | F |
 | P27 | Correlation | 03-probability | O (first touch, partial - dependency-graph face; the FKG face test moves to Batch U) |
 | P28 | Concentration | 03-probability | B, N |
@@ -40,7 +40,7 @@ Status wording is abbreviated here; the per-pattern files are authoritative. 'Ce
 | P34 | Minor chasing | 10-graph-structure | E, H |
 | P35 | Dynamic programming on structure | 10-graph-structure | M (partial touch) |
 | P36 | Discharging | 10-graph-structure | - |
-| P37 | Duality | 06-duality-optimization | E, H, I, J, M |
+| P37 | Duality | 06-duality-optimization | E, H, I, J, M, R |
 | P38 | Replication | 10-graph-structure | H |
 | P39 | Symmetry averaging | 11-symmetry-designs-codes | C |
 | P40 | Mobius inversion | 11-symmetry-designs-codes | C |
@@ -66,7 +66,7 @@ Status wording is abbreviated here; the per-pattern files are authoritative. 'Ce
 | WATCH slice rank | synthesis call (face of P19/P22) | I |
 | WATCH absorption | WATCH - L8 origin (12c), needs 2nd batch | L |
 | WATCH randomized algebraic construction | WATCH - L8 origin (12c), needs 2nd batch | L |
-| WATCH flag algebras | WATCH - M3 origin + M4 second firing, both within batch M; cross-batch test impossible in-corpus - synthesis call (mirrors CAND-B5 precedent) | M |
+| WATCH flag algebras | CROSSED in the extension corpus (chunk 20: the R1 program-completing flagship + R2 undecidability boundary + R3 pentagons line; R4 the honest miss - the graph-limits companion; batches M + R) - promotion to the user-approved Atlas session | M, R |
 | WATCH Luks-framework group recursion | WATCH - M1 origin + M2 second firing (13a); NO Atlas P-ID (coverage-gap engine) | M |
 
 Ledger note (RECONCILED at chunk 15, 2026-10-13): P39 exited the silent registry at batch C (C1/C7); the STATE.md ledger omission was migration-era bookkeeping - see the P39 dossier and papers/ANALYSIS.md section 3.
@@ -101,3 +101,7 @@ CAND-B5 hypergraph containers CROSSES the two-batch load-bearing gate in the ext
 ## Note 19 (chunk 19 - Batch Q, 2026-10-13)
 
 CAND-C1 analytic combinatorics CROSSES the two-batch load-bearing gate in the extension corpus: the school gathered complete - Q2 Bender 1974 (the pre-history toolbox; SIAM Rev. 16(4): 485-515 - a methods article, the honest partial) -> Q1 Flajolet-Odlyzko 1990 (the ORIGIN: the transfer theorems; SIAM J. Discrete Math. 3(2): 216-240) -> Q3 Banderier-Flajolet 2002 (the flagship application: the unified lattice-path theory, the kernel method + singularity analysis; Theoret. Comput. Sci. 281(1-2): 37-80) -> Q4 Flajolet-Gourdon-Dumas 1995 (the MELLIN face: the pole/term correspondence; Theoret. Comput. Sci. 144: 3-58) -> Q5 Jacquet-Szpankowski 1998 (the POISSONIZATION face: the Poisson transform's sequence -> GF mapping + the depoissonization theorems; Theoret. Comput. Sci. 201: 1-62). The chunk-15 external-evidence-only recommendation is superseded by the in-survey crossing (batch C + batch Q); the promotion decision - with the honest THREE-FACES datum (singularity Q1/Q3; Mellin Q4; poissonization Q5: name the umbrella or the face) - belongs to the user-approved Atlas session. ZERO seed corrections in the batch - the first extension batch confirmed at first pass. Census: P5 genuine at Q1/Q2/Q3/Q5, partial at Q4; coverage observation: the kernel method (Q3) matches no Atlas P-ID (single firing, not a WATCH); forward cross-note: Q3's generalized ballot theorems touch the reflection-principle family (the U4 Andre test, Batch U). See papers/BATCH-Q.md.
+
+## Note 20 (chunk 20 - Batch R, 2026-10-13)
+
+WATCH flag algebras CROSSES the two-batch load-bearing gate in the extension corpus: the "descendants decide" arc gathered complete - R1 Reiher 2016 (the K_r density program COMPLETED for all r; Ann. of Math. 184(3): 683-707 - the chunk-15 call's named centerpiece), R2 Hatami-Norine 2011 (the DECIDABILITY BOUNDARY: linear homomorphism-density inequality validity undecidable; J. Amer. Math. Soc. 24(2): 547-565 - the honest META firing, about the calculus), R3 Grzesik 2012 (the PENTAGONS LINE: Erdos's 1984 conjecture settled, at most (n/5)^5 five-cycles in a triangle-free graph; JCTB 102(5): 1061-1066, title/venue corrected at gather - with the independent HHKNR companion, JCTA 120(3): 722-732, recorded without double credit), R4 Borgs-Chayes-Lovasz-Sos-Vesztergombi 2006 (the HONEST MISS: the graph-limits companion - the homomorphism-counting language, not the calculus; the Topics in Discrete Mathematics chapter, Algorithms Combin. 26: 315-371, venue/year corrected at gather). The chunk-15 external-evidence-only recommendation is superseded by the in-survey crossing (batches M + R: the M3 origin + M4 triangle landmark + the R1/R2/R3 descendants); the promotion decision (and the P43+ numbering question, joining CAND-B5 and CAND-C1) belongs to the user-approved Atlas session. Census: P25 genuine at R1/R2/R3/R4 (the translation move at the extremal, meta, encoding and framework levels); P19/P37 partials at R1 (the SOS/SDP machinery faces); coverage observations: the Matiyasevich reduction (R2) and the graph-limits framework (R4) match no Atlas P-ID (single firings, not WATCH items). Seed corrections batch-wide: the R2 SEED SWAP (the conflated "Hatami-Hatami (2024)" row resolved to Hatami-Norine + the Zhao companion), R3 title/venue, R4 venue/year. See papers/BATCH-R.md.
