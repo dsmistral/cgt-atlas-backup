@@ -5,7 +5,7 @@ Chunk 12 under work style v2: four sub-chunks of three papers, each pushed as it
 | Sub-chunk | Papers | Status |
 |-----------|--------|--------|
 | 12a | L1 Witt; L2 Bruck-Ryser; L3 Hanani | DONE (sections below) |
-| 12b | L4 Wilson; L5 Ray-Chaudhuri-Wilson; L6 Rodl | PENDING |
+| 12b | L4 Wilson; L5 Ray-Chaudhuri-Wilson; L6 Rodl | DONE (sections below) |
 | 12c | L7 Teirlinck; L8 Keevash; L9 Pippenger-Spencer | PENDING |
 | 12d | L10 Assmus-Mattson; L11 MacWilliams; L12 Gleason | PENDING |
 
@@ -49,4 +49,45 @@ All 3 papers metadata-verified; move descriptions at flagged-sketch level from p
 
 Metadata: web-verified (sources per paper: L1 Springer Nature Link + the Mathieu group reference list; L2 Cambridge Core + the BRC theorem page; L3 Cambridge Core + the Hanani publication list + the Utah CJM toc). Moves: flagged-sketch summaries (L3's abstract partly quoted). Zero full-text fetches. Open records located: L2 and L3 Cambridge Core pages; L1 Springer record paywalled with standard textbook treatments - scope rule unused.
 
-(Sub-chunks 12b-12d extend this file at their own closes.)
+## Sub-chunk 12b (L4-L6) - gathered and mined 2026-10-13
+
+All 3 papers metadata-verified; moves at flagged-sketch level from publisher/repository records, the open Osaka-U first-page PDF (L5), and standard survey material; zero paywalled fetches. HEADLINE: CAND-A2's ORIGIN paper lands (L6) - the nibble is born here; P41's continuation fires at L4 - divisibility becomes the WHOLE story of design existence. AND a corpus fact: L5 is a CONFIRMED DUPLICATE of I3.
+
+### Verification table
+
+| ID | Verified citation | Corrections vs seed |
+|----|------------------|---------------------|
+| L4 | Wilson, "An existence theory for pairwise balanced designs": I. "Composition theorems and morphisms", JCTA 13: 220-245 (1972); II. "The structure of PBD-closed sets and the existence conjectures", JCTA 13: 246-273 (1972); III. "Proof of the existence conjectures", JCTA 18 (1975) | VENUE corrected: Ann. Mat. Pura Appl. (seed) -> J. Combin. Theory Ser. A; the THREE-PART unit recorded with part titles pinned (ScienceDirect records + the designtheory.org encyclopedia); part III volume/pages not independently pinned (1975 via the ScienceDirect pii) |
+| L5 | Ray-Chaudhuri-Wilson, "On t-designs", Osaka J. Math. 12(3) (1975), ProjectEuclid ojm/1200758175, MR 0392624; open PDF at the Osaka-U repository | YEAR corrected 1971 -> 1975; CONFIRMED DUPLICATE of I3 (the seed's own verify-vs-I3 instruction executed) - corpus distinct count 126 -> 125, flagged for synthesis |
+| L6 | Rodl, "On a packing and covering problem", European J. Combin. 6 (1985), ScienceDirect S0195669885800238 | Title/venue CONFIRMED as seeded; pages not pinned (standard citations 69-78; companion Frankl-Rodl 6: 317-326 pinned via citing papers); the Erdos-Hanani source pinned (Publ. Math. Debrecen 10 (1963) 10-13) |
+
+### Pattern census (sub-chunk 12b)
+
+| P-ID | Fires in | Notes |
+|------|----------|-------|
+| P41 double-counting & divisibility | L4 (genuine: the existence conjecture itself) | the continuation: Wilson's theorem makes divisibility the WHOLE story asymptotically - for a fixed block-size set K, the necessary congruence conditions are sufficient for all large v; the birth-certificate pattern (L2 nonexistence, L3 fixed-family sufficiency) grows into an asymptotic COMPLETENESS theorem |
+| P11 explicit construction | L4 (flagship) | Wilson's fundamental construction + ingredient designs + morphisms between PBD-closed sets - the composition machinery is design theory's constructive backbone; expected and confirmed |
+| P12 random construction | L6 (flagship: the nibble's origin) | the semi-random nibble born here - a packing built in small random greedy steps with quasi-uniformity tracked across steps; the Erdos-Hanani conjecture proved asymptotically |
+| P10 averaging / expectation | L6 (partial) | the second-moment/equidistribution estimates that keep each nibble near-uniform - the averaging engine does the maintenance work inside the P12 flagship |
+| CAND-A2 semi-random nibble + parameter tracking (candidate) | L6 (ORIGIN firing) | third batch: A6/A8, B4, now L6 - the candidate's name descends literally from this paper's method; the nibble is the strongest P43+ candidate evidence to date with a NAMED origin |
+
+### Honest hypothesis-test results (sub-chunk 12b's yield)
+
+- L4 P24 MISSED (expected): the seed's shadow expectation was direction-wrong - Wilson's existence theory contains no Kruskal-Katona pricing; the backbone is P41 divisibility with P11 constructions.
+- L4 P11 CONFIRMED (expected); P41 CONTINUATION CONFIRMED (per the 12a lineage plan - the sufficiency direction generalizes L3 from fixed families to all PBD-closed K).
+- L4 P4: partial only - the recursive machinery is inherited from Hanani (L3) and lives inside the composition theorems; the headline proof's engine is elementary number theory (finite basis for PBD-closed sets), which matches NO Atlas pattern - recorded as a genuine coverage gap for synthesis.
+- L5: no gather miss - a corpus fact: L5 == I3 (duplicate confirmed; seed year 1971 -> 1975). P19 credit stays at I3 (no double credit); the L-batch "P19 at RCW" expectation is satisfied by the same paper's I3 firing.
+- L6 P12 CONFIRMED (expected); CAND-A2 origin firing CONFIRMED (the third-batch test passed); P10 partial (unplanned).
+
+### Lineages recorded for teaching
+
+- L3 -> L4 confirmed: Hanani's recursive machinery feeds Wilson's composition theorems (12a's plan, now landed).
+- L4 -> L8 (planned, 12c): Wilson's deterministic-asymptotic existence vs Keevash's randomized algebraic construction - the modern counterpart arc.
+- A6 -> L6 -> L9: the semi-random arc - Ajtai-Komlos-Szemeredi 1981 (independent sets in triangle-free graphs, the ancestor), Rodl 1985 (the nibble born), Pippenger-Spencer (the formalization, 12c). Spencer's branching-process alternative proof of Erdos-Hanani noted as an engine-contrast lineage.
+- Erdos-Hanani 1963 -> L6: the 22-year conjecture-to-proof arc; the counting bound C(v,t)/C(k,t) is the "trivial optimum" the field spent two decades reaching.
+
+### Verification levels statement (12b)
+
+Metadata: web-verified (sources per paper: L4 ScienceDirect records for all three parts + the designtheory.org PBD encyclopedia; L5 ProjectEuclid + MathSciNet MR + the Osaka-U repository first-page PDF; L6 ScienceDirect + the Oxford nibble survey notes + citing papers arXiv math/9511224 and West's Illinois page). Moves: flagged-sketch summaries (L5's first page partly quoted). Zero full-text fetches. Page-range honesty: L4-III, L5, L6 page ranges NOT independently pinned and recorded as such (never guessed).
+
+(Sub-chunks 12c-12d extend this file at their own closes.)

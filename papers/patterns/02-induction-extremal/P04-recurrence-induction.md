@@ -48,6 +48,9 @@
 ### Batch L, sub-chunk 12a (chunk 12)
 - L3 P11 AND P4 CONFIRMED (both expected).
 
+### Batch L, sub-chunk 12b (chunk 12)
+- L4 P4 partial only (not credited): the recursive hole/PBD machinery is inherited from Hanani (L3) and lives inside Wilson's composition theorems; the headline existence-conjecture proof runs on elementary number theory (finite basis for PBD-closed sets), not induction on v.
+
 ## Cross-links (interdependence)
 
 P15 is the same ladder one rung down; the monovariant/potential watch-item overlaps this pattern (synthesis call on distinctness).

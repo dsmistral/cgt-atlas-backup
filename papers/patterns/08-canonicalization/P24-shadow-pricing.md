@@ -17,6 +17,9 @@
 ### Batch I (chunk 9)
 - I3 P24 MISSED (expected): no Kruskal-Katona shadow pricing despite the shadow-adjacent statement. P19 confirmed - the first genuine in-corpus firing.
 
+### Batch L, sub-chunk 12b (chunk 12)
+- L4 P24 MISSED (expected): the seed's shadow expectation for Wilson's existence theory was direction-wrong - no Kruskal-Katona pricing anywhere in the trilogy; the backbone is P41 divisibility with P11 constructions.
+
 ## Cross-links (interdependence)
 
 With P23; the Kruskal-Katona theorem's FIVE independent discoveries are this dossier's headline (the survey's strongest load-bearing evidence).

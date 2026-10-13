@@ -3,7 +3,7 @@
 - Family: 07-linear-algebra-polynomial
 - Atlas one-line: Encode sets as vectors; dimension bounds
 - Home chapters (Atlas): 6
-- Status (through chunk 11): Atlas-named (Ch. 6). First genuine in-corpus firings at chunk 9 (I3/I4/I10/I11) after the H3/H10 hypothesis misses; second batch J4 (minrank)
+- Status (through chunk 11): Atlas-named (Ch. 6). First genuine in-corpus firings at chunk 9 (I3/I4/I10/I11) after the H3/H10 hypothesis misses; second batch J4 (minrank); third batch L2 Bruck-Ryser (12a). The L5 seed row is a CONFIRMED DUPLICATE of I3 (12b) - no double credit; see the 12b hypothesis note
 - Migration: this dossier was machine-migrated 2026-10-13 from the batch files (the gather record and source of truth); every census row and hypothesis-test note below is QUOTED, not rewritten.
 
 ## Census rows (quoted; source = papers/BATCH-*.md)
@@ -47,6 +47,9 @@
 
 ### Batch J (chunk 10)
 - J4: P19 confirmed with a P21 secondary - the thesis title itself ("Eigenvalue techniques in design and graph theory") names the two patterns this batch was designed around.
+
+### Batch L, sub-chunk 12b (chunk 12)
+- L5 == I3 DUPLICATE (confirmed at gather, as the seed instructed): the seed's L5 row ("1971 t-designs existence bound") is the same Osaka 1975 "On t-designs" paper already censused at I3 - P19's first genuine firing. P19 credit stays at I3; the L5 gather records the year correction (1971 -> 1975) and flags the corpus distinct-count (126 -> 125) for the chunk-14 synthesis.
 
 ## Cross-links (interdependence)
 

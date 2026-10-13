@@ -1,4 +1,4 @@
-# Pattern index (through chunk 12a)
+# Pattern index (through chunk 12b)
 
 Status wording is abbreviated here; the per-pattern files are authoritative. 'Census batches' = batches whose pattern census records a firing (partials included).
 
@@ -13,9 +13,9 @@ Status wording is abbreviated here; the per-pattern files are authoritative. 'Ce
 | P7 | Parity & handshaking | 01-counting | D |
 | P8 | Longest-path / extremal | 02-induction-extremal | D, E, F, H, I |
 | P9 | Pigeonhole | 01-counting | A, F, G, H, I, K |
-| P10 | Averaging / expectation | 03-probability | A, B, D, G, H, I, K |
+| P10 | Averaging / expectation | 03-probability | A, B, D, G, H, I, K, L |
 | P11 | Explicit construction | 05-construction-algorithms | A, E, G, I, J, L |
-| P12 | Random construction | 03-probability | A, B, D, F, H |
+| P12 | Random construction | 03-probability | A, B, D, F, H, L |
 | P13 | Union bound | 03-probability | A |
 | P14 | Alteration | 03-probability | A |
 | P15 | Induction on vertices/edges | 02-induction-extremal | E, H, I, J |
@@ -52,7 +52,7 @@ Status wording is abbreviated here; the per-pattern files are authoritative. 'Ce
 | Item | Gate status | Batches |
 |------|-------------|---------|
 | CAND-A1 Lovasz Local Lemma | CROSSED | A, B |
-| CAND-A2 semi-random nibble | CROSSED (watch L: L6/L9/L8) | A, B |
+| CAND-A2 semi-random nibble | CROSSED + ORIGIN firing L6 (12b); watch L9/L8 (12c) | A, B, L |
 | CAND-A3 threshold/window | CROSSED | A, B |
 | CAND-A4 entropy compression | NOT crossed - watch M | A (+ B9 lineage) |
 | CAND-B5 hypergraph containers | synthesis call | B |
@@ -68,3 +68,5 @@ Status wording is abbreviated here; the per-pattern files are authoritative. 'Ce
 Ledger note: P39 carries a FLAGGED LEDGER DISCREPANCY (batch-C census fires it at C1/C7; the running STATE.md silent-registry ledger never recorded its exit) - reconcile at synthesis.
 
 12a note (2026-10-13): P41 exited the silent registry (L2 flagship origin / L3 sufficiency converse / L1 partial). P42's designed-home expectation L1 MISSED (the words-as-designs engine is retrospective for Witt; real home L10, pending). See the dossiers and BATCH-L.md.
+
+12b note (2026-10-13): CAND-A2 origin paper landed - L6 Rodl (the nibble born; third batch A/B/L). P41 continuation at L4 (the existence conjecture: divisibility is the whole story asymptotically); P11 flagship at L4; P12 flagship at L6 with a P10 partial. L5 CONFIRMED DUPLICATE of I3 (year corrected 1971 -> 1975; corpus distinct count 126 -> 125 - synthesis flag). L4 P24 MISSED (seed direction-wrong). See the dossiers and BATCH-L.md.
