@@ -6,7 +6,7 @@ Chunk 24 under work style v2: three sub-chunks (24a V1-V5; 24b V6-V10; 24c V11-V
 |-----------|--------|--------|
 | 24a | V1 Cayley trees; V2 Kempe four colours; V3 Petersen regular graphs; V4 Heawood map colour; V5 Birkhoff reducibility | DONE (section below) |
 | 24b | V6 Redfield; V7 Menger; V8 Hall; V9 Whitney matroids; V10 de Bruijn sequences | DONE (section below) |
-| 24c | V11 Dilworth; V12 Redeai; V13 Kuratowski; V14 Shannon zero-error; V15 Tutte 1-factor | DONE (section below) |
+| 24c | V11 Dilworth; V12 Redei; V13 Kuratowski; V14 Shannon zero-error; V15 Tutte 1-factor | DONE (section below) |
 
 ## Sub-chunk 24a (V1-V5) - gathered and mined 2026-10-13
 
