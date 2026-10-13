@@ -3,7 +3,7 @@
 - Family: 07-linear-algebra-polynomial
 - Atlas one-line: Encode sets as vectors; dimension bounds
 - Home chapters (Atlas): 6
-- Status (through chunk 13a): Atlas-named (Ch. 6). First genuine in-corpus firings at chunk 9 (I3/I4/I10/I11) after the H3/H10 hypothesis misses; second batch J4 (minrank); third batch L2 Bruck-Ryser (12a); FOURTH batch L11 MacWilliams (12d, genuine - character orthogonality), with L10/L12 partials; FIFTH batch touch M3 Razborov flag algebras (13a, partial), the same partial face repeating at M4 (13b) - the sum-of-squares/Cauchy-Schwarz positivity engine. The L5 seed row is a CONFIRMED DUPLICATE of I3 (12b) - no double credit; see the 12b hypothesis note
+- Status (through chunk 20a): Atlas-named (Ch. 6). First genuine in-corpus firings at chunk 9 (I3/I4/I10/I11) after the H3/H10 hypothesis misses; second batch J4 (minrank); third batch L2 Bruck-Ryser (12a); FOURTH batch L11 MacWilliams (12d, genuine - character orthogonality), with L10/L12 partials; FIFTH batch touch M3 Razborov flag algebras (13a, partial), the same partial face repeating at M4 (13b) - the sum-of-squares/Cauchy-Schwarz positivity engine. Batch R 20a (extension corpus): a SIXTH batch touch at R1 Reiher (partial - the machinery's SOS/Cauchy-Schwarz face credited per the M3/M4 precedent, at the program-completing flagship). The L5 seed row is a CONFIRMED DUPLICATE of I3 (12b) - no double credit; see the 12b hypothesis note
 - Migration: this dossier was machine-migrated 2026-10-13 from the batch files (the gather record and source of truth); every census row and hypothesis-test note below is QUOTED, not rewritten.
 
 ## Census rows (quoted; source = papers/BATCH-*.md)
@@ -39,6 +39,10 @@
 ### Batch M, sub-chunk 13b (chunk 13)
 - Fires in: M4 (partial)
 - Notes: the sum-of-squares/Cauchy-Schwarz engine inside the flag-algebra proof of the triangle-density formula - the same partial face as at M3.
+
+### Batch R, sub-chunk 20a (chunk 20; extension corpus - NEXT100 seeds)
+- Fires in: R1 (partial)
+- Notes: the machinery's sum-of-squares/Cauchy-Schwarz engine inside the clique-density proof - the same partial face as at M3/M4, credited at flagged-sketch machinery level per the batch-M precedent; a sixth-batch touch (C4/F5, I, J, L2/L11, M3/M4, now R1)
 
 ## Hypothesis-test notes (quoted; source = papers/BATCH-*.md)
 

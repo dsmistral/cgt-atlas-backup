@@ -3,7 +3,7 @@
 - Family: 06-duality-optimization
 - Atlas one-line: Two theories, one object: plane duals exchange vertex-coloring with edge-flowing
 - Home chapters (Atlas): 15
-- Status (through chunk 13a): EXITED the silent registry (chunk 5): E4 planar-duality flagship; second H10 (Konig minimax); third family I11 (LP duality); J2 secondary; FIFTH family M3/M4 SDP certificates (13a/13b) - synthesis call
+- Status (through chunk 20a): EXITED the silent registry (chunk 5): E4 planar-duality flagship; second H10 (Konig minimax); third family I11 (LP duality); J2 secondary; FIFTH family M3/M4 SDP certificates (13a/13b); Batch R 20a (extension corpus): the SDP-certificate partial face repeats at R1 Reiher (the program-completing flagship) - synthesis call
 - Migration: this dossier was machine-migrated 2026-10-13 from the batch files (the gather record and source of truth); every census row and hypothesis-test note below is QUOTED, not rewritten.
 
 ## Census rows (quoted; source = papers/BATCH-*.md)
@@ -31,6 +31,10 @@
 ### Batch M, sub-chunk 13b (chunk 13)
 - Fires in: M4 (partial)
 - Notes: the SDP certificates carry the triangle-density inequality - the same partial face as at M3; the Delsarte-LP lineage's density-era descendant repeats.
+
+### Batch R, sub-chunk 20a (chunk 20; extension corpus - NEXT100 seeds)
+- Fires in: R1 (partial)
+- Notes: the SDP certificates carry the clique-density inequality - the same partial face as at M3/M4, at the program's capstone; the Delsarte-LP lineage's density-era descendant repeats; R2's undecidability boundary makes the SDP fragment precious (the engine-contrast datum, recorded in BATCH-R.md)
 
 ## Hypothesis-test notes (quoted; source = papers/BATCH-*.md)
 
