@@ -19,7 +19,7 @@ One chunk per session. Update this file in the same push_files commit as the bat
 | 12 | Batch L - designs, packing, codes (12) | DONE (all four sub-chunks) | 2026-10-13 | d2d87fb8 (12a); 7d25765d (12b); 63f30d52 (12c); 971ffd45 (12d) |
 | 13 | Batch M - modern structural/algorithmic (9) | DONE (all three sub-chunks) | 2026-10-13 | c8a8f9db (13a); 86b96e24 (13b); eed4fc99 (13c) |
 | 14 | Batch N - youth-authored accepted papers (undergrad and below; SOURCES.md section 4) | DONE (all three sub-chunks) | 2026-10-13 | 14a: 355eecd0; 14b: 98bd1ba5; 14c: 3cb2d2b0 |
-| 15 | Synthesis: ANALYSIS.md, P43+ proposal, silent-P usage evidence | DONE | 2026-10-13 | this commit |
+| 15 | Synthesis: ANALYSIS.md, P43+ proposal, silent-P usage evidence | DONE | 2026-10-13 | a8b32dcb (chunk-15 commit) |
 
 **How to run a gather chunk (per batch):** 1) verify each seed row against a web source, recording the URL; 2) gather abstract or faithful summary; 3) extract the decisive moves and tag Atlas P-IDs; 4) log candidate new patterns with the load-bearing test in mind; 5) fetch an open-access full text only if a new pattern needs it (scope rule); 6) push papers/BATCH.md + per-paper files + updated STATE.md in ONE push_files commit; 7) update the knowledge topic current-state paragraph.
 
