@@ -21,6 +21,9 @@
 ### Batch I (chunk 9)
 - I5 P19 AND P30 BOTH MISSED (both expected): the richest miss of the batch - the natural linear-algebra engine (suggested by I3/I4) does NOT prove forbidden intersections; the original engine is sphere averaging + anticode bounds (P10), with later re-proofs via dependent random choice recorded in the survey literature.
 
+### Batch M, sub-chunk 13a (chunk 13)
+- M2 P30 MISSED (expected by seed; direction-wrong): no regularity partition is load-bearing in Babai's GI proof; the Design Lemma's combinatorial regularization outputs hereditary quasirandomness or a canonical Johnson-type structure (UPC configurations) - quasirandomness as an OUTPUT property, not the Szemeredi machinery (mirrors the L8 miss).
+
 ## Cross-links (interdependence)
 
 G8 proves P31 does NOT require full P30; G10 proves density statements without the P33 increment loop - engine contrasts recorded for the Atlas entries.

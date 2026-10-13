@@ -3,7 +3,7 @@
 - Family: 05-construction-algorithms
 - Atlas one-line: The proof is a procedure; termination = theorem
 - Home chapters (Atlas): 2, 5
-- Status (through chunk 11): Atlas-named textbook-canon pattern; in-corpus firings recorded below
+- Status (through chunk 13a): Atlas-named textbook-canon pattern; in-corpus firings recorded below. Batch M 13a: the isomorphism column M1/M2 - proof = procedure at its largest scale
 - Migration: this dossier was machine-migrated 2026-10-13 from the batch files (the gather record and source of truth); every census row and hypothesis-test note below is QUOTED, not rewritten.
 
 ## Census rows (quoted; source = papers/BATCH-*.md)
@@ -24,9 +24,14 @@
 - Fires in: G7, G12
 - Notes: P30 meeting P18 at G7
 
+### Batch M, sub-chunk 13a (chunk 13)
+- Fires in: M1, M2 (genuine)
+- Notes: the isomorphism column: the proof IS the procedure - polynomial-time bounded-valence testing (M1) and the quasipolynomial general test (M2); correctness and complexity analysis are one; the pattern's first GI-batch exemplars.
+
 ## Hypothesis-test notes (quoted; source = papers/BATCH-*.md)
 
-(none)
+### Batch M, sub-chunk 13a (chunk 13)
+- M1/M2 P18 confirmed (unplanned by seed - the M1/M2 seed rows expected P25/P19 and P8/P30; the algorithmic character of the whole batch is the surprise the census records).
 
 ## Cross-links (interdependence)
 

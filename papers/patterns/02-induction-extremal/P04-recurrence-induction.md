@@ -3,7 +3,7 @@
 - Family: 02-induction-extremal
 - Atlas one-line: Relate case n to smaller cases
 - Home chapters (Atlas): 1, 2, 3
-- Status (through chunk 11): Atlas-named textbook-canon pattern; in-corpus firings recorded below
+- Status (through chunk 13a): Atlas-named textbook-canon pattern; in-corpus firings recorded below. Batch M 13a: the isomorphism column's recursions (M1 partial composition-series divide-and-conquer; M2 genuine aggregate-consumption)
 - Migration: this dossier was machine-migrated 2026-10-13 from the batch files (the gather record and source of truth); every census row and hypothesis-test note below is QUOTED, not rewritten.
 
 ## Census rows (quoted; source = papers/BATCH-*.md)
@@ -44,6 +44,10 @@
 - Fires in: L7 (partial)
 - Notes: Teirlinck's construction reduces t to t-1 recursively (large-set-style machinery), but the placement is explicit handwork - partial, as at L1.
 
+### Batch M, sub-chunk 13a (chunk 13)
+- Fires in: M1 (partial), M2 (genuine)
+- Notes: M1: divide-and-conquer down the composition series (the trivalent case P = G with elementary analysis; higher valence via primitive-group observations). M2: the aggregate-consumption recursion over the permutation domain is load-bearing in the quasipolynomial bound.
+
 ## Hypothesis-test notes (quoted; source = papers/BATCH-*.md)
 
 ### Batch I (chunk 9)
@@ -57,6 +61,9 @@
 
 ### Batch L, sub-chunk 12c (chunk 12)
 - L7 P4 partial confirmed: the recursive skeleton carries the construction; no new genuine firing.
+
+### Batch M, sub-chunk 13a (chunk 13)
+- M2 P4 confirmed (unplanned by seed); M1 P4 partial - the recursion is the vehicle, but the analysis's novel content is group-theoretic (bounded simple sections), matching no Atlas pattern.
 
 ## Cross-links (interdependence)
 

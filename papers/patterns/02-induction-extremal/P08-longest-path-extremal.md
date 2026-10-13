@@ -33,6 +33,9 @@
 ### Batch I (chunk 9)
 - I2 P20 MISSED (expected): the original engine is induction + case analysis; shifting proofs and Katona's circle method are retrospective. P8 confirmed.
 
+### Batch M, sub-chunk 13a (chunk 13)
+- M2 P8 MISSED (expected by seed; direction-wrong): no extremal-object/maximal-example analysis in the quasipolynomial GI proof - the structure-vs-quasirandomness work is the Design Lemma's split-or-Johnson dichotomy, not a P8 extremal argument.
+
 ## Cross-links (interdependence)
 
 (none recorded)

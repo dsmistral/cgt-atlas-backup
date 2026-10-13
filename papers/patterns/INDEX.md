@@ -1,4 +1,4 @@
-# Pattern index (through chunk 12d)
+# Pattern index (through chunk 13a)
 
 Status wording is abbreviated here; the per-pattern files are authoritative. 'Census batches' = batches whose pattern census records a firing (partials included).
 
@@ -7,7 +7,7 @@ Status wording is abbreviated here; the per-pattern files are authoritative. 'Ce
 | P1 | Bijection | 01-counting | C |
 | P2 | Double counting | 01-counting | H, L |
 | P3 | Inclusion-exclusion | 01-counting | - |
-| P4 | Recurrence + induction | 02-induction-extremal | A, C, D, F, G, H, I, L |
+| P4 | Recurrence + induction | 02-induction-extremal | A, C, D, F, G, H, I, L, M |
 | P5 | Generating function | 04-analytic-information | C, E |
 | P6 | Complement / reflection | 01-counting | - |
 | P7 | Parity & handshaking | 01-counting | D |
@@ -21,14 +21,14 @@ Status wording is abbreviated here; the per-pattern files are authoritative. 'Ce
 | P15 | Induction on vertices/edges | 02-induction-extremal | E, H, I, J |
 | P16 | Alternating paths / augmentation | 06-duality-optimization | D, E |
 | P17 | Duality (min-max) | 06-duality-optimization | D |
-| P18 | Algorithmic proof | 05-construction-algorithms | A, D, E, G |
-| P19 | Rank / linear algebra | 07-linear-algebra-polynomial | C, F, I, J, L |
+| P18 | Algorithmic proof | 05-construction-algorithms | A, D, E, G, M |
+| P19 | Rank / linear algebra | 07-linear-algebra-polynomial | C, F, I, J, L, M |
 | P20 | Weight shifting / symmetrization | 08-canonicalization | E |
 | P21 | Spectral / Rayleigh | 07-linear-algebra-polynomial | J |
 | P22 | Polynomial method | 07-linear-algebra-polynomial | I |
 | P23 | Compression / shifting | 08-canonicalization | I, K |
 | P24 | Shadow pricing (Kruskal-Katona) | 08-canonicalization | K |
-| P25 | Reduction / encoding | 05-construction-algorithms | B, D, E, F, G, H, L |
+| P25 | Reduction / encoding | 05-construction-algorithms | B, D, E, F, G, H, L, M |
 | P26 | Compactness (finite vs infinite) | 02-induction-extremal | F |
 | P27 | Correlation | 03-probability | - |
 | P28 | Concentration | 03-probability | B |
@@ -40,7 +40,7 @@ Status wording is abbreviated here; the per-pattern files are authoritative. 'Ce
 | P34 | Minor chasing | 10-graph-structure | E, H |
 | P35 | Dynamic programming on structure | 10-graph-structure | - |
 | P36 | Discharging | 10-graph-structure | - |
-| P37 | Duality | 06-duality-optimization | E, H, I, J |
+| P37 | Duality | 06-duality-optimization | E, H, I, J, M |
 | P38 | Replication | 10-graph-structure | H |
 | P39 | Symmetry averaging | 11-symmetry-designs-codes | C |
 | P40 | Mobius inversion | 11-symmetry-designs-codes | C |
@@ -66,6 +66,8 @@ Status wording is abbreviated here; the per-pattern files are authoritative. 'Ce
 | WATCH slice rank | synthesis call (face of P19/P22) | I |
 | WATCH absorption | WATCH - L8 origin (12c), needs 2nd batch | L |
 | WATCH randomized algebraic construction | WATCH - L8 origin (12c), needs 2nd batch | L |
+| WATCH flag algebras | WATCH - M3 origin (13a); built-in 2nd-batch test at M4 (13b) | M |
+| WATCH Luks-framework group recursion | WATCH - M1 origin + M2 second firing (13a); NO Atlas P-ID (coverage-gap engine) | M |
 
 Ledger note: P39 carries a FLAGGED LEDGER DISCREPANCY (batch-C census fires it at C1/C7; the running STATE.md silent-registry ledger never recorded its exit) - reconcile at synthesis.
 
@@ -76,3 +78,5 @@ Ledger note: P39 carries a FLAGGED LEDGER DISCREPANCY (batch-C census fires it a
 12c note (2026-10-13): the semi-random arc COMPLETE - CAND-A2 origin (L6) + formalization (L9 Pippenger-Spencer, venue corrected Ser. B -> Ser. A) + application (L8 Keevash); promotion to P43+ recommended at synthesis. P41 continuation at L8 (the Existence Conjecture); P11 flagship + P4 partial at L7 Teirlinck (title pinned; venue confirmed). TWO new WATCH items opened at the L8 origin: absorption; randomized algebraic construction (the seed's own candidate expectation executed). Honest misses: L8 P30 (no regularity partition load-bearing); honest negative: L7 P41 (lambda free). See the dossiers and BATCH-L.md.
 
 12d note (2026-10-13) - BATCH L COMPLETE: P42 EXITS the silent registry at its designed home L10 (Assmus-Mattson - the origin paper: few dual weights => each weight class carries a t-design; the Golay code's weight classes recover the Witt designs; the 12a L1 miss vindicated). P19 fourth-batch firing at L11 MacWilliams (genuine), partials at L10/L12. Honest miss: L12 P40 (engine = classical invariant theory - a coverage gap for synthesis). Silent registry after Batch L: P27, P35, P36 (+ P20 under-used). See the dossiers and BATCH-L.md.
+
+13a note (2026-10-13): the isomorphism column M1 -> M2 fires ONE engine twice (the Luks framework: permutation-group recursion on bounded simple sections) - opened as a WATCH item because it matches NO Atlas pattern (a coverage-gap engine with two in-corpus firings in one sub-chunk). THREE more honest seed misses logged: M1 P19 (group theory, not rank bounds) and M2 P8 AND P30 (the Design Lemma's split-or-Johnson dichotomy, not extremal analysis or regularity partitions). M3 opens the flag-algebras WATCH at its origin, with the M4 second-batch test pending (13b). P25 fires in all three papers; P18 twice; P4 (M1 partial, M2 genuine); P19/P37 partials at M3 (the Delsarte-LP lineage's density-era descendant). See the dossiers and BATCH-M.md.

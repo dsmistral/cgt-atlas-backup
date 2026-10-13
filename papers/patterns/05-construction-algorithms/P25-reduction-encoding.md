@@ -3,7 +3,7 @@
 - Family: 05-construction-algorithms
 - Atlas one-line: Translate one problem into another language; the target structure carries the proof or the hardness
 - Home chapters (Atlas): 3, 10, 11
-- Status (through chunk 11): Atlas-named textbook-canon pattern; in-corpus firings recorded below
+- Status (through chunk 13a): Atlas-named textbook-canon pattern; in-corpus firings recorded below. Batch M 13a: the isomorphism column fires it twice (M1/M2 genuine) and M3 is the flagship encoding - see the census rows
 - Migration: this dossier was machine-migrated 2026-10-13 from the batch files (the gather record and source of truth); every census row and hypothesis-test note below is QUOTED, not rewritten.
 
 ## Census rows (quoted; source = papers/BATCH-*.md)
@@ -36,9 +36,14 @@
 - Fires in: L1 (partial)
 - Notes: the Mathieu groups constructed as the design automorphism groups - combinatorics and group theory carried together; the successive transitive extensions mirror the design extensions.
 
+### Batch M, sub-chunk 13a (chunk 13)
+- Fires in: M1 (genuine), M2 (genuine), M3 (flagship)
+- Notes: the isomorphism column carries the pattern twice - M1: GI encoded as the color-automorphism problem for permutation groups with bounded simple sections (the reduction IS the title move); M2: GI reduced to String Isomorphism / Coset Intersection under group action (the Luks-framework vehicle, quasipolynomial in the largest orbit); M3: asymptotic extremal questions encoded as elements of the flag algebra with positivity constraints - the model-theoretic translation is the whole framework.
+
 ## Hypothesis-test notes (quoted; source = papers/BATCH-*.md)
 
-(none)
+### Batch M, sub-chunk 13a (chunk 13)
+- M1 P25 CONFIRMED (expected by seed); M3 P25 CONFIRMED (expected, flagship); M2 P25 confirmed UNPLANNED by seed (the M2 seed row expected P8/P30, both missed) - the reduction chain GI -> String Isomorphism -> Coset Intersection is the abstract's own framing.
 
 ## Cross-links (interdependence)
 
