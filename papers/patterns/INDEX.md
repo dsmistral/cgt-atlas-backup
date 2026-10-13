@@ -1,4 +1,4 @@
-# Pattern index (through chunk 21 - Batch S, extension corpus)
+# Pattern index (through chunk 22 - Batch T, extension corpus)
 
 Status wording is abbreviated here; the per-pattern files are authoritative. 'Census batches' = batches whose pattern census records a firing (partials included).
 
@@ -21,14 +21,14 @@ Status wording is abbreviated here; the per-pattern files are authoritative. 'Ce
 | P15 | Induction on vertices/edges | 02-induction-extremal | E, H, I, J |
 | P16 | Alternating paths / augmentation | 06-duality-optimization | D, E |
 | P17 | Duality (min-max) | 06-duality-optimization | D |
-| P18 | Algorithmic proof | 05-construction-algorithms | A, D, E, G, M, N, O |
+| P18 | Algorithmic proof | 05-construction-algorithms | A, D, E, G, M, N, O, T |
 | P19 | Rank / linear algebra | 07-linear-algebra-polynomial | C, F, I, J, L, M, R |
 | P20 | Weight shifting / symmetrization | 08-canonicalization | E |
 | P21 | Spectral / Rayleigh | 07-linear-algebra-polynomial | J |
 | P22 | Polynomial method | 07-linear-algebra-polynomial | I |
 | P23 | Compression / shifting | 08-canonicalization | I, K |
 | P24 | Shadow pricing (Kruskal-Katona) | 08-canonicalization | K |
-| P25 | Reduction / encoding | 05-construction-algorithms | B, D, E, F, G, H, L, M, N, O, P, R |
+| P25 | Reduction / encoding | 05-construction-algorithms | B, D, E, F, G, H, L, M, N, O, P, R, T |
 | P26 | Compactness (finite vs infinite) | 02-induction-extremal | F |
 | P27 | Correlation | 03-probability | O (first touch, partial - dependency-graph face; the FKG face test moves to Batch U) |
 | P28 | Concentration | 03-probability | B, N |
@@ -38,8 +38,8 @@ Status wording is abbreviated here; the per-pattern files are authoritative. 'Ce
 | P32 | Stability | 08-canonicalization | G |
 | P33 | Density increment | 09-density-structure | F |
 | P34 | Minor chasing | 10-graph-structure | E, H |
-| P35 | Dynamic programming on structure | 10-graph-structure | M (partial touch) |
-| P36 | Discharging | 10-graph-structure | - |
+| P35 | Dynamic programming on structure | 10-graph-structure | M (partial touch), T (exit at 22b: T5 the designed flagship; T6 the companion) |
+| P36 | Discharging | 10-graph-structure | T (exit at the designed repair batch: T1 flagship, T2/T3, T4 human-scale) |
 | P37 | Duality | 06-duality-optimization | E, H, I, J, M, R |
 | P38 | Replication | 10-graph-structure | H |
 | P39 | Symmetry averaging | 11-symmetry-designs-codes | C |
@@ -61,7 +61,7 @@ Status wording is abbreviated here; the per-pattern files are authoritative. 'Ce
 | WATCH Boolean influence | no firing in M; synthesis call on B3 alone | B |
 | WATCH spread induction | no firing in M; synthesis call on B6 alone | B |
 | WATCH sign-reversing involution | synthesis call | C |
-| WATCH Kempe-chain recoloring | likely dies at synthesis | E |
+| WATCH Kempe-chain recoloring | REOPENED in the extension corpus (chunk 22: genuine at T2/T3 - the reducibility engine of both computer proofs; T4 scanned at 22b, not credited - the H11 precedent; origin-lineage test in Batch V) | E, T |
 | WATCH monovariant/potential | synthesis call | D, G |
 | WATCH slice rank | synthesis call (face of P19/P22) | I |
 | WATCH absorption | CROSSED in the extension corpus (chunk 21: S1 the named-engine monograph + S2 the distributive face + S3 the resolvable-decomposition flagship + S4 the STS downstream; batches L + S) - promotion to the user-approved Atlas session | L, S |
@@ -109,3 +109,7 @@ WATCH flag algebras CROSSES the two-batch load-bearing gate in the extension cor
 ## Note 21 (chunk 21 - Batch S, 2026-10-13)
 
 Batch S (absorption, extension corpus, NEXT100 seeds) COMPLETE 4/4 in two sub-chunks (21a: be3a7354; 21b: pinned at the 22a push per protocol). WATCH absorption's two-batch load-bearing gate CROSSED IN-SURVEY and CLOSED (batches L + S): L8 the randomized-algebraic template origin; S1 the named-engine designs monograph (Mem. Amer. Math. Soc. 284(1406) (2023) - the seed's Invent. Math. venue corrected); S2 the distributive face born here (Adv. Math. 356 (2019), Kahn's conjecture confirmed); S3 the resolvable-decomposition flagship (Glock-Joos-Kim-Kuhn-Osthus, J. Eur. Math. Soc. 23(8) (2021) 2511-2547 - the seed's "Existence of resolvable designs / JCTA" title and venue corrected; Ringel's Oberwolfach problem resolved for all large n, Hamilton-Waterloo as a corollary; the Keevash designs II companion recorded per the R2 seed-swap precedent, arXiv-only per the author's own list); S4 the STS downstream (Kwan, Proc. London Math. Soc. 121(5) (2020) 1468-1495 - the seed's "Nearly all / JEMS" title, venue and year corrected; almost all order-n Steiner triple systems have a perfect matching for any n divisible by 3; the Ferber-Kwan almost-resolvable companion recorded per the Assmus-Mattson precedent). Census: P41 genuine at S1 + partial at S4 (the divisibility-boundary face); P12 partial at S1/S3 (the nibble-family machinery) + genuine at S2/S4 (existence-by-sampling); honest misses: S3 P11 (seed-expected), S4 P42 (seed-expected, a direction miss per the L1 precedent). The promotion decision (and the P43+ numbering question, joining CAND-B5, CAND-C1 and WATCH flag algebras) belongs to the user-approved Atlas session. See papers/BATCH-S.md.
+
+## Note 22 (chunk 22 - Batch T, 2026-10-13)
+
+Batch T (discharging and tree-decomposition DP, extension corpus, NEXT100 seeds) COMPLETE 6/6 in two sub-chunks (22a: 471a4d62; 22b: pinned at the 23a push per protocol). BOTH designed repair patterns EXITED the silent registry in their designed batch: P36 (discharging) at 22a - T1 the Appel-Haken origin-at-scale flagship, T2 partial, T3 the Robertson-Sanders-Seymour-Thomas 32-rule second proof, T4 Borodin the human-scale face (Grunbaum's 1973 acyclic 5-coloring conjecture resolved, Discrete Math. 25(3) (1979) 211-236 - the seed's volume 26 corrected); P35 (dynamic programming on structure) at 22b - T5 Courcelle's MSO metatheorem the designed flagship (the automaton-over-tree-decomposition run IS the DP; Inform. and Comput. 85(1) (1990) 12-75), T6 Bodlaender's linear-time treewidth construction the companion enabler (SIAM J. Comput. 25(6) (1996) 1305-1317). The chunk-15 corpus-sampling-gap diagnoses CONFIRMED twice: both patterns field-current all along, only unsampled. WATCH Kempe-chain recoloring REOPENED at T2/T3 (the reducibility engine of both computer proofs) and holds through the T4 scan (not credited, the H11 precedent); the origin-lineage test arrives in Batch V. Census: P18 genuine at T2 (proof-by-execution) and T6 (proof-equals-procedure); P25 partial at T5 (the graph-as-term encoding); P36 genuine at T1/T3/T4. Remaining fully silent after Batch T: P27 only - plus P6's zero-firing and P20's under-use standing open. See papers/BATCH-T.md.

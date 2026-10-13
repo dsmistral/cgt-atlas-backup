@@ -3,7 +3,7 @@
 - Family: 05-construction-algorithms
 - Atlas one-line: Translate one problem into another language; the target structure carries the proof or the hardness
 - Home chapters (Atlas): 3, 10, 11
-- Status (through chunk 20b): Atlas-named textbook-canon pattern; in-corpus firings recorded below. Batch M: the isomorphism column fires it twice (M1/M2 genuine), M3 the flagship encoding, M4 the second framework firing (genuine), M5/M6 the property-testing partials, and 13c M7 partial (DFS/path encoding) + M9 genuine (the CSP classification). Batch N 14a: N2 genuine - Zhao's bipartite-swapping reduction reused as the Kahn-conjecture settlement's step 1 - see the census rows. Batch N 14b: N5 flagship genuine (the SMP <-> Sudoku translation) + N4 partial (the base-k digit encoding). Batch N 14c: N8 genuine (the homomorphism encoding) + N7 partial (the orbit reduction). Batch O 17b (extension corpus): O4 partial (the witness-tree encoding). Batch P 18a (extension corpus): P1 partial (the KW certificate encoding) + P2 partial (the container algorithm's profile encoding). Batch R 20a (extension corpus): R1 genuine + R2 genuine - the flag-algebra translation move at the extremal level (the K_r density problem in the algebra's positivity language) and the meta level (inequalities as quantum-graph positivity statements); Batch R 20b (extension corpus): R3 genuine (the pentagons line's flag encoding) + R4 genuine (the homomorphism-counting framework encoding - the N8/M9 cross-notes)
+- Status (through chunk 22b): Atlas-named textbook-canon pattern; in-corpus firings recorded below. Batch M: the isomorphism column fires it twice (M1/M2 genuine), M3 the flagship encoding, M4 the second framework firing (genuine), M5/M6 the property-testing partials, and 13c M7 partial (DFS/path encoding) + M9 genuine (the CSP classification). Batch N 14a: N2 genuine - Zhao's bipartite-swapping reduction reused as the Kahn-conjecture settlement's step 1 - see the census rows. Batch N 14b: N5 flagship genuine (the SMP <-> Sudoku translation) + N4 partial (the base-k digit encoding). Batch N 14c: N8 genuine (the homomorphism encoding) + N7 partial (the orbit reduction). Batch O 17b (extension corpus): O4 partial (the witness-tree encoding). Batch P 18a (extension corpus): P1 partial (the KW certificate encoding) + P2 partial (the container algorithm's profile encoding). Batch R 20a (extension corpus): R1 genuine + R2 genuine - the flag-algebra translation move at the extremal level (the K_r density problem in the algebra's positivity language) and the meta level (inequalities as quantum-graph positivity statements); Batch R 20b (extension corpus): R3 genuine (the pentagons line's flag encoding) + R4 genuine (the homomorphism-counting framework encoding - the N8/M9 cross-notes); Batch T 22b (extension corpus): T5 partial (the graph-as-term encoding, unplanned by seed - standard-tool credit per the M9 precedent)
 - Migration: this dossier was machine-migrated 2026-10-13 from the batch files (the gather record and source of truth); every census row and hypothesis-test note below is QUOTED, not rewritten.
 
 ## Census rows (quoted; source = papers/BATCH-*.md)
@@ -76,6 +76,10 @@
 - Fires in: R3 (genuine), R4 (genuine)
 - Notes: the encoding at the two faces of the flag-algebras arc's close - R3: the C5-density extremal question encoded in the algebra's positivity language (the M3/M4/R1 translation move, the pentagons line); R4: the homomorphism-counting encoding as the chapter's whole framework move (homomorphism densities as the unification language) - cross-noted to N8 (the homomorphism encoding's youth-lineage firing) and M9 (homomorphism classification by structure)
 
+### Batch T, sub-chunk 22b (chunk 22; extension corpus - NEXT100 seeds)
+- Fires in: T5 (partial)
+- Notes: the graph-as-term encoding: the graph's parse-tree (algebraic-term) representation is what the MSO automaton consumes - standard-tool credit, unplanned by seed, per the M9 precedent; the definability framework's encoding face
+
 ## Hypothesis-test notes (quoted; source = papers/BATCH-*.md)
 
 ### Batch M, sub-chunk 13a (chunk 13)
@@ -107,6 +111,9 @@
 
 ### Batch R, sub-chunk 20b (chunk 20)
 - R3/R4 P25 FIRES GENUINELY: R3 the flag-encoding face of the pentagons line (the seed rows' target met at the third flag-algebra paper); R4 the homomorphism-counting framework itself - the honest unplanned datum, with flag algebras NOT firing there (the language, not the calculus; the N8/M9 cross-notes).
+
+### Batch T, sub-chunk 22b (chunk 22)
+- T5 P25 partial UNPLANNED by seed (the seed rows expected only P35 at T5): the graph-as-term encoding is the definability framework's reduction move - partial credit, the M9 precedent (the pattern's 13c co-touch at the same paper line)
 
 ## Cross-links (interdependence)
 

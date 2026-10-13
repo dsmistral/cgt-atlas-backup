@@ -5,7 +5,7 @@ Chunk 22 under work style v2: two sub-chunks (22a T1-T3; 22b T4-T6), each pushed
 | Sub-chunk | Papers | Status |
 |-----------|--------|--------|
 | 22a | T1 Appel-Haken discharging; T2 Appel-Haken-Koch reducibility; T3 Robertson-Sanders-Seymour-Thomas the second proof | DONE (section below) |
-| 22b | T4 Borodin acyclic colorings; T5 Courcelle MSO logic of graphs; T6 Bodlaender linear-time treewidth | PENDING |
+| 22b | T4 Borodin acyclic colorings; T5 Courcelle MSO logic of graphs; T6 Bodlaender linear-time treewidth | DONE (section below) |
 
 ## Sub-chunk 22a (T1-T3) - gathered and mined 2026-10-13
 
@@ -34,3 +34,35 @@ All three papers metadata-verified (sources recorded per paper); ZERO SEED CORRE
 - Coverage observation (recorded for synthesis, not a WATCH): the computer-assisted-proof epistemology (proof-by-execution, program trust, formal verification) is recorded as P18's machine-verification face - the face-naming discipline (the N8 graphical-BL precedent).
 - Honest note on the seed's "discharging's computer-assisted origin": the origin is honest pre-history (Heesch's discharging idea, uncorpus'd; Kempe's chains; Birkhoff's reducibility); T1/T2 are the first COMPLETE large-scale deployment - the flagship credit stands with the pre-history logged, never silent.
 - The 1976-1977 calendar: announced 1976 (the University of Illinois "four colors suffice" postal meter; the initial New York Times refusal recorded in the literature), the journal publication September 1977 (the Project Euclid masthead).
+
+## Sub-chunk 22b (T4-T6) - gathered and mined 2026-10-13
+
+All three papers metadata-verified (sources recorded per paper); ONE SEED CORRECTION (T4 volume: the seed said Discrete Math. 26 -> verified Discrete Math. 25(3), every citing source pins volume 25; T5 and T6 CONFIRMED with issue and pages pinned); moves at flagged-sketch level; zero paywalled fetches; no full texts needed under the scope rule (the open ScienceDirect/SIAM/ACM records and the author's open LaBRI PDF carry the pattern decisions). HEADLINE: P35 (dynamic programming on structure) EXITS THE SILENT REGISTRY AT ITS DESIGNED FLAGSHIP - T5 Courcelle's MSO metatheorem IS the DP pattern at theory scale (the finite-state automaton compiled from the MSO formula, run over a tree decomposition as a bag-local finite-state recurrence: Courcelle's theorem, linear time on bounded treewidth), with T6 the companion enabler (the linear-time decomposition the recurrences run on); the chunk-15 NO-genuine-firing-in-the-corpus verdict superseded by the extension corpus exactly as the NEXT100 repair-batch design intended - BOTH designed repair patterns of the batch have now exited (P36 at 22a, P35 at 22b). AND: WATCH Kempe-chain recoloring scanned at T4 (the acyclic-coloring proof's recoloring moves) and NOT credited - the H11 flagged-sketch precedent; the watch stands at its T2/T3 reopening pending the Batch V origin-lineage test.
+
+### Verification table (sub-chunk 22b)
+
+| ID | Verified citation | Corrections vs seed |
+|----|------------------|---------------------|
+| T4 | Borodin, "On acyclic colorings of planar graphs", Discrete Math. 25(3) (1979) 211-236, DOI 10.1016/0012-365X(79)90077-3 (the ScienceDirect journal record, open archive; the citing literature's uniform attribution - SIAM J. Discrete Math., J. Graph Theory and Israel J. Math. survey citations all pinning 25 (1979) 211-236) | VOLUME CORRECTED: the seed said Discrete Math. 26 -> verified 25(3) (1979) 211-236; title, author, year CONFIRMED |
+| T5 | Courcelle, "The monadic second-order logic of graphs. I. Recognizable sets of finite graphs", Inform. and Comput. 85(1) (March 1990) 12-75, DOI 10.1016/0890-5401(90)90043-H (the ACM DL record: published 1 March 1990; the ScienceDirect journal record, open archive; the author's open LaBRI PDF) | NONE - CONFIRMED (issue/pages pinned) |
+| T6 | Bodlaender, "A linear-time algorithm for finding tree-decompositions of small treewidth", SIAM J. Comput. 25(6) (1996) 1305-1317, DOI 10.1137/S0097539793251219 (the SIAM J. Comput. record; the ACM DL record; the Utrecht University research portal; the citing literature pinning 25:6 (1996) 1305-1317) | NONE - CONFIRMED (issue/pages pinned) |
+
+### Pattern census (sub-chunk 22b)
+
+| P-ID | Fires in | Notes |
+|------|----------|-------|
+| P35 | T5 (flagship, genuine), T6 (companion partial) | T5: the designed flagship fires GENUINELY - the MSO formula compiled to a finite-state tree automaton whose run over a tree decomposition IS a dynamic program (bag-local finite-state recurrences; Courcelle's theorem: every MSO-definable property decidable in linear time on bounded-treewidth graphs); P35's second touch anywhere in the survey and first genuine one - the M9 partial's follow-through; T6: the companion enabler - the linear-time construction supplies exactly the object the recurrences run on (companion credit per the designed-batch plan, not a DP firing itself) |
+| P36 | T4 (genuine) | the human-scale firing - reducible configurations + discharging resolving Grunbaum's 1973 acyclic 5-coloring conjecture with no machine in the loop (the 1977 computer proofs' contrast two years on); the planar-discharging tradition's non-four-color face: the pattern's field currency extends beyond the four-color arc |
+| P18 | T6 (genuine) | the classic-proof-equals-procedure face: the linear-time construction path IS the correctness argument (the M1/M2 isomorphism-column precedent); the f(k) constant enormous and honestly recorded - the practical-infeasibility note the later approximation and single-exponential FPT lines answered |
+| P25 | T5 (partial) | the graph-as-term encoding (the parse-tree representation the automaton consumes) - standard-tool credit, unplanned by seed, per the M9 precedent |
+| WATCH Kempe chains | T4 (scanned, NOT credited) | the acyclic-coloring recoloring moves are standard local bookkeeping at flagged-sketch reading level, not a load-bearing Kempe-chain engine - the H11 precedent; the watch stands at its T2/T3 reopening pending the Batch V origin-lineage test |
+
+### Engine contrast and lineage (sub-chunk 22b)
+
+- The T5+T6 pairing is the batch's designed complement: T5 needs a decomposition (the metatheorem runs its automaton on one), T6 builds one in linear time for every fixed width - the definability-to-effective-algorithm arc completed inside the batch; T6's own abstract carries the wide-scale payoff (linear-time recognition for every minor-closed class not containing all planar graphs).
+- The T4 contrast with T1/T2: the same planar repertoire (reducibility + discharging) at fully human scale two years after the 1977 computer proofs - the discharging lineage's range from 1200 mainframe hours to a hand-checkable case analysis, and the tradition's non-four-color face (Grunbaum's acyclic conjecture).
+- Coverage observation (recorded for synthesis, not a WATCH): the MSO-definability framework (T5) is recorded as P35's theory-scale face - the definability/recognizability bridge matches no Atlas P-ID beyond the DP face; the P43+ numbering question stays with the user-approved Atlas session.
+
+## Batch T result (2026-10-13) - COMPLETE 6/6
+
+Both designed repair patterns EXITED the silent registry in their designed batch: P36 (discharging) at 22a - T1 the origin-at-scale flagship, T2 partial, T3 the 32-rule second proof, T4 the human-scale face; P35 (dynamic programming on structure) at 22b - T5 the designed flagship, T6 the companion enabler. The chunk-15 corpus-sampling-gap diagnoses are CONFIRMED twice over: both patterns were field-current all along, only unsampled. WATCH Kempe-chain recoloring reopened at T2/T3 (the reducibility engine of both computer proofs) and holds through the T4 scan (not credited, the H11 precedent); the origin-lineage test arrives in Batch V. Remaining fully silent after Batch T: P27 only (with P6's zero-firing and P20's under-use standing open - see INDEX Note 22). Next: chunk 23 = Batch U.

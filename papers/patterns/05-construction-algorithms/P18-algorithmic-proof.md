@@ -3,7 +3,7 @@
 - Family: 05-construction-algorithms
 - Atlas one-line: The proof is a procedure; termination = theorem
 - Home chapters (Atlas): 2, 5
-- Status (through chunk 22a): Atlas-named textbook-canon pattern; in-corpus firings recorded below. Batch M: the isomorphism column M1/M2 (proof = procedure at its largest scale), the property-testing column M5/M6 (the testers), and 13c the classic-algorithms column (M7 flagship, M8 genuine, M9 partial). Batch N 14b: N6 partial (the Gale-Shapley round traces). Batch O 17a (extension corpus): O2 genuine - the LLL's first algorithmization; 17b: O4, O5 genuine (the constructive arc); Batch T 22a (extension corpus): T2 genuine - the machine-verification face (proof-by-execution), T1/T3 partial
+- Status (through chunk 22a): Atlas-named textbook-canon pattern; in-corpus firings recorded below. Batch M: the isomorphism column M1/M2 (proof = procedure at its largest scale), the property-testing column M5/M6 (the testers), and 13c the classic-algorithms column (M7 flagship, M8 genuine, M9 partial). Batch N 14b: N6 partial (the Gale-Shapley round traces). Batch O 17a (extension corpus): O2 genuine - the LLL's first algorithmization; 17b: O4, O5 genuine (the constructive arc); Batch T 22a (extension corpus): T2 genuine - the machine-verification face (proof-by-execution), T1/T3 partial. Batch T 22b (extension corpus): T6 genuine - the linear-time treewidth algorithm (proof-equals-procedure, the f(k) constant honestly recorded as enormous)
 - Migration: this dossier was machine-migrated 2026-10-13 from the batch files (the gather record and source of truth); every census row and hypothesis-test note below is QUOTED, not rewritten.
 
 ## Census rows (quoted; source = papers/BATCH-*.md)
@@ -52,6 +52,10 @@
 - Fires in: T2 (genuine), T1 (partial), T3 (partial)
 - Notes: T2 - a NEW FACE of the pattern recorded honestly: PROOF-BY-EXECUTION (the first major theorem proved by use of a computer; the reducibility-verification program's execution IS the proof's core; the surveyability/trust debate, Tymoczko's non-surveyability line, as the epistemology datum); T1 - the unavoidable-set verification bookkeeping; T3 - the computer-checked second proof (the quadratic coloring algorithm is the STOC 1996 companion's, cross-noted per the companion precedent)
 
+### Batch T, sub-chunk 22b (chunk 22; extension corpus - NEXT100 seeds)
+- Fires in: T6 (genuine)
+- Notes: the classic-proof-equals-procedure face at the structure-family scale: the linear-time construction path IS the correctness argument (the M1/M2 isomorphism-column precedent); the f(k) constant enormous and honestly recorded - the practical-infeasibility note the later approximation and single-exponential FPT lines answered
+
 ## Hypothesis-test notes (quoted; source = papers/BATCH-*.md)
 
 ### Batch M, sub-chunk 13a (chunk 13)
@@ -71,6 +75,9 @@
 
 ### Batch T, sub-chunk 22a (chunk 22)
 - T2 P18 firing UNPLANNED by seed (the seed rows expected P18 only at T3): the machine-verification face is the extension corpus's surprise; T3 P18 partial CONFIRMED (seed-expected, credited at partial with the honest companion note)
+
+### Batch T, sub-chunk 22b (chunk 22)
+- T6 P18 CONFIRMED (expected by seed): the treewidth algorithm's proof-as-procedure firing closes the batch's P18 pair - the machine-verification face (T2, 22a) and the human construction face (T6, 22b)
 
 ## Cross-links (interdependence)
 
