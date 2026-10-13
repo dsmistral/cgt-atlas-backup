@@ -32,6 +32,10 @@
 - Fires in: H2 (block decomposition), H8 (tree decomposition), H9 (basic classes + 2-joins), H10 (hypergraph formulation), H12 (cell decomposition)
 - Notes: 
 
+### Batch L, sub-chunk 12a (chunk 12)
+- Fires in: L1 (partial)
+- Notes: the Mathieu groups constructed as the design automorphism groups - combinatorics and group theory carried together; the successive transitive extensions mirror the design extensions.
+
 ## Hypothesis-test notes (quoted; source = papers/BATCH-*.md)
 
 (none)

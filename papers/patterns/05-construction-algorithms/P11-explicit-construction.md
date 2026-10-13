@@ -28,10 +28,17 @@
 - Fires in: J3 (secondary)
 - Notes: eigenvalue gaps + group representations deliver explicit linear-sized expanders and superconcentrators
 
+### Batch L, sub-chunk 12a (chunk 12)
+- Fires in: L1 (flagship), L3
+- Notes: L1 Witt: the Witt designs built block-by-block, the groups read off - the corpus's canonical build-the-object design paper. L3 Hanani: explicit base-case constructions (difference-type placements) feeding the recursion.
+
 ## Hypothesis-test notes (quoted; source = papers/BATCH-*.md)
 
 ### Batch J (chunk 10)
 - J1, J3: single-pattern seeds, both confirmed (P21; J3 with a P11 secondary).
+
+### Batch L, sub-chunk 12a (chunk 12)
+- L3 P11 AND P4 CONFIRMED (both expected); L1 P11 confirmed beyond the seed's expectation.
 
 ## Cross-links (interdependence)
 

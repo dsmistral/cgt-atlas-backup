@@ -36,10 +36,17 @@
 - Fires in: I2, I12
 - Notes: I2's original induction/case engine; I12's critical-matrix induction (the whole proof, remarkably elementary)
 
+### Batch L, sub-chunk 12a (chunk 12)
+- Fires in: L3, L1 (partial)
+- Notes: L3 Hanani: the whole existence proof is an induction on v via recursive PBD/hole constructions. L1 Witt partial: stepwise extension S(5,6,12) from S(4,5,11) - the recursive skeleton is present but the blocks are placed by hand.
+
 ## Hypothesis-test notes (quoted; source = papers/BATCH-*.md)
 
 ### Batch I (chunk 9)
 - I12 P23 MISSED (expected): the Stanley-Wilf bound is pure structural induction; no compression appears. P4 confirmed.
+
+### Batch L, sub-chunk 12a (chunk 12)
+- L3 P11 AND P4 CONFIRMED (both expected).
 
 ## Cross-links (interdependence)
 

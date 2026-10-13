@@ -16,7 +16,7 @@ One chunk per session. Update this file in the same push_files commit as the bat
 | 9 | Batch I - algebraic and polynomial methods (12) | DONE | 2026-10-13 | 9217db89 (chunk-9 commit) |
 | 10 | Batch J - spectral methods (4) | DONE | 2026-10-13 | 7e160e76 (chunk-10 commit) |
 | 11 | Batch K - shadows and compression (8) | DONE | 2026-10-13 | this commit |
-| 12 | Batch L - designs, packing, codes (12) | IN PROGRESS - sub-chunks 12a-12d (12a next) | 2026-10-13 | - |
+| 12 | Batch L - designs, packing, codes (12) | IN PROGRESS - 12a done, 12b next | 2026-10-13 | this commit (12a) |
 | 13 | Batch M - modern structural/algorithmic (9) | PENDING | - | - |
 | 14 | Synthesis: ANALYSIS.md, P43+ proposal, silent-P usage evidence | PENDING | - | - |
 
@@ -37,11 +37,14 @@ One chunk per session. Update this file in the same push_files commit as the bat
 
 | Sub-chunk | Papers | Status | Commit |
 |-----------|--------|--------|--------|
-| 12a | L1-L3 (Witt; Bruck-Ryser-Chowla; Hanani) | NEXT | - |
-| 12b | L4-L6 (Wilson; Ray-Chaudhuri-Wilson; Rodl) | PENDING | - |
+| 12a | L1-L3 (Witt; Bruck-Ryser; Hanani) | DONE | this commit |
+| 12b | L4-L6 (Wilson; Ray-Chaudhuri-Wilson; Rodl) | NEXT | - |
 | 12c | L7-L9 (Teirlinck; Keevash; Pippenger-Spencer) | PENDING | - |
 | 12d | L10-L12 (Assmus-Mattson; MacWilliams; Gleason) | PENDING | - |
 
 Batch M (chunk 13) will be split 13a M1-M3, 13b M4-M6, 13c M7-M9 at its session.
 
 **Patterns-layer build note (2026-10-13):** migration of chunks 1-11 into the pattern dossiers: 86 census rows + 15 hypothesis-test lines across 11 batches; 35 patterns with at least one census row; never firing through chunk 11: P3, P6, P27, P35, P36 (plus P41/P42 awaiting their designed home L). LEDGER DISCREPANCY FLAGGED: the batch-C census fires P39 (symmetry averaging) at C1/C7, but the running silent-registry ledger above never listed P39 as exited - reconcile at synthesis (the P39 dossier carries the flag).
+
+
+**Sub-chunk 12a result (2026-10-13):** P41 double-counting & divisibility EXITS the silent registry in its origin paper - L2 Bruck-Ryser flagship (authorship corrected: the 1949 paper is Bruck-Ryser; Chowla is the 1950 generalization), L3 Hanani the sufficiency converse (year corrected 1960 -> 1963), L1 partial. Honest miss: P42@L1 - Witt's route is designs -> groups; the words-as-designs engine is retrospective (the Golay -> Witt arc); P42's real home is L10. Confirmed: P11 (L1 flagship, L3), P4 (L3), P19 (L2; third batch firing), P2/P25 (L2/L1 partials). Corrections: Witt two-paper unit + the 1937 variant; BRC authorship + the 88-92 variant; Hanani year. No new candidates; gates unchanged. Next: 12b (L4 Wilson; L5 Ray-Chaudhuri-Wilson; L6 Rodl) - CAND-A2's third-batch test (the Rodl nibble origin paper).

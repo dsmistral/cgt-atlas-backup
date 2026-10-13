@@ -24,6 +24,10 @@
 - Fires in: J4
 - Notes: SECOND BATCH firing (batch I: I3/I4/I10/I11; now J4 minrank) - the rank engine crosses batches within the survey corpus; the minimum rank of matrices fitting the complement graph bounds the Shannon capacity
 
+### Batch L, sub-chunk 12a (chunk 12)
+- Fires in: L2
+- Notes: L2 Bruck-Ryser: the incidence-matrix identity NN^T = nI + J and the determinant/quadratic-form integrality argument - the matrix algebra is the engine of the nonexistence theorem. A THIRD BATCH firing for P19 (batch I: I3/I4/I10/I11; batch J: J4).
+
 ## Hypothesis-test notes (quoted; source = papers/BATCH-*.md)
 
 ### Batch I (chunk 9)
@@ -38,9 +42,6 @@
 ### Batch I (chunk 9)
 - I4 P19 AND P22 BOTH CONFIRMED (both expected) - the flagship double hit; I10 P19 AND P22 both confirmed (slice rank = tensor rank + polynomial method).
 
-### Batch I (chunk 9)
-- I4 P19 AND P22 BOTH CONFIRMED (both expected) - the flagship double hit; I10 P19 AND P22 both confirmed (slice rank = tensor rank + polynomial method).
-
 ### Batch J (chunk 10)
 - J2 P19 MISSED (expected): theta is an optimization/spectral quantity, not a rank/dimension bound. The honest twist: the rank answer arrives in the very next paper - Haemers' minrank (J4), introduced partly in response to questions Lovasz posed in the theta paper. The J2-J4 pair is the survey's cleanest same-problem engine contrast since H6 vs H7 (probabilistic vs deterministic minors).
 
@@ -50,3 +51,5 @@
 ## Cross-links (interdependence)
 
 P21/P22 are this family's siblings; the slice-rank watch-item (I9/I10) is a P19+P22 face; J4 minrank vs J2 theta is the family's cleanest same-problem engine contrast.
+
+(2026-10-13 correction, at the 12a close: a hypothesis line mentioning the same P-ID twice was attached twice by the migration parser; the duplicate collapsed here with this note, never silently.)

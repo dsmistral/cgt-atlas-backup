@@ -3,16 +3,22 @@
 - Family: 11-symmetry-designs-codes
 - Atlas one-line: Integrality of the replication numbers r and lambda is a design's birth certificate: non-integral parameters forbid existence before any search
 - Home chapters (Atlas): 16
-- Status (through chunk 11): SILENT forward-registry entry: designed home is Batch L (chunk 12, in progress)
+- Status (through chunk 12a): EXITED the silent registry (sub-chunk 12a, the designed home): L2 flagship (the Bruck-Ryser origin paper - arithmetic forbids existence before any search), L3 genuine (admissibility shown SUFFICIENT - the converse direction), L1 partial (admissibility checks inside Witt's construction)
 - Migration: this dossier was machine-migrated 2026-10-13 from the batch files (the gather record and source of truth); every census row and hypothesis-test note below is QUOTED, not rewritten.
 
 ## Census rows (quoted; source = papers/BATCH-*.md)
 
-(no census row through chunk 11 - honest)
+### Batch L, sub-chunk 12a (chunk 12)
+- Fires in: L2 (flagship: the origin paper), L3 (genuine: the sufficiency converse), L1 (partial)
+- Notes: THE DESIGNED-HOME HARVEST: P41 exits the silent registry in its origin paper. L2 Bruck-Ryser: the arithmetic-nonexistence move (sum of two squares / quadratic-form solvability) is born here. L3 Hanani: the converse fires in the same sub-chunk - admissibility proven sufficient for C[3,2,1], C[4,2,1], C[4,3,1] (the SQS existence theorem). L1 Witt partial: the divisibility checks precondition the stepwise construction.
+
 
 ## Hypothesis-test notes (quoted; source = papers/BATCH-*.md)
 
-(none)
+### Batch L, sub-chunk 12a (chunk 12)
+- L2 P41 CONFIRMED (expected, flagship origin); the authorship correction (Chowla 1950) does not change the firing.
+- L3 P11 AND P4 CONFIRMED (both expected); P41 gains an unplanned GENUINE firing - the sufficiency direction is the strongest possible form of the birth-certificate pattern.
+
 
 ## Cross-links (interdependence)
 

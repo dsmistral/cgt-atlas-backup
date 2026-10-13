@@ -12,6 +12,10 @@
 - Fires in: H3 (the star-counting engine), H12 (cell counting), H1 partial
 - Notes: H3's P2+P10 engine reappears inside H12
 
+### Batch L, sub-chunk 12a (chunk 12)
+- Fires in: L2 (partial)
+- Notes: the incidence identity is double counting of point pairs - the arithmetic root under L2's P19 engine (mirror of the H3 engine note: the identity feeds the algebra, the algebra delivers the theorem).
+
 ## Hypothesis-test notes (quoted; source = papers/BATCH-*.md)
 
 (none)
