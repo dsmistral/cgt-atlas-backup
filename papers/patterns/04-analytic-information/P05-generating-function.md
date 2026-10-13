@@ -3,7 +3,7 @@
 - Family: 04-analytic-information
 - Atlas one-line: Turn a sequence into a function; let algebra work
 - Home chapters (Atlas): 1
-- Status (through chunk 14c): Atlas-named textbook-canon pattern; in-corpus firings recorded below. Batch N 14b: honest misses at BOTH N4 and N6 (no generating function in either paper - the seed shorthand conflated sequence generation with P5). Batch N 14c: N7 honest miss too (the third consecutive youth-paper P5 miss)
+- Status (through chunk 19a): Atlas-named textbook-canon pattern; in-corpus firings recorded below. Batch N 14b: honest misses at BOTH N4 and N6 (no generating function in either paper - the seed shorthand conflated sequence generation with P5). Batch N 14c: N7 honest miss too (the third consecutive youth-paper P5 miss). Batch Q 19a: genuine at Q1/Q2/Q3 - the analytic-combinatorics school gathered (the pattern at research grade; its extension-corpus census debut)
 - Migration: this dossier was machine-migrated 2026-10-13 from the batch files (the gather record and source of truth); every census row and hypothesis-test note below is QUOTED, not rewritten.
 
 ## Census rows (quoted; source = papers/BATCH-*.md)
@@ -16,6 +16,10 @@
 - Fires in: E4
 - Notes: chromatic/flow polynomials as carriers
 
+### Batch Q (chunk 19)
+- Fires in: Q1, Q2, Q3
+- Notes: the analytic-combinatorics school - coefficient extraction at the dominant singularity (Q1), the a_n ~ f(n) toolbox (Q2), the kernel-method walk GFs (Q3)
+
 ## Hypothesis-test notes (quoted; source = papers/BATCH-*.md)
 
 ### Batch N, sub-chunk 14b (chunk 14)
@@ -23,6 +27,9 @@
 
 ### Batch N, sub-chunk 14c (chunk 14)
 - N7 P5 MISSED (expected by seed): ZERO generating functions in the full text (the phrase never appears) - the formulas are closed forms, known-sequence identifications (Motzkin), and recurrences. The THIRD consecutive youth-paper P5 miss (N4, N6, N7): at pre-doctoral levels sequences are worked directly, never converted to functions - the accessibility datum now spans middle school AND high school.
+
+### Batch Q, sub-chunk 19a (chunk 19)
+- Q1-Q3 P5 FIRES GENUINELY (all three expected by seed): the Flajolet school is the generating-function pattern at research grade - the whole subject of Q1 is GF-coefficient asymptotics; Q2's toolbox takes GFs in; Q3's paths are counted by kernel-method GFs analyzed by singularity analysis. The honest contrast with the youth batch (N4/N6/N7): at the school level the sequence-function conversion IS the research engine, and the pattern's asymptotic face (CAND-C1) carries the theorems.
 
 ## Cross-links (interdependence)
 
