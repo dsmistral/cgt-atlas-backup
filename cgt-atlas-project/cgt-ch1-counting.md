@@ -6,7 +6,7 @@ type: "text/markdown"
 
 # Chapter 1 · Counting
 
-*A lecture course, in the spirit of Feynman's physics lectures: the idea before the formula, the story before the proof, and the proof as a conversation. A compact reference card closes the chapter. Lab and exercises stay.*
+*A lecture course, in the spirit of Feynman's physics lectures: the idea before the formula, the story before the proof, and the proof as a conversation. A compact reference card follows the lectures; graded exercises, a computational lab and worked answers close the chapter.*
 
 ## How to read this chapter
 
@@ -20,7 +20,7 @@ Read it slowly, with a pencil. Whenever a small number appears in front of you �
 
 Here is a problem posed around 1708 by Pierre Rémond de Montmort, and it caused a surprising amount of trouble: *You have n letters and n addressed envelopes. In how many ways can you put every letter into a **wrong** envelope?*
 
-A permutation with no fixed point is called a **derangement**, and the count is written D_n. Before we know anything, let us feel the numbers. Take n = 2: the only way to get both wrong is to swap them — D_2 = 1. For n = 3: keep 1 out of 3 from... try it: the two 3-cycles (2,3,1) and (3,1,2) work, everything else puts at least one letter home — D_3 = 2. For n = 4 you can grind it out: D_4 = 9. The sequence begins 1, 2, 9, 44, 265, 1854, … and it grows almost as fast as the factorial. Already something is strange: "get everything wrong" turns out to be *nearly as easy as getting everything arranged at all*.
+A permutation with no fixed point is called a **derangement**, and the count is written D_n. Before we know anything, let us feel the numbers. Take n = 2: the only way to get both wrong is to swap them — D_2 = 1. For n = 3, try it: the two 3-cycles (2,3,1) and (3,1,2) — each list says where letters 1, 2, 3 go — put every letter in a wrong envelope, and everything else leaves at least one letter at home, so D_3 = 2. For n = 4 you can grind it out: D_4 = 9. From n = 2 the sequence runs 1, 2, 9, 44, 265, 1854, … and it grows almost as fast as the factorial. Already something is strange: "get everything wrong" turns out to be *far from rare — a sizeable fraction of all the arrangements there are*.
 
 Now — how would you attack this? Let me show you three attacks, and I promise each one is something you could have invented.
 
@@ -49,7 +49,7 @@ Now there are exactly two situations:
 1. **Envelope 1 gets letter i back** — a swap. The remaining n − 2 letters must all go wrong among themselves: D_{n−2} ways.
 2. **Envelope 1 does not get letter i.** Then **remove letter 1 and envelope i** — both are spent — and **relabel envelope 1 as i**. Now letter i is forbidden the relabelled envelope i, and every other remaining letter is forbidden its own envelope: *exactly the derangement problem one size down*, D_{n−1} ways. (Check the bookkeeping on n = 3: letter 1 → envelope 3, and letter 3 avoids envelope 1. Remove letter 1 and envelope 3; relabel envelope 1 as "3". Now letters {2, 3} must derange on envelopes {2, 3*} — D₂ = 1 way ✓, namely letter 2 → envelope 1 and letter 3 → envelope 2.)
 
-**D_n = (n−1)(D_{n−1} + D_{n−2})**. Check: D_4 = 3 × (2 + 1) = 9 ✓. (Two seeds power the machine: D₁ = 0 — a single letter cannot go wrong alone — and D₂ = 1 — the swap; with D₀ = 1, the empty arrangement, the whole sequence is pinned.) This little machine *explains* why the numbers grow: each derangement is built from smaller derangements plus one honest choice. (Pattern **P4**: recurrence built by following a forced case analysis.)
+**D_n = (n−1)(D_{n−1} + D_{n−2})**. Check: D_4 = 3 × (2 + 1) = 9 ✓. (Two seeds power the machine: D₀ = 1 — the empty arrangement — and D₁ = 0 — a single letter cannot go wrong alone. The recurrence then produces D₂ = 1·(0 + 1) = 1, the swap, and the whole sequence is pinned.) This little machine *explains* why the numbers grow: each derangement is built from smaller derangements plus one honest choice. (Pattern **P4**: recurrence built by following a forced case analysis.)
 
 ### 1.3 Third attack: package the whole sequence into one object
 
@@ -67,7 +67,7 @@ So the sentence "every permutation is a set of fixed letters glued to a derangem
 
 **✎ Checkpoint.** Predict before the reveal: D₇/7! = 1854/5040 and D₈/8! = 14833/40320. Compute both as decimals, commit in ink to a guess about where the fractions are heading, and only then read on.
 
-Divide by n!: D_n/n! = Σ_{k=0}^{n} (−1)^k/k! → **1/e ≈ 0.3679** as n grows. A random arrangement of a million letters has about a 36.8% chance of getting *every single one wrong* — essentially the same chance as for three letters. The number e, which you met in calculus as a limit of (1+1/n)ⁿ, shows up here as a *probability about universal mess-making*. Nature is economical with her ideas; she reuses them without telling you.
+Divide by n!: D_n/n! = Σ_{k=0}^{n} (−1)^k/k! → **1/e ≈ 0.3679** as n grows. A random arrangement of a million letters has about a 36.8% chance of getting *every single one wrong* — essentially the same chance as for six letters (265/720 ≈ 36.8%). The number e, which you met in calculus as a limit of (1+1/n)ⁿ, shows up here as a *probability about universal mess-making*. Nature is economical with her ideas; she reuses them without telling you.
 
 **What you now own:** count-the-complement with honest overlaps (P3); recurrence-as-explanation (P4); generating-function bookkeeping (P5); and the reflex — *when everything must avoid everything, count the complement, but respect the overlap.*
 
@@ -85,7 +85,7 @@ Count the good paths directly? Hard. Count the **bad** paths — and this is the
 
 A bad path touches the line y = x + 1 at some first moment. Take the path up to that moment and reflect it across the line y = x + 1 — every East step becomes a North step and vice versa, and the path is reborn in the mirror world. Let me show you one, n = 2: the bad path **E, N, N, E** first touches the forbidden line at its third step. Reflect those three steps: E,N,N → N,E,E. The mirror path is N,E,E,E — a path that now ends at (3,1) instead of (2,2).
 
-(What, geometrically, is this swap? Reflection across **any** 45° line exchanges East and North steps; what the line's position decides is only *where the picture must be translated afterwards*. Two honest descriptions of one map. **Mirror in the boundary:** reflect the head across the forbidden line y = x + 1 — the touch point (t, t+1) stays where it is and the tail stays where it was, but the head now begins at (−1, 1), so the whole path is lifted by (1, −1) to start at the origin again. **Mirror in the main diagonal:** reflect the head across y = x — the origin stays fixed, but the touch point slides to (t+1, t), and now it is the *tail* that must shift by (1, −1) to rejoin it. Either way the very same path comes out, ending at (n+1, n−1). The step-swap is the primitive; the two mirrors are costumes for it — and when this chapter says "reflect across y = x + 1," it means the first description, translation included.)
+(What, geometrically, is this swap? Reflection across **any** line of slope +1 exchanges East and North steps; what the line's position decides is only *where the picture must be translated afterwards*. Two honest descriptions of one map. **Mirror in the boundary:** reflect the head across the forbidden line y = x + 1 — the touch point (t, t+1) stays where it is and the tail stays where it was, but the head now begins at (−1, 1), so the whole path is lifted by (1, −1) to start at the origin again. **Mirror in the main diagonal:** reflect the head across y = x — the origin stays fixed, but the touch point slides to (t+1, t), and now it is the *tail* that must shift by (1, −1) to rejoin it. Either way the very same path comes out, ending at (n+1, n−1). The step-swap is the primitive; the two mirrors are costumes for it — and when this chapter says "reflect across y = x + 1," it means the first description, translation included.)
 
 Drawn, the pair looks like this (x runs right, y runs up; **⊗** marks the relevant first touch, ╱ the relevant line):
 
@@ -93,18 +93,18 @@ Drawn, the pair looks like this (x runs right, y runs up; **⊗** marks the rele
    The bad path  E N N E  (ends at (2,2)):
 
      y=2  ·    ⊗————●
-          ╱   │           ╱ = the forbidden line y = x + 1
+             ╱ │          ╱ = the forbidden line y = x + 1
      y=1  ·    ●    ·     │ = the walker's steps
-     ╱        │
+        ╱      │
      y=0  ●————●    ·
           0    1    2   (x)
 
    Its mirror  N E E E  (ends at (3,1)):
 
      y=2  ·    ·    ·    ·
-                    ╱          ╱ = the line x = y + 1
+                       ╱       ╱ = the line x = y + 1
      y=1  ●————●————⊗————●
-     │         ╱
+          │       ╱
      y=0  ●    ·    ·    ·
           0    1    2    3   (x)
 ```
@@ -226,11 +226,11 @@ Read that aloud: a path is nothing, or a matched pair wrapping a smaller path an
    The path  E E N N E N:
 
      y=3  ·    ·    ·    ●
-                      │
+                         │
      y=2  ·    ·    ⊗————●
-                      │
+                    │
      y=1  ·    ·    ●    ·
-                      │
+                    │
      y=0  ●————●————●    ·
           0    1    2    3   (x)
 ```
@@ -294,13 +294,13 @@ Now the physicist's move. Define the bookkeeping machine **C(x) = Σ_{n≥0} C_n
 
 **C(x) = 1 + x·C(x)²**.
 
-That equation **is** the Catalan structure. Everything else is algebra: solve the quadratic, C(x) = (1 − √(1−4x))/2x, and the numbers 1, 1, 2, 5, 14, 42, 132, … come streaming out. The same decomposition read without generating functions is the recurrence C_n = Σ_k C_k·C_{n−1−k} (check C_3 = 1·2 + 1·1 + 2·1 = 5 ✓). Pattern **P4/P5** again: *decompose at the first return; write the self-similarity as an equation.*
+That equation **is** the Catalan structure. Everything else is algebra: solve the quadratic, C(x) = (1 − √(1−4x))/(2x), and the numbers 1, 1, 2, 5, 14, 42, 132, … come streaming out. The same decomposition read without generating functions is the recurrence C_n = Σ_k C_k·C_{n−1−k} (check C_3 = 1·2 + 1·1 + 2·1 = 5 ✓). Pattern **P4/P5** again: *decompose at the first return; write the self-similarity as an equation.*
 
 ### 2.3 One number, many costumes
 
 **✎ Checkpoint.** Pause the book. You now own the sequence 1, 2, 5, 14, 42, 132. Write down every mathematical object you have *ever* seen counted by these numbers — guess boldly, in ink — then compare with the list below. Every hit you score is a costume you can hunt a bijection for.
 
-Here is the part that would make you suspicious if you met it in fiction: the number 1, 2, 5, 14, 42… counts *all* of these — balanced parenthesis strings; ways to triangulate a polygon; full binary trees with n+1 leaves; permutations sortable by one stack. Five costumes, one number. Each pair of costumes is connected by an explicit **bijection** (pattern **P1**), and finding those translations is the best training I know: when the same numbers appear twice, do not shrug — *hunt the map between the two worlds.* The decomposition "E [path] N [path]" is the true content; every costume is the same creature wearing different clothes.
+Here is the part that would make you suspicious if you met it in fiction: the numbers 1, 2, 5, 14, 42… count *all* of these — good lattice paths to (n,n); balanced parenthesis strings with n pairs; triangulations of an (n+2)-gon; full binary trees with n+1 leaves; permutations of n things sortable by one stack. Five costumes, one number. Each pair of costumes is connected by an explicit **bijection** (pattern **P1**), and finding those translations is the best training I know: when the same numbers appear twice, do not shrug — *hunt the map between the two worlds.* The decomposition "E [path] N [path]" is the true content; every costume is the same creature wearing different clothes.
 
 **What you now own:** count-the-bad by reflection (P6); decompose-at-first-return and write self-similarity as an equation (P4/P5); bijection-hunting (P1).
 
@@ -352,7 +352,7 @@ The switch picture is worth keeping for one reason: it converts statements about
 | Pattern | Plain language | Where you met it |
 |---------|---------------|-----------------|
 | **P1 Bijection** | Two worlds, one map: translate the count | Lecture 2.3 |
-| **P2 Double counting** | Count one world two ways; the disagreement is the theorem | Lecture 3 |
+| **P2 Double counting** | Count one world two ways; setting the answers equal is the theorem | Lecture 3 |
 | **P3 Inclusion–exclusion** | Complement of overlapping events = zigzag add/subtract | Lecture 1.1 |
 | **P4 Recurrence** | Follow a forced case; explain n by smaller n | Lecture 1.2, 2.2 |
 | **P5 Generating function** | A whole sequence packaged as one object; algebra works for you | Lectures 1.3, 2.2 |
@@ -380,11 +380,11 @@ The switch picture is worth keeping for one reason: it converts statements about
 7. (●●○) Prove the derangements' second engine: **D_n = n·D_{n−1} + (−1)ⁿ**. *Hint: P5 — start from D(x) = e^{−x}/(1−x), multiply both sides by (1−x), and extract the coefficient of xⁿ.*
 8. (●●○) Show that D_n is the nearest integer to n!/e for every n ≥ 1. *Hint: P3 — how big is the discarded tail of the alternating series?*
 9. (●●○) Count the arrangements in which *exactly one* letter lands in its correct envelope. *Hint: choose the lucky letter — n ways — then derange the rest (P3/P4).*
-10. (●●○) **The ballot problem.** Candidate A scores a votes, B scores b, a > b. In how many orderings of the ballots is A strictly ahead after every single ballot? (Paths (0,0)→(a,b) touching the diagonal only at the start.) *Hint: P6, twice — first reduce to the weak version by deleting A's forced first ballot, then run Lecture 2.1's reflection through the line y = x+1.*
+10. (●●○) **The ballot problem.** Candidate A scores a votes, B scores b, a > b. In how many orderings of the ballots is A strictly ahead after every single ballot? (Paths (0,0)→(a,b) touching the diagonal only at the start.) *Hint: P6 — first reduce to the weak version by deleting A's forced first ballot, then run Lecture 2.1's reflection through the line y = x+1.*
 
 **Tough — several chapter ideas combined**
 
-11. (●●●) Count the paths from (0,0) to (n,n) that touch the diagonal **only at their two endpoints**. *Hint: the first and last steps are forced; strip them off and recognize what remains (Lecture 2.2's decomposition).*
+11. (●●●) For n ≥ 1, count the paths from (0,0) to (n,n), on either side of the diagonal, that touch the diagonal **only at their two endpoints**. *Hint: once the side is chosen, the first and last steps are forced; strip them off and recognize what remains (Lecture 2.2's decomposition).*
 12. (●●●) Prove Σ_k (k − n/2)²·C(n,k) = n·2ⁿ⁻². *In words: the average subset has n/2 elements (Lecture 3.2) — this says how far it typically strays. Hint: differentiate (1+x)ⁿ twice at x = 1, then combine with Lecture 3.2's identity.*
 13. (●●●) 2n people sit at a round table. In how many ways can they split into n disjoint handshake pairs with **no two handshakes crossing**? *Hint: P1/P4 — fix person 1's partner; the handshake cuts the circle into two independent smaller circles; write the self-similarity (Lecture 2.2 style).*
 14. (●●●) Find the bijection between the triangulations of an (n+2)-gon and the balanced parenthesis strings of length 2n. *Hint: P1 — distinguish one edge of the polygon; the triangle sitting on it splits the polygon in two; recurse. Verify on the pentagon by hand: 5 triangulations, 5 strings.*
@@ -413,7 +413,7 @@ X2. (◐) **Catalan paths in a band.** Restrict the walker to the band x − 2 �
 
 ## Computational Lab (verified)
 
-Both engines of Lecture 1 and Lecture 2 cross-checked by execution (2026-10-09):
+Both engines of Lecture 1 and Lecture 2 cross-checked by execution (2026-10-09; re-run 2026-10-13):
 
 ```python
 from math import comb, factorial
@@ -434,14 +434,18 @@ def C_rec(n):                       # Catalan first-return recurrence (Lecture 2
     return C[n]
 
 assert all(D_rec(n) == D_ie(n) for n in range(2, 10))
-assert C_rec(10) == comb(20, 10) // 11
+assert all(C_rec(n) == comb(2*n, n) // (n + 1) for n in range(11))
+
+print("D_n, n = 2..9:", [D_rec(n) for n in range(2, 10)])
+print("D_9/9! =", round(D_rec(9) / factorial(9), 5))
+print("Catalan, n = 0..10:", [C_rec(n) for n in range(11)])
 ```
 
-**Verified output:** D_n for n = 2..9 = 1, 2, 9, 44, 265, 1854, 14833, 133496 — both engines agree everywhere; D₉/9! = 0.36788 ≈ 1/e (Lecture 1.4, live). Catalan n = 0..10 = 1, 1, 2, 5, 14, 42, 132, 429, 1430, 4862, 16796 — recurrence and closed form agree.
+**Verified output (printed by the block above):** D_n for n = 2..9 = 1, 2, 9, 44, 265, 1854, 14833, 133496 — both engines agree everywhere; D₉/9! = 0.36788 ≈ 1/e (Lecture 1.4, live). Catalan n = 0..10 = 1, 1, 2, 5, 14, 42, 132, 429, 1430, 4862, 16796 — recurrence and closed form agree.
 
-### Part 2 — the reflection bijection, machine-tested (verified 2026-10-10)
+### Part 2 — the reflection bijection, machine-tested (verified 2026-10-10; re-run 2026-10-13)
 
-A formula can lie about being a bijection — and, in fairness, so can code: a small-case test is an error *detector*, not a proof (the nearest-integer property of Exercise A8 is settled by an argument, not by a tally, and no finite run of code replaces that). What code adds is a check the eye cannot fake. Lecture 2.1's map, together with its inverse (first touch of x = y+1), round-tripped over **all** small paths — the very test that an earlier version of this chapter failed to run, at a cost the Revision History at the end records:
+A formula can lie about being a bijection — and, in fairness, so can code: a small-case test is an error *detector*, not a proof (the nearest-integer property of Exercise 8 (worked in A8) is settled by an argument, not by a tally, and no finite run of code replaces that). What code adds is a check the eye cannot fake. Lecture 2.1's map, together with its inverse (first touch of x = y+1), round-tripped over **all** small paths — the test that separates a bijection from a coincidence of totals:
 
 ```python
 from itertools import permutations
@@ -472,13 +476,16 @@ for n in (2, 3):
     assert all(inverse(forward(p)) == p for p in bads)  # round trip, bad side
     assert all(forward(inverse(q)) == q
                for q in all_paths(n+1, n-1))            # round trip, mirror side
+    mirror = all_paths(n+1, n-1)
+    print("n =", n, "|", len(bads), "bad of", len(all_paths(n, n)))
+    print("      ", len(set(images)), "images,", len(mirror), "mirror paths")
 
 assert forward('EEEN') is None   # the WRONG inverse hunts y = x+1 here: nothing to find
 ```
 
-**Verified output (2026-10-10):** n = 2 — 4 bad paths (of 6 total), 4 distinct images, all 4 paths to (3,1) covered, both round trips exact. n = 3 — 15 bad paths (of 20; 20 − C₃ = 20 − 5 = 15 ✓), 15 distinct images, all 15 paths to (4,2) covered, both round trips exact. And `forward('EEEN')` returns **None**: a path to (3,1) never touches y = x+1 — the alarm that proves the inverse must search for **x = y+1**. *The lesson, now an Atlas-wide lab rule: when a chapter claims a bijection, the lab implements the map **and its inverse** and round-trips everything — matching totals certify a count, never a correspondence.*
+**Verified output (2026-10-10; the block prints the counts and asserts the rest):** n = 2 — 4 bad paths (of 6 total), 4 distinct images, all 4 paths to (3,1) covered, both round trips exact. n = 3 — 15 bad paths (of 20; 20 − C₃ = 20 − 5 = 15 ✓), 15 distinct images, all 15 paths to (4,2) covered, both round trips exact. And `forward('EEEN')` returns **None**: a path to (3,1) never touches y = x+1 — the alarm that proves the inverse must search for **x = y+1**. *The lesson: when a chapter claims a bijection, the lab implements the map **and its inverse** and round-trips everything — matching totals certify a count, never a correspondence.*
 
-**What to explore:** plot D_n·e/n! approaching 1 — and note Exercise A8 proves the nearest-integer property *never* fails, so do not hunt a counterexample; instead watch the true error |D_n − n!/e| against its proven bound 1/(n+1) and measure how tight the bound is.
+**What to explore:** plot D_n·e/n! approaching 1 — and note that A8 proves the nearest-integer property *never* fails, so do not hunt a counterexample; instead watch the true error |D_n − n!/e| against its proven bound 1/(n+1) and measure how tight the bound is.
 
 ---
 
@@ -496,7 +503,7 @@ assert forward('EEEN') is None   # the WRONG inverse hunts y = x+1 here: nothing
 
 **A5.** All strings: 3⁴ = 81. Missing a given letter: 2⁴ = 16 each (×3); missing two given letters: 1 each (×3); missing all three: 0. Inclusion–exclusion: 81 − 48 + 3 − 0 = **36**. (Note the overlap repair — plain subtraction would give nonsense, exactly as in Lecture 1.1.)
 
-**A6.** Choose n people from two rooms holding n each. Directly: C(2n,n) ways. By composition (k from room 1, n−k from room 2): Σ_k C(n,k)·C(n,n−k) = Σ_k C(n,k)². Equate. ∎ *(Third costume: paths through a corner.)*
+**A6.** Choose n people from two rooms holding n each. Directly: C(2n,n) ways. By composition (k from room 1, n−k from room 2): Σ_k C(n,k)·C(n,n−k) = Σ_k C(n,k)². Equate. ∎ *(Third costume: lattice paths from (0,0) to (n,n), sorted by where they cross the antidiagonal x + y = n — at (k, n−k), in C(n,k)² ways.)*
 
 **A7.** From D(x) = e^{−x}/(1−x), multiply both sides by (1−x): **(1−x)·D(x) = e^{−x}**. Now match the coefficients of the *plain power* xⁿ — and mind the bookkeeping, because with plain powers the factorial machinery stays visible. Left side: D(x) contributes D_n/n! (its xⁿ term), and x·D(x) contributes its own xⁿ term, which is the xⁿ⁻¹ term of D(x) shifted up one place: D_{n−1}/(n−1)! — the same number as n·D_{n−1}/n!. Right side: e^{−x} contributes (−1)ⁿ/n!. So **D_n/n! − D_{n−1}/(n−1)! = (−1)ⁿ/n!**, and multiplying through by n!: **D_n − n·D_{n−1} = (−1)ⁿ**. ∎ Check: D₅ = 44 = 5·9 − 1 ✓. (You can instead stay in the normalized EGF basis the whole way: there x·D(x) = Σ_n n·D_{n−1}·xⁿ/n! — the one-power shift costs exactly a factor n — and matching the coefficients of xⁿ/n! on both sides gives D_n − n·D_{n−1} = (−1)ⁿ directly, with no final multiplication. Both bookkeepings are honest and equivalent; the one error to avoid is writing one convention's numbers under the other convention's label.)
 
@@ -504,7 +511,7 @@ assert forward('EEEN') is None   # the WRONG inverse hunts y = x+1 here: nothing
 
 **A9.** Choose which letter is fixed: n ways. The remaining n−1 letters must all go wrong: D_{n−1} ways. Total **n·D_{n−1}**. Check n=3: 3·D₂ = 3 = the three transpositions ✓.
 
-**A10.** Fix the geometry first — this is where it is easy to slip. With p ≥ q, the endpoint (p,q) is *on or below* the diagonal, so the right weak version is: paths (0,0)→(p,q) staying **weakly below** (y ≤ x). Bad paths first touch y = x+1 — Lecture 2.1's own forbidden line. Swap the head up to that first touch: a prefix with a East-steps and a+1 North-steps becomes a+1 E's and a N's, re-aiming the whole path from (p,q) at **(p+1, q−1)**. Every path to (p+1, q−1) inverts this — its x − y runs from 0 up to 2, so it first touches x = y+1, and swapping its head returns the bad path — a genuine two-way bijection, the bad side counted by C(p+q, q−1). So the weak count is C(p+q, q) − C(p+q, q−1) = **(p−q+1)/(p+1) · C(p+q, q)**. *Now the strict version:* A strictly ahead after every ballot ⇔ the first step is East, and after deleting it the translated path (0,0)→(a−1, b) is weakly below. Apply the weak formula with p = a−1, q = b: (a−b)/a · C(a+b−1, b) = (a−b)/a · a/(a+b) · C(a+b, b) = **(a−b)/(a+b) · C(a+b, b)**. ∎ Check a=2, b=1: 1/3 · 3 = 1 — and indeed AAB is the only ordering with A strictly ahead after every ballot (after 1: 1–0 ✓; after 2: 2–0 ✓; after 3: 2–1 ✓), while ABA ties at ballot 2 ✗ and BAA is behind at ballot 1 ✗.
+**A10.** Fix the geometry first — this is where it is easy to slip. With p ≥ q, the endpoint (p,q) is *on or below* the diagonal, so the right weak version is: paths (0,0)→(p,q) staying **weakly below** (y ≤ x). Bad paths first touch y = x+1 — Lecture 2.1's own forbidden line. Swap the head up to that first touch: a prefix with a East-steps and a+1 North-steps becomes a+1 E's and a N's, re-aiming the whole path from (p,q) at **(p+1, q−1)**. Every path to (p+1, q−1) inverts this — its x − y climbs from 0 to p − q + 2 ≥ 2 in steps of ±1, so it first touches x = y+1, and swapping its head returns the bad path — a genuine two-way bijection, the bad side counted by C(p+q, q−1). So the weak count is C(p+q, q) − C(p+q, q−1) = **(p−q+1)/(p+1) · C(p+q, q)**. *Now the strict version:* A strictly ahead after every ballot ⇔ the first step is East, and after deleting it the translated path (0,0)→(a−1, b) is weakly below. Apply the weak formula with p = a−1, q = b: (a−b)/a · C(a+b−1, b) = (a−b)/a · a/(a+b) · C(a+b, b) = **(a−b)/(a+b) · C(a+b, b)**. ∎ Check a=2, b=1: 1/3 · 3 = 1 — and indeed AAB is the only ordering with A strictly ahead after every ballot (after 1: 1–0 ✓; after 2: 2–0 ✓; after 3: 2–1 ✓), while ABA ties at ballot 2 ✗ and BAA is behind at ballot 1 ✗.
 
 **A11.** Such a path stays strictly on one side of the diagonal in between (it cannot cross without touching). Take the above side: the first step must be N and the last must be E (any other first/last step lands on the wrong side or on the diagonal). Strip the forced pair: N [inner] E, where the inner path, translated down by one, runs (0,0)→(n−1, n−1) staying weakly above — count C_{n−1} by A10's weak formula (p = q = n−1 gives (1/n)·C(2n−2, n−1) = C_{n−1}). The below side gives another C_{n−1}. Total **2·C_{n−1}**. Check n=2: 2·C₁ = 2 ✓ (NNEE, EENN).
 
@@ -513,15 +520,15 @@ assert forward('EEEN') is None   # the WRONG inverse hunts y = x+1 here: nothing
 **A13.** Let person 1 shake hands with person j. The chord 1–j splits the other 2n−2 people into two arcs of j−2 and 2n−j people; for no crossing, each arc must pair up internally, so **both numbers are even — j must be even**, j = 2i+2 (i = 0, …, n−1). Drawn for 8 people, with person 1 shaking person 4:
 
 ```
-              8          1
-            ·              ┃
-          ·                ┃
+              8           1
+            ·             ┃
+          ·               ┃
         7                 ┃     2
         |                 ┃     |
         6                 ┃     3
-          ·                ┃
-            ·              ┃
-              5          4
+          ·               ┃
+            ·             ┃
+              5           4
 ```
 
 Clockwise from 1 to 4 the arc holds {2, 3} — 2 people, who must pair among themselves; clockwise from 4 back to 1 it holds {5, 6, 7, 8} — 4 people, pairing internally without crossing. And why must j be even? Try the chord 1–5 instead: the arcs become {2, 3, 4} and {6, 7, 8} — both *odd*, so someone would be forced to cross the chord.
@@ -564,6 +571,7 @@ The same table, drawn to scale as **Figure 3** — a true circle, the chord 1–
     <text x="445" y="1130">the chord 1&#8211;4 contributes a&#8321; &#183; a&#8322; = 1 &#215; 2 pairings</text>
     <text x="445" y="1170" fill="#64748b">j must be even: a chord 1&#8211;5 would strand the arcs</text>
     <text x="445" y="1190" fill="#64748b">{2, 3, 4} and {6, 7, 8} &#8212; both odd, forcing a crossing.</text>
+  </g>
 </svg>
 ```
 
@@ -573,7 +581,7 @@ The arcs then hold 2i and 2n−j = 2(n−1−i) people, pairable internally in a
 
 **A15.** The graded exercises above hand you the pattern; here you must *find* it. So do what a researcher does: compute small cases. n = 0: 1 (the empty set). n = 1: 2. n = 2: 3 ({}, {1}, {2}). n = 3: 5. n = 4: 8. That sequence — 1, 2, 3, 5, 8 — is Fibonacci wearing a disguise, and now it must be *explained*, not just recognized. Let a_n count the subsets of {1,…,n} with no two consecutive. A subset either avoids n — a_{n−1} choices — or contains n, and then it cannot contain n−1, leaving a subset of {1,…,n−2}: a_{n−2} choices. So **a_n = a_{n−1} + a_{n−2}** with a₀ = 1, a₁ = 2 — the Fibonacci recurrence with shifted seeds, **a_n = F_{n+2}** (counting F₁ = F₂ = 1). ∎ Check n = 3 by listing: {}, {1}, {2}, {3}, {1,3} — 5 ✓. (The tool was P4, the recurrence — but the *diagnosis* was the exercise: experiment first, then the forced case analysis on element n.)
 
-**A16.** The move is a **bijection** (P1), and it is one line: pair every subset S with the set obtained by toggling the membership of the element 1 (remove 1 if present, add it if absent). Toggling one element flips the parity of the size, so the pairing matches even-sized subsets with odd-sized ones; applying it twice returns S, so nothing is paired with itself — and neither side can outnumber the other. Both counts are **2ⁿ⁻¹**. ∎ Check n = 2: even {}, {1,2}; odd {1}, {2} ✓ — and watch the pairing do the work: {} ↔ {1} and {2} ↔ {1,2}. (Second costume: Σ_k (−1)^k C(n,k) = (1−1)ⁿ = 0 for n ≥ 1 — Lecture 1.1's zigzag collapsing to zero precisely because every positive term has a negative partner. One engine is a map; the other is a sum; the truth is the same.)
+**A16.** The move is a **bijection** (P1), and it is one line: pair every subset S with the set obtained by toggling the membership of the element 1 (remove 1 if present, add it if absent). Toggling one element flips the parity of the size, so the pairing matches even-sized subsets with odd-sized ones; applying it twice returns S, so nothing is paired with itself — and neither side can outnumber the other. Both counts are **2ⁿ⁻¹**. ∎ Check n = 2: even {}, {1,2}; odd {1}, {2} ✓ — and watch the pairing do the work: {} ↔ {1} and {2} ↔ {1,2}. (Second costume: Σ_k (−1)^k C(n,k) = (1−1)ⁿ = 0 for n ≥ 1 — Lecture 1.1's zigzag collapsing to zero precisely because every even-sized subset (a +1 in the sum) has an odd-sized partner (a −1). One engine is a map; the other is a sum; the truth is the same.)
 
 **A17.** No chapter formula covers this — which is the point. Experiment first: one line cuts the plane into 2 regions; two into 4; three into 7; four into 11. The *differences* are 2, 3, 4 — each new line adds one more region than the last one did. Now explain the pattern, because a conjecture without a reason is a rumor. The n-th line crosses each of the n − 1 earlier lines exactly once (no parallels, no triple crossings), so it is sliced into n pieces — and *each piece cuts one existing region into two*, adding one region per piece: **R_n = R_{n−1} + n**, with R₀ = 1. Telescoping: **R_n = 1 + (1 + 2 + … + n) = 1 + n(n+1)/2**. ∎ Check: n = 4 gives 11 ✓, n = 5 gives 16 — draw five lines and count. (The tool was again P4, but its *seed* was the experiment — the discovery cycle, running.)
 
@@ -585,7 +593,7 @@ The arcs then hold 2i and 2n−j = 2(n−1−i) people, pairable internally in a
 
 **A21.** Count the pairs (S, T) with T ⊆ S ⊆ {1,…,n} and |T| = m. Way 1: pick the committee S first — if |S| = k, there are C(n,k) choices — then the subcommittee T ⊆ S: C(k,m) choices. Total: Σ_k C(n,k)·C(k,m). Way 2: pick the subcommittee T first (C(n,m) choices), then let the committee grow around it: every subset of the n − m outsiders may join S, 2^{n−m} choices. Total: C(n,m)·2^{n−m}. One set of pairs, two books (P2): **Σ_k C(n,k)·C(k,m) = C(n,m)·2^{n−m}**. ∎ Machine check: all n ≤ 12, all m — e.g. n = 8, m = 3 gives 1,792 both ways ✓. Notice the formula box's identities are the bottom rungs: m = 0 recovers Σ C(n,k) = 2^n, and m = 1 recovers Σ k·C(n,k) = n·2^{n−1}. The pattern generalizes: when an identity feels isolated, ask what two-order count produced it.
 
-**A22.** The bad events are misses: E_j = "value j is never hit." A function avoiding a fixed set J of j values has (k−j)^n possibilities, so the zigzag (P3) over which values are missed gives the onto count: **Σ_{j=0}^{k} (−1)^j · C(k,j) · (k−j)^n**. For a 6-element set onto a 3-element set: 3⁶ − C(3,1)·2⁶ + C(3,2)·1⁶ = 729 − 192 + 3 = **540**. Machine check: of all 729 functions, exactly 540 hit every value ✓. Second engine, as a calibration: an onto function is a partition of the domain into k nonempty blocks (a Stirling number of the second kind, S(n,k)) followed by an assignment of blocks to values (k! ways) — k!·S(n,k) = 6·90 = 540 ✓. Sanity rungs: onto [5]→[5] gives 120 = 5! (when n = k the only onto functions are the bijections — A18's world again), and onto [n]→[1] gives 1. The derangement lesson transplanted exactly: D_n is this formula run at "each letter may land anywhere except home," and the rencontres numbers of X1 sit one step further along the same road.
+**A22.** The bad events are misses: E_j = "value j is never hit." A function avoiding a fixed set J of j values has (k−j)^n possibilities, so the zigzag (P3) over which values are missed gives the onto count: **Σ_{j=0}^{k} (−1)^j · C(k,j) · (k−j)^n**. For a 6-element set onto a 3-element set: 3⁶ − C(3,1)·2⁶ + C(3,2)·1⁶ = 729 − 192 + 3 = **540**. Machine check: of all 729 functions, exactly 540 hit every value ✓. Second engine, as a calibration: an onto function is a partition of the domain into k nonempty blocks (a Stirling number of the second kind, S(n,k)) followed by an assignment of blocks to values (k! ways) — k!·S(n,k) = 6·90 = 540 ✓. Sanity rungs: onto [5]→[5] gives 120 = 5! (when n = k the only onto functions are the bijections — the permutations of Lecture 1), and onto [n]→[1] gives 1. The derangement lesson transplanted: D_n comes from the same inclusion–exclusion, with the bad events "letter i lands home" — any j of them together leave (n−j)! arrangements, where the misses above leave (k−j)^n functions — and the rencontres numbers of X1 sit one step further along the same road.
 
 ---
 
@@ -593,7 +601,7 @@ The arcs then hold 2i and 2n−j = 2(n−1−i) people, pairable internally in a
 
 *The lectures above should read like a finished book; the development record lives here, so the body never interrupts itself with its own history.*
 
-**Editions.** Reference edition → Feynman lecture edition → graded exercises with worked answers → three external reviews, each audited claim by claim before anything was changed. The reviews repaired, in order: a wrong reflection-bijection inverse (now machine-tested in both directions), the Catalan decomposition's orientation, derangement-recurrence bookkeeping, ballot geometry, handshake indexing, and a lab contradiction (first review); the ordinary-vs-exponential generating-function distinction, the C₃ indexing, small-case-test honesty (second review); the two-mirror geometry of §2.1, the A16 worked-example classification, and the A8 tail sign (third review). The ✎ discovery checkpoints, ◐ Explorations, ◆ pattern-unknown exercises, and working diagrams were added along the way.
+**Editions.** Reference edition → Feynman lecture edition → graded exercises with worked answers → three external reviews, each audited claim by claim before anything was changed. The reviews repaired, in order: a wrong reflection-bijection inverse (now machine-tested in both directions; the lesson, now an Atlas-wide lab rule, is that a lab must implement a claimed bijection's map *and* its inverse and round-trip everything), the Catalan decomposition's orientation, derangement-recurrence bookkeeping, ballot geometry, handshake indexing, and a lab contradiction (first review); the ordinary-vs-exponential generating-function distinction, the C₃ indexing, small-case-test honesty (second review); the two-mirror geometry of §2.1, the A16 worked-example classification, and the A8 tail sign (third review). The ✎ discovery checkpoints, ◐ Explorations, ◆ pattern-unknown exercises, and working diagrams were added along the way.
 
 **Verification record.** The derangement engines agree (recurrence vs. inclusion–exclusion, n = 2..9; D₁₀ = 1,334,961) and the Catalan recurrence matches the closed form to n = 10. The reflection bijection and its inverse round-trip over all paths for n = 2 and n = 3, with the wrong-inverse alarm demonstrated (`forward('EEEN')` returns None). Both geometric readings of the reflection — the head mirrored in y = x + 1 with the whole path lifted by (1, −1), and the head mirrored in y = x with the tail shifted by (1, −1) — have been machine-checked to produce the identical image for all 76 bad paths with n ≤ 4. Every worked answer A1–A17 was re-derived independently (book closed) and then machine-verified: D₁₀ = 1,334,961 with D₁₀/10! = 0.3678795; good paths to (5,5) = 42 of 252 with bad = 210 = C(10,4); committee composition 4+30+40+10 = 84; the five length-6 strings exactly as listed and 14 at length 8; 36 of 81 strings contain all three letters; Σ C(n,k)² = C(2n,n) for n ≤ 12; D_n − n·D_{n−1} = (−1)ⁿ for n ≤ 14; D_n the nearest integer to n!/e with error < 1/(n+1) for n ≤ 12; exactly-one-fixed = n·D_{n−1} for n ≤ 7; ballot brute force = (a−b)/(a+b)·C(a+b,a) on six (a,b) pairs (1, 2, 2, 5, 5, 14) and weak counts = C(p+q,q) − C(p+q,q−1); touch-only-at-endpoints = 2·C_{n−1} for n = 2, 3, 4; Σ (k−n/2)²·C(n,k) = n·2ⁿ⁻² for n ≤ 10; non-crossing pairings = C_n with person 1's partner even in every single one; triangulations by diagonal-set exhaustion (pentagon 5, hexagon 14, heptagon 42); A15–A17 enumerated for n ≤ 10. Discrepancies across all passes: none — apart from the two the third review caught in the worked examples (the A16 classification, the A8 sign), which is precisely why independent eyes stay welcome.
 
@@ -603,7 +611,9 @@ The arcs then hold 2i and 2n−j = 2(n−1−i) people, pairable internally in a
 
 **Independent verification.** The third review's author reports fresh exhaustive checks passing for the reflection map and its inverse (n = 1..7), for band-restricted Catalan paths (n = 1..8), and for the recurrences of A15 and A17.
 
+**Revision pass (2026-10-13).** A full-text review in two roles — mathematical content, and publishing and code — with every worked answer A1–A22 re-derived and machine-checked and both labs re-run. No mathematical result changed. Repaired: the §1.4 comparison (three letters give 33.3%, not 36.8%; it now says six letters); the §1.2 seed statement (D₀ and D₁, as in the lab code); a stray fragment in Lecture 1; the exercise numbering (the five exercise lists now carry start attributes, so the printed numbers match A1–A22 and the cross-references); the statement and hint of exercise 11 (either side of the diagonal; the answer 2·C_{n−1} stands); the unclosed group in Figure 3's SVG (the only change to any of the three SVG figures); the column alignment of the vertical steps and the chord in the three ASCII figures; the labs (printed output added so the recorded numbers reproduce, and the Catalan assertion now covers n = 0..10); the stale counts and freeze status in the chapter status line and the preface; history references that had crept into Lab Part 2; and a few wording points (the §2.3 costume list, the slope of the reflecting lines, the P2 line of the reference card, the pattern tag on the ballot hint, the asides in A6, A16 and A22, and the reason given in A10 for the inverse's first touch, which held only when p = q).
+
 **Standing decision.** The lecture text of this chapter was frozen from session 10 to session 40 — error repairs only. **The freeze was lifted at user direction (session 41), and the graded backfill (exercises 18–22 with answers A18–A22, every number machine-verified before installation: BANANA 60 / MISSISSIPPI 34,650 by two engines; the couples' banquet 672 by zigzag and by exhaustive census of all 2,002 subsets; compositions 2^{n−1} for n = 1..12 by direct enumeration; the committee–subcommittee identity for all n ≤ 12, all m; onto functions brute-counted against the zigzag for n ≤ 7 and cross-checked against k!·S(n,k)) is the first post-freeze addition, recorded here.** New chapters inherit the full standard from the start: graded exercises with worked answers, ✎ checkpoints, ◐ Explorations, ◆ pattern-unknown problems, working diagrams, machine-tested labs, and this appendix in place of inline history.
 
 ---
-*Chapter status: ✅ **Feynman edition — mathematically ready.** 4 lectures with ✎ discovery checkpoints, two verified labs, 14 graded exercises + 3 ◆ pattern-unknown problems with worked answers (all independently re-derived & machine-verified), 2 ◐ Explorations, vector figures embedded in-text, and this Revision History appendix. Nine external reviews audited; the mathematical revision cycle is **closed** — the mathematics stands ready, and the one open issue (code indentation in the exported PDF) belongs to the publishing pipeline, tracked in the Atlas publishing toolkit. **Frozen**: error fixes only — the in-text figure embedding and the companion-canvas removal are the two user-directed exceptions, recorded under *Figures*. Next in the Atlas queue: Chapter 6's Feynman rewrite.*
+*Chapter status: ✅ **Feynman edition — mathematically ready.** 4 lectures with ✎ discovery checkpoints, two verified labs, 22 exercises with worked answers (14 graded + 3 ◆ pattern-unknown + 5 graded backfill, all independently re-derived & machine-verified), 2 ◐ Explorations, vector figures embedded in-text, and this Revision History appendix. Three external reviews audited claim by claim, nine external inspections of the exported PDF, and the 2026-10-13 revision pass; the mathematical revision cycle is **closed** — the mathematics stands ready, and the one open issue (code indentation in the exported PDF) belongs to the publishing pipeline, tracked in the Atlas publishing toolkit. **Freeze**: lifted at user direction in session 41 (see *Standing decision*); the in-text figure embedding and the companion-canvas removal were the two earlier user-directed exceptions, recorded under *Figures*. Next in the Atlas queue: Chapter 6's Feynman rewrite.*
