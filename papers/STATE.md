@@ -122,7 +122,6 @@ One chunk per session. Update this file in the same push_files commit as the bat
 | 24a | V1-V5 (Cayley trees; Kempe four colours; Petersen regular graphs; Heawood map colour; Birkhoff reducibility) | DONE | da893f34 (24a commit; pinned at 24b per protocol) |
 | 24b | V6-V10 (Redfield group-reduced distributions; Menger Kurventheorie; Hall representatives of subsets; Whitney linear dependence; de Bruijn sequences) | DONE | d7ef48c4 (24b commit; pinned at 24c per protocol) |
 | 24c | V11-V15 (Dilworth decomposition theorem; Redei tournament paths; Kuratowski courbes gauches; Shannon zero-error capacity; Tutte factorization of linear graphs) | DONE | this commit (pin at next push per protocol) |
-| 24c | V11-V15 (Dilworth decomposition theorem; Redeai tournament paths; Kuratowski courbes gauches; Shannon zero-error capacity; Tutte ring in graph theory) | PENDING | - |
 
 **Patterns-layer build note (2026-10-13):** migration of chunks 1-11 into the pattern dossiers: 86 census rows + 15 hypothesis-test lines across 11 batches; 35 patterns with at least one census row; never firing through chunk 11: P3, P6, P27, P35, P36 (plus P41/P42 awaiting their designed home L). LEDGER DISCREPANCY FLAGGED: the batch-C census fires P39 (symmetry averaging) at C1/C7, but the running silent-registry ledger above never listed P39 as exited - reconcile at synthesis (the P39 dossier carries the flag).
 
