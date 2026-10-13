@@ -3,7 +3,7 @@
 - Family: 11-symmetry-designs-codes
 - Atlas one-line: Integrality of the replication numbers r and lambda is a design's birth certificate: non-integral parameters forbid existence before any search
 - Home chapters (Atlas): 16
-- Status (through chunk 12c): EXITED the silent registry (sub-chunk 12a, the designed home): L2 flagship (the Bruck-Ryser origin paper - arithmetic forbids existence before any search), L3 genuine (admissibility shown SUFFICIENT - the converse direction), L1 partial (admissibility checks inside Witt's construction); L4 continuation (sub-chunk 12b): the existence conjecture itself - divisibility becomes the WHOLE story asymptotically; L8 continuation (sub-chunk 12c): the Existence Conjecture - divisibility is the whole story for Steiner systems (lambda=1, all t)
+- Status (through chunk 21a): EXITED the silent registry (sub-chunk 12a, the designed home): L2 flagship (the Bruck-Ryser origin paper - arithmetic forbids existence before any search), L3 genuine (admissibility shown SUFFICIENT - the converse direction), L1 partial (admissibility checks inside Witt's construction); L4 continuation (sub-chunk 12b): the existence conjecture itself - divisibility becomes the WHOLE story asymptotically; L8 continuation (sub-chunk 12c): the Existence Conjecture - divisibility is the whole story for Steiner systems (lambda=1, all t); S1 continuation (chunk 21a, extension corpus): the GKLO monograph - divisibility SUFFICIENT for arbitrary F
 - Migration: this dossier was machine-migrated 2026-10-13 from the batch files (the gather record and source of truth); every census row and hypothesis-test note below is QUOTED, not rewritten.
 
 ## Census rows (quoted; source = papers/BATCH-*.md)
@@ -21,6 +21,10 @@
 - Fires in: L8 (genuine: the Existence Conjecture's statement); honest negative at L7
 - Notes: the Keevash continuation - for fixed t,k the necessary divisibility conditions are sufficient for large n (Steiner systems, lambda=1, all t); the exact lambda=1 analogue of Wilson's theorem, settling the 19th-century existence problem with divisibility as the whole story. At L7 Teirlinck P41 does NOT fire: lambda is free, so the divisibility story is bypassed (not violated) - Teirlinck sits on a different axis (all t, unbounded lambda).
 
+### Batch S, sub-chunk 21a (chunk 21; extension corpus - NEXT100 seeds)
+- Fires in: S1 (genuine)
+- Notes: the GKLO continuation - the abstract's own statement: the trivially necessary divisibility conditions are SUFFICIENT for a decomposition into edge-disjoint copies of any given r-uniform hypergraph F, answering a question of Keevash; the L4 -> L8 -> S1 arc extends divisibility-is-the-whole-story beyond fixed (t,k) to arbitrary hypergraphs (the monograph's host side: the supercomplexes - typical or large-minimum-degree hosts, per Keevash's designsII description)
+
 ## Hypothesis-test notes (quoted; source = papers/BATCH-*.md)
 
 ### Batch L, sub-chunk 12a (chunk 12)
@@ -33,6 +37,9 @@
 
 ### Batch L, sub-chunk 12c (chunk 12)
 - L8 P41 CONTINUATION CONFIRMED (the Existence Conjecture's statement); the L4 -> L8 arc completes inside the batch. Honest negative at L7 (bypassed, not violated).
+
+### Batch S, sub-chunk 21a (chunk 21)
+- S1 P41 CONTINUATION CONFIRMED (per the L4 -> L8 lineage plan, now out-of-batch): the F-designs statement is the birth-certificate pattern's sufficiency face at full generality - the monograph's own headline.
 
 ## Cross-links (interdependence)
 
