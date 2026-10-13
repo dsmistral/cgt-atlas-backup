@@ -3,7 +3,7 @@
 - Family: 05-construction-algorithms
 - Atlas one-line: Translate one problem into another language; the target structure carries the proof or the hardness
 - Home chapters (Atlas): 3, 10, 11
-- Status (through chunk 14a): Atlas-named textbook-canon pattern; in-corpus firings recorded below. Batch M: the isomorphism column fires it twice (M1/M2 genuine), M3 the flagship encoding, M4 the second framework firing (genuine), M5/M6 the property-testing partials, and 13c M7 partial (DFS/path encoding) + M9 genuine (the CSP classification). Batch N 14a: N2 genuine - Zhao's bipartite-swapping reduction reused as the Kahn-conjecture settlement's step 1 - see the census rows. Batch N 14b: N5 flagship genuine (the SMP <-> Sudoku translation) + N4 partial (the base-k digit encoding). Batch N 14c: N8 genuine (the homomorphism encoding) + N7 partial (the orbit reduction). Batch O 17b (extension corpus): O4 partial (the witness-tree encoding)
+- Status (through chunk 14a): Atlas-named textbook-canon pattern; in-corpus firings recorded below. Batch M: the isomorphism column fires it twice (M1/M2 genuine), M3 the flagship encoding, M4 the second framework firing (genuine), M5/M6 the property-testing partials, and 13c M7 partial (DFS/path encoding) + M9 genuine (the CSP classification). Batch N 14a: N2 genuine - Zhao's bipartite-swapping reduction reused as the Kahn-conjecture settlement's step 1 - see the census rows. Batch N 14b: N5 flagship genuine (the SMP <-> Sudoku translation) + N4 partial (the base-k digit encoding). Batch N 14c: N8 genuine (the homomorphism encoding) + N7 partial (the orbit reduction). Batch O 17b (extension corpus): O4 partial (the witness-tree encoding). Batch P 18a (extension corpus): P1 partial (the KW certificate encoding) + P2 partial (the container algorithm's profile encoding)
 - Migration: this dossier was machine-migrated 2026-10-13 from the batch files (the gather record and source of truth); every census row and hypothesis-test note below is QUOTED, not rewritten.
 
 ## Census rows (quoted; source = papers/BATCH-*.md)
@@ -64,6 +64,10 @@
 - Fires in: O4 (partial)
 - Notes: Moser's witness trees - execution logs encoded as labeled rooted trees, the counted object that makes the entropy-compression contradiction quantitative (the encoding face of the CAND-A4 origin).
 
+### Batch P, sub-chunk 18a (chunk 18; extension corpus - NEXT100 seeds)
+- Fires in: P1 (partial), P2 (partial)
+- Notes: the certificate/profile encoding of the container ancestor - P1: the C4-free graphs compressed into few degree-ordered profiles, each counted by binomial bounds (flagged-sketch, survey level); P2: the same encoding as the survey algorithm's core (the KW algorithm of the survey's Section 2).
+
 ## Hypothesis-test notes (quoted; source = papers/BATCH-*.md)
 
 ### Batch M, sub-chunk 13a (chunk 13)
@@ -86,6 +90,9 @@
 
 ### Batch O, sub-chunk 17b (chunk 17)
 - O4 P25 partial confirmed UNPLANNED by seed (the O4 seed row expected the CAND-A4/P13/P18 family only).
+
+### Batch P, sub-chunk 18a (chunk 18)
+- P1/P2 P25 partials confirmed UNPLANNED by seed (the P rows expected the container datum only): the encoding is the ancestor method's counting mechanism.
 
 ## Cross-links (interdependence)
 
