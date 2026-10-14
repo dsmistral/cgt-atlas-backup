@@ -69,6 +69,8 @@ Three new source classes open the extension phase. They feed teaching evidence a
 
 Per-text records: papers/TEACHING.md (Track A). Entries are never removed silently; superseded entries carry dated notes.
 
+Register note (appended 2026-10-14, chunk 28b): T2's problem-set material pinned for the Track B census - the series MIT6_042JS15_ps1 through ps12, officially hosted on MIT's Open Learning Library (the used-set URLs recorded in papers/TEACHING-CENSUS.md); the OCW course "session" PDFs identified at 28b as textbook-chapter excerpts (the readings), not problem material; ps4's official URL unpinned at 28b (third-party copies sighted and excluded per policy).
+
 ### 5.2 Contest canon (SAT excluded)
 
 - Purpose (user-directed): pattern usage at the competition level - which Atlas patterns appear in prestigious exams and known question collections, and at what level.
