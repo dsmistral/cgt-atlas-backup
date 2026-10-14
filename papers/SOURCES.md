@@ -55,6 +55,20 @@ Three new source classes open the extension phase. They feed teaching evidence a
 - Track B (instructional pattern census): mine course problem sets and solution notes for pattern usage at the instructional level, using the corpus census method (pattern ID + the decisive move + honest miss), recorded as a separate instructional census - never as paper firings.
 - Register rule: every text or course enters here before use, with verification status (availability and edition); entries are never removed silently.
 
+#### Register (appended 2026-10-14, chunk 28a; all availability web-verified on that date)
+
+| ID | Source | Availability (verified 2026-10-14) | URL | Status |
+|----|--------|-------------------------------------|-----|--------|
+| T1 | MIT OCW 18.212 Algebraic Combinatorics (Spring 2019; Alexander Postnikov; 39 lecture-note PDFs + problem sets) | OPEN (MIT OpenCourseWare) | https://ocw.mit.edu/courses/18-212-algebraic-combinatorics-spring-2019/ | REGISTERED; deep-gathered at 28a (syllabus level) |
+| T2 | MIT OCW 6.042J Mathematics for Computer Science (Spring 2015; Albert R. Meyer; open textbook (Lehman-Leighton-Meyer) + lecture notes/videos) | OPEN (MIT OpenCourseWare) | https://ocw.mit.edu/courses/6-042j-mathematics-for-computer-science-spring-2015/ | REGISTERED; mining deferred |
+| T3 | Flajolet and Sedgewick, "Analytic Combinatorics" (Cambridge University Press 2009) | OPEN author PDF | https://algo.inria.fr/flajolet/Publications/book.pdf | REGISTERED; mining deferred |
+| T4 | Jukna, "Extremal Combinatorics: With Applications in Computer Science" (2nd ed., Springer 2011, EATCS series) | OPEN author-hosted PDF | https://web.vu.lt/mif/s.jukna/EC_Book/ | REGISTERED; mining deferred |
+| T5 | Levin and Peres with Wilmer, "Markov Chains and Mixing Times" (2nd ed., AMS 2017) | OPEN author PDF | https://pages.uoregon.edu/dlevin/MARKOV/markovmixing.pdf | REGISTERED; mining deferred |
+| T6 | Lovasz, "Combinatorial Problems and Exercises" (2nd ed., AMS Chelsea 2007, ISBN 978-0-8218-4262-1) | NO open edition from the publisher or author found (AMS record); third-party hosted copies excluded per policy | https://www.ams.org/publications/authors/books/postpub/chel-361 | REGISTER-ONLY (print edition) |
+| T7 | van Lint and Wilson, "A Course in Combinatorics" (2nd ed., Cambridge University Press) | NO open edition found (publisher record; open front-matter PDF only); third-party hosted copies excluded per policy | https://www.cambridge.org/core/books/course-in-combinatorics/84B89574496561D5E3A960863B85E4B7 | REGISTER-ONLY (print edition) |
+
+Per-text records: papers/TEACHING.md (Track A). Entries are never removed silently; superseded entries carry dated notes.
+
 ### 5.2 Contest canon (SAT excluded)
 
 - Purpose (user-directed): pattern usage at the competition level - which Atlas patterns appear in prestigious exams and known question collections, and at what level.
