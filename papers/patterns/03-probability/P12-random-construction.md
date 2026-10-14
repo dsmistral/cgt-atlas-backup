@@ -3,7 +3,7 @@
 - Family: 03-probability
 - Atlas one-line: Prove existence by sampling
 - Home chapters (Atlas): 4
-- Status (through chunk 21b; extension corpus opened): Atlas-named textbook-canon pattern; in-corpus firings recorded below. Batch O 17a (extension corpus, NEXT100 seeds): O1 genuine, O3 partial - the arc's sampled-object move. Batch S 21a (extension corpus): S1 partial (the random-greedy cover phases of the absorption cascade) + S2 genuine (the random graph as the near-optimal universal object); Batch S 21b (extension corpus): S3 partial (the nibble-based approximate-decomposition machinery) + S4 genuine (the random-STS comparison theorem)
+- Status (through chunk 21b; extension corpus opened): Atlas-named textbook-canon pattern; in-corpus firings recorded below. Batch O 17a (extension corpus, NEXT100 seeds): O1 genuine, O3 partial - the arc's sampled-object move. Batch S 21a (extension corpus): S1 partial (the random-greedy cover phases of the absorption cascade) + S2 genuine (the random graph as the near-optimal universal object); Batch S 21b (extension corpus): S3 partial (the nibble-based approximate-decomposition machinery) + S4 genuine (the random-STS comparison theorem). Batch Y 27a (extension corpus): Y2 partial (the random-placement embedding engine inside the regularity framework) + Y3 partial (the conditional second-moment existence side over the 1RSB pure states)
 - Migration: this dossier was machine-migrated 2026-10-13 from the batch files (the gather record and source of truth); every census row and hypothesis-test note below is QUOTED, not rewritten.
 
 ## Census rows (quoted; source = papers/BATCH-*.md)
@@ -48,6 +48,11 @@
 - Fires in: S3 (partial), S4 (genuine)
 - Notes: S3: the approximate-decomposition machinery feeding the absorption procedure - the Alon-Yuster hypergraph matching argument (based on the Rodl nibble via the Pippenger-Spencer theorem) + the Condon-Kim-Kuhn-Osthus bandwidth theorem; machinery-level (the S1 partial note mirrored). S4: the random-structure comparison theorem - a uniformly random STS compared to the outcome of the triangle removal process; the almost-all statement IS existence-by-sampling at measure one (the general upper bound on the number of perfect matchings essentially attained)
 
+### Batch Y, sub-chunk 27a (chunk 27; extension corpus - NEXT100 seeds)
+- Fires in: Y2 (partial), Y3 (partial)
+- Notes: Y2: the random-placement embedding engine inside the deterministic regularity framework (the bounded-degree graph's vertices placed into the superregular parts, the expansion absorbing the clustering); partial honestly - the framework is deterministic, the sampling the engine's inner step. Y3: the conditional second-moment existence side refined over the 1RSB pure states (the second moment computed within a well-chosen pure state kills the variance blow-up; existence-by-sampling at the satisfiability threshold); partial honestly - the engine is the refinement, not plain sampling
+
+
 ## Hypothesis-test notes (quoted; source = papers/BATCH-*.md)
 
 ### Batch L, sub-chunk 12b (chunk 12)
@@ -65,6 +70,10 @@
 
 ### Batch S, sub-chunk 21b (chunk 21)
 - S4 P12 genuine confirmed UNPLANNED (the seed row expected the absorption and the P41/P42-family data only); S3 P12 partial confirmed UNPLANNED (the seed row expected the absorption and the P11 data only).
+
+### Batch Y, sub-chunk 27a (chunk 27)
+- Y2 P12 partial UNPLANNED by seed (the seed expected only P30): the random-placement step inside the blow-up lemma's deterministic framework (the expansion property absorbing the clustering); Y3 P12 partial UNPLANNED by seed (the seed expected only the threshold arc): the conditional second moment refined over the pure states - existence-by-sampling at the threshold; the upper-bound side conservatively "refined counting", NO pattern attribution (the P44 cross-note handles the threshold arc, no census row)
+
 
 ## Cross-links (interdependence)
 

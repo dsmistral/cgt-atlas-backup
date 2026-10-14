@@ -3,7 +3,7 @@
 - Family: 05-construction-algorithms
 - Atlas one-line: The proof is a procedure; termination = theorem
 - Home chapters (Atlas): 2, 5
-- Status (through chunk 22a): Atlas-named textbook-canon pattern; in-corpus firings recorded below. Batch M: the isomorphism column M1/M2 (proof = procedure at its largest scale), the property-testing column M5/M6 (the testers), and 13c the classic-algorithms column (M7 flagship, M8 genuine, M9 partial). Batch N 14b: N6 partial (the Gale-Shapley round traces). Batch O 17a (extension corpus): O2 genuine - the LLL's first algorithmization; 17b: O4, O5 genuine (the constructive arc); Batch T 22a (extension corpus): T2 genuine - the machine-verification face (proof-by-execution), T1/T3 partial. Batch T 22b (extension corpus): T6 genuine - the linear-time treewidth algorithm (proof-equals-procedure, the f(k) constant honestly recorded as enormous). Batch W 25a: W1 genuine (deferred acceptance - the algorithm IS the proof) + W3 genuine (the Gomory-Hu cut tree). Batch X 26b (extension corpus): X6 genuine (the zig-zag iteration - the construction procedure whose correctness proof IS the expansion analysis)
+- Status (through chunk 22a): Atlas-named textbook-canon pattern; in-corpus firings recorded below. Batch M: the isomorphism column M1/M2 (proof = procedure at its largest scale), the property-testing column M5/M6 (the testers), and 13c the classic-algorithms column (M7 flagship, M8 genuine, M9 partial). Batch N 14b: N6 partial (the Gale-Shapley round traces). Batch O 17a (extension corpus): O2 genuine - the LLL's first algorithmization; 17b: O4, O5 genuine (the constructive arc); Batch T 22a (extension corpus): T2 genuine - the machine-verification face (proof-by-execution), T1/T3 partial. Batch T 22b (extension corpus): T6 genuine - the linear-time treewidth algorithm (proof-equals-procedure, the f(k) constant honestly recorded as enormous). Batch W 25a: W1 genuine (deferred acceptance - the algorithm IS the proof) + W3 genuine (the Gomory-Hu cut tree). Batch X 26b (extension corpus): X6 genuine (the zig-zag iteration - the construction procedure whose correctness proof IS the expansion analysis). Batch Y 27a (extension corpus): Y1 partial (the LOCAL model's birth - the distributed model itself the object of study; the paper's own theorems impossibility lower bounds, no proof-equals-procedure firing)
 - Migration: this dossier was machine-migrated 2026-10-13 from the batch files (the gather record and source of truth); every census row and hypothesis-test note below is QUOTED, not rewritten.
 
 ## Census rows (quoted; source = papers/BATCH-*.md)
@@ -64,6 +64,11 @@
 - Fires in: X6 (genuine)
 - Notes: the iterative construction procedure - start from one constant-size expander, iterate the zig-zag product to arbitrary sizes: the construction algorithm whose correctness proof IS the expansion analysis (proof-equals-procedure, the W1/W3 origin-era face at the expander program); the paper's second theme the derandomization applications (the conference companion's "and Extractors" title the datum, per the companion precedent no double credit)
 
+### Batch Y, sub-chunk 27a (chunk 27; extension corpus - NEXT100 seeds)
+- Fires in: Y1 (partial)
+- Notes: the LOCAL model born as an object of study - the distributed complexity class defined (synchronous rounds, local views; the graph the network); partial honestly per the N6 object-of-study precedent: the paper's own theorems are impossibility lower bounds (the Omega(log* n) ring-coloring bound, the Cole-Vishkin upper bound met exactly), no proof-equals-procedure firing
+
+
 ## Hypothesis-test notes (quoted; source = papers/BATCH-*.md)
 
 ### Batch M, sub-chunk 13a (chunk 13)
@@ -93,6 +98,11 @@
 ### Batch X, sub-chunk 26b (chunk 26)
 - X6 P18 GENUINE CONFIRMED (expected by seed): the composition-era construction procedure - the explicit-family iteration with the spectral analysis as the correctness argument
 
+### Batch Y, sub-chunk 27a (chunk 27)
+- Y1 P18 partial (the seed's "P18 (the LOCAL model; the M-batch algorithmic extension)" expectation met at PARTIAL honestly): the model births the pattern's distributed face, but the paper's own theorems are impossibility lower bounds (the Omega(log* n) ring-coloring bound via the indistinguishable-views argument) - the N6 object-of-study precedent (the Gale-Shapley round traces)
+
+
 ## Cross-links (interdependence)
 
 X6's iteration pairs the algorithmic face with the P11 construction line (the product replaces the arithmetic: the W1/W3 algorithm-as-proof era meeting the expander program).
+Y1's LOCAL model is the distributed face's object-of-study half - the impossibility lower bounds set the model's boundary; the proof-equals-procedure face's distributed descendants stay uncorpus'd lineage.

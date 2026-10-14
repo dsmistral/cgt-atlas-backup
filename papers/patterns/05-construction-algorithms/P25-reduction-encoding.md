@@ -3,7 +3,7 @@
 - Family: 05-construction-algorithms
 - Atlas one-line: Translate one problem into another language; the target structure carries the proof or the hardness
 - Home chapters (Atlas): 3, 10, 11
-- Status (through chunk 22b): Atlas-named textbook-canon pattern; in-corpus firings recorded below. Batch M: the isomorphism column fires it twice (M1/M2 genuine), M3 the flagship encoding, M4 the second framework firing (genuine), M5/M6 the property-testing partials, and 13c M7 partial (DFS/path encoding) + M9 genuine (the CSP classification). Batch N 14a: N2 genuine - Zhao's bipartite-swapping reduction reused as the Kahn-conjecture settlement's step 1 - see the census rows. Batch N 14b: N5 flagship genuine (the SMP <-> Sudoku translation) + N4 partial (the base-k digit encoding). Batch N 14c: N8 genuine (the homomorphism encoding) + N7 partial (the orbit reduction). Batch O 17b (extension corpus): O4 partial (the witness-tree encoding). Batch P 18a (extension corpus): P1 partial (the KW certificate encoding) + P2 partial (the container algorithm's profile encoding). Batch R 20a (extension corpus): R1 genuine + R2 genuine - the flag-algebra translation move at the extremal level (the K_r density problem in the algebra's positivity language) and the meta level (inequalities as quantum-graph positivity statements); Batch R 20b (extension corpus): R3 genuine (the pentagons line's flag encoding) + R4 genuine (the homomorphism-counting framework encoding - the N8/M9 cross-notes); Batch T 22b (extension corpus): T5 partial (the graph-as-term encoding, unplanned by seed - standard-tool credit per the M9 precedent). Batch V 24b (extension corpus): V10 partial (the de Bruijn sequence - the encoding IS the object: all 2^n words of length n packed into one cyclic word of length 2^n; the object-vs-engine split, honestly partial). Batch V 24c: V13 partial (the forbidden-subdivision reduction) + V14 partial (the confusability-graph encoding - the zero-error origin). Batch W 25a: W3 partial (the cut-tree encoding - n-1 tree edges carrying every pairwise cut value). Batch X 26a (extension corpus): X2 + X3 partial (the concentrator/superconcentrator encodings - the objects ARE the translations)
+- Status (through chunk 22b): Atlas-named textbook-canon pattern; in-corpus firings recorded below. Batch M: the isomorphism column fires it twice (M1/M2 genuine), M3 the flagship encoding, M4 the second framework firing (genuine), M5/M6 the property-testing partials, and 13c M7 partial (DFS/path encoding) + M9 genuine (the CSP classification). Batch N 14a: N2 genuine - Zhao's bipartite-swapping reduction reused as the Kahn-conjecture settlement's step 1 - see the census rows. Batch N 14b: N5 flagship genuine (the SMP <-> Sudoku translation) + N4 partial (the base-k digit encoding). Batch N 14c: N8 genuine (the homomorphism encoding) + N7 partial (the orbit reduction). Batch O 17b (extension corpus): O4 partial (the witness-tree encoding). Batch P 18a (extension corpus): P1 partial (the KW certificate encoding) + P2 partial (the container algorithm's profile encoding). Batch R 20a (extension corpus): R1 genuine + R2 genuine - the flag-algebra translation move at the extremal level (the K_r density problem in the algebra's positivity language) and the meta level (inequalities as quantum-graph positivity statements); Batch R 20b (extension corpus): R3 genuine (the pentagons line's flag encoding) + R4 genuine (the homomorphism-counting framework encoding - the N8/M9 cross-notes); Batch T 22b (extension corpus): T5 partial (the graph-as-term encoding, unplanned by seed - standard-tool credit per the M9 precedent). Batch V 24b (extension corpus): V10 partial (the de Bruijn sequence - the encoding IS the object: all 2^n words of length n packed into one cyclic word of length 2^n; the object-vs-engine split, honestly partial). Batch V 24c: V13 partial (the forbidden-subdivision reduction) + V14 partial (the confusability-graph encoding - the zero-error origin). Batch W 25a: W3 partial (the cut-tree encoding - n-1 tree edges carrying every pairwise cut value). Batch X 26a (extension corpus): X2 + X3 partial (the concentrator/superconcentrator encodings - the objects ARE the translations). Batch Y 27a (extension corpus): Y4 genuine (the long-code encoding + gap-preserving reductions - the PCP program's optimization boundary)
 - Migration: this dossier was machine-migrated 2026-10-13 from the batch files (the gather record and source of truth); every census row and hypothesis-test note below is QUOTED, not rewritten.
 
 ## Census rows (quoted; source = papers/BATCH-*.md)
@@ -96,6 +96,11 @@
 - Fires in: X2 (partial), X3 (partial)
 - Notes: the encoding faces at the expansion origins: the network problems translated into graph theory - the concentrator (arbitrary input patterns through a bounded-degree network) and the superconcentrator (the linear-size routing extremum) ARE the translations; partial honestly per the V10 object-vs-engine precedent: the papers construct the objects, the P25 framing is the abstraction, not a load-bearing reduction
 
+### Batch Y, sub-chunk 27a (chunk 27; extension corpus - NEXT100 seeds)
+- Fires in: Y4 (genuine)
+- Notes: the long-code encoding + the gap-preserving reductions - the constraint instance translated into the long-code/dictatorship language, the verifier's test the decoding, the inapproximability factor the preserved gap (the optimal 1/2 and 7/8 ratios closed at the matching algorithmic bounds; the seed's "PCP reductions; the optimization boundary" expectation met)
+
+
 ## Hypothesis-test notes (quoted; source = papers/BATCH-*.md)
 
 ### Batch M, sub-chunk 13a (chunk 13)
@@ -142,6 +147,10 @@
 
 ### Batch X, sub-chunk 26a (chunk 26)
 - X2/X3 P25 partial (the seed's expected-pattern columns named no P-ID - the encoding faces UNPLANNED): the concentrator and superconcentrator abstractions ARE the translations - partial per the V10 object-vs-engine precedent
+
+### Batch Y, sub-chunk 27a (chunk 27)
+- Y4 P25 CONFIRMED (expected by seed as "PCP reductions; the optimization boundary"): the long-code/dictatorship translation at the optimization boundary - the PCP program's approximation-era flagship encoding
+
 
 ## Cross-links (interdependence)
 
