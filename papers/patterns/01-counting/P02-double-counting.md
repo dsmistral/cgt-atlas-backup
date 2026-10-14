@@ -3,7 +3,7 @@
 - Family: 01-counting
 - Atlas one-line: Count the same set two ways; equate
 - Home chapters (Atlas): 1, 2, 3
-- Status (through chunk 14a): Atlas-named textbook-canon pattern; in-corpus firings recorded below. Batch N 14a: N3 partial (the injective sumset identity). Batch N 14b: N4 partial (the chip-flow accounting identity) + N6 partial (staged products + the (n^2)! encoding bound). Batch V 24a: V4 partial (the Heawood bound's Euler-formula counting)
+- Status (through chunk 14a): Atlas-named textbook-canon pattern; in-corpus firings recorded below. Batch N 14a: N3 partial (the injective sumset identity). Batch N 14b: N4 partial (the chip-flow accounting identity) + N6 partial (staged products + the (n^2)! encoding bound). Batch V 24a: V4 partial (the Heawood bound's Euler-formula counting). Batch X 26a: X3 partial (the torus-neighborhood counting)
 - Migration: this dossier was machine-migrated 2026-10-13 from the batch files (the gather record and source of truth); every census row and hypothesis-test note below is QUOTED, not rewritten.
 
 ## Census rows (quoted; source = papers/BATCH-*.md)
@@ -28,6 +28,10 @@
 - Fires in: V4 (partial)
 - Notes: the Heawood bound's Euler-formula counting - the vertex/edge/face counts combined through the Euler characteristic deliver the genus-to-colours bound (floor((7 + sqrt(1 + 48g))/2) for genus g > 0); double counting in Euler-formula clothes
 
+### Batch X, sub-chunk 26a (chunk 26; extension corpus - NEXT100 seeds)
+- Fires in: X3 (partial)
+- Notes: the torus-neighborhood counting: the expansion certified by counting the distinct points reached by the four maps' compositions (the Gabber-Galil weight/counting argument, the Lee account's presentation; the coordinate bookkeeping the tool) - the double-counting family's face at the expander origin; partial honestly (a lower-bound certificate, not a bijection-equality engine)
+
 ## Hypothesis-test notes (quoted; source = papers/BATCH-*.md)
 
 ### Batch N, sub-chunk 14a (chunk 14)
@@ -39,6 +43,9 @@
 ### Batch V, sub-chunk 24a (chunk 24)
 - V4 P2 partial UNPLANNED by seed (the NEXT100 row targeted the Heawood bound and the T-batch ancestor role, not a P-ID census): the bound is a counting argument in Euler-formula clothes
 
+### Batch X, sub-chunk 26a (chunk 26)
+- X3 P2 partial UNPLANNED by seed (the NEXT100 row's expected-pattern column named no P-ID): the torus-neighborhood counting IS the Gabber-Galil expansion certificate - the double-counting family's face at the expander origin
+
 ## Cross-links (interdependence)
 
-P41 is this pattern's arithmetic face in design theory (integrality of r and lambda IS double counting); the H12 cell-counting engine is P2+P10.
+P41 is this pattern's arithmetic face in design theory (integrality of r and lambda IS double counting); the H12 cell-counting engine is P2+P10. The X3 torus-neighborhood count is the family's expander face.

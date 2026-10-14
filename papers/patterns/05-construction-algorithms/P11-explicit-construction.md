@@ -3,7 +3,7 @@
 - Family: 05-construction-algorithms
 - Atlas one-line: Beat the bound by building the object
 - Home chapters (Atlas): 3
-- Status (through chunk 12c): Atlas-named textbook-canon pattern; in-corpus firings recorded below. Batch W 25a: W6 partial (the height-level antichain cover built explicitly)
+- Status (through chunk 12c): Atlas-named textbook-canon pattern; in-corpus firings recorded below. Batch W 25a: W6 partial (the height-level antichain cover built explicitly). Batch X 26a (extension corpus): X2 + X3 genuine (the first explicit expander families - the pattern born at the expansion origin)
 - Migration: this dossier was machine-migrated 2026-10-13 from the batch files (the gather record and source of truth); every census row and hypothesis-test note below is QUOTED, not rewritten.
 
 ## Census rows (quoted; source = papers/BATCH-*.md)
@@ -44,6 +44,10 @@
 - Fires in: W6 (partial)
 - Notes: the height function builds the antichain levels explicitly (each element's longest-chain-ending rank); the dual cover's construction IS the finite proof (the P9-family bottleneck pairing the theorem's face - V11's dual; the P17 min-max face cross-noted per the V11 precedent, no census row)
 
+### Batch X, sub-chunk 26a (chunk 26; extension corpus - NEXT100 seeds)
+- Fires in: X2 (genuine), X3 (genuine)
+- Notes: X2: the FIRST EXPLICIT EXPANDER FAMILY - the probabilistic method's nonconstructive era answered from the representation theory of SL_2(Z_p) (the group action's orbit graphs the constant-degree family; the expansion certified by representation-theoretic estimates) - the construction pattern's origin-era flagship at the expansion program's birth (the seed's "expansion origin" expectation met). X3: the torus Z_m x Z_m four maps (x,y) -> (x+1,y), (x,y+1), (x+y,y), (x,y+x) - the linear-sized superconcentrator, the explicit-construction workhorse between the 1973 origin and the Ramanujan era (the seed's "explicit expanders" expectation met)
+
 ## Hypothesis-test notes (quoted; source = papers/BATCH-*.md)
 
 ### Batch J (chunk 10)
@@ -61,6 +65,9 @@
 ### Batch W, sub-chunk 25a (chunk 25)
 - W6 P11 partial (UNPLANNED by seed): the explicit-construction face at the Dilworth dual - the corpus's V11-W6 poset pair complete
 
+### Batch X, sub-chunk 26a (chunk 26)
+- X2 P11 GENUINE CONFIRMED (the seed's "expansion origin" expectation met at the construction face); X3 P11 GENUINE CONFIRMED (the seed's "explicit expanders" expectation met): the pattern's origin-era flagships at the expansion program's birth
+
 ## Cross-links (interdependence)
 
-(none recorded)
+X1 supplies the spectral yardstick for the X2/X3 construction family (the engines meet: construction by group action, quality certified by the second eigenvalue).
