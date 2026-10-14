@@ -1,0 +1,28 @@
+# Contest canon - register and census convention (SOURCES.md section 5.2)
+
+The contest canon records Atlas-pattern usage at the competition level: which patterns appear in prestigious exams and known question collections, and at what level (user-directed, SOURCES.md section 5.2). The SAT is EXCLUDED (2026-10-13): its mathematics is aptitude-level multiple-choice, not research-grade problem-solving at the Atlas's granularity. Contest problems are NOT papers: they never enter CORPUS.md or NEXT100.md. This file is the register and convention; papers/CONTEST-CENSUS.md is the per-problem census record.
+
+## Register (all availability-verified 2026-10-14, sub-chunk 29a)
+
+| ID | Contest | Official source (verified) | URL | Fetch route / honesty notes |
+|----|---------|----------------------------|-----|------------------------------|
+| C1 | William Lowell Putnam Mathematical Competition | MAA Putnam Archive (the organizer's archive page) | https://maa.org/maa-putnam-archive/ | The official archive page verified open (2026-10-14); its per-year problems-and-solutions PDF links on maa.org BLOCK automated fetch (the "site blocked automated access" marker, 2026-10-14; not retried per policy). Fetch route: the Putnam Archive at kskedlaya.org - explicitly an UNOFFICIAL site, but it carries the problem statements verbatim "with permission" of the MAA and solutions compiled by Manjul Bhargava, Kiran Kedlaya and Lenny Ng; that site's own request that its solutions not be called "official solutions" is honored throughout the census (routes cited as "archive solutions"). |
+| C2 | International Mathematical Olympiad + shortlists | imo-official.org (the official IMO site) | https://www.imo-official.org/problems/ | OPEN: the problems pages and the per-year shortlist PDFs (https://www.imo-official.org/assets/documents/problems/<year>/IMO<year>SL.pdf), PDF text extraction verified 2026-10-14 (the IMO 2024 shortlist fetched cleanly). |
+| C3 | USAMO / USAJMO | MAA Invitational Competitions (the organizer's page) | https://maa.org/maa-invitational-competitions/ | REGISTERED at 29a; the per-year problems/solutions locations to be pinned at the USAMO gather (29c). |
+| C4 | Kurschak Jozsef Matematikai Tanuloverseny (Hungary; founded 1894) | Bolyai Janos Matematikai Tarsulat (the organizer) + KoMaL (the society's journal, which publishes the problems and reports) | https://www.bolyai.hu/versenyek-kurschak-jozsef-matematikai-tanuloverseny/ ; https://www.komal.hu/ | REGISTERED at 29a; problem/solution locations (the KoMaL reports and archives) to be pinned at the Kurschak gather (29c). |
+
+Register rule (mirrors SOURCES.md 5.1): every contest enters here before use, with verification status; entries are never removed silently; superseded entries carry dated notes. Official free sources only, zero paywalled fetches; third-party mirrors (AoPS and the like) are excluded as route sources per the standing zero-third-party-mirror policy.
+
+## Census convention (defined up front, 2026-10-14, sub-chunk 29a)
+
+1. Sample rule: per contest, a bounded, dated sample is fixed in advance of grading (first pass: the Putnam competitions 2021-2025). Within a sample, the census covers the problems whose primary subject is combinatorics (games, counting, discrete structure, combinatorics-flavored probability); hybrid problems (combinatorial number theory, matrix combinatorics, combinatorial geometry) are INCLUDED when the decisive route is combinatorial, with the classification recorded per problem; borderline problems EXCLUDED at gather are listed with their subject classification, so the sample boundary is never silent.
+2. Per-problem row: year, problem ID, a one-line statement PARAPHRASE (never verbatim: the C1 statements are MAA-copyrighted), the route (the decisive move, read from the fetched solutions), the tags.
+3. Tags (the teaching-census vocabulary, the TEACHING-CENSUS.md precedent): GENUINE (an Atlas pattern's engine is load-bearing in the printed route), PARTIAL (a supporting role, or one face of a pattern), CROSS-NOTE (a lineage or datum recorded without a firing), NO P-ID (no Atlas pattern; engines outside the index are recorded as coverage observations).
+4. Route honesty: routes are pinned only from the fetched solutions; where a route cannot be pinned, the row says so. Where multiple routes are printed, each is tagged; a pattern firing only in a secondary route is graded PARTIAL with the honest note.
+5. Hypothesis discipline: the sample's expected patterns are recorded before grading (hypothesis -> test -> honest miss); misses are logged, never smoothed over.
+6. Discipline (the teaching-track precedent): contest rows never fire into the pattern dossiers; papers/patterns/INDEX.md is untouched by the contest track; nothing ever enters CORPUS.md or NEXT100.md.
+7. ASCII policy: repo files under papers/ carry no astral characters (standing rule); names are ASCII-fied (Kurschak, Erdos, Lovasz, Rodl).
+
+## Session log (this file)
+
+- 2026-10-14 (29a): register created (C1-C4, all availability-verified, the C1 fetch-block honesty note); the census convention defined up front; the Putnam 2021-2025 census landed in papers/CONTEST-CENSUS.md section 1 (22 problems: 14 rows with a genuine firing, 7 partial-only, 1 NO P-ID).
