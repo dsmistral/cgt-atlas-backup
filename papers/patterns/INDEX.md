@@ -1,4 +1,4 @@
-# Pattern index (through chunk 26 - Batch X, extension corpus)
+# Pattern index (through chunk 27 - Batch Y, extension corpus)
 
 Status wording is abbreviated here; the per-pattern files are authoritative. 'Census batches' = batches whose pattern census records a firing (partials included).
 
@@ -15,25 +15,25 @@ Status wording is abbreviated here; the per-pattern files are authoritative. 'Ce
 | P9 | Pigeonhole | 01-counting | A, F, G, H, I, K, N, V, W |
 | P10 | Averaging / expectation | 03-probability | A, B, D, G, H, I, K, L, N, P, W |
 | P11 | Explicit construction | 05-construction-algorithms | A, E, G, I, J, L, W, X |
-| P12 | Random construction | 03-probability | A, B, D, F, H, L, O, S |
+| P12 | Random construction | 03-probability | A, B, D, F, H, L, O, S, Y |
 | P13 | Union bound | 03-probability | A, N, W |
 | P14 | Alteration | 03-probability | A |
 | P15 | Induction on vertices/edges | 02-induction-extremal | E, H, I, J |
 | P16 | Alternating paths / augmentation | 06-duality-optimization | D, E, V, W |
 | P17 | Duality (min-max) | 06-duality-optimization | D |
-| P18 | Algorithmic proof | 05-construction-algorithms | A, D, E, G, M, N, O, T, W, X |
+| P18 | Algorithmic proof | 05-construction-algorithms | A, D, E, G, M, N, O, T, W, X, Y |
 | P19 | Rank / linear algebra | 07-linear-algebra-polynomial | C, F, I, J, L, M, R, W |
 | P20 | Weight shifting / symmetrization | 08-canonicalization | E |
 | P21 | Spectral / Rayleigh | 07-linear-algebra-polynomial | J, W, X |
 | P22 | Polynomial method | 07-linear-algebra-polynomial | I, X |
 | P23 | Compression / shifting | 08-canonicalization | I, K |
 | P24 | Shadow pricing (Kruskal-Katona) | 08-canonicalization | K |
-| P25 | Reduction / encoding | 05-construction-algorithms | B, D, E, F, G, H, L, M, N, O, P, R, T, V, W, X |
+| P25 | Reduction / encoding | 05-construction-algorithms | B, D, E, F, G, H, L, M, N, O, P, R, T, V, W, X, Y |
 | P26 | Compactness (finite vs infinite) | 02-induction-extremal | F, W |
 | P27 | Correlation | 03-probability | O (first touch, partial - dependency-graph face), U (exit at 23a: U1 the FKG origin flagship, U2 the combinatorial face, U3 the disjoint-occurrence face) |
 | P28 | Concentration | 03-probability | B, N |
 | P29 | Entropy counting | 04-analytic-information | B, W |
-| P30 | Regularity partitioning | 09-density-structure | F, G, M |
+| P30 | Regularity partitioning | 09-density-structure | F, G, M, Y |
 | P31 | Counting-removal | 09-density-structure | G |
 | P32 | Stability | 08-canonicalization | G |
 | P33 | Density increment | 09-density-structure | F |
@@ -129,3 +129,7 @@ Batch W (1950-1990 classics, extension corpus, NEXT100 seeds) COMPLETE 12/12 in 
 ## Note 26 (chunk 26 - Batch X, 2026-10-14)
 
 Batch X (expansion and the second eigenvalue, extension corpus, NEXT100 seeds) COMPLETE 6/6 in two sub-chunks (26a: 3f561afe; 26b: pinned at the next push per protocol). THE EXPANSION PROGRAM GATHERED WHOLE: the origin chain (X2 Margulis 1973 the first explicit expander family, P11 genuine; X3 Gabber-Galil 1981 the counting-certified superconcentrator, P11 genuine + P2 partial + the honest P21 miss - the same object the J3 companion certifies spectrally) + the yardstick (X1 Alon 1986, the eigenvalue-expander dictionary + the Alon-Boppana bound, P21 genuine - the pattern's two faces in one paper) + the maturity half (X4 Lubotzky-Phillips-Sarnak 1988, Combinatorica 8(3) 261-277: the Ramanujan threshold met exactly, P21 + P11 genuine; X6 Reingold-Vadhan-Wigderson 2002, Ann. of Math. 155(1) 157-187: the zig-zag product, P18 + P21 genuine, P11 partial, P29 scanned not credited - the H11 precedent; X5 Marcus-Spielman-Srivastava 2015, Ann. of Math. 182(1) 327-350: the Kadison-Singer resolution, P22 partial - the analytic face, the seed's "P22-adjacent" hedge confirmed - and P21 partial honestly, the object-vs-engine datum). ZERO SEED CORRECTIONS batch-wide - Batch X joins Batch Q as the extension's fully clean batches. Coverage observations for synthesis: the deep-arithmetic certificate class (X2 + X4, single-batch, NOT a WATCH), the interlacing-families method (X5, single firing, the kernel-method precedent), the entropy-wave route (X6, scanned not credited). The IF I companion (same volume 182(1) 307-325, every-degree bipartite Ramanujan) and the X6 conference companion ("and Extractors") recorded per the companion precedents, no double credit. Census batches updated: P2, P11, P18, P21, P22, P25 gain X. LEDGER NOTE (dated 2026-10-14): the 25b INDEX push recorded only the 25b half's firings - the P8/P11/P18/P19/P21/P25/P26 rows were missing the batch W entries (the 25a firings: W5 P8 genuine, W6 P11/P26, W1/W3 P18 genuine, W4 P19 genuine, W2 P21 genuine, W3 P25 partial); found at the 26b INDEX pass and backfilled here with this dated note per the P39 reconciliation precedent, never a silent edit. Citation figures remain seed ESTIMATES (the 2026-10-13 API incident, SOURCES.md section 6). Next: chunk 27 = Batch Y (wildcards, 7 papers).
+
+## Note 27 (chunk 27 - Batch Y, 2026-10-14)
+
+Batch Y (wildcards, extension corpus, NEXT100 seeds) COMPLETE 7/7 in two sub-chunks (27a: 2d50c299; 27b: pinned at the next push per protocol). THE WILDCARDS HEADLINE: four subfields the survey had never sampled together gathered in one batch - distributed computing (Y1 Linial, the LOCAL model's birth, P18 partial honestly per the N6 precedent - the paper's own theorems impossibility lower bounds), the regularity program's embedding half (Y2 Komlos-Sarkozy-Szemeredi, the blow-up lemma, P30 genuine + P12 partial unplanned), random constraint satisfaction (Y3 Ding-Sly-Sun, the satisfiability threshold located, P12 partial unplanned + the P44 cross-note), the PCP program (Y4 Hastad, P25 genuine - the long-code encoding at the optimization boundary) - plus the exponential Ramsey breakthrough (Y5 Campos-Griffiths-Morris-Sahasrabudhe: R(k) <= (4-eps)^k, the first exponential improvement over Erdos-Szekeres 1935 - P18 GENUINE unplanned, the Book Algorithm, and P12 an HONEST MISS: the algorithm deterministic by design, in the paper's own words "does not involve any notion of quasirandomness"), the Achlioptas-process origin (Y6 Bohman-Frieze, P12 partial per the N6 object-of-study precedent + the P44 cross-note; the DE method a coverage observation), and the log-concavity engine (Y7 Adiprasito-Huh-Katz, NO P-ID fires - the V9 designed-coverage-gap precedent; the Kahler package the engine itself). TWO SEED CORRECTIONS batch-wide: Y5's authors/title/venue (the fourth author SAHASRABUDHE, not Saxton - the extension corpus's heaviest single-seed correction to date) and Y7's venue (Ann. of Math. 188(2), not J. Amer. Math. Soc. 31); the stale "Saxton" spellings in the three 27a-era rows corrected at 27b (the 24c precedent, logged in BATCH-Y and STATE; the narrative "Next:" mentions left as-is per the Note 23 precedent). Coverage observations for synthesis (single firings, NOT WATCH items): the Ramsey-theoretic lower-bound engine (Y1), the spin-glass/1RSB machinery (Y3), the Fourier/boolean-function analysis (Y4), the book-algorithm engine-contrast note (Y5), the differential-equations method (Y6), the Kahler package (Y7 - the V9 matroid line completed, Whitney 1935 -> Y7 2018). The P44 cross-notes (Y3, Y6) extend the threshold arc to its culminating landmark and the guided-process family - no census rows, the O5 precedent. Y5's P12 honest miss + P18 genuine unplanned recorded honestly (the seed's expectations inverted by the paper's own deterministic design - the designed-expectation miss class, the K7 P20 precedent). Citation figures remain seed ESTIMATES (the 2026-10-13 API incident, SOURCES.md section 6) except Y4's ACM DL 997 datum. Census batches updated: P12, P18, P25, P30 gain Y. Next: the teaching-aids track (SOURCES 5.1), then the contest canon (SOURCES 5.2).

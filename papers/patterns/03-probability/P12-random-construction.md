@@ -3,7 +3,7 @@
 - Family: 03-probability
 - Atlas one-line: Prove existence by sampling
 - Home chapters (Atlas): 4
-- Status (through chunk 21b; extension corpus opened): Atlas-named textbook-canon pattern; in-corpus firings recorded below. Batch O 17a (extension corpus, NEXT100 seeds): O1 genuine, O3 partial - the arc's sampled-object move. Batch S 21a (extension corpus): S1 partial (the random-greedy cover phases of the absorption cascade) + S2 genuine (the random graph as the near-optimal universal object); Batch S 21b (extension corpus): S3 partial (the nibble-based approximate-decomposition machinery) + S4 genuine (the random-STS comparison theorem). Batch Y 27a (extension corpus): Y2 partial (the random-placement embedding engine inside the regularity framework) + Y3 partial (the conditional second-moment existence side over the 1RSB pure states)
+- Status (through chunk 21b; extension corpus opened): Atlas-named textbook-canon pattern; in-corpus firings recorded below. Batch O 17a (extension corpus, NEXT100 seeds): O1 genuine, O3 partial - the arc's sampled-object move. Batch S 21a (extension corpus): S1 partial (the random-greedy cover phases of the absorption cascade) + S2 genuine (the random graph as the near-optimal universal object); Batch S 21b (extension corpus): S3 partial (the nibble-based approximate-decomposition machinery) + S4 genuine (the random-STS comparison theorem). Batch Y 27a (extension corpus): Y2 partial (the random-placement embedding engine inside the regularity framework) + Y3 partial (the conditional second-moment existence side over the 1RSB pure states). Batch Y 27b (extension corpus): Y6 partial (the Achlioptas-process origin - the random process the object of study, the N6 precedent) + Y5 HONEST MISS (the Book Algorithm deterministic - the seed's expectation NOT met)
 - Migration: this dossier was machine-migrated 2026-10-13 from the batch files (the gather record and source of truth); every census row and hypothesis-test note below is QUOTED, not rewritten.
 
 ## Census rows (quoted; source = papers/BATCH-*.md)
@@ -53,6 +53,11 @@
 - Notes: Y2: the random-placement embedding engine inside the deterministic regularity framework (the bounded-degree graph's vertices placed into the superregular parts, the expansion absorbing the clustering); partial honestly - the framework is deterministic, the sampling the engine's inner step. Y3: the conditional second-moment existence side refined over the 1RSB pure states (the second moment computed within a well-chosen pure state kills the variance blow-up; existence-by-sampling at the satisfiability threshold); partial honestly - the engine is the refinement, not plain sampling
 
 
+### Batch Y, sub-chunk 27b (chunk 27; extension corpus - NEXT100 seeds)
+- Fires in: Y6 (partial); Y5 (honest miss - no firing)
+- Notes: Y6: the Achlioptas process born - the two-choice rule delaying the giant component past the Erdos-Renyi threshold (Achlioptas's 2000 question answered positively at the origin); partial honestly per the N6 object-of-study precedent: the random process is the OBJECT OF STUDY, not a deployed sampling engine (the B4 guided-random lineage naming). Y5: HONEST MISS - the seed expected the random-construction face, but the Book Algorithm is deterministic and deliberately elementary ("more elementary", "does not involve any notion of quasirandomness" - the paper's own words; the paper's "random" mentions all refer to other work); no firing, the miss recorded honestly
+
+
 ## Hypothesis-test notes (quoted; source = papers/BATCH-*.md)
 
 ### Batch L, sub-chunk 12b (chunk 12)
@@ -73,6 +78,10 @@
 
 ### Batch Y, sub-chunk 27a (chunk 27)
 - Y2 P12 partial UNPLANNED by seed (the seed expected only P30): the random-placement step inside the blow-up lemma's deterministic framework (the expansion property absorbing the clustering); Y3 P12 partial UNPLANNED by seed (the seed expected only the threshold arc): the conditional second moment refined over the pure states - existence-by-sampling at the threshold; the upper-bound side conservatively "refined counting", NO pattern attribution (the P44 cross-note handles the threshold arc, no census row)
+
+
+### Batch Y, sub-chunk 27b (chunk 27)
+- Y6 P12 partial CONFIRMED (expected by seed) at the Achlioptas-process origin - honestly partial per the N6 object-of-study precedent (the process the object of study); Y5 P12 HONEST MISS (expected by seed - the designed-expectation miss class, the K7 P20 precedent, recorded for synthesis: the field's frontier can be deterministic by design)
 
 
 ## Cross-links (interdependence)
