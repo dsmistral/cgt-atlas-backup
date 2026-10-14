@@ -1,35 +1,35 @@
-# Pattern index (through chunk 25 - Batch W, extension corpus)
+# Pattern index (through chunk 26 - Batch X, extension corpus)
 
 Status wording is abbreviated here; the per-pattern files are authoritative. 'Census batches' = batches whose pattern census records a firing (partials included).
 
 | P-ID | Pattern | Family | Census batches |
 |------|---------|--------|----------------|
 | P1 | Bijection | 01-counting | C, N, U, V |
-| P2 | Double counting | 01-counting | H, L, N, V |
+| P2 | Double counting | 01-counting | H, L, N, V, X |
 | P3 | Inclusion-exclusion | 01-counting | N (first firing) |
 | P4 | Recurrence + induction | 02-induction-extremal | A, C, D, F, G, H, I, L, M, N, V |
 | P5 | Generating function | 04-analytic-information | C, E, Q |
 | P6 | Complement / reflection | 01-counting | U (exit at 23b: U4 the designed home - the ballot-problem origin, with the honest attribution note; U5 scanned, not credited) |
 | P7 | Parity & handshaking | 01-counting | D, N |
-| P8 | Longest-path / extremal | 02-induction-extremal | D, E, F, H, I |
+| P8 | Longest-path / extremal | 02-induction-extremal | D, E, F, H, I, W |
 | P9 | Pigeonhole | 01-counting | A, F, G, H, I, K, N, V, W |
 | P10 | Averaging / expectation | 03-probability | A, B, D, G, H, I, K, L, N, P, W |
-| P11 | Explicit construction | 05-construction-algorithms | A, E, G, I, J, L |
+| P11 | Explicit construction | 05-construction-algorithms | A, E, G, I, J, L, W, X |
 | P12 | Random construction | 03-probability | A, B, D, F, H, L, O, S |
 | P13 | Union bound | 03-probability | A, N, W |
 | P14 | Alteration | 03-probability | A |
 | P15 | Induction on vertices/edges | 02-induction-extremal | E, H, I, J |
 | P16 | Alternating paths / augmentation | 06-duality-optimization | D, E, V, W |
 | P17 | Duality (min-max) | 06-duality-optimization | D |
-| P18 | Algorithmic proof | 05-construction-algorithms | A, D, E, G, M, N, O, T |
-| P19 | Rank / linear algebra | 07-linear-algebra-polynomial | C, F, I, J, L, M, R |
+| P18 | Algorithmic proof | 05-construction-algorithms | A, D, E, G, M, N, O, T, W, X |
+| P19 | Rank / linear algebra | 07-linear-algebra-polynomial | C, F, I, J, L, M, R, W |
 | P20 | Weight shifting / symmetrization | 08-canonicalization | E |
-| P21 | Spectral / Rayleigh | 07-linear-algebra-polynomial | J |
-| P22 | Polynomial method | 07-linear-algebra-polynomial | I |
+| P21 | Spectral / Rayleigh | 07-linear-algebra-polynomial | J, W, X |
+| P22 | Polynomial method | 07-linear-algebra-polynomial | I, X |
 | P23 | Compression / shifting | 08-canonicalization | I, K |
 | P24 | Shadow pricing (Kruskal-Katona) | 08-canonicalization | K |
-| P25 | Reduction / encoding | 05-construction-algorithms | B, D, E, F, G, H, L, M, N, O, P, R, T, V |
-| P26 | Compactness (finite vs infinite) | 02-induction-extremal | F |
+| P25 | Reduction / encoding | 05-construction-algorithms | B, D, E, F, G, H, L, M, N, O, P, R, T, V, W, X |
+| P26 | Compactness (finite vs infinite) | 02-induction-extremal | F, W |
 | P27 | Correlation | 03-probability | O (first touch, partial - dependency-graph face), U (exit at 23a: U1 the FKG origin flagship, U2 the combinatorial face, U3 the disjoint-occurrence face) |
 | P28 | Concentration | 03-probability | B, N |
 | P29 | Entropy counting | 04-analytic-information | B, W |
@@ -125,3 +125,7 @@ Batch V (pre-1960 foundations, extension corpus, NEXT100 seeds) COMPLETE 15/15 i
 ## Note 25 (chunk 25 - Batch W, 2026-10-13)
 
 Batch W (1950-1990 classics, extension corpus, NEXT100 seeds) COMPLETE 12/12 in two sub-chunks (25a: 2407e5dd; 25b: pinned at the next push per protocol; the 24c same-session touch-ups recorded at the 25a push: 433c4eb9 the BATCH-V seed-spelling row, ccf7a05a the STATE stale-ledger row). HEADLINES: (1) THE ALGORITHMIC AND POLYHEDRAL ORIGIN ERA at 25a - W1 Gale-Shapley deferred acceptance and W3 the Gomory-Hu cut tree (P18 genuine twice, the algorithm IS the proof), W4 the Graham-Pollak rank engine (P19 genuine; the seed's title and venue corrected to "On the addressing problem for loop switching", Bell System Tech. J. 50(8) (1971) 2495-2519), W6 Mirsky the survey's SECOND P26 firing with the compactness move load-bearing (Rado's selection principle; the V11-W6 Dilworth pair completes); (2) THE P37 LP-DUALITY ORIGIN at 25b - W12 Edmonds 1965, polyhedral combinatorics born (the family note: E4 planar, H10 Konig, I11 LP, J2 optimization duality, Edmonds 1965 the origin); (3) THE SEED RE-ANCHOR at W9 - the 1961 JLMS paper is the Tutte-Nash-Williams TREE-PACKING theorem (the partition-crossing iff), not "the n-factor theorem" (the 1952 factors paper, uncorpus'd); P16 honest miss - the origin quartet stays closed at V15; P9 partial (the necessity direction a pigeonhole count); (4) ORIGIN-ERA DATA for two watch lines: W7 Erdos-Selfridge the positional-games origin with the potential-function proof (the WATCH monovariant/potential item's origin datum; P13 partial - the criterion the union-bound family's deterministic face) and W8 Erdos-Renyi 1961 the connectivity threshold (the isolated-vertex obstruction, the Poisson engine; P10 partial; the CAND-A3 arc's ancestor); (5) the classics of two more lines: W11 Bregman-Minc (P29 partial - the entropy engine retrospective, the N2 datum mirrored; venue resolved to the Doklady translation 14 (1973) 945-949) and W10 Seymour's regular-matroid decomposition (P34 partial - the matroid face of the structure engine, the V9 line's second node; the 1-,2-,3-sum composition a coverage note). W2 the spectral classification and W5 the path-Ramsey values landed at 25a (P21, P8 genuine). Census batches updated: P9, P10, P13, P16, P29, P34, P37 gain W; the WATCH-monovariant row gains its origin datum. Citation figures remain seed ESTIMATES (the 2026-10-13 API incident, SOURCES.md section 6). Next: chunk 26 = Batch X - expansion and the second eigenvalue (6 papers: Alon; Margulis; Gabber-Galil; Lubotzky-Phillips-Sarnak; Marcus-Spielman-Srivastava; Reingold-Vadhan-Wigderson).
+
+## Note 26 (chunk 26 - Batch X, 2026-10-14)
+
+Batch X (expansion and the second eigenvalue, extension corpus, NEXT100 seeds) COMPLETE 6/6 in two sub-chunks (26a: 3f561afe; 26b: pinned at the next push per protocol). THE EXPANSION PROGRAM GATHERED WHOLE: the origin chain (X2 Margulis 1973 the first explicit expander family, P11 genuine; X3 Gabber-Galil 1981 the counting-certified superconcentrator, P11 genuine + P2 partial + the honest P21 miss - the same object the J3 companion certifies spectrally) + the yardstick (X1 Alon 1986, the eigenvalue-expander dictionary + the Alon-Boppana bound, P21 genuine - the pattern's two faces in one paper) + the maturity half (X4 Lubotzky-Phillips-Sarnak 1988, Combinatorica 8(3) 261-277: the Ramanujan threshold met exactly, P21 + P11 genuine; X6 Reingold-Vadhan-Wigderson 2002, Ann. of Math. 155(1) 157-187: the zig-zag product, P18 + P21 genuine, P11 partial, P29 scanned not credited - the H11 precedent; X5 Marcus-Spielman-Srivastava 2015, Ann. of Math. 182(1) 327-350: the Kadison-Singer resolution, P22 partial - the analytic face, the seed's "P22-adjacent" hedge confirmed - and P21 partial honestly, the object-vs-engine datum). ZERO SEED CORRECTIONS batch-wide - Batch X joins Batch Q as the extension's fully clean batches. Coverage observations for synthesis: the deep-arithmetic certificate class (X2 + X4, single-batch, NOT a WATCH), the interlacing-families method (X5, single firing, the kernel-method precedent), the entropy-wave route (X6, scanned not credited). The IF I companion (same volume 182(1) 307-325, every-degree bipartite Ramanujan) and the X6 conference companion ("and Extractors") recorded per the companion precedents, no double credit. Census batches updated: P2, P11, P18, P21, P22, P25 gain X. LEDGER NOTE (dated 2026-10-14): the 25b INDEX push recorded only the 25b half's firings - the P8/P11/P18/P19/P21/P25/P26 rows were missing the batch W entries (the 25a firings: W5 P8 genuine, W6 P11/P26, W1/W3 P18 genuine, W4 P19 genuine, W2 P21 genuine, W3 P25 partial); found at the 26b INDEX pass and backfilled here with this dated note per the P39 reconciliation precedent, never a silent edit. Citation figures remain seed ESTIMATES (the 2026-10-13 API incident, SOURCES.md section 6). Next: chunk 27 = Batch Y (wildcards, 7 papers).

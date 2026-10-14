@@ -3,7 +3,7 @@
 - Family: 05-construction-algorithms
 - Atlas one-line: The proof is a procedure; termination = theorem
 - Home chapters (Atlas): 2, 5
-- Status (through chunk 22a): Atlas-named textbook-canon pattern; in-corpus firings recorded below. Batch M: the isomorphism column M1/M2 (proof = procedure at its largest scale), the property-testing column M5/M6 (the testers), and 13c the classic-algorithms column (M7 flagship, M8 genuine, M9 partial). Batch N 14b: N6 partial (the Gale-Shapley round traces). Batch O 17a (extension corpus): O2 genuine - the LLL's first algorithmization; 17b: O4, O5 genuine (the constructive arc); Batch T 22a (extension corpus): T2 genuine - the machine-verification face (proof-by-execution), T1/T3 partial. Batch T 22b (extension corpus): T6 genuine - the linear-time treewidth algorithm (proof-equals-procedure, the f(k) constant honestly recorded as enormous). Batch W 25a: W1 genuine (deferred acceptance - the algorithm IS the proof) + W3 genuine (the Gomory-Hu cut tree)
+- Status (through chunk 22a): Atlas-named textbook-canon pattern; in-corpus firings recorded below. Batch M: the isomorphism column M1/M2 (proof = procedure at its largest scale), the property-testing column M5/M6 (the testers), and 13c the classic-algorithms column (M7 flagship, M8 genuine, M9 partial). Batch N 14b: N6 partial (the Gale-Shapley round traces). Batch O 17a (extension corpus): O2 genuine - the LLL's first algorithmization; 17b: O4, O5 genuine (the constructive arc); Batch T 22a (extension corpus): T2 genuine - the machine-verification face (proof-by-execution), T1/T3 partial. Batch T 22b (extension corpus): T6 genuine - the linear-time treewidth algorithm (proof-equals-procedure, the f(k) constant honestly recorded as enormous). Batch W 25a: W1 genuine (deferred acceptance - the algorithm IS the proof) + W3 genuine (the Gomory-Hu cut tree). Batch X 26b (extension corpus): X6 genuine (the zig-zag iteration - the construction procedure whose correctness proof IS the expansion analysis)
 - Migration: this dossier was machine-migrated 2026-10-13 from the batch files (the gather record and source of truth); every census row and hypothesis-test note below is QUOTED, not rewritten.
 
 ## Census rows (quoted; source = papers/BATCH-*.md)
@@ -60,6 +60,10 @@
 - Fires in: W1 (genuine), W3 (genuine)
 - Notes: W1 - deferred acceptance: the proposal dynamic with the rejection argument and the strict-descent termination count proves the stable-matching existence theorem (the man-optimality lattice the paper's own addition; the N-batch stable-matching papers the corpus descendants). W3 - the Gomory-Hu cut tree: n-1 max-flow computations determine every pairwise minimum cut (the non-crossing-cuts lemma + condensation); the multi-terminal program's founding algorithm
 
+### Batch X, sub-chunk 26b (chunk 26; extension corpus - NEXT100 seeds)
+- Fires in: X6 (genuine)
+- Notes: the iterative construction procedure - start from one constant-size expander, iterate the zig-zag product to arbitrary sizes: the construction algorithm whose correctness proof IS the expansion analysis (proof-equals-procedure, the W1/W3 origin-era face at the expander program); the paper's second theme the derandomization applications (the conference companion's "and Extractors" title the datum, per the companion precedent no double credit)
+
 ## Hypothesis-test notes (quoted; source = papers/BATCH-*.md)
 
 ### Batch M, sub-chunk 13a (chunk 13)
@@ -86,6 +90,9 @@
 ### Batch W, sub-chunk 25a (chunk 25)
 - W1 P18 GENUINE CONFIRMED (expected by seed as the algorithmic classic). W3 P18 GENUINE with the seed's P17 expectation an honest miss: the paper's own move is the algorithm + the encoding face (P25 partial), the max-flow min-cut duality the used black box (D-batch owns it), cross-noted no census row
 
+### Batch X, sub-chunk 26b (chunk 26)
+- X6 P18 GENUINE CONFIRMED (expected by seed): the composition-era construction procedure - the explicit-family iteration with the spectral analysis as the correctness argument
+
 ## Cross-links (interdependence)
 
-(none recorded)
+X6's iteration pairs the algorithmic face with the P11 construction line (the product replaces the arithmetic: the W1/W3 algorithm-as-proof era meeting the expander program).
