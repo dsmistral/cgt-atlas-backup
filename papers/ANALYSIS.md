@@ -147,3 +147,15 @@ Recommendations for the Atlas (ALL PENDING a user-approved Atlas session, per th
 14. Add the obstruction-halves coverage-gap cluster note: the obstruction halves of contest extremal problems live disproportionately outside the P-index (modular-residue/CRT obstructions, the pairing and blocking strategies, chip-firing, the max-plus generators) - the contest-canon coverage observations, papers/CONTEST-CENSUS.md sections 1-5.
 
 Adopting any of these is a future Atlas session requiring user approval, per the Atlas working protocol; this survey does not edit the Atlas.
+
+### Dated note (30e, 2026-10-15): the chunk-30 upgrade-pass close (the standing deferrals honestly resolved)
+
+The user-directed chunk-30 upgrade passes over the 29e deferral ledger, closed 2026-10-15 (five commits, 30a-30e; papers/STATE.md the ledger; papers/SOURCES.md the dated notes). The outcomes, recorded honestly:
+
+- 30a EXECUTED - the Bajnok IMO report pass: the 2022 P1, 2022 P6 and 2023 P5 rows route-pinned from the official Bajnok reports (arXiv and the author-hosted Mathematics Magazine manuscripts), plus the 2024 P3/P5 double confirmations; the section-9 contest-census route coverage moved 2/8 to 5/8 (papers/CONTEST-CENSUS.md section 2's dated 30a subsection).
+- 30b HONEST RETRY-FAILED - the 2022 USAMO/USAJMO gap stands (the Lake Forest report URLs 404, the 51st-USAMO Mathematics Magazine report paywalled-only, no arXiv entry; no compliant open route).
+- 30c HONEST BLOCKED/UNCHANGED - the Kurschak finals: the organizer's page relabeled its 2023-2025 sections final, but the served PDFs remain the preliminary-solution files; the 4-of-5 preliminary status stands; the KoMaL February finals remain blocked to automated access.
+- 30d EXECUTED for ps4, HONEST RETRY-FAILED for T5 - the teaching-track retries: the last unpinned 6.042J set (ps4) pinned via the instructor's own official MIT CSAIL course directory and graded (3 problems: P4 GENUINE the structural-induction counting spine; P1 GENUINE the explicit-bijection/Schroeder-Bernstein chain; NO P-ID the state-machine invariant engine, the ps3-2/ps5-1 coverage-observation class) - the 6.042J census now covers 12 of 12 sets (papers/TEACHING-CENSUS.md section 3); the T5 (Levin-Peres) author PDF fetch failed service-side three fresh times, the mining stays deferred and registered.
+- 30e this close - no new sources, no census change.
+
+The standing deferrals, honestly recorded and upgradeable at a future user-directed pass: the 2022 USAMO/USAJMO reports; the Kurschak finals (the KoMaL February issues); the 62nd (2021) and 66th (2025) IMO reports (paywalled / bot-blocked); the 2026 IMO exam and shortlist; the T5 mining. NO recommendations were executed at chunk 30: recommendations 11-14 above and the section-8 items 1-10 REMAIN PENDING a user-approved Atlas session, per the Atlas working protocol; this survey does not edit the Atlas.
