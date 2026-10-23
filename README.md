@@ -11,6 +11,7 @@ The durable, self-sufficient backup of the CGT Atlas project: a combinatorics & 
   - `cgt-ch1-web.md` - the canonical web frame (the renderMd v2 engine master).
   - `cgt-lean-track.md` - the unnumbered Lean formalization track (project idea; to merge with the computational-toolkit companion per the 2026-10-15 companion-volumes decision).
   - `cgt-publishing.md` - publishing conventions.
+  - `cgt-pattern-map.html` - the Pattern Map: the companion registry of all 45 patterns (P1-P45) with every name the book uses for each across the chapters, plus a SHA-1-pinned JSON payload - the immutable join reference (P-ID = key) for automated validation/improvement pipelines.
   - `KNOWLEDGE.md` - the Atlas project record: current state, full session history, standing protocols, the expansion charter and the companion-volumes decision. A cold resumer (human or AI) reads this file FIRST.
 - `papers/` - the paper-pattern survey (sibling project, COMPLETE): the 133-paper corpus, per-pattern dossiers, contest and teaching censuses, the ANALYSIS.md synthesis.
   - `KNOWLEDGE.md` - the survey project record: resume protocol, standing deferrals (including the OpenAI Oct-2026 math-release watch list), the gather/verification protocol. Read second.
