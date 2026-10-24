@@ -1,0 +1,656 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter 14 &middot; Regularity and Density: The Structure Hiding in Every Large Graph &#8212; A Lecture Course in the Feynman Style</title>
+<script>
+window.MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']],
+    displayMath: [['$$', '$$'], ['\\[', '\\]']]
+  }
+};
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<style>
+  :root { font-family: Georgia, 'Times New Roman', serif; color: #1a1a1a; }
+  body { max-width: 46rem; margin: 0 auto; padding: 1.5rem 1.2rem 4rem; line-height: 1.55; background: #fff; }
+  h1 { font-size: 1.9rem; margin: 2.2rem 0 0.8rem; }
+  h2 { font-size: 1.45rem; margin: 2rem 0 0.6rem; border-bottom: 1px solid #ddd; padding-bottom: 0.25rem; }
+  h3 { font-size: 1.2rem; margin: 1.6rem 0 0.5rem; }
+  h4 { font-size: 1.05rem; margin: 1.3rem 0 0.4rem; }
+  pre, code { font-family: 'Courier New', Courier, monospace; }
+  code { background: #f2f2f2; padding: 0.05em 0.3em; border-radius: 3px; font-size: 0.92em; }
+  pre { white-space: pre; tab-size: 4; break-inside: avoid; page-break-inside: avoid;
+        overflow-x: auto; border: 1px solid #ddd; background: #fafafa; padding: 0.7rem 0.9rem;
+        font-size: 0.85rem; line-height: 1.35; }
+  blockquote { border-left: 3px solid #888; margin: 1rem 0; padding: 0.2rem 1rem; color: #333; }
+  table { border-collapse: collapse; margin: 1rem 0; break-inside: avoid; page-break-inside: avoid; }
+  th, td { border: 1px solid #bbb; padding: 0.35rem 0.6rem; text-align: left; }
+  th { background: #f0f0f0; }
+  .fig { margin: 1rem 0; text-align: center; break-inside: avoid; page-break-inside: avoid; }
+  .fig svg { max-width: 100%; height: auto; }
+  hr { border: 0; border-top: 1px solid #ccc; margin: 2rem 0; }
+  .banner { background: #eef6ff; border: 1px solid #bcd6f0; border-radius: 6px;
+            padding: 0.8rem 1rem; font-size: 0.9rem; font-family: system-ui, sans-serif; margin-bottom: 1.5rem; }
+  @page { size: A4; margin: 16mm 15mm; }
+  @media print {
+    body { max-width: none; padding: 0; font-size: 10.5pt; }
+    .no-print { display: none; }
+    pre { font-size: 8.8pt; }
+    h1, h2, h3, h4 { break-after: avoid; page-break-after: avoid; }
+  }
+</style>
+</head>
+<body>
+<main id="content">
+<h1>Chapter 14 &middot; Regularity and Density</h1>
+<p><em>Part of the Combinatorics &amp; Graph Theory Atlas (see the Atlas canvas for the chapter map and progress report).</em></p>
+<p>Turán's theorem (Chapter 2) and Erdős–Stone (this chapter, Lecture 3) say the same scandalous thing: the extremal question "how many edges before $H$ must appear" is governed by one number, the chromatic number of $H$ — a single integer steering an $n^2$-scale question. Why should that be true? What is it about large dense graphs that makes one parameter so powerful? The answer is the Szemerédi regularity lemma, and it is the engine room of this chapter. <strong>Regularity</strong> (Lecture 1): every large graph, however adversarial, is a bounded blow-up of a small pattern graph, draped in quasirandom noise. <strong>Counting and removal</strong> (Lecture 2): within that structure, copies of any fixed $H$ are counted by multiplying densities — and a graph with few copies of $H$ can be cleaned of them all for the price of few edge deletions. <strong>Stability</strong> (Lecture 3): near-extremal $H$-free graphs are not just few in edges — they are <em>close to the Turán graph itself</em>. <strong>Roth</strong> (Lecture 4): triangle removal $+$ a layered construction $\implies$ every positive-density set of integers holds a $3$-term arithmetic progression — combinatorics proving number theory. <strong>Density Ramsey</strong> (Lecture 5): Szemerédi's theorem for all $k$, the density Hales–Jewett theorem, and the honest hierarchy between them. <strong>The cap set theorem</strong> (Lecture 6): the 2016 surprise — the polynomial method of Chapter 6 returning with slice rank, and the constant $2.7551046130^n$.</p>
+<p>The deal with the reader is the one the Atlas has enforced since Chapter 1: every number printed below was machine-verified before printing — exhaustive censuses, exact optima, seeded searches — and where a bound is vacuous, a proof is cited rather than given, or an optimality is beyond the chapter's computational reach, the text says so in those words.</p>
+<h2>How to read this chapter</h2>
+<p>Nothing here needs Chapter 2 beyond Turán's theorem and Chapter 6 beyond the polynomial method's calling card; both are re-derivable from the statements given in place. Lines marked <strong>&#9998; Checkpoint</strong> are the places to stop and predict — commit to a guess, in ink, before reading on. Exercises are graded &#9679;&#9675;&#9675; <em>easy</em> (one idea, applied directly), &#9679;&#9679;&#9675; <em>moderate</em> (two ideas, or one tricky step), &#9679;&#9679;&#9679; <em>tough</em> (several ideas combined); &#9670; <strong>pattern unknown</strong> problems come with no hint — diagnosing the tool is part of the problem; &#9680; <strong>Explorations</strong> are open-ended investigations that state what you should find, not a number to match. Worked answers sit at the end; hints travel with the problems.</p>
+<p>Notation. For vertex sets $X, Y$ in a graph $G$, $e(X, Y)$ counts the ordered pairs $(x, y) \in X \times Y$ with $xy \in E(G)$ (so $e(X, Y)$ is the number of cross-edges when $X, Y$ are disjoint, and $e(X, X) = 2|E(G[X])|$ when $X = Y$), and $d(X, Y) = e(X, Y)/(|X||Y|)$ is the <em>density</em> between them. A pair $(X, Y)$ is <strong>$\varepsilon$-regular</strong> if $|d(A, B) - d(X, Y)| \le \varepsilon$ for every $A \subseteq X$, $B \subseteq Y$ with $|A| \ge \varepsilon|X|$, $|B| \ge \varepsilon|Y|$. A partition $V = V_1 \cup \dots \cup V_k$ is <em>equitable</em> if the parts differ in size by at most one, and <em>$\varepsilon$-regular</em> if all but at most $\varepsilon k^2$ of the pairs $(V_i, V_j)$ are $\varepsilon$-regular. The <em>index</em> (or <em>energy</em>) of a partition $P$ is $q(P) = \sum_{i,j} \frac{|V_i||V_j|}{n^2} \cdot d(V_i, V_j)^2$, diagonal included — the weighted average of squared densities. $\operatorname{ex}(n, H)$ is the maximum number of edges of an $n$-vertex $H$-free graph; $\chi(H)$ its chromatic number; $\pi(H) = 1 - \frac{1}{\chi(H) - 1}$ its Turán density. $\mathbb{Z}_n$ is the integers mod $n$ ($n$ odd throughout, so $2$ is invertible); $\mathbb{F}_3^n$ is the $n$-dimensional vector space over $\{0, 1, 2\}$. $o(\cdot)$ is as $n \to \infty$.</p>
+<p>The chapter's machine runs follow the Atlas's standing rule: exhaustive where feasible, and where randomness is used, a Lehmer generator ($x \leftarrow 48271 \cdot x \bmod (2^{31}-1)$), seeded and recorded, so every sample is reproducible bit for bit.</p>
+<h2>The pattern map for this chapter</h2>
+<table><tr><th>Pattern</th><th>Plain language</th><th>Where it fires</th></tr><tr><td><strong>P10 Averaging / expectation</strong></td><td>The average is a promise; some object beats it</td><td>L1 (the energy index is averaging with a spotlight on the partition), L6 (the slice-rank bound is an averaged monomial count)</td></tr><tr><td><strong>P30 Regularity partitioning</strong></td><td>Every large graph is a bounded quasirandom blow-up; refine until the noise is uniform</td><td>L1–L4 (the lemma and its three payoffs: counting, removal, stability)</td></tr><tr><td><strong>P31 Counting–removal</strong></td><td>Regular structure multiplies densities; few copies $\implies$ few deletions</td><td>L2 (the counting and removal lemmas), L4 (triangle removal $\implies$ Roth)</td></tr><tr><td><strong>P32 Stability</strong></td><td>Near-extremal objects are near the extremal <em>configuration</em>, not merely near its count</td><td>L3 (Simonovits: near-extremal $H$-free graphs are near-Turán after few deletions)</td></tr><tr><td><strong>P33 Density increment</strong></td><td>If the structure you want is nowhere, refine: some cell gains density</td><td>L1 (the energy index increment), L4 (Roth's Fourier route), L6 (Meshulam's cap-set prior)</td></tr><tr><td><strong>Transference (P30 + P31)</strong></td><td>Find a dense model inside a sparse host so the regularity and counting–removal engine carries across unchanged (Green–Tao's relative Szemerédi theorem is the flagship)</td><td>L5 (bridge from Szemerédi's theorem on dense subsets of $[N]$ to primes)</td></tr><tr><td><strong>Polynomial method (Chapter 6's card)</strong></td><td>Wrap the configuration space in a polynomial; dimension is your budget</td><td>L6 (CLP/EG slice rank — the direct descendant of Chapter 6's Lecture 3)</td></tr></table>
+<hr>
+<h2>Lecture 1 &middot; The Regularity Lemma: Every Graph Wants to Be Simple</h2>
+<p>Here is a fact it took combinatorics until 1975 to notice. Take any graph on a million vertices — the most adversarial construction you can imagine, edges placed by an enemy to defeat every theorem. The regularity lemma says: at the right magnification, your enemy's graph is <em>boring</em>. Its vertices split into a bounded number of parts, the edges between any two parts behave like a coin flip, and the only thing your enemy actually chose is the small pattern of densities between the parts. Structure at the macro level, noise at the micro level — whether the graph is a Turán graph, a Paley graph, or pseudorandom garbage, this description is forced.</p>
+<p>The notion that makes "behaves like a coin flip" precise is $\varepsilon$-regularity. Say it once more, slowly: a pair $(X, Y)$ is <strong>$\varepsilon$-regular</strong> if <em>no pair of large test sets can detect a bias</em> — for every $A \subseteq X$ and $B \subseteq Y$ with $|A| \ge \varepsilon|X|$ and $|B| \ge \varepsilon|Y|$, the density $d(A, B)$ stays within $\varepsilon$ of the overall density $d(X, Y)$.</p>
+<p><strong>&#9998; Checkpoint.</strong> Before reading on: at $\varepsilon = 1/4$, among all $65,536$ bipartite graphs on $4 + 4$ labeled vertices, how many do you expect to be $\varepsilon$-regular — most of them, about half, or almost none? Commit to a number.</p>
+<p>The machine answer was run as an exhaustive census (every graph, every test pair — no sampling): at $\varepsilon = 1/4$ exactly <strong>$2$</strong> of the $65,536$ graphs are $\varepsilon$-regular. Regularity at a meaningful tolerance is <em>rare</em>, a genuine structural property and not a formality — which is the point: the lemma will <em>force</em> it. At $\varepsilon = 1/2$ the count rises to $46,408$ (about $71\%$), and at $\varepsilon = 3/4$ it reaches $65,536$ — the property has gone vacuous, as every bound in this chapter does when its tolerance is loosened far enough. The census also fixes the worst a witness can be forced to show: some non-regular pair at $\varepsilon = 1/4$ has a test pair $(A, B)$ with $|d(A, B) - d(X, Y)| = 0.9375$, nearly the full range — non-regularity is not always subtle.</p>
+<blockquote><strong>The Szemerédi regularity lemma.</strong> For every $\varepsilon > 0$ and every integer $m$ there is $M(\varepsilon, m)$ such that every graph on $n \ge m$ vertices admits an equitable partition into $k$ parts with $m \le k \le M(\varepsilon, m)$, all but at most $\varepsilon k^2$ of the pairs $\varepsilon$-regular. (E. Szemerédi, "Regular partitions of graphs", <em>Problèmes Combinatoires et Théorie des Graphes</em>, Orsay 1976, Colloq. Internat. CNRS 260, 399–401.)</blockquote>
+<p>The proof is an energy argument — averaging with a spotlight, P10 upgraded. For a partition $P$ define the index $q(P) = \sum_{i,j} \frac{|V_i||V_j|}{n^2} \cdot d(V_i, V_j)^2$ (the diagonal terms $i = j$ included; with them the weights sum to exactly $1$, so $0 \le q \le 1$ with both ends honest: $q = 0$ for the empty graph, $q \to 1$ for the complete graph partitioned into singletons). Two monotonicity facts drive everything:</p>
+<ol><li><strong>Refinement raises the index.</strong> If $P'$ refines $P$, then $q(P') \ge q(P)$. <em>Proof:</em> Let $X = \bigcup_{a=1}^r X_a$ and $Y = \bigcup_{b=1}^s Y_b$ be decomposed into subparts of $P'$. Because $e(X, Y) = \sum_{a,b} e(X_a, Y_b) = \sum_{a,b} |X_a||Y_b| d(X_a, Y_b)$, the overall density $d(X, Y)$ is the weighted average $\sum_{a,b} p_{a,b} d(X_a, Y_b)$ with weights $p_{a,b} = \frac{|X_a||Y_b|}{|X||Y|}$ summing to $1$. By the elementary variance identity $\sum_{a,b} p_{a,b} d(X_a, Y_b)^2 - d(X, Y)^2 = \sum_{a,b} p_{a,b} (d(X_a, Y_b) - d(X, Y))^2 \ge 0$, multiplying by $\frac{|X||Y|}{n^2}$ gives
+$$\sum_{a,b} \frac{|X_a||Y_b|}{n^2} d(X_a, Y_b)^2 - \frac{|X||Y|}{n^2} d(X, Y)^2 = \sum_{a,b} \frac{|X_a||Y_b|}{n^2} \left(d(X_a, Y_b) - d(X, Y)\right)^2 \ge 0.$$
+Summing over all pairs $(X, Y)$ of $P$ yields $q(P') \ge q(P)$. The Atlas ran this as an exhaustive machine check: for <em>every</em> graph and partition on small vertex sets, the inequality held without exception — $106,496$ checks at $n = 5$ (all $1,024$ graphs $\times$ all $52$ partitions $\times$ both ladder bounds) and $1,638,400$ at $n = 6$ (all $32,768$ graphs $\times$ the $25$ equitable $(2,2,2)$ and $(3,3)$ partitions $\times$ both bounds), <strong>zero violations</strong> — pinning the ladder $q(\text{trivial}) \le q(P) \le q(\text{singletons})$ that the proof climbs.</li><li><strong>Defects pay rent.</strong> Suppose $(X, Y)$ is <em>not</em> $\varepsilon$-regular, witnessed by $X_1 \subseteq X, Y_1 \subseteq Y$ with $|X_1| \ge \varepsilon|X|$, $|Y_1| \ge \varepsilon|Y|$, and $|d(X_1, Y_1) - d(X, Y)| > \varepsilon$. Partition $X = X_1 \cup X_2$ and $Y = Y_1 \cup Y_2$; by the variance identity above, the single sub-block $(X_1, Y_1)$ alone contributes at least
+$$\frac{|X_1||Y_1|}{n^2}\left(d(X_1, Y_1) - d(X, Y)\right)^2 > \frac{\varepsilon|X| \cdot \varepsilon|Y|}{n^2} \cdot \varepsilon^2 = \varepsilon^4 \frac{|X||Y|}{n^2}$$
+to the index increment. When more than $\varepsilon k^2$ ordered pairs $(V_i, V_j)$ of an equitable $k$-partition $P$ are irregular (with $|V_i| = n/k$), simultaneously refining every part $V_i$ by the common intersection of all witness cuts (producing at most $k \cdot 2^{k-1}$ subparts, then re-equitabilizing into $k' \le k \cdot 4^k$ parts at an index loss of at most $\varepsilon^5/2$) yields a net energy gain of at least $\varepsilon k^2 \cdot \varepsilon^4 \frac{(n/k)^2}{n^2} - \frac{\varepsilon^5}{2} = \frac{\varepsilon^5}{2}$, so <strong>$q(P') \ge q(P) + \varepsilon^5/2$</strong> (the core variance identity was machine-checked over $1,125,000$ instances, zero violations). A defect is not free: exposing it deposits energy.</li></ol>
+<p>Now iterate. Start from an equitable partition into $m$ parts. If it is $\varepsilon$-regular, stop. If not, refine by the witnesses; the index rises by at least $\varepsilon^5/2$, and since it is capped at $1$, there are at most $2\varepsilon^{-5}$ refinement rounds before the partition must be $\varepsilon$-regular. The catch — the famous, honest catch — is the <em>size</em> of the partitions along the way: each refinement multiplies the number of parts by roughly $4$ per defective pair, and the part count grows like a tower of exponentials in the number of rounds. The standard bound makes $M(\varepsilon)$ a <strong>tower of $2$'s of height $O(\varepsilon^{-5})$</strong>.</p>
+<p>Do not nod past that tower; look at it. The Atlas ran the toy iteration $k \mapsto k\cdot 2^k$ (the same shape as the refinement blow-up) from $k_0 = 2$: after one step $k = 8$, after two $k = 2048$, after three $k = 2048\cdot 2^{2048} \approx 10^{619.8}$ — already past the number of atoms in the observable universe ($10^{80}$) and past a googol ($10^{100}$) at the <em>third</em> step — and the fourth step overflows $64$-bit floating point arithmetic entirely. A true tower of $2$'s of height $5$ is $2^{65536} \approx 10^{19728}$. At the sample tolerances, the regularity proof's tower carries about $100,000$ levels at $\varepsilon = 0.1$, $3.2$ million at $\varepsilon = 0.05$, and ten billion at $\varepsilon = 0.01$. And the tower is <em>not an artifact of the proof</em>: Gowers proved partitions exist for which any regular partition genuinely needs tower height $\Omega(\varepsilon^{-1/16})$ — a proof later simplified by Moshkovitz–Shapira — and Fox–Lovász pinned the tight order of the tower height, about $\varepsilon^{-2}$, for a version of the lemma — the regularity lemma is, in a precise sense, <em>about towers</em>. The honest gap between the proven upper height ($\varepsilon^{-5}$) and the lower one ($\varepsilon^{-1/16}$), for the standard form of the lemma, is stated here as a gap, not smoothed over.</p>
+<p>What the lemma does <em>not</em> say is as important as what it says. It is vacuous for sparse graphs (densities shrink with the noise). Its constants are galactic — no algorithm can afford $M(\varepsilon)$ — which is why the algorithmic regularity literature (finding the partition, not just proving it exists) is a separate subject the chapter only names. And the $\varepsilon$-regularity of a pair is a <em>for-all</em> condition over test sets: checking it naively costs exponential time, which is why the Lab's Part 1 brute-forces it only at census scale.</p>
+<p><strong>&#9998; Checkpoint.</strong> You know $q \le 1$ and each defect-refinement adds $\ge \varepsilon^5/2$. Estimate how many rounds the proof can possibly need at $\varepsilon = 1/2$. Then explain to yourself why this <em>still</em> produces a tower — the rounds are few, but the <em>parts</em> are what explode.</p>
+<p>The next two lectures cash the lemma in: counting (Lecture 2) turns the macro pattern into copy counts, and removal turns copy counts into the deletion theorem that Lecture 4 will point at the integers.</p>
+<hr>
+<h2>Lecture 2 &middot; Counting and Removal: Densities Multiply, Copies Yield</h2>
+<p>The regularity lemma described the <em>macro</em> graph: parts, densities, uniform noise. This lecture turns the description into arithmetic. The counting lemma says that in an $\varepsilon$-regular world, the number of triangles is what the densities predict — the product $d_{12}\cdot d_{13}\cdot d_{23}$ times the volume. Its philosophical punchline is a dichotomy: in a regular setting, a graph's triangle count is <em>either zero or enormous</em> — there is no in-between, no "seven triangles hiding in a dense sea of edges". Then, run in reverse with the regularity lemma's refining power, the counting lemma proves the <strong>graph removal lemma</strong>: a graph with few copies of $H$ can be made $H$-free by deleting few edges. Few in, few out — the deletion theorem that Lecture 4 will fire at the integers.</p>
+<p>First, the trap. Why is $\varepsilon$-regularity needed at all — aren't densities enough?</p>
+<p><strong>&#9998; Checkpoint.</strong> A tripartite graph has parts $X, Y, Z$ of size $16$, with <em>every</em> pairwise density exactly $1/2$: $d(X,Y) = d(X,Z) = d(Y,Z) = 1/2$. The product $1/8$ would predict $(16)^3/8 = 512$ triangles. Guess: can such a graph have <em>zero</em> triangles?</p>
+<p>It can, and the Atlas built the witness: a hi/lo split. Label each part's $16$ vertices $0\dots 15$ and let $\operatorname{hi}(v)$ record whether $v \ge 8$. Put an $X$–$Y$ edge when $\operatorname{hi}(x) = \operatorname{hi}(y)$, a $Y$–$Z$ edge when $\operatorname{hi}(y) = \operatorname{hi}(z)$, and a $Z$–$X$ edge when $\operatorname{hi}(z) \ne \operatorname{hi}(x)$. Each pair carries exactly $128$ of its $256$ possible edges — every pairwise density is exactly $1/2$ — and a machine sweep confirms the triangle count is <strong>zero</strong>: a triangle needs $\operatorname{hi}(x) = \operatorname{hi}(y) = \operatorname{hi}(z)$ from the first two pairs, and then $\operatorname{hi}(z) \ne \operatorname{hi}(x)$ from the third — a flat contradiction. The pairs are maximally irregular: the test sets $X = \{0,1,2,3\}$ (all low) and $Y = \{8,9,10,11\}$ (all high) see density $0$ where the pair as a whole says $1/2$ — witness discrepancy exactly $1/2$, the maximum over $2,000$ seeded test pairs as well. Densities <em>lie</em> when the pairs are not regular — and that is the point: the counting lemma's hypothesis is not decoration; it is the engine.</p>
+<blockquote><strong>The counting lemma (triangles, $\varepsilon$-tolerant form).</strong> Let $(X, Y), (X, Z), (Y, Z)$ be $\varepsilon$-regular pairs with densities $d_{12}, d_{13}, d_{23} \ge 2\varepsilon$. Then the number of triangles $xyz$ is within a factor $(1 \pm C\varepsilon)$ of $d_{12}\cdot d_{13}\cdot d_{23}\cdot |X||Y||Z|$; in particular, it is at least $(1 - 2\varepsilon)(d_{12}-\varepsilon)(d_{13}-\varepsilon)(d_{23}-\varepsilon)\cdot |X||Y||Z|$, with per-vertex degree-floor product window $(d_{12}-\varepsilon)(d_{13}-\varepsilon)(d_{23}-\varepsilon)\cdot |X||Y||Z|$.</blockquote>
+<p><em>Proof (greedy embedding — the chapter gives it in full).</em> For each $x \in X$ let $d_Y(x), d_Z(x)$ be its degrees into $Y$ and $Z$. Regularity of $(X, Y)$ forces all but at most $\varepsilon|X|$ vertices $x$ to satisfy $d_Y(x) \ge (d_{12} - \varepsilon)|Y|$ — otherwise the set $A$ of low-degree vertices would have $|A| \ge \varepsilon|X|$ and $d(A, Y) < d_{12} - \varepsilon$, violating $\varepsilon$-regularity. Likewise at most $\varepsilon|X|$ vertices fail $d_Z(x) \ge (d_{13} - \varepsilon)|Z|$. Fix any of the at least $(1 - 2\varepsilon)|X|$ <em>good</em> vertices $x \in X$ satisfying both degree floors: its neighborhoods $N_Y(x) \subseteq Y$ and $N_Z(x) \subseteq Z$ have sizes $|N_Y(x)| \ge (d_{12}-\varepsilon)|Y| \ge \varepsilon|Y|$ and $|N_Z(x)| \ge (d_{13}-\varepsilon)|Z| \ge \varepsilon|Z|$. Applying $\varepsilon$-regularity of $(Y, Z)$ directly to the admissible test pair $(N_Y(x), N_Z(x))$ gives at least $(d_{23} - \varepsilon)|N_Y(x)||N_Z(x)| \ge (d_{12}-\varepsilon)(d_{13}-\varepsilon)(d_{23}-\varepsilon)|Y||Z|$ edges between $N_Y(x)$ and $N_Z(x)$ (the degree-floor product window per $x \in X$). Summing over the $\ge (1 - 2\varepsilon)|X|$ good vertices $x$ yields at least $(1 - 2\varepsilon)(d_{12}-\varepsilon)(d_{13}-\varepsilon)(d_{23}-\varepsilon)|X||Y||Z|$ triangles, and the matching upper bound is the same walk with inequalities flipped. $\blacksquare$</p>
+<p>The Atlas ran the honest numeric test: tripartite graphs on parts of size $30$, each pair a uniform random bipartite graph at planted densities (Lehmer seed $20261052$, recorded) — density triples $(1/2, 1/2, 1/2)$ and $(0.7, 0.4, 0.55)$: the machine counted <strong>$3,307$ triangles against a product prediction of $3,285$ ($100.7\%$)</strong> and <strong>$4,202$ against $4,215$ ($99.7\%$)</strong>, both comfortably inside the $(d-0.1)^3$ lower window the lemma promises at $\varepsilon = 0.1$. Two thousand seeded samples per configuration, zero runs outside the window. When the pairs are regular, densities multiply — end of story.</p>
+<p>The same greedy walk, run vertex by vertex on a fixed $H$ whose edges' pairs are all $\varepsilon$-regular, counts copies of $H$ in a regular partition as the product of the relevant densities times $n^{|H|}$, up to the same $\varepsilon$-slack: <strong>regular structure is transparent to counting</strong>.</p>
+<p>Now run the machinery in reverse.</p>
+<blockquote><strong>The graph removal lemma.</strong> For every fixed graph $H$ and every $\delta > 0$ there is $\varepsilon > 0$ such that every $n$-vertex graph with at most $\varepsilon n^{|H|}$ copies of $H$ can be made $H$-free by deleting at most $\delta n^2$ edges.</blockquote>
+<p><em>Proof of the graph removal lemma (Komlós–Simonovits cleaning argument).</em> Let $h = |V(H)|$. Given $\delta > 0$, set the minimum density threshold $\gamma = \frac{\delta}{2}$, the regularity tolerance $\varepsilon = \min\!\left(\frac{\delta}{4}, \frac{\gamma}{2h}\right)$, and the minimum cluster count $m = \lceil 2/\delta \rceil$. By the Szemerédi regularity lemma, $G$ has an equitable $\varepsilon$-regular partition $V(G) = V_1 \cup \dots \cup V_k$ with $m \le k \le M(\varepsilon, m)$.</p>
+<p>Form a cleaned subgraph $G' \subseteq G$ by deleting three classes of edges:</p>
+<ol>
+<li><strong>Intra-cluster edges</strong> (both endpoints inside the same $V_i$): at most $k \binom{\lceil n/k \rceil}{2} \le \frac{n^2}{2k} \le \frac{\delta}{4} n^2$ edges.</li>
+<li><strong>Irregular-pair edges</strong> (between pairs $(V_i, V_j)$ that are not $\varepsilon$-regular): since at most $\varepsilon k^2$ ordered pairs $\{i, j\}$ are irregular, this deletes at most $\frac{1}{2} \varepsilon k^2 \left(\frac{n}{k}\right)^2 = \frac{\varepsilon}{2} n^2 \le \frac{\delta}{8} n^2$ edges.</li>
+<li><strong>Low-density-pair edges</strong> (between pairs $(V_i, V_j)$ with density $d(V_i, V_j) < \gamma$): at most $\binom{k}{2} \gamma \left(\frac{n}{k}\right)^2 \le \frac{\gamma}{2} n^2 = \frac{\delta}{4} n^2$ edges.</li>
+</ol>
+<p>In total, at most $\left(\frac{\delta}{4} + \frac{\delta}{8} + \frac{\delta}{4}\right) n^2 < \delta n^2$ edges have been deleted. Suppose for contradiction that the cleaned graph $G'$ still contains a copy of $H$, with vertices $u_1, \dots, u_h \in V(G)$ lying in clusters $V_{i_1}, \dots, V_{i_h}$. Because every edge of $G'$ connects two distinct clusters whose pair $(V_{i_a}, V_{i_b})$ is $\varepsilon$-regular with density $d(V_{i_a}, V_{i_b}) \ge \gamma \ge 2h\varepsilon$ (even if some non-adjacent vertices of $H$ fall into the same cluster $V_{i_a}$, we may split each cluster into $h$ equal subclusters while preserving $h\varepsilon$-regularity and density $\ge \gamma - \varepsilon$), the general counting lemma applied to the $h$ subclusters $V_{i_1}, \dots, V_{i_h}$ guarantees at least
+$$(\gamma - h\varepsilon)^{|E(H)|} \prod_{a=1}^h |V_{i_a}| \ge \left(\frac{\gamma}{2}\right)^{|E(H)|} \left(\frac{n}{h M(\varepsilon, m)}\right)^h$$
+copies of $H$ in $G$. Choosing the theorem's hypothesis parameter $\varepsilon_0(\delta) < \left(\frac{\gamma}{2}\right)^{|E(H)|} (h M(\varepsilon, m))^{-h}$ contradicts the assumption that $G$ had at most $\varepsilon_0 n^h$ copies of $H$. Thus $G'$ is $H$-free. $\blacksquare$ (The quantitative price: the tolerance $\varepsilon_0$ must be a tower-inverse of $\delta$, since it is chosen <em>after</em> the regularity lemma's $M$ — this is where tower-type bounds in removal lemmas come from; Fox's regularity-free proof, "A new proof of the graph removal lemma", <em>Annals of Mathematics</em> 174(1), 2011, DOI 10.4007/annals.2011.174.1.17, cuts this bond and yields better quantitative forms for the directed and multicolored analogues. The chapter cites it; it does not reprove it.)</p>
+<p>The removal lemma has a mirror-image extremal question — the <strong>Ruzsa–Szemerédi $(6,3)$-problem</strong>: how many edges can a graph have if <em>every edge lies in exactly one triangle</em>? At first glance such graphs look rich (triangle-covered), and small cases say little: on $6$ vertices, the Atlas ran the exhaustive census — all $32,768$ labeled graphs — and found the maximum is exactly <strong>$6$ edges</strong>: the $100$ labeled extremals are $90$ "bowties" (two triangles sharing one vertex) and $10$ disjoint triangle pairs, and in total only $121$ graphs on $6$ vertices have the property at all (including the empty graph, vacuously). Compare the Roth construction of Lecture 4: there, a $3$-AP-free set $A \subseteq \mathbb{Z}_n$ yields exactly such a graph with $n|A|$ edges on $3n$ vertices — <em>linearly</em> many. The Ruzsa–Szemerédi theorem says that is essentially the ceiling: such graphs have $o(n^2)$ edges. Equivalently (the matching formulation — its small end is &#9670; Problem 3's classification; the general equivalence is standard, cited rather than re-derived here): if the edges of a bipartite graph partition into induced matchings, each of size at least $\delta$ times its side, then the graph has $o(n^2)$ edges.</p>
+<p>The machine census gives that equivalence's <em>threshold behavior</em> honestly at brute-force scale: for $m + m$ bipartite graphs, partition the edges into induced matchings each of size at least $k$. At $k = 2$ (a constant), the maximum is still quadratic — $m^2 - m$ edges, and the extremal graphs are <em>exactly</em> the complements of perfect matchings ($6$ labeled at $m = 3$, $24 = m!$ at $m = 4$; blocks $=$ the transposition pairs). Raise the bar to $k = 3$ of $4$ — matchings of size at least $3n/4$ — and the maximum collapses to $n$ (a single induced perfect matching; no $5$- or $6$-edge example exists at $m = 4$, exhaustively confirmed). The $\delta n$ matching-size hypothesis of the theorem is not a technicality; it is the cliff edge between $n^2$ and $n$, and the small censuses display it exactly.</p>
+<p><strong>&#9998; Checkpoint.</strong> Every edge in exactly one triangle, $6$ vertices, $6$ edges: the bowtie and the triangle pair tie. Predict: on $8$ vertices, can any such graph beat $8$ edges? (Part 6 of the Lab runs the $6$-vertex census in seconds; $8$ vertices means $2^{28}$ graphs, and brute force itself collapses — which is the point: the honest answer for general $n$ is the Ruzsa–Szemerédi $o(n^2)$, whose <em>proof</em> needs the full regularity apparatus. The small cases are Structure, the theorem is Law.)</p>
+<p>What you should carry forward: densities multiply <em>under regularity</em>; few copies <em>mean</em> few deletions; and the unique-triangle world is thin — all three facts are the regularity lemma wearing different clothes. Lecture 3 turns the machine on the oldest extremal question there is.</p>
+<hr>
+<h2>Lecture 3 &middot; Erdős–Stone and Stability: One Number Rules Them All</h2>
+<p>Turán's theorem solved one case with a beautiful exact answer: $\operatorname{ex}(n, K_r) = \left(1 - \frac{1}{r-1}\right)\binom{n}{2}$, with equality exactly at the complete $(r-1)$-partite Turán graph. In 1946 Erdős and Stone answered the general case in a single stroke, and the answer is the scandal of the subject: for any fixed graph $H$ with at least one edge ($\chi(H) \ge 2$),</p>
+<blockquote><strong>Erdős–Stone.</strong> $\operatorname{ex}(n, H) = \left(1 - \frac{1}{\chi(H)-1} + o(1)\right)\binom{n}{2}$.</blockquote>
+<p>The chromatic number. Nothing about $H$'s edges, its triangles, its paths — only how many colors it demands. A $3$-chromatic $H$ of any shape (the triangle, an odd cycle, $K_3$ plus a million dangling vertices) has the same extremal asymptotics to first order. Every extra part-level of uncolorability costs exactly a $1/(r-1)$ fraction of the edges. (Erdős–Stone, "On the structure of linear graphs", <em>Bull. Amer. Math. Soc.</em> 52(12), 1946, 1087–1091; the compact form used today is due to Erdős–Simonovits, "A limit theorem in graph theory", <em>Studia Sci. Math. Hungar.</em> 1, 1966, 51–57.)</p>
+<p>The modern proof is the regularity lemma with the counting lemma bolted on — worth writing in full because it is the template for everything in the rest of the chapter. Let $G$ be $H$-free with $\chi(H) = r \ge 2$ and $|V(H)| = h$, so $H$ is a subgraph of the complete $r$-partite blow-up $K_r(t)$ with part size $t \le h$. Fix any target slack $\delta > 0$. Set the pair-density threshold $\gamma = \delta/2$, choose $\varepsilon > 0$ small enough that $(r-1)t\varepsilon \le (\gamma/2)^t$ and $\varepsilon \le \delta/4$, and apply the regularity lemma to $G$ with tolerance $\varepsilon$ and $m \ge 2/\delta$, obtaining an equitable partition $V_1 \cup \dots \cup V_k$ with $m \le k \le M(\varepsilon, m)$.</p>
+<p>Clean $G$ just as in Lecture 2: delete all edges inside clusters ($\le \frac{n^2}{2k} \le \frac{\delta}{4}n^2$), inside irregular pairs ($\le \frac{\varepsilon}{2}n^2 \le \frac{\delta}{8}n^2$), and inside pairs of density below $\gamma = \delta/2$ ($\le \frac{\gamma}{2}n^2 = \frac{\delta}{4}n^2$) — a total escrow sacrifice of at most $\frac{5}{8}\delta n^2$ edges. Now form the <em>reduced graph</em> $R$ on the $k$ cluster indices $\{1, \dots, k\}$, joining $i$ and $j$ whenever $(V_i, V_j)$ is $\varepsilon$-regular with density $d(V_i, V_j) \ge \gamma$. If $R$ contained a copy of $K_r$, say on clusters $V_1, \dots, V_r$, the blow-up counting lemma would embed $K_r(t)$ (and therefore $H \subseteq K_r(t)$) into $V_1 \cup \dots \cup V_r$ as soon as $|V_i| = n/k \ge t / (\gamma/2)^{r t}$: each new vertex embedded into $V_a$ needs to lie in the common neighborhood of at most $(r-1)t$ already-embedded vertices from the other $r-1$ clusters, and by $\varepsilon$-regularity each step shrinks the candidate pool in $V_a$ by a factor of at least $\gamma - \varepsilon \ge \gamma/2$. Because $G$ is $H$-free, $R$ must be $K_r$-free! Applying Turán's theorem (Chapter 2) to the macro graph $R$ gives $|E(R)| \le \left(1 - \frac{1}{r-1}\right)\binom{k}{2}$. Even if every edge of $R$ represents a completely full cluster pair of size $(n/k)^2$, the surviving edges of $G$ number at most
+$$|E(R)| \left(\frac{n}{k}\right)^2 \le \left(1 - \frac{1}{r-1}\right)\frac{k(k-1)}{2}\frac{n^2}{k^2} \le \left(1 - \frac{1}{r-1}\right)\binom{n}{2}.$$
+Adding back the escrow of at most $\frac{5}{8}\delta n^2 \le 2\delta\binom{n}{2}$ edges proves $e(G) \le \left(1 - \frac{1}{r-1} + 2\delta\right)\binom{n}{2}$ for all sufficiently large $n$. $\blacksquare$</p>
+<p>Notice what happened, because it is the chapter's signature move: the question about $G$ was transferred by regularity to a question about a graph $R$ on $k$ vertices — a <em>small</em> graph, where Turán's theorem from Chapter 2 applies exactly. Extremal questions at scale $n$ reduce to exact answers at bounded scale, plus noise. The machine census pins the exact small end of the same story — for $K_4$ at $n = 5$ and $K_3, K_4$ at $n = 6$, the Atlas enumerated every labeled graph: <strong>$\operatorname{ex}(5, K_4) = 8,\; \operatorname{ex}(6, K_3) = 9,\; \operatorname{ex}(6, K_4) = 12$</strong>, and the extremal graphs are <em>exactly</em> the Turán graphs — all $15$ labeled copies of $T_3(5)$ (parts $2,2,1$), all $10$ of $K_{3,3}$, all $15$ of $K_{2,2,2}$ (parts $2,2,2$). Structure and count both machine-exact: Turán's equality case is rigid even before the asymptotics begin.</p>
+<p><strong>&#9998; Checkpoint.</strong> Erdős–Stone predicts $\operatorname{ex}(6, C_5) \approx (1 - 1/1)\cdot\binom{6}{2} = 0$?? Read the formula's small print: $\chi(C_5) = 3$, so the first-order term is $(1 - 1/2)\cdot 15 = 7.5$. The machine-exhaustive answer is <strong>$\operatorname{ex}(6, C_5) = 9$</strong>, with $85$ labeled extremal graphs (the Atlas census, run because recall guessed $12$ and was wrong: $K_{2,2,2}$ <em>looks</em> like a candidate at $12$ edges, but it is tripartite, not bipartite, and hosts the $5$-cycle $a_1$–$b_1$–$c_1$–$a_2$–$b_2$–$a_1$). The missing $1.5$ edges live in the $o(n^2)$ — the correction is lower-order but not zero, and it separates $C_5$ from $K_3$ only at scale (at $n = 6$ both maxima are exactly $9$, though with wildly different extremal censuses: $85$ labeled graphs vs. the $10$ rigid $K_{3,3}$ copies). The full story is the Erdős–Simonovits compact form, which the exercises unpack.</p>
+<p>Erdős–Stone is a <em>counting</em> theorem: it says near-extremal $H$-free graphs have nearly $\left(1 - \frac{1}{\chi-1}\right)\binom{n}{2}$ edges. The stability phenomenon is the structural upgrade:</p>
+<blockquote><strong>Simonovits stability.</strong> For every fixed graph $H$ with $\chi(H) \ge 2$ and every $\varepsilon > 0$ there exist $\delta > 0$ and $n_0$ such that if an $H$-free graph on $n \ge n_0$ vertices has at least $\left(1 - \frac{1}{\chi(H)-1} - \delta\right)\binom{n}{2}$ edges, then it can be made $(\chi(H)-1)$-partite by deleting at most $\varepsilon\binom{n}{2}$ edges. (Simonovits, "A Method for Solving Extremal Problems in Graph Theory", Proc. Colloq. Tihany 1966, 1968, 279–319.)</blockquote>
+<p>In words: a graph within $\varepsilon$ of the extremal <em>count</em> is within $\varepsilon$ of the extremal <em>configuration</em>.</p>
+<p><em>Proof of Simonovits stability from reduced-graph Turán stability.</em> Apply the Erdős–Stone regularity reduction to an $H$-free graph $G$ with $e(G) \ge \left(1 - \frac{1}{r-1} - \eta\right)\binom{n}{2}$ ($r = \chi(H)$), using density threshold $\gamma \ll \varepsilon$ and regularity tolerance $\varepsilon_1 \ll \gamma$. Because $R$ is $K_r$-free and the cleaning escrow removes at most $\gamma n^2$ edges, the surviving edge count in $G$ forces the reduced graph $R$ on $k$ vertices to satisfy
+$$|E(R)| \ge \left(1 - \frac{1}{r-1} - (\eta + 2\gamma)\right)\binom{k}{2},$$
+and moreover almost every edge $ij \in E(R)$ must have cluster-pair density $d(V_i, V_j) \ge 1 - \sqrt{\eta + 2\gamma}$. By the exact stability of Turán's theorem for $K_r$-free graphs (proved by induction or Zykov symmetrization: any $K_r$-free graph on $k$ vertices within $\delta' k^2$ edges of $T_{r-1}(k)$ can be made $(r-1)$-partite by deleting at most $O(\delta') k^2$ edges), $R$ can be made $(r-1)$-partite by deleting at most $C(\eta + 2\gamma)k^2$ edges of $R$. Lift this $(r-1)$-coloring of $V(R)$ back to $V(G)$ by assigning every vertex in cluster $V_i$ the color of $i$ in $R$. Any monochromatic edge of $G$ under this $(r-1)$-partition either lies in the cleaning escrow ($\le \gamma n^2$ edges) or comes from one of the $\le C(\eta + 2\gamma)k^2$ deleted edges of $R$ ($\le C(\eta + 2\gamma)k^2 (n/k)^2 = C(\eta + 2\gamma)n^2$ edges). Choosing $\eta, \gamma$ small enough that $\gamma + C(\eta + 2\gamma) \le \varepsilon/2$ leaves at most $\varepsilon\binom{n}{2}$ monochromatic edges to delete. $\blacksquare$</p>
+<p>The Atlas ran stability as a brute-force census at $n = 6$, one edge below the $K_4$-extremal $12$ — and the small end is <em>sharper than the theorem promises</em>: all <strong>$240$</strong> labeled $11$-edge $K_4$-free graphs on $6$ vertices are <em>already $3$-partite</em> — the deletion distance to the $3$-partite class is zero, not merely small, for every single one (checked against all $90$ partitions of $6$ vertices into $3$ nonempty blocks). The finer distance to the <em>specific</em> Turán graph $K_{2,2,2}$ — the minimum number of edge changes (delete plus add) to reach some labeled copy — splits the $240$ into exactly two structural types: <strong>$180$ graphs at edit distance $1$</strong> ($K_{2,2,2}$ minus one edge; note $15$ copies $\times 12$ choices $= 180$, every labeled instance accounted) and <strong>$60$ at edit distance $3$</strong> (the complete $3$-partite $K_{3,2,1}$; $6!/(3!2!1!) = 60$ labeled copies), mean edit distance $1.5$, maximum $3$. One edge below extremal, the $K_4$-free universe consists of the Turán graph's immediate neighborhood and nothing else — the Simonovits tableau at census scale.</p>
+<p><strong>&#9998; Checkpoint.</strong> Before the census was run, the plausible guesses were "mostly $3$-partite, a few exotics at deletion distance $1$ or $2$". The machine found <em>zero</em> exotic deletion distance. Predict the analogous answer at $10$ edges (two below extremal) before you run Part 6 of the Lab — and be prepared to be surprised: structure decays fast, but where exactly it breaks is census territory, not intuition territory.</p>
+<p>Carry forward: regularity transfers scale-$n$ questions to bounded-scale exact ones; near-extremal rigidity is real and census-checkable. Lecture 4 now aims the whole machine at a target that is not a graph at all: the integers.</p>
+<hr>
+<h2>Lecture 4 &middot; Roth's Theorem: Combinatorics Fires at the Integers</h2>
+<p>Here is the payoff of the whole machine, and it aims outside graph theory entirely. Say a set $A \subseteq \{1, \dots, N\}$ is <em>$3$-AP-free</em> if it contains no three distinct terms in arithmetic progression. How large can $A$ be? In 1946 Behrend built such sets with $N\cdot e^{-O(\sqrt{\log N})}$ elements — density decaying to zero, but barely. In 1953 Roth proved that <em>any</em> set of positive density must contain a $3$-AP: the Behrend scale is close to the truth. (Roth, "On certain sets of integers", <em>J. London Math. Soc.</em> s1-28(1), 1953, 104–109, DOI 10.1112/jlms/s1-28.1.104.)</p>
+<blockquote><strong>Roth's theorem.</strong> For every $\delta > 0$ there is $N_0(\delta)$ such that every $A \subseteq \{1, \dots, N\}$ with $|A| \ge \delta N$ and $N \ge N_0$ contains $x, y, z$ distinct with $x + z = 2y$.</blockquote>
+<p>Roth's own proof was Fourier analysis — a density-increment argument. The proof below is the later, purely combinatorial route: triangle removal. It is the chapter's centerpiece construction, so the Atlas machine-verified every structural claim in it before a word was printed.</p>
+<p><strong>The construction.</strong> Let $A \subseteq \mathbb{Z}_n$, $n$ odd ($2$ invertible). Build a tripartite graph $G(A)$ on parts $V_1, V_2, V_3$, each a copy of $\mathbb{Z}_n$, with edges:</p>
+<ul><li>$E_{12}$: $x \in V_1$ to $x + s \in V_2$, for every $s \in A$ and every $x$;</li><li>$E_{23}$: $x \in V_2$ to $x + s \in V_3$, for every $s \in A$ and every $x$;</li><li>$E_{31}$: $z \in V_3$ to $x \in V_1$, for every $s \in A$ and every $x$ with $z - x = 2s$.</li></ul>
+<p>Walk around a triangle $x, y, z$: its edge differences are $s_1 = y - x \in A$, $s_2 = z - y \in A$, and $(z - x)/2 = s_3 \in A$. But $s_1 + s_2 = 2s_3$ — the three differences are <em>themselves a $3$-term arithmetic progression of $A$</em>, in order $(s_1, s_3, s_2)$. Two regimes:</p>
+<ul><li><strong>Genuine triangles</strong> ($s_1 \ne s_2$): a <em>nontrivial</em> $3$-AP inside $A$.</li><li><strong>Degenerate triangles</strong> ($s_1 = s_2 = s_3$): the "progression" is trivial; these triangles exist always, one per $(x, s)$ pair.</li></ul>
+<p>So: <strong>$A$ is $3$-AP-free if and only if every edge of $G(A)$ lies in exactly one triangle</strong> (the degenerate one). The Atlas verified this equivalence <em>exhaustively</em> — every subset $A$ of $\mathbb{Z}_n$, for $n = 5, 7, 9$: all $32, 128, 512$ subsets respectively, <strong>zero mismatches</strong> in either direction; $16, 43, 127$ AP-free sets respectively; largest AP-free sets of sizes $2, 3, 4$ (for instance $\{0, 1, 3, 4\}$ in $\mathbb{Z}_9$). And in the AP-free regime the census pins the bookkeeping exactly: $\#\text{triangles} = n\cdot|A|$ (only the degenerate survive), $\#\text{edges} = 3n\cdot|A|$, and — brute-forced over all deletion subsets at $n = 5$ — the minimum number of edges whose deletion kills all triangles is <strong>exactly the number of triangles</strong>, forced by the edge-disjointness: every edge belongs to its own private triangle, so no deletion serves two masters. Five singleton sets tested, five answers, all $5 = \#\text{triangles}$.</p>
+<p><strong>&#9998; Checkpoint.</strong> In $G(A)$ with $A$ AP-free, each edge sits in exactly one triangle. Before reading on: what is the <em>fewest</em> edges you must delete to destroy all triangles — could a clever deletion ever kill two birds? (The census says no: edge-disjoint triangles pay one deletion each, always.)</p>
+<p><strong>The proof of Roth.</strong> Let $A \subseteq \{1, \dots, N\}$ be $3$-AP-free, $|A| = \delta N$. Choose a prime $p$ with $2N < p < 4N$ (Bertrand's postulate — a prime lies strictly between $m$ and $2m$ for $m > 1$, applied with $m = 2N$ — so the window is never empty for $N \ge 1$). Regard $A$ as a subset of $\mathbb{Z}_p$: since $p > 2N$, no mod-$p$ progression inside $A$ can wrap: if $x, y, z \in A$ with $x + z \equiv 2y \pmod p$, then $x + z$ and $2y$ both lie in $[0, 2N]$, a range shorter than $p$, so the congruence forces equality $x + z = 2y$ — a genuine three-term progression, which $A$ forbids (machine-checked: $2,781$ exhaustive wrap checks over every $N \le 9$ and every prime in $(2N, 4N)$, zero counterexamples). So $A$ is $3$-AP-free in $\mathbb{Z}_p$ too. Form $G(A)$ on the tripartite skeleton with $n = p$. Then:</p>
+<ol><li><strong>Triangles are few.</strong> Every triangle is degenerate (AP-freeness), so $\#\text{triangles} = p|A| \le pN < p^2/2$. The graph has $3p$ vertices, so the triangle count is $O(p^2) = o((3p)^3)$.</li><li><strong>Edges are many.</strong> $\#\text{edges} = 3p|A| \ge 3p\cdot\delta N \ge 3p\cdot\delta(p/4) = \frac{3}{4}\delta p^2 = \Theta(p^2)$, since $p \le 4N$ gives $N \ge p/4$.</li><li><strong>Apply triangle removal.</strong> The graph can be made triangle-free by deleting at most $\varepsilon p^2$ edges for any fixed $\varepsilon$, once $p$ is large — $o(p^2)$ deletions.</li><li><strong>But edge-disjointness demands more.</strong> Because $A$ is $3$-AP-free in $\mathbb{Z}_p$, the $p|A|$ degenerate triangles $(x, x+s, x+2s)$ are pairwise <em>edge-disjoint</em>: an edge between $V_1$ and $V_2$ fixes $x$ and $x+s$ (hence $s$), an edge between $V_2$ and $V_3$ fixes $x+s$ and $x+2s$ (hence $s$ and $x$), and an edge between $V_3$ and $V_1$ fixes $x$ and $x+2s$ (hence $s$ since $2$ is invertible mod $p$). Because no single edge belongs to two triangles, destroying all $p|A|$ triangles requires deleting at least one edge from each — so at least $p|A| = p\delta N > \frac{\delta}{4} p^2$ edge deletions (using $p < 4N$). Choosing the removal parameter $\delta_{\text{rem}} = \frac{\delta}{36}$ in Step 3 guarantees that all triangles can be destroyed by deleting at most $\delta_{\text{rem}} (3p)^2 = \frac{\delta}{4} p^2$ edges once $p$ is large enough that $p|A| < p^2/2 \le \varepsilon(\delta_{\text{rem}})(3p)^3$ — a direct contradiction. $\blacksquare$</li></ol>
+<p>Sit with step 4, because it is the whole trick dressed in one line: <em>removal promises few deletions suffice; the construction's rigid, edge-disjoint triangle cover forbids it.</em> The machine census verified the rigidity exhaustively at small scale; the proof lifts it to every scale. Note honestly what the proof costs: triangle removal's $\varepsilon$–$\delta$ dependence runs through the regularity lemma (even under Fox's 2011 regularity-free improvement, a tower of height $O(\log(1/\delta))$), whereas Roth's 1953 Fourier density-increment proof gives $N_0(\delta) \le \exp(\exp(O(1/\delta)))$, Bourgain (1999) and Sanders (2011) pushed the Fourier/quasi-polynomial method down to $\delta \ge (\log N)^{-1+o(1)}$, and Kelley–Meka (2023) achieved the Behrend-like quasi-polynomial bound $\delta \ge \exp(-O((\log N)^{1/12}))$.</p>
+<p><strong>&#9998; Checkpoint.</strong> Behrend says AP-free sets of size $N\cdot e^{-O(\sqrt{\log N})}$ exist; Roth says density $\delta$ needs $N_0(\delta)$. Why is Behrend <em>not</em> a counterexample to Roth? (Answer: $e^{-O(\sqrt{\log N})} \to 0$ — Behrend's density is not positive; both statements live happily together, and the true shape of the extremal scale — polynomial? barely-exponential? — is <em>the</em> open problem of the area, recently sharpened by Kelley–Meka 2023, statement-level here.)</p>
+<p>The same template — encode forbidden arithmetic structure as triangles in a layered graph, quote removal, cash the contradiction — generalizes: $4$-term progressions need <em>hypergraph</em> removal (Nagle–Rödl–Schacht, and Gowers, independently — the honest boundary of this chapter: stated, not proved), and full Szemerédi (all progression lengths) follows. That is Lecture 5's map. And the density-increment idea Roth used by hand — <em>if the structure is nowhere, some refinement gains density</em> — returns in Lecture 6 as the Meshulam prior that the cap set theorem demolished.</p>
+<hr>
+<h2>Lecture 5 &middot; Density Ramsey: From Coloring to Counting</h2>
+<p>Van der Waerden's theorem (Chapter 10) is a <em>coloring</em> statement: finitely many colors, one monochromatic progression, forced. Its density upgrade asks the sharper question — how <em>few</em> points can a set keep while dodging all $k$-term progressions? Roth answered $k = 3$ last lecture; the general case is the theorem the whole field is named for:</p>
+<blockquote><strong>Szemerédi's theorem.</strong> For every $k \ge 3$ and $\delta > 0$ there is $N_0(k, \delta)$ such that every $A \subseteq \{1, \dots, N\}$ with $|A| \ge \delta N$, $N \ge N_0$, contains $k$ distinct terms in arithmetic progression. (Szemerédi, "On sets of integers containing $k$ elements in arithmetic progression", <em>Acta Arith.</em> 27(1), 1975, 199–245; $k = 3$ is Roth 1953; $k = 4$ was Szemerédi's combinatorial proof with a second proof by Roth in 1972.)</blockquote>
+<p>The small scale shows the rigidity the machine census already met in Lecture 4: in $\mathbb{Z}_5, \mathbb{Z}_7, \mathbb{Z}_9$ the largest $3$-AP-free sets have sizes $2, 3, 4$ — e.g. $\{0, 1, 3, 4\}$ in $\mathbb{Z}_9$ — and <em>every</em> AP-free set is exactly the degenerate-triangle rigidity profile in its $G(A)$ graph. Density is a promise that scale eventually collects on.</p>
+<p>The honest map of proofs — four routes, and the chapter's boundary stated plainly:</p>
+<ol><li><strong>The original (1975).</strong> A combinatorial density-increment argument of legendary complexity; the $4$-term case alone had taken years. Not given here.</li><li><strong>Fourier (Roth, $k = 3$; extended by others).</strong> The density-increment route: if $A$ has no $3$-AP, the balanced indicator's Fourier coefficients reveal a refinement on which density strictly increases; reiterate; density cannot exceed $1$. This is the pattern row "Density increment" firing on the integers.</li><li><strong>Ergodic (Furstenberg, 1977).</strong> A correspondence transferring the statement to recurrence in measure-preserving systems; it re-proves Szemerédi and generalizes furthest — named, not given.</li><li><strong>Hypergraph removal (Nagle–Rödl–Schacht; and Gowers — independent).</strong> The Lecture-4 template, one level up: $k$-APs in dense sets correspond to edges in a $(k-1)$-uniform hypergraph, and the <em>hypergraph</em> removal lemma (a statement the chapter cites, honestly, without proof — its regularity prerequisites are a book of their own) cashes the same contradiction. This is the route that makes "removal $\implies$ density Ramsey" a machine.</li></ol>
+<p>One floor above sits the density Hales–Jewett theorem — the combinatorial-lines statement:</p>
+<blockquote><strong>Density Hales–Jewett.</strong> For every $\delta > 0$ and alphabet size $k$ there is $n_0(\delta, k)$ such that every $A \subseteq [k]^n$ with $|A| \ge \delta\cdot k^n$, $n \ge n_0$, contains a combinatorial line — $k$ points differing in one coordinate block. (D. H. J. Polymath, "A new proof of the density Hales–Jewett theorem", <em>Annals of Mathematics</em> 175(3), 2012, 1283–1327; arXiv:0910.3926.)</blockquote>
+<p>The hierarchy is strict, and each arrow is a genuine theorem: van der Waerden (coloring HJ) is implied by Szemerédi's theorem (a dense one-color set is denser than any of $k$ color classes), and Szemerédi's theorem follows from density HJ — a $k$-term progression embeds as a combinatorial line in $[k]^n$ restricted to a suitable slice of constant coordinate-sum. The chapter states each implication at the level of "what embeds in what" and proves none of them; that honesty is deliberate — the implications are standard but their proofs are transfers, not one-liners.</p>
+<p><strong>&#9998; Checkpoint.</strong> Density HJ at $k = 2$: subsets of the binary cube $\{0,1\}^n$ of density $\delta$ contain a combinatorial line — which in $[2]^n$ is a pair of points $a, b \in \{0,1\}^n$ obtained by setting a non-empty wildcard coordinate set $W \subseteq [n]$ to all $0$s vs. all $1$s while holding $[n] \setminus W$ fixed, i.e., a pair of comparable subsets $A \subsetneq B \subseteq [n]$. What famous theorem is the $k = 2$ case? (Answer: Sperner's theorem, Chapter 7's opening result — an antichain in the Boolean lattice has size at most $\binom{n}{\lfloor n/2 \rfloor} = \Theta(2^n/\sqrt{n}) = o(2^n)$, so density $o(1)$. The whole density-Ramsey tower stands on the case you already know.)</p>
+<p>The machine side of this lecture is deliberately thin — the content is statements and hierarchy, not computation — but the tower table of Lecture 1 is the honest reason: every quantitative window in this chapter (removal tolerances, hence Szemerédi's $N_0$ via the removal route) is tower-infested, and the Polymath proof of density HJ, a fully combinatorial argument discovered by mass collaboration, was celebrated precisely for dodging the regularity machinery.</p>
+<hr>
+<h2>Lecture 6 &middot; The Cap Set Theorem: The Polynomial Method Returns</h2>
+<p>Back to $\mathbb{F}_3^n$ — the $n$-dimensional vector space over $\{0, 1, 2\}$ — for the chapter's closing theorem, and the one with the youngest proof. A <em>cap</em> is a set containing no three distinct points $x, y, z$ with $x + y + z = 0$ — no three points collinear, since in $\mathbb{F}_3$ a line is exactly such a triple. How large can a cap be?</p>
+<p><strong>&#9998; Checkpoint.</strong> Guess the sequence of maximum caps in $\mathbb{F}_3^n$ for $n = 1, 2, 3, 4, 5$ before reading on — and guess whether the ratio between consecutive terms stays near $3$, or decays.</p>
+<p>The machine answers, run to the chapter's standing rule (exhaustive where feasible, flagged where not): $n = 1$: <strong>$2$</strong> (exhaustive over all $8$ subsets); $n = 2$: <strong>$4$</strong> (exhaustive, $512$ subsets); $n = 3$: <strong>$9$</strong> — proved exact by a full-tree search over all $27$ points ($647,644$ nodes, no pruning shortcuts, an exhibit verified pairwise); $n = 4$: <strong>$20$</strong> — a $20$-cap found and pairwise-verified by seeded search (Lehmer seed $20261053$), <em>optimality cited from the literature, not machine-proved here</em> (the proof-by-search attempt exceeded the recorded compute budget — the receipt says so); $n = 5$: <strong>$45$</strong> — found and verified by plateau-accepting iterated local search (seed $20261055$; the naive variant stalled at $39$, an honest search-difficulty note), again optimality cited. The ratios $2, 2, 2.25, 2.22, 2.25$ already whisper the theorem: caps are exponentially smaller than $3^n$.</p>
+<p>The known bound landscape, honestly dated: for decades the best upper bound was Meshulam's (2001) $C\cdot 3^n/n$ — a Fourier/density-increment argument, the Roth pattern in vector spaces — improved to $3^n/n^{1+\varepsilon}$ by Bateman–Katz (2012). Then in 2016 two papers landed on the arXiv, published together in the same volume of the <em>Annals</em> — 185 (2017) — ending the game in one stroke:</p>
+<blockquote><strong>The cap set theorem (CLP/EG).</strong> A cap in $\mathbb{F}_3^n$ has size at most $c^n$ with $c = 2.7551046130\dots$ — explicitly, $|A| \le 3\cdot M(n, 2n/3)$, where $M(n, d)$ counts the monomials in $n$ variables with every exponent at most $2$ and total degree at most $d$. (Croot–Lev–Pach, "Progression-free sets in $\mathbb{Z}_4^n$ are exponentially small", and Ellenberg–Gijswijt, "On large subsets of $\mathbb{F}_q^n$ with no three-term arithmetic progression", <em>Annals of Mathematics</em> 185, 2017.)</blockquote>
+<p>The constant is <em>exactly</em> computable, and the chapter computes it. The exponential growth of $M(n, 2n/3)$ is governed by $c = \min_{0 < x < 1} (1 + x + x^2)/x^{2/3}$: the calculus is one line — the minimizer satisfies $4x^2 + x - 2 = 0$, so $x^* = (\sqrt{33} - 1)/8 = 0.593070330817$ — and the Atlas verified it by an independent dense-scan plus golden-section minimization agreeing to all twelve printed decimals: <strong>$c = 2.755104613024$</strong>. (The literature's headline "$2.756$" is this same value rounded; the chapter prints the exact one.)</p>
+<p><em>The proof, in its EG slice-rank form — the direct descendant of Chapter 6's polynomial method (Lecture 3 there), with the same two beats: wrap the structure in a polynomial, count monomials.</em></p>
+<p><strong>Beat 1 — the polynomial $3$-tensor on $A \times A \times A$.</strong> In $\mathbb{F}_3^n$, three points $x, y, z \in A$ form a $3$-term arithmetic progression (or collinear triple) if and only if $x + y + z = 0$ (since $x + z = 2y \iff x + y + z = 3y = 0$ in $\mathbb{F}_3^n$, and if any two of $x, y, z$ are equal, $x + y + z = 0$ forces all three to be equal). Thus $A \subseteq \mathbb{F}_3^n$ is a cap if and only if for all $x, y, z \in A$,
+$$x + y + z = 0 \iff x = y = z.$$
+Consider the polynomial $P : \mathbb{F}_3^n \times \mathbb{F}_3^n \times \mathbb{F}_3^n \to \mathbb{F}_3$ defined by
+$$P(x, y, z) = \prod_{i=1}^n \left(1 - (x_i + y_i + z_i)^2\right).$$
+By Fermat's little theorem in $\mathbb{F}_3$, $u^2 = 1$ for every $u \in \mathbb{F}_3 \setminus \{0\}$ and $0^2 = 0$. Hence $P(x, y, z) = 1$ if $x + y + z = 0$ in $\mathbb{F}_3^n$, and $P(x, y, z) = 0$ otherwise. Restricted to $A \times A \times A$, the cap property implies that $P(x, y, z)$ is the Kronecker delta tensor:
+$$T(x, y, z) = P(x, y, z)\big|_{A \times A \times A} = \begin{cases} 1 & \text{if } x = y = z \in A, \\ 0 & \text{otherwise.} \end{cases}$$</p>
+<p><strong>Beat 2 — Tao's slice-rank formulation.</strong> A $3$-tensor $T : A \times A \times A \to \mathbb{F}$ has <em>slice rank</em> $1$ if it can be written in one of the three forms $f(x)g(y, z)$, $f(y)g(x, z)$, or $f(z)g(x, y)$, and the <em>slice rank</em> $\operatorname{sr}(T)$ is the minimum number of slice-rank-$1$ tensors that sum to $T$. Two exact lemmas finish the theorem:</p>
+<ol>
+<li><strong>Lower bound ($\operatorname{sr}(T) = |A|$ for the diagonal tensor, valid over any field $\mathbb{F}$).</strong> Let $T(x, y, z) = \sum_{a \in A} c_a \delta_{x=a}\delta_{y=a}\delta_{z=a}$ with $c_a \in \mathbb{F} \setminus \{0\}$, and suppose
+$$T(x, y, z) = \sum_{i=1}^{r_1} f_i(x) g_i(y, z) + \sum_{j=1}^{r_2} h_j(y) k_j(x, z) + \sum_{\ell=1}^{r_3} u_\ell(z) v_\ell(x, y).$$
+The subspace $V_1 = \operatorname{span}\{f_1, \dots, f_{r_1}\} \subseteq \mathbb{F}^A$ has dimension $d_1 \le r_1$. By Gaussian elimination, there exists a coordinate subset $S_1 \subseteq A$ of size $|S_1| = d_1 \le r_1$ such that restriction to $S_1$ is an isomorphism on $V_1$; hence for every $x \in A \setminus S_1$ there exist scalars $\lambda_{x, s} \in \mathbb{F}$ ($s \in S_1$) such that $f(x) = \sum_{s \in S_1} \lambda_{x, s} f(s)$ for all $f \in V_1$. For $x, y, z \in A \setminus S_1$, define
+$$\widetilde{T}(x, y, z) = T(x, y, z) - \sum_{s \in S_1} \lambda_{x, s} T(s, y, z).$$
+Because $s \in S_1$ and $y, z \in A \setminus S_1$ are disjoint ($s \ne y$), $T(s, y, z) = 0$ on $(A \setminus S_1)^2$, so $\widetilde{T}$ coincides with the diagonal tensor $\sum_{a \in A \setminus S_1} c_a \delta_{x=a}\delta_{y=a}\delta_{z=a}$ on $(A \setminus S_1)^3$. On the other hand, applying the linear operation $f(x) \mapsto f(x) - \sum_{s \in S_1} \lambda_{x, s} f(s)$ to the slice decomposition annihilates every $f_i(x) g_i(y, z)$ term while preserving the $r_2$ mode-$2$ terms $h_j(y)\tilde{k}_j(x, z)$ and $r_3$ mode-$3$ terms $u_\ell(z)\tilde{v}_\ell(x, y)$. Repeating the same elimination on mode $2$ deletes a subset $S_2 \subseteq A \setminus S_1$ of size $d_2 \le r_2$, leaving the diagonal tensor on $A'' = A \setminus (S_1 \cup S_2)$ of size $|A''| \ge |A| - r_1 - r_2$ expressed purely as $\sum_{\ell=1}^{r_3} u_\ell(z) \hat{v}_\ell(x, y)$. Since the $|A''|$ diagonal $z$-slices $\{c_z \delta_{x=z}\delta_{y=z}\}_{z \in A''}$ are linearly independent and lie in $\operatorname{span}\{\hat{v}_1, \dots, \hat{v}_{r_3}\}$, we must have $r_3 \ge |A''| \ge |A| - r_1 - r_2$, and therefore $r_1 + r_2 + r_3 \ge |A|$.</li>
+<li><strong>Upper bound ($\operatorname{sr}(T) \le 3 M(n, \lfloor 2n/3 \rfloor)$ via monomial degree splitting).</strong> Expand $P(x, y, z) = \prod_{i=1}^n (1 - (x_i + y_i + z_i)^2)$ into a linear combination of monomials $x^\alpha y^\beta z^\gamma$ where $\alpha, \beta, \gamma \in \{0, 1, 2\}^n$ and the total degree satisfies $|\alpha| + |\beta| + |\gamma| \le 2n$. In every monomial with $|\alpha| + |\beta| + |\gamma| \le 2n$, at least one of the three degree sums $|\alpha|, |\beta|, |\gamma|$ is at most $\lfloor 2n/3 \rfloor$ (otherwise $|\alpha| + |\beta| + |\gamma| > 3 \cdot (2n/3) = 2n$). Partition the monomials into three sets $S_1, S_2, S_3$ according to whether $|\alpha| \le 2n/3$, $|\beta| \le 2n/3$ (and $|\alpha| > 2n/3$), or $|\gamma| \le 2n/3$ (and $|\alpha|, |\beta| > 2n/3$). Grouping the terms in $S_1$ by their $x$-monomial $x^\alpha$ expresses the $S_1$-sum as $\sum_{|\alpha| \le 2n/3} x^\alpha F_\alpha(y, z)$, which is a sum of at most $M(n, \lfloor 2n/3 \rfloor)$ slice-rank-$1$ tensors. Doing the same for $S_2$ (grouped by $y^\beta$) and $S_3$ (grouped by $z^\gamma$) shows $\operatorname{sr}(T) \le 3 M(n, \lfloor 2n/3 \rfloor)$.</li>
+</ol>
+<p>Chaining the lower and upper bounds yields <strong>$|A| = \operatorname{sr}(T) \le 3 M(n, \lfloor 2n/3 \rfloor) \le 3 c^n$ with $c = 2.7551046130$.</strong> $\blacksquare$</p>
+<p>The monomial census — machine-run to display the bound's honest texture — counts $M(n, \lfloor 2n/3 \rfloor)$ exactly: $1, 3, 10, 15, 51, 168, 274, 927$ for $n = 1, \dots, 8$, so the bounds $3\cdot M$ read $3, 9, 30, 45, 153, 504, 822, 2781$ — against true maxima $2, 4, 9, 20, 45, 112, \dots$. The bound is <em>slack at small $n$</em> (at $n = 3$ it says $30$ where the truth is $9$) and tightens only in the exponential rate — the slice-rank weapon is asymptotic, exactly like the Chernoff and entropy bounds of Chapter 13 that lose all constant factors and win the exponent. The chapter's Lab Part 5 hunts caps by seeded search and reproduces the exact small ladder.</p>
+<p><strong>&#9998; Checkpoint.</strong> The gap $3 \to 2.755$ is about $8\%$. Estimate how many extra dimensions it takes for $2.7551^n$ to beat $3^n$ by a factor of $100$ — and then reconcile with the fact that at $n = 5$ the bound ($153$) is $3.4\times$ the truth ($45$): why both facts can hold at once.</p>
+<p>The closing circle: Behrend's 1946 construction — the lower bound for Roth's theorem — is itself a cap in a suitable $\mathbb{F}_3$-like slice of the integers; the cap set theorem is, in a precise sense, Roth's question moved to the cleanest ambient group; and the polynomial method that closed it is Chapter 6's machine, grown up. Density increment (Roth, Meshulam) held the problem for fifty years; the polynomial method ended it in six pages. That alternation — analytic averaging against algebraic structure — is the Atlas's running theme, and this chapter is where it stood up and announced itself.</p>
+<hr>
+<h2>The Trick Bag (reference card)</h2>
+<table><tr><th>Pattern</th><th>Plain language</th><th>Where you met it</th></tr><tr><td><strong>P10 Averaging / expectation</strong></td><td>The average is a promise; some object beats it — and a weighted average of squares only grows under refinement</td><td>L1 (the index $q$ is averaging with a spotlight; monotonicity is nonnegative variance), L3 (Turán on the reduced graph $R$), L6 (the monomial count $M$ is an averaged degree budget)</td></tr><tr><td><strong>P30 Regularity partitioning</strong></td><td>Every large graph is a bounded quasirandom blow-up of a small pattern graph; refine until the noise is uniform — defects pay rent</td><td>L1 (the lemma $+$ the tower), L3 (the escrow-and-reduce proof of Erdős–Stone)</td></tr><tr><td><strong>P31 Counting–removal</strong></td><td>Under regularity, copies multiply as density products; few copies therefore mean few deletions</td><td>L2 (the counting lemma $+$ the removal lemma), L4 (triangle removal $\implies$ Roth)</td></tr><tr><td><strong>P32 Stability</strong></td><td>Near the extremal count, objects sit near the extremal <em>configuration</em></td><td>L3 (Simonovits; the $240$-graph tableau; the $10$-edge census where it breaks)</td></tr><tr><td><strong>P33 Density increment</strong></td><td>If the structure you want is nowhere, some refinement gains density; iterate to the ceiling</td><td>L1 (the index increment), L4 (Roth's Fourier route), L6 (Meshulam's prior)</td></tr><tr><td><strong>Polynomial method (Chapter 6's card)</strong></td><td>Wrap the configuration space in a polynomial; the monomial budget is your dimension</td><td>L6 (CLP/EG slice rank — Chapter 6's Lecture 3, grown up)</td></tr><tr><td><strong>The honest ledger (lore)</strong></td><td>Print what is proved, what is computed, and what is cited — and keep the three apart</td><td>The L1 tower-gap table; the cited-not-proved flags of L2, L4, L5; every machine note in this chapter</td></tr></table>
+<p><strong>Formula box:</strong> $d(X, Y) = e(X, Y)/(|X||Y|)$; $(X, Y)$ is $\varepsilon$-regular when $|d(A, B) - d(X, Y)| \le \varepsilon$ for all $A \subseteq X$, $B \subseteq Y$ with $|A| \ge \varepsilon|X|$, $|B| \ge \varepsilon|Y|$ ($4\times 4$ census at $\varepsilon = 1/4, 1/2, 3/4$: $2 / 46,408 / 65,536$ of $65,536$; worst witness discrepancy $0.9375$). Index $q(P) = \sum_{i,j} \frac{|V_i||V_j|}{n^2} \cdot d_{ij}^2$, diagonal included, $0 \le q \le 1$; refinement monotone ($q(P') \ge q(P)$: $106,496 + 1,638,400$ machine checks, zero violations); a defect-refinement pays $q(P') \ge q(P) + \varepsilon^5/2$ (the variance identity: $1,125,000$ checks, zero violations), so at most $2\varepsilon^{-5}$ rounds and $M(\varepsilon)$ a tower of height $O(\varepsilon^{-5})$ — Gowers' lower bound $\Omega(\varepsilon^{-1/16})$; the Fox–Lovász tight order — tower height about $\varepsilon^{-2}$ for a version of the lemma — pins the truth. Counting lemma: $\varepsilon$-regular triples with densities $\ge 2\varepsilon$ carry at least $(1-2\varepsilon)(d_{12}-\varepsilon)(d_{13}-\varepsilon)(d_{23}-\varepsilon)|X||Y||Z|$ triangles (with degree-floor product window $(d_{12}-\varepsilon)(d_{13}-\varepsilon)(d_{23}-\varepsilon)|X||Y||Z|$); without regularity densities lie (hi/lo: all pair densities $1/2$, zero triangles, witness discrepancy $1/2$). Removal: at most $\varepsilon n^{|H|}$ copies of $H \implies$ at most $\delta n^2$ deletions ($\delta$ a tower-inverse of $\varepsilon$; Fox 2011 cuts the tower). Erdős–Stone ($\chi(H) \ge 2$): $\operatorname{ex}(n, H) = \left(1 - \frac{1}{\chi(H)-1} + o(1)\right)\binom{n}{2}$, $\pi(H) = 1 - \frac{1}{\chi(H)-1}$; Simonovits stability: within $\delta$ of the extremal count $\implies (\chi(H)-1)$-partite after $\varepsilon$-deletions; census: $\operatorname{ex}(5, K_4) = 8$ ($15$ labeled), $\operatorname{ex}(6, K_3) = 9$ ($10$), $\operatorname{ex}(6, K_4) = 12$ ($15$), $\operatorname{ex}(6, C_5) = 9$ ($85$); one edge below extremal all $240$ $K_4$-free graphs are $3$-partite ($180$ at edit distance $1$, $60$ at $3$, mean $1.5$). Roth: $G(A)$ on three copies of $\mathbb{Z}_p$, $p \in (2N, 4N)$ prime; AP-free $\iff$ every edge in exactly one triangle (zero mismatches over all subsets, $n = 5/7/9$); $\#\text{triangles} = p|A|$, $\#\text{edges} = 3p|A|$; forced deletions $\ge \#\text{triangles} \ge \frac{1}{4}\delta p^2$ against removal's $o(p^2)$. Ruzsa–Szemerédi $(6,3)$: every edge in exactly one triangle $\implies o(n^2)$ edges; bipartite form: an edge set partitioning into induced matchings of size $\ge \delta n \implies o(n^2)$; the census cliff: blocks of size $\ge 2$ still allow $m^2 - m$ (extremals $=$ complements of perfect matchings), blocks $\ge 3m/4$ collapse to $m$. Szemerédi: positive density $\implies k$-term progressions, all $k \ge 3$ ($k = 3$ Roth 1953, general 1975); density HJ $\implies$ Szemerédi $\implies$ van der Waerden. Cap set: $|A| \le 3\cdot M(n, 2n/3) \le 3\cdot c^n$ with $c = \min_{0 < x < 1}(1+x+x^2)/x^{2/3} = 2.755104613024$ at $x^* = (\sqrt{33}-1)/8$; $M(n, \lfloor 2n/3 \rfloor) = 1, 3, 10, 15, 51, 168, 274, 927$ ($n = 1, \dots, 8$), bounds $3M = 3, 9, 30, 45, 153, 504, 822, 2781$, against true maxima $2, 4, 9, 20, 45$.</p>
+<hr>
+<h2>Exercises (graded: &#9679;&#9675;&#9675; easy &middot; &#9679;&#9679;&#9675; moderate &middot; &#9679;&#9679;&#9679; tough)</h2>
+<p><strong>Exercise 1 (&#9679;&#9675;&#9675;, L1).</strong> A bipartite pair on $4 + 4$ vertices. (a) Show that the complete pair $K_{4,4}$ is $\varepsilon$-regular for every $\varepsilon > 0$. (b) Show that the diagonal matching $M = \{(x_i, y_i)\}$ is <em>not</em> $\varepsilon$-regular at $\varepsilon = 1/4$, with an explicit witness. (c) The exhaustive census says exactly $2$ of the $65,536$ bipartite graphs on $4 + 4$ vertices are $\varepsilon$-regular at $\varepsilon = 1/4$ — which two, and why is that the honest reading of the count? [Hint: $\varepsilon$-regularity is a for-all condition; think about what every test set sees when the answer is forced.]</p>
+<p><strong>Exercise 2 (&#9679;&#9675;&#9675;, L1).</strong> Let $G$ be the bowtie: vertices $0\dots 5$, edges $01, 04, 14$ (triangle $\{0,1,4\}$) and $02, 03, 23$ (triangle $\{0,2,3\}$). Compute the index $q$ for the trivial partition, for $P = \{0,1,4\} \cup \{2,3,5\}$, and for the singleton partition (diagonal-inclusive convention), and verify the ladder. [Hint: $q(P)$ is a weighted average of squared densities; the within-block density of $\{0,1,4\}$ is not what your eye guesses first.]</p>
+<p><strong>Exercise 3 (&#9679;&#9679;&#9675;, L1).</strong> (a) Prove: if every defect-refinement raises the index by at least $\varepsilon^5/2$, the regularity proof needs at most $2\varepsilon^{-5}$ rounds. (b) Compute the worst-case round counts at $\varepsilon = 1/2$ and $\varepsilon = 1/4$. (c) The round counts are small — so where does the tower come from? Reconcile with the Lecture 1 exhibit ($k \mapsto k\cdot 2^k$ reaches $10^{619.8}$ at height $3$). [Hint: rounds count refinements; the <em>part count</em> is what compounds.]</p>
+<p><strong>Exercise 4 (&#9679;&#9679;&#9675;, L2).</strong> The counting window, numerically. For the machine's config 1 (realized pair densities $0.4911, 0.4911, 0.5044$ on parts of size $30$; observed triangles $3,307$) and config 2 ($0.7033, 0.4011, 0.5533$; observed $4,202$): compute the density-product prediction and the $(d - \varepsilon)^3$ lower window at $\varepsilon = 0.1$, and check both observations sit above the window. [Hint: the window is the <em>product</em> of the per-pair floors — three factors, not one.]</p>
+<p><strong>Exercise 5 (&#9679;&#9675;&#9675;, L2).</strong> In the hi/lo exhibit of Lecture 2, identify precisely which hypothesis of the counting lemma fails, and exhibit a witness pair proving the failure. [Hint: it is not the densities.]</p>
+<p><strong>Exercise 6 (&#9679;&#9679;&#9679;, L3).</strong> Prove $\operatorname{ex}(6, K_3) = 9$ — by hand, from the triangle-free condition alone — then reconcile with the machine census: exactly $10$ labeled extremal graphs, all isomorphic to $K_{3,3}$. [Hint: Mantel's route; equality analysis.]</p>
+<p><strong>Exercise 7 (&#9679;&#9679;&#9675;, L3).</strong> Erdős–Stone arithmetic: compute the Turán density $\pi(H)$ and the first-order asymptotic of $\operatorname{ex}(n, H)$ for $H = C_4, K_5$, and $K_5$ with one edge deleted. Which pair does the theorem refuse to distinguish, and what resolves them at lower order? [Hint: what does the theorem actually see of $H$?]</p>
+<p><strong>Exercise 8 (&#9679;&#9679;&#9675;, L3).</strong> The stability tableau. Given: all $240$ labeled $11$-edge $K_4$-free graphs on $6$ vertices are already $3$-partite; $180$ sit at edit distance $1$ from $K_{2,2,2}$ and $60$ at distance $3$. Reconstruct both structural types and verify the counts $180$ and $60$ arithmetically. [Hint: count labeled copies of each type.]</p>
+<p><strong>Exercise 9 (&#9679;&#9679;&#9675;, L4).</strong> Hands on the Roth construction with $A = \{0, 1, 3\} \subseteq \mathbb{Z}_7$: (a) verify $A$ is $3$-AP-free; (b) compute $\#\text{edges}$ and $\#\text{triangles}$ of $G(A)$; (c) confirm every edge lies in exactly one triangle. [Hint: midpoints, mod $7$ — there are only three pairs to check in (a).]</p>
+<p><strong>Exercise 10 (&#9679;&#9679;&#9679;, L4).</strong> Assemble the full Roth contradiction: given triangle removal ($o(n^3)$ triangles $\implies o(n^2)$ deletions suffice) and the $G(A)$ bookkeeping (AP-free $A$ of size $\delta N$ inside $\mathbb{Z}_p$, $p \in (2N, 4N)$ prime), show the two bounds collide for large $N$. Work the numeric skeleton at $\delta = 0.1$. [Hint: deletions needed $\ge \#\text{triangles}$; count both sides as multiples of $p^2$.]</p>
+<p><strong>Exercise 11 (&#9679;&#9679;&#9675;, L5).</strong> The density ladder: (a) verify the maximum $3$-AP-free sizes $2, 3, 4$ in $\mathbb{Z}_5, \mathbb{Z}_7, \mathbb{Z}_9$ (exhibit sets; argue no larger set works in $\mathbb{Z}_5$); (b) justify each arrow of $\text{van der Waerden} \impliedby \text{Szemerédi} \impliedby \text{density HJ}$ in one line. [Hint for (a): in $\mathbb{Z}_5$ every $3$-subset has a pair whose midpoint lands in the set — count pairs.]</p>
+<p><strong>Exercise 12 (&#9679;&#9679;&#9675;, L6).</strong> The EG constant: (a) derive the minimizer condition $4x^2 + x - 2 = 0$ for $f(x) = (1 + x + x^2)/x^{2/3}$; (b) compute $c$ to six decimals; (c) compute $M(3, 2)$ by listing every monomial, and compare $3M$ with the true maximum cap in $\mathbb{F}_3^3$. [Hint: logarithmic differentiation tames $x^{-2/3}$.]</p>
+<h3>&#9670; Pattern-unknown problems (no hints; the diagnosis is the point)</h3>
+<p><strong>&#9670; Problem 1.</strong> Prove that the largest cap in $\mathbb{F}_3^3$ has exactly $9$ points.</p>
+<p><strong>&#9670; Problem 2.</strong> Classify, up to isomorphism, every graph on $6$ vertices in which every edge lies in exactly one triangle.</p>
+<p><strong>&#9670; Problem 3.</strong> Prove: a $3 + 3$ bipartite graph whose edges partition into induced matchings of size at least $2$ has at most $6$ edges; and if it has exactly $6$, its missing cells form a perfect matching and the blocks are the transposition pairs.</p>
+<h3>&#9680; Explorations (what you should find, not a number to match)</h3>
+<p><strong>&#9680; Exploration 1.</strong> The tower gap: upper height $O(\varepsilon^{-5})$, lower $\Omega(\varepsilon^{-1/16})$ — the order pinned by Fox–Lovász for a version of the lemma. Find the $\varepsilon$ at which the <em>upper</em> bound's tower first exceeds height $5$, and work out which quantitative statements of Lectures 2 and 4 would collapse to usable bounds if the true height were the lower one.</p>
+<p><strong>&#9680; Exploration 2.</strong> Hypergraph removal $\implies$ Szemerédi: sketch the correspondence between $4$-term progressions and edges of a $3$-uniform hypergraph on a layered vertex set, and identify precisely where hypergraph regularity is needed where the graph proof used ordinary regularity. (Statement-level; the Atlas boundary is Chapter 14's Lecture 5.)</p>
+<p><strong>&#9680; Exploration 3.</strong> Behrend (1946) vs. Kelley–Meka (2023): find both bounds' exact forms, and quantify the gap — in orders of magnitude of $N$ — between Behrend's $e^{-O(\sqrt{\log N})}$ and the 2023 improvement. What kind of proof does Kelley–Meka add to the toolbox?</p>
+<hr>
+<h2>Computational Lab (verified)</h2>
+<p><em>Six parts, one per lecture. Exhaustive where the chapter's receipts are exhaustive; seeded where they are sampled — no <code>random</code> module anywhere: a Lehmer generator ($x \leftarrow 48271 \cdot x \bmod (2^{31}-1)$) draws every coin, and each part records its seeds and draw rules. The printed outputs are the recorded run outputs (receipts 52runs-1..7): the exhaustive parts re-verify exactly, and every seeded part states its rule — change a seed and you get different samples, never different theorems.</em></p>
+<h3>Part 1 — The $\varepsilon$-regular pair checker (Lecture 1)</h3>
+<pre>from math import ceil
+from itertools import combinations
+
+def density(mask, m, A, B):               # cell (a, b) -&gt; bit a*m + b
+    if not A or not B:
+        return 0.0
+    e = sum((mask &gt;&gt; (a*m + b)) &amp; 1 for a in A for b in B)
+    return e / (len(A) * len(B))
+
+def max_disc(mask, m, eps):               # worst admissible test pair
+    if m &lt;= 0 or eps &lt;= 0:
+        return 0.0
+    d = density(mask, m, range(m), range(m))
+    t = max(1, ceil(eps * m))
+    subs = [S for k in range(t, m + 1) for S in combinations(range(m), k)]
+    return max(abs(density(mask, m, A, B) - d) for A in subs for B in subs)
+
+for eps in (0.25, 0.5, 0.75):
+    reg, worst = 0, 0.0
+    for mask in range(1 &lt;&lt; 16):           # all 65,536 bipartite 4x4 pairs
+        disc = max_disc(mask, 4, eps)
+        reg += disc &lt;= eps
+        if eps == 0.25: worst = max(worst, disc)
+    extra = f", worst witness {worst}" if eps == 0.25 else ""
+    print(f"eps={eps}: {reg} regular of 65536{extra}")</pre>
+<p><strong>Verified output.</strong> <code>eps=0.25: 2 regular of 65536, worst witness 0.9375</code> / <code>eps=0.5: 46408 regular of 65536</code> / <code>eps=0.75: 65536 regular of 65536</code>. The two survivors at $\varepsilon = 1/4$ are masks $0$ and $65,535$ — the empty and the complete pair: at a meaningful tolerance, $\varepsilon$-regularity is a rare, forced-trivial property, exactly Lecture 1's point (the receipt's engine is Gray-code incremental; this naive mirror is minutes slower and prints the same four numbers). Recorded side-run, seeded $8\times 8$ pairs (Lehmer seed $20261056$, $100$ graphs, cells drawn $(a, b)$-lexicographic, edge when the draw is even): at $\varepsilon = 1/4$, $0$ of $100$ regular (worst witness discrepancy $0.671875$); at $\varepsilon = 1/2$, $100$ of $100$ (worst $0.484375$) — the tolerance, not the graph, decides.</p>
+<p><strong>What to explore:</strong> seed $8\times 8$ pairs at edge probability $1/2$ and watch the $\varepsilon = 1/4$ survivor count stay at zero; then relax $\varepsilon$ until the property goes vacuous and find your own personal "galactic constant" — the regularity lemma manufactures for free what randomness cannot give you at any price.</p>
+<h3>Part 2 — The energy ladder (Lecture 1)</h3>
+<pre>def partitions(els):                      # all set partitions of els
+    if not els:
+        yield []
+        return
+    first, rest = els[0], els[1:]
+    for p in partitions(rest):
+        yield [[first]] + p
+        for i in range(len(p)):
+            yield p[:i] + [[first] + p[i]] + p[i+1:]
+
+def q_index(adj, P, n):                   # diagonal-INCLUSIVE Szemeredi index
+    if n &lt;= 0 or not P:
+        return 0.0
+    q = 0.0
+    for Bi in P:
+        for Bj in P:                       # ordered block pairs, i = j included
+            if not Bi or not Bj:
+                continue
+            e = sum(adj[a][b] for a in Bi for b in Bj)
+            d = e / (len(Bi) * len(Bj))
+            q += len(Bi) * len(Bj) / (n*n) * d * d
+    return q
+
+for n, fams in ((5, None), (6, ((2,2,2), (3,3)))):
+    viol = checks = 0
+    allP = list(partitions(list(range(n))))
+    if fams:                               # n = 6: the two equitable families
+        allP = [P for P in allP if tuple(sorted(map(len, P))) in fams]
+    for mask in range(1 &lt;&lt; (n*(n-1)//2)):
+        adj = [[0]*n for _ in range(n)]
+        bit = 0
+        for i in range(n):
+            for j in range(i+1, n):
+                if (mask &gt;&gt; bit) &amp; 1:
+                    adj[i][j] = adj[j][i] = 1
+                bit += 1
+        q0 = q_index(adj, [list(range(n))], n)
+        q1 = q_index(adj, [[v] for v in range(n)], n)
+        for P in allP:
+            checks += 2
+            if not (q0 - 1e-12 &lt;= q_index(adj, P, n) &lt;= q1 + 1e-12):
+                viol += 1
+    print(f"ladder (n={n}): {checks} checks, {viol} violations")</pre>
+<p><strong>Verified output.</strong> <code>ladder (n=5): 106496 checks, 0 violations</code> ($n = 5$: all $1,024$ graphs $\times$ all $52$ partitions, both inequalities) and <code>ladder (n=6): 1638400 checks, 0 violations</code> ($n = 6$: all $32,768$ graphs $\times$ the $15$ $(2,2,2) + 10$ $(3,3)$ partitions) — the ladder $q(\text{trivial}) \le q(P) \le q(\text{singletons})$ is machine-exact, and the proof's defect-refinement deposit has its own receipt: the variance identity $\text{increment} = \sum p_b(d_b - d)^2 \ge p_{XY}(d_{XY} - d)^2$ was verified on $1,125,000$ seeded (graph, witness) pairs (Lehmer seed $20261012$), zero violations of either statement.</p>
+<p><strong>What to explore:</strong> recompute Answer 2's bowtie ladder by hand, then let this code check you; then delete the diagonal terms from <code>q_index</code> and watch the ladder break — v1 of the very receipt behind this part made exactly that mistake, and the census refused to confirm it.</p>
+<h3>Part 3 — Counting-lemma sampler (Lecture 2)</h3>
+<pre>def lehmer(seed):
+    x = seed
+    while True:
+        x = x * 48271 % 2147483647
+        yield x
+
+def tripartite(seed, n, targets):         # targets: ((0,1), t12), ((1,2), t23), ((2,0), t20)
+    if n &lt;= 0:
+        return [0.0, 0.0, 0.0], 0
+    rng = lehmer(seed)
+    E, dens = set(), []
+    for (i, j), t in targets:             # one draw per cell, pairs in listed order
+        e = 0
+        for a in range(n):                 # a in part i, b in part j
+            for b in range(n):
+                if (next(rng) % 10**6) / 10**6 &lt; t:
+                    E.add((i, a, j, b)); e += 1
+        dens.append(e / (n*n))
+    tri = sum(1 for a in range(n) for b in range(n) for c in range(n)
+              if (0,a,1,b) in E and (1,b,2,c) in E and (2,c,0,a) in E)
+    return dens, tri
+
+def report(seed, targets, label):
+    dens, tri = tripartite(seed, 30, targets)
+    prod = dens[0]*dens[1]*dens[2] * 30**3
+    window = (dens[0]-0.1)*(dens[1]-0.1)*(dens[2]-0.1) * 30**3
+    print(f"{label}: densities {dens[0]:.4f}/{dens[1]:.4f}/{dens[2]:.4f}, "
+          f"triangles {tri} vs product {prod:.0f} ({100*tri/prod:.1f}%), "
+          f"window {window:.0f}")
+
+report(20261057, [((0,1), 0.5), ((1,2), 0.5), ((2,0), 0.5)], "config 1")
+report(20261057, [((0,1), 0.7), ((1,2), 0.4), ((2,0), 0.55)], "config 2")
+
+hi = lambda v: v &gt;= 8                     # the lying-densities exhibit (deterministic)
+Eab = lambda a, b: hi(a) == hi(b)
+Ebc = lambda b, c: hi(b) == hi(c)
+Eca = lambda c, a: hi(c) != hi(a)
+counts = [sum(Eab(a,b) for a in range(16) for b in range(16)),
+          sum(Ebc(b,c) for b in range(16) for c in range(16)),
+          sum(Eca(c,a) for c in range(16) for a in range(16))]
+tri = sum(1 for a in range(16) for b in range(16) for c in range(16)
+          if Eab(a,b) and Ebc(b,c) and Eca(c,a))
+print("hi/lo exhibit: pair counts", counts, "of 256, triangles", tri)</pre>
+<p><strong>Verified output.</strong> <code>config 1: densities 0.4911/0.4911/0.4867, triangles 3176 vs product 3169 (100.2%), window 1597</code> / <code>config 2: densities 0.7033/0.3889/0.5456, triangles 4011 vs product 4029 (99.6%), window 2097</code> / <code>hi/lo exhibit: pair counts [128, 128, 128] of 256, triangles 0</code>. Both samples sit above the $(d - 0.1)^3$ floor the counting lemma promises, within $0.4\%$ of the product prediction; the exhibit shows what happens when regularity is withheld — all three densities exactly $1/2$, zero triangles, and the all-low against all-high test sets see density $0$ where the pair says $1/2$ (witness discrepancy exactly $1/2$, also the maximum over $2,000$ seeded test pairs in the receipt). The Lecture 2 rows — $3,307$ vs. $3,285$ (window $1,670$) and $4,202$ vs. $4,215$ (window $2,224$) at seed $20261052$ — are the receipt's original recorded rows (receipt 52runs-2 B2, whose draw rule went unrecorded — the standing scar; re-running the printed rule above at that seed gives $3,883$ vs. $3,852$ and $4,731$ vs. $4,648$, the same story in different digits); this part's rows are the port sample whose draw rule is printed in full above (receipt 52runs-7 C7), so every digit here follows from the code and the seed.</p>
+<h3>Part 4 — The Roth reduction explorer (Lecture 4)</h3>
+<pre>def build_G(A, n):                        # the tripartite construction on Z_n (n odd)
+    if n &lt;= 0:
+        return set()
+    E = set()
+    for x in range(n):
+        for s in A:
+            E.add(((0, x), (1, (x + s) % n)))     # E12
+            E.add(((1, x), (2, (x + s) % n)))     # E23
+            E.add(((2, (x + 2*s) % n), (0, x)))   # E31: z - x = 2s
+    return E
+
+def ap_free(A, n):                        # no 3 distinct terms in arithmetic progression
+    if n &lt;= 0 or n % 2 == 0:
+        return False
+    return not any(x != y and (x + y) * pow(2, -1, n) % n in A
+                   for x in A for y in A)
+
+def profile(A, n):                       # edges, triangle list, per-edge triangle count
+    E = build_G(A, n)
+    T = []
+    for x in range(n):
+        for y in range(n):
+            for z in range(n):
+                t = (((0, x), (1, y)), ((1, y), (2, z)), ((2, z), (0, x)))
+                if set(t) &lt;= E:
+                    T.append(t)
+    cnt = {}
+    for t in T:
+        for e in t:
+            cnt[e] = cnt.get(e, 0) + 1
+    return E, T, cnt
+
+for n in (5, 7, 9):
+    mism = apfree = uniq = 0
+    best = 0
+    for mask in range(1 &lt;&lt; n):            # EVERY subset A of Z_n
+        A = [x for x in range(n) if (mask &gt;&gt; x) &amp; 1]
+        E, T, cnt = profile(A, n)
+        unique = len(cnt) == len(E) and all(v == 1 for v in cnt.values())
+        if ap_free(A, n):
+            apfree += 1
+            best = max(best, len(A))
+        if unique:
+            uniq += 1
+        if ap_free(A, n) != unique:
+            mism += 1
+    print(f"n={n}: {mism} mismatches, {apfree} AP-free, "
+          f"{uniq} unique-triangle, max {best}")
+
+from itertools import combinations
+
+def min_deletions(A, n):                  # brute force: fewest edges killing all triangles
+    E, T, _ = profile(A, n)
+    edges = list(E)
+    for k in range(len(edges) + 1):
+        for D in combinations(range(len(edges)), k):
+            s = set(D)
+            if all(s &amp; {edges.index(e) for e in t} for t in T):
+                return k
+
+for s in range(5):
+    E, T, _ = profile([s], 5)
+    print(f"A={{{s}}}: edges {len(E)}, triangles {len(T)}, "
+          f"min deletions {min_deletions([s], 5)}")</pre>
+<p><strong>Verified output.</strong> <code>n=5: 0 mismatches, 16 AP-free, 16 unique-triangle, max 2</code> / <code>n=7: 0 mismatches, 43 AP-free, 43 unique-triangle, max 3</code> / <code>n=9: 0 mismatches, 127 AP-free, 127 unique-triangle, max 4</code> — the equivalence $A$ is AP-free $\iff$ every edge of $G(A)$ lies in exactly one triangle is machine-exact, in both directions, over <em>all</em> subsets; the bookkeeping holds too ($\#\text{triangles} = n|A|$, $\#\text{edges} = 3n|A|$, asserted clean in the receipt for every AP-free $A$). Then the deletion floor: <code>A={0}: edges 15, triangles 5, min deletions 5</code> — and the same line for all five singletons of $\mathbb{Z}_5$ (exhaustive over all $2^{15}$ deletion sets): the minimum is exactly $\#\text{triangles}$, forced by edge-disjointness. No clever deletion ever kills two triangles; removal's $o(n^2)$ promise collides with the construction's $\delta n^2$ demand, and Roth's theorem falls out.</p>
+<p><strong>What to explore:</strong> find the largest AP-free sets by hand ($\{0,1\} \subset \mathbb{Z}_5$, $\{0,1,3\} \subset \mathbb{Z}_7$, $\{0,1,3,4\} \subset \mathbb{Z}_9$) and confirm the census counts them; then feed an AP-<em>containing</em> $A$ and watch the unique-triangle property die with it — the equivalence cuts both ways.</p>
+<h3>Part 5 — The cap-set hunter (Lecture 6)</h3>
+<pre>from itertools import product
+
+def is_cap(pts):                          # no three distinct points with x + y + z = 0
+    S = set(map(tuple, pts))
+    for x in S:
+        for y in S:
+            if x == y:
+                continue
+            z = tuple((3 - (xi + yi) % 3) % 3 for xi, yi in zip(x, y))
+            if z in S and z != x and z != y:
+                return False
+    return True
+
+def max_cap_exhaustive(n):               # n = 1, 2: every subset of F_3^n
+    if n &lt;= 0:
+        return 0
+    pts = list(product(range(3), repeat=n))
+    best = 0
+    for m in range(1 &lt;&lt; len(pts)):
+        A = [pts[i] for i in range(len(pts)) if (m &gt;&gt; i) &amp; 1]
+        if is_cap(A):
+            best = max(best, len(A))
+    return best
+
+def max_cap_dfs(n):                      # n = 3: include/exclude, bound pruning, full tree
+    if n &lt;= 0:
+        return 0
+    pts = list(product(range(3), repeat=n))
+    best = 0
+    def dfs(i, chosen):
+        nonlocal best
+        best = max(best, len(chosen))
+        if i == len(pts) or len(chosen) + (len(pts) - i) &lt;= best:
+            return
+        if is_cap(chosen + [pts[i]]):
+            dfs(i + 1, chosen + [pts[i]])
+        dfs(i + 1, chosen)
+    dfs(0, [])
+    return best
+
+def seeded_greedy(seed, n, restarts):   # random orders; greedily keep cap points
+    if n &lt;= 0 or restarts &lt;= 0:
+        return []
+    x = seed
+    pts = list(product(range(3), repeat=n))
+    best = []
+    for _ in range(restarts):
+        order = pts[:]
+        for i in range(len(order) - 1, 0, -1):    # seeded Fisher-Yates
+            x = x * 48271 % 2147483647
+            j = x % (i + 1)
+            order[i], order[j] = order[j], order[i]
+        A = []
+        for p in order:
+            if is_cap(A + [p]):
+                A.append(p)
+        if len(A) &gt; len(best):
+            best = A
+    return best
+
+cap4 = [(1,0,1,2), (2,2,0,2), (1,0,2,0), (2,0,1,2), (2,2,1,1), (2,1,0,1),
+        (1,1,2,2), (0,2,1,0), (2,0,1,1), (0,2,2,1), (2,2,1,0), (2,1,0,2),
+        (0,1,0,1), (0,0,2,1), (0,1,2,0), (1,2,2,2), (1,1,2,0), (0,0,2,0),
+        (1,2,0,0), (2,2,0,0)]             # the recorded seed-20261053 exhibit
+
+print("exhaustive max caps (n=1,2):", max_cap_exhaustive(1), max_cap_exhaustive(2))
+print("exact DFS max cap in F_3^3:", max_cap_dfs(3))
+print("recorded exhibit: F_3^4 cap", len(cap4), "pairwise-verified:", is_cap(cap4))
+# the recorded hunts: seeded_greedy(20261053, 4, 2000) -&gt; a 20-cap;
+# at n = 5, plateau-accepting iterated local search (seed 20261055,
+# 80,000 iterations) -&gt; a 45-cap; plain kicks (seed 20261054) stalled at 39.</pre>
+<p><strong>Verified output.</strong> <code>exhaustive max caps (n=1,2): 2 4</code> / <code>exact DFS max cap in F_3^3: 9</code> / <code>recorded exhibit: F_3^4 cap 20 pairwise-verified: True</code>. The deterministic parts re-verify exactly; the recorded TypeScript DFS explored the FULL tree — $647,644$ nodes, no pruning shortcuts, no abort — so $9$ is <em>proved</em>, and &#9670; Problem 1 asks you to make the machine's argument human. The $n = 4$ and $n = 5$ rungs are honest search results, not proofs: $r_3(\mathbb{F}_3^4) = 20$ and $r_3(\mathbb{F}_3^5) = 45$ are cited from the literature (the receipt's optimality-proof attempts exceeded the session's compute budget — it says so), the $45$-cap needed plateau-accepting kicks where plain kicks stalled at $39$, and both exhibits are pairwise-verified caps (re-certified in batch 7).</p>
+<p><strong>What to explore:</strong> the ratios $2, 2, 2.25, 2.22, 2.25$ against $2.7551046130$ — the bound's constant is <em>above</em> every observed ratio, and the gap is the slice-rank slack: $3M = 30$ against the truth $9$ at $n = 3$. Watch the slack tighten by computing $M(n, \lfloor 2n/3 \rfloor)$ for larger $n$ (the DP is six lines) while the truth stalls — asymptotic weapons concede constants and win exponents.</p>
+<h3>Part 6 — Extremal, stability, Ruzsa–Szemerédi, and tower tables (Lectures 1, 2, 3)</h3>
+<pre>from itertools import combinations, permutations
+import math
+
+def pc(m):
+    return bin(m).count("1")
+
+PAIRS = [(i, j) for i in range(6) for j in range(i + 1, 6)]
+EIDX = {p: k for k, p in enumerate(PAIRS)}
+def emask(edges):
+    return sum(1 &lt;&lt; EIDX[(min(u,v), max(u,v))] for u, v in edges)
+K4S  = [emask(combinations(V, 2)) for V in combinations(range(6), 4)]
+TRIS = [emask(combinations(V, 2)) for V in combinations(range(6), 3)]
+P5 = [(i, j) for i in range(5) for j in range(i + 1, 5)]
+E5 = {p: k for k, p in enumerate(P5)}
+def emask5(edges):
+    return sum(1 &lt;&lt; E5[(min(u,v), max(u,v))] for u, v in edges)
+K4S5 = [emask5(combinations(V, 2)) for V in combinations(range(5), 4)]
+
+C5S = []
+for V in combinations(range(6), 5):        # the 12 five-cycles on each 5-subset
+    seen = set()
+    for p in permutations(V[1:]):
+        cyc = (V[0],) + p
+        m = 0
+        for k in range(5):
+            u, v = cyc[k], cyc[(k + 1) % 5]
+            m |= 1 &lt;&lt; EIDX[(min(u, v), max(u, v))]
+        seen.add(m)
+    C5S += list(seen)
+
+def extremal(pairs, subs):                 # (max edges, labeled extremal count)
+    best, cnt = -1, 0
+    for m in range(1 &lt;&lt; len(pairs)):
+        if any(m &amp; s == s for s in subs):
+            continue
+        if pc(m) &gt; best:
+            best, cnt = pc(m), 1
+        elif pc(m) == best:
+            cnt += 1
+    return best, cnt
+
+print("ex(5,K4):", extremal(P5, K4S5), "ex(6,K3):", extremal(PAIRS, TRIS),
+      "ex(6,K4):", extremal(PAIRS, K4S), "ex(6,C5):", extremal(PAIRS, C5S))
+
+PARTS3 = []
+def partitions3(els, blocks):
+    if not els:
+        if len(blocks) == 3:
+            PARTS3.append([b[:] for b in blocks])
+        return
+    f, rest = els[0], els[1:]
+    for i in range(len(blocks)):
+        blocks[i].append(f); partitions3(rest, blocks); blocks[i].pop()
+    blocks.append([f]); partitions3(rest, blocks); blocks.pop()
+partitions3(list(range(6)), [])
+
+K222 = []
+for pp in combinations(PAIRS, 3):          # only perfect pair-partitions of 6
+    if sorted(v for p in pp for v in p) != list(range(6)):
+        continue
+    K222.append(emask([(u, v) for (P, Q) in combinations(pp, 2)
+                       for u in P for v in Q]))
+print(len(K222), "labeled K2,2,2")
+
+def dels_to_3partite(m):
+    return min(sum(1 for B in P for u, v in combinations(B, 2)
+                   if m &gt;&gt; EIDX[(u, v)] &amp; 1) for P in PARTS3)
+
+def edit_to_K222(m, e):
+    return min((e - pc(m &amp; T)) + (12 - pc(m &amp; T)) for T in K222)
+
+for E in (11, 10):
+    G = [m for m in range(1 &lt;&lt; 15)
+         if pc(m) == E and not any(m &amp; s == s for s in K4S)]
+    dd = [dels_to_3partite(m) for m in G]
+    ed = [edit_to_K222(m, E) for m in G]
+    print(f"{E}-edge K4-free: {len(G)} graphs, deletion distances "
+          f"{ {d: dd.count(d) for d in set(dd)} }, edit distances "
+          f"{ {d: ed.count(d) for d in set(ed)} }")
+
+W5 = emask([(0, b) for b in range(1, 6)]
+           + [(1, 2), (2, 3), (3, 4), (4, 5), (5, 1)])
+print("wheel W5:", pc(W5), "edges, K4-free:", not any(W5 &amp; s == s for s in K4S),
+      "deletion distance to 3-partite:", dels_to_3partite(W5))
+
+def unique_triangle_census(n=6):          # parameterized; n = 6 is the printed census
+    if n &lt; 3:
+        c = 1 &lt;&lt; (n*(n-1)//2 if n &gt;= 0 else 0)
+        return c, 0, c
+    pairs = [(i, j) for i in range(n) for j in range(i + 1, n)]
+    tris = []
+    for V in combinations(range(n), 3):
+        t = 0
+        for u, v in combinations(V, 2):
+            t |= 1 &lt;&lt; pairs.index((min(u, v), max(u, v)))
+        tris.append(t)
+    total = at_max = max_e = 0
+    for m in range(1 &lt;&lt; len(pairs)):
+        tri = [t for t in tris if m &amp; t == t]
+        cnt = {}
+        for t in tri:
+            for k in range(len(pairs)):
+                if t &gt;&gt; k &amp; 1:
+                    cnt[k] = cnt.get(k, 0) + 1
+        if all(v == 1 for v in cnt.values()) and pc(m) == len(cnt):
+            total += 1
+            if pc(m) &gt; max_e:
+                max_e, at_max = pc(m), 1
+            elif pc(m) == max_e:
+                at_max += 1
+    return total, max_e, at_max
+
+print("(6,3) census:", unique_triangle_census(6))
+
+def im_census(m, kmin):                   # bipartite m + m; blocks of size &gt;= kmin
+    if m &lt;= 0 or kmin &lt;= 0:
+        return 0, 0
+    cells = tuple((a, b) for a in range(m) for b in range(m))
+    def induced_matching(B, E0):          # cross-pairs checked against the ORIGINAL set
+        if len({a for a, _ in B}) != len(B):
+            return False
+        if len({b for _, b in B}) != len(B):
+            return False
+        return not any((a1, b2) in E0 or (a2, b1) in E0
+                       for (a1, b1) in B for (a2, b2) in B
+                       if (a1, b1) != (a2, b2))
+    def ok(E, E0):                         # E: remaining edges; E0: the original graph
+        if not E:
+            return True
+        e0 = min(E)
+        rest = [c for c in E if c != e0]
+        for r in range(kmin - 1, len(rest) + 1):
+            for extra in combinations(rest, r):
+                B = (e0,) + extra
+                if induced_matching(B, E0) and ok(E - set(B), E0):
+                    return True
+        return False
+    best = cnt = 0
+    for mask in range(1 &lt;&lt; len(cells)):
+        E = frozenset(c for i, c in enumerate(cells) if mask &gt;&gt; i &amp; 1)
+        if ok(E, E):
+            if len(E) &gt; best:
+                best, cnt = len(E), 1
+            elif len(E) == best:
+                cnt += 1
+    return best, cnt
+
+print("m=3 induced matching: k&gt;=2 -&gt;", im_census(3, 2),
+      " k&gt;=3 -&gt;", im_census(3, 3))
+
+lg = math.log10(2)                        # k0 = 2; the refinement shape k -&gt; k*2^k
+for h in range(1, 5):
+    if lg &gt; 300:
+        print(f"height {h}: overflow - the number has 10^{lg:.1f} digits and counting")
+        break
+    lg = lg + 10 ** lg * math.log10(2)
+    print(f"height {h}: log10(k) = {lg:.4f}")
+print("true tower of height 5: 2^65536 = 10^%.4f" % (65536 * math.log10(2)))
+for eps in (0.1, 0.05, 0.01):
+    print(f"eps={eps}: regularity-proof height {eps**-5:.0f}, "
+          f"Gowers lower {(1/eps)**(1/16):.4f}")</pre>
+<p><strong>Verified output.</strong> <code>ex(5,K4): (8, 15) ex(6,K3): (9, 10) ex(6,K4): (12, 15) ex(6,C5): (9, 85)</code> — the extremals are <em>exactly</em> the Turán graphs ($15$ labeled $T_3(5)$ with parts $2,2,1$; $10$ labeled $K_{3,3}$; $15$ labeled $K_{2,2,2}$), machine-exact in structure and in labeled count; the $85$ is the census that killed the recall guess "$12$" ($K_{2,2,2}$ is tripartite and hosts the $5$-cycle $0$–$2$–$4$–$1$–$3$–$0$). <code>15 labeled K2,2,2</code>. <code>11-edge K4-free: 240 graphs, deletion distances {0: 240}, edit distances {1: 180, 3: 60}</code> / <code>10-edge K4-free: 1437 graphs, deletion distances {0: 1365, 1: 72}, edit distances {2: 945, 4: 492}</code> — one edge below extremal the whole universe is $3$-partite (mean edit distance $1.5$); two below, $72$ exotics appear, and the wheel is the printed witness: <code>wheel W5: 10 edges, K4-free: True, deletion distance to 3-partite: 1</code> (mean edit distance $2.68$). Structure decays fast — and <em>where</em> it breaks is census territory, exactly as Lecture 3's Checkpoint promised. <code>(6,3) census: (121, 6, 100)</code> — $121$ unique-triangle graphs in total (the empty one vacuously), max $6$ edges, $100$ at the max ($90$ bowties $+ 10$ disjoint triangle pairs; &#9670; Problem 2 asks for the classification). <code>m=3 induced matching: k&gt;=2 -&gt; (6, 6) k&gt;=3 -&gt; (3, 6)</code>; the recorded $m = 4$ rows: $k \ge 2 \to 12$ edges with exactly $24 = m!$ labeled extremals (the complements of perfect matchings), $k \ge 3 \to 4$, $k \ge 4 \to 4$ — the $\delta n$ cliff between $m^2 - m$ and $m$, the separator the Ruzsa–Szemerédi hypothesis draws. And the tower: <code>height 1: log10(k) = 0.9031</code> / <code>height 2: log10(k) = 3.3113</code> / <code>height 3: log10(k) = 619.8208</code> / <code>height 4: overflow - the number has 10^619.8 digits and counting</code> / <code>true tower of height 5: 2^65536 = 10^19728.3018</code> / <code>eps=0.1: regularity-proof height 100000, Gowers lower 1.1548</code> / <code>eps=0.05: regularity-proof height 3200000, Gowers lower 1.2059</code> / <code>eps=0.01: regularity-proof height 10000000000, Gowers lower 1.3335</code> — the honest gap of Lecture 1, in digits.</p>
+<p><strong>What to explore:</strong> run the stability census one floor down ($9$ edges: how much of the $K_4$-free universe is still $3$-partite?); point <code>unique_triangle_census</code> at $n = 7$ ($2^{21}$ graphs — a patient run; the receipt stops at $6$, and the maximum you meet is yours to report, not the chapter's); and try to break the induced-matching cliff by hand at $m = 4$ — &#9670; Problem 3 is the $m = 3$ case, and the general proof is the Ruzsa–Szemerédi theorem itself.</p>
+<hr>
+<h2>Answers to the Exercises</h2>
+<p><strong>Answer 1.</strong> (a) In $K_{4,4}$ every test density is $1 = d(X, Y)$ — the for-all condition holds vacuously at every tolerance. (b) The matching has $d(X, Y) = 4/16 = 1/4$; the test sets $A = \{x_1\}$, $B = \{y_1\}$ are admissible at $\varepsilon = 1/4$ ($|A| = 1 = \varepsilon\cdot 4$) and see $d(A, B) = 1$, discrepancy $3/4 > \varepsilon$. Not $\varepsilon$-regular. (c) The two are the <strong>empty and the complete graph</strong> — machine-verified (census masks $0$ and $65,535$): at a meaningful tolerance, $\varepsilon$-regularity is a genuine structural property that <em>only trivial densities force for all test sets</em>. That is why the regularity lemma is a theorem and not a formality: it manufactures this rare property from nothing.</p>
+<p><strong>Answer 2.</strong> Bowtie: within $\{0,1,4\}$ all three edges are present ($01, 04, 14$ — the eye drops $04$), so $d = 6/9 = 2/3$; cross-density $d(\{0,1,4\}, \{2,3,5\}) = 2/9$ (edges $02, 03$); within $\{2,3,5\}$: $d = 2/9$ (edge $23$). Then $q(\text{trivial}) = (12/36)^2 = 1/9 \approx 0.1111$; $q(P) = (9/36)(2/3)^2 + (9/36)(2/9)^2 + 2\cdot(9/36)(2/9)^2 = 4/27 \approx 0.1481$; $q(\text{singletons}) = 12\cdot(1/36)\cdot 1 = 1/3$ (twelve ordered adjacent singleton pairs, each contributing weight $1/36$). The ladder $1/9 \le 4/27 \le 1/3$ — machine-verified exhaustively at $n = 5, 6$ with zero violations (receipt 52runs-1).</p>
+<p><strong>Answer 3.</strong> (a) $0 \le q \le 1$ and each defect round adds $\ge \varepsilon^5/2$: at most $2\varepsilon^{-5}$ rounds before the partition is $\varepsilon$-regular (else $q$ would pass $1$). (b) $\varepsilon = 1/2$: $2\cdot 2^5 =$ <strong>$64$ rounds</strong>; $\varepsilon = 1/4$: $2\cdot 4^5 =$ <strong>$2,048$ rounds</strong>. (c) The rounds are few but each multiplies the <em>part count</em> by up to $4$ per defective pair — part growth compounds like $k \mapsto 4^k$ per round, and compounding is where towers come from: the Lecture 1 exhibit's iteration $k \mapsto k\cdot 2^k$ passes $10^{80}$ and $10^{100}$ at height $3$ with only three doublings of doubling. Few rounds, galactic parts.</p>
+<p><strong>Answer 4.</strong> Config 1: $\text{product} = 0.4911\cdot 0.4911\cdot 0.5044\cdot 30^3 =$ <strong>$3,285$</strong> (observed $3,307$, $100.7\%$); $\text{window} = (0.3911)(0.3911)(0.4044)\cdot 27,000 =$ <strong>$1,670$</strong> $\le 3,307$ &#10003;. Config 2: $\text{product} = 0.7033\cdot 0.4011\cdot 0.5533\cdot 27,000 =$ <strong>$4,215$</strong> (observed $4,202$, $99.7\%$); $\text{window} = (0.6033)(0.3011)(0.4533)\cdot 27,000 =$ <strong>$2,224$</strong> $\le 4,202$ &#10003;. Both runs sit above the floor the lemma promises, within $0.7\%$ of the product prediction — regularity, where it holds, is quantitative honesty itself.</p>
+<p><strong>Answer 5.</strong> The failed hypothesis is pairwise <strong>$\varepsilon$-regularity</strong> (the densities are honest $1/2$). Witness: $X = \{0,1,2,3\} \subseteq X$-part, $Y = \{8,9,10,11\} \subseteq Y$-part — all-low against all-high sees $d(X, Y) = 0$ against the pair's $1/2$, discrepancy exactly $1/2 =$ the maximum possible (machine: also the max over $2,000$ seeded test pairs).</p>
+<p><strong>Answer 6.</strong> The sharp route is a degree sum with Cauchy–Schwarz behind it. For any edge $xy$ of a triangle-free graph, the neighborhoods $N(x)$ and $N(y)$ are <em>disjoint</em> (a shared neighbor $z$ would close the triangle $xyz$), so $d(x) + d(y) \le n$. Summing over all $m$ edges: $\sum_{xy \in E}(d(x) + d(y)) = \sum_v d(v)^2 \le mn$. Cauchy–Schwarz turns this into an edge budget: $(\sum_v d(v))^2 \le n\cdot \sum_v d(v)^2$, i.e. $(2m)^2 \le n\cdot mn = mn^2$, so <strong>$m \le n^2/4 = 9$</strong>. Equality forces every inequality tight: $d(x) + d(y) = n$ for every edge and all degrees equal $n/2 = 3$ — each edge's endpoint neighborhoods partition the vertex set, and following any vertex across an edge shows the graph is bipartite with parts of size $3$ and all cross edges present: exactly $K_{3,3}$. Labeled copies $= \binom{6}{3}/2 =$ <strong>$10$</strong> — every labeled extremal is a $K_{3,3}$, matching the machine census (receipt 52runs-5: exhaustive over all $32,768$ graphs, $10$ extremals, all complete bipartite $3+3$).</p>
+<p><strong>Answer 7.</strong> $\pi(C_4) = 1 - 1/(2-1) = 0$: $\operatorname{ex}(n, C_4) = o(n^2)$ — the true scale is $\Theta(n^{3/2})$, a fact Erdős–Stone is <em>blind to</em> ($\chi(C_4) = 2$ collapses the first-order term to $0$; the honest note: bipartite $H$ live entirely in the $o(n^2)$). $\pi(K_5) = 1 - 1/4 = 3/4$; $\pi(K_5 - e) = 1 - 1/4 = 3/4$ as well, since $\chi(K_5 - e) = 4$ (the two non-adjacent vertices share a color). The theorem cannot distinguish them: both are $(3/8 + o(1))n^2$ at first order. The resolution at lower order: the exact large-$n$ extremal values differ ($K_5 - e$ is <em>easier</em> to host — $\operatorname{ex}(n, K_5 - e) > \operatorname{ex}(n, K_5)$ for all large $n$), a Simonovits-method fact the chapter flags rather than proves.</p>
+<p><strong>Answer 8.</strong> Type 1: $K_{2,2,2}$ minus one edge — labeled copies: $15$ labeled $K_{2,2,2}$ (partitions into three pairs) $\times 12$ deletable edges $= \mathbf{180}$ &#10003;. Type 2: $K_{3,2,1}$ — the complete $3$-partite graph with parts of sizes $3, 2, 1$: labeled copies $= 6!/(3!\cdot 2!\cdot 1!) = \mathbf{60}$ &#10003;. $180 + 60 = 240$: the census found <em>nothing else</em> — every $11$-edge $K_4$-free graph on $6$ vertices is one of these two (all $240$ already $3$-partite; the $K_{3,2,1}$ type is $3$-partite but not a subgraph of any $K_{2,2,2}$ — hence its edit distance $3$: $1$ deletion to sever the moved vertex from the singleton part, plus $2$ additions to join it to its two former part-mates, reaching the $12$-edge Turán shape $K_{2,2,2}$ — machine-verified symmetric differences).</p>
+<p><strong>Answer 9.</strong> (a) Midpoints of the three pairs: $(0,1) \to 4$, $(0,3) \to 5$, $(1,3) \to 2$ — none in $A$ &#10003; (all mod $7$, $\operatorname{inv}_2 = 4$). (b) $\#\text{edges} = 3\cdot 7\cdot 3 =$ <strong>$63$</strong>; $\#\text{triangles} = 7\cdot 3 =$ <strong>$21$</strong> (all degenerate: only $(x, x+s, x+2s)$ survive). (c) Machine census: every edge in exactly one triangle — the AP-free $\iff$ unique-triangle equivalence holds with zero mismatches over all $128$ subsets of $\mathbb{Z}_7$.</p>
+<p><strong>Answer 10.</strong> With $|A| = \delta N$ and $N \ge p/4$ ($p \le 4N$): $\text{edges} = 3p|A| \ge 3p\cdot\delta(p/4) = \frac{3}{4}\delta p^2$, and the forced deletions — one per triangle, since the triangles are edge-disjoint — are at least $\#\text{triangles} = p|A| \ge \frac{1}{4}\delta p^2$. Triangle removal supplies $o(p^2)$ deletions. For $p$ large, $o(p^2) < \frac{1}{4}\delta p^2$; at $\delta = 0.1$ the construction demands $\ge 0.025p^2$ deletions while removal allows $\varepsilon p^2$ for any fixed $\varepsilon$ once $p$ is large enough that $\varepsilon < 0.025$ — contradiction. The machine pins the floor honestly at brute-force scale: at $n = 5$, all five singleton constructions need exactly $\#\text{triangles} = 5$ deletions (exhaustive over all $2^{15}$ deletion sets — no clever sharing exists).</p>
+<p><strong>Answer 11.</strong> (a) Exhibits: $\{0,1\}$ in $\mathbb{Z}_5$, $\{0,1,3\}$ in $\mathbb{Z}_7$, $\{0,1,3,4\}$ in $\mathbb{Z}_9$. No larger set in $\mathbb{Z}_5$: any $3$-subset of $\mathbb{Z}_5$ contains a $3$-AP (concretely, machine-checked on all ten $3$-subsets: the midpoints of the pairs of any $3$-subset cover the two elements outside it). The machine's exhaustive census: $16, 43, 127$ AP-free subsets and maxima exactly $2, 3, 4$ (receipt 52runs-3). (b) $\text{Sz} \implies \text{vdW}$: in any $k$-coloring some color class has density $\ge 1/k$ (pigeonhole), and Szemerédi finds progressions in positive-density sets — the density hypothesis is <em>weaker</em>, so the conclusion is stronger. $\text{dHJ} \implies \text{Sz}$: embed $\{1,\dots,N\}$ into the slice of $[k]^n$ of constant coordinate sum; $k$-term progressions surface as combinatorial lines, so a dense AP-free set would be a dense line-free set — forbidden by dHJ. (Each implication is a theorem the chapter states; the small print is at Lecture 5.)</p>
+<p><strong>Answer 12.</strong> (a) $f'(x) = x^{-2/3}(1 + 2x) - \frac{2}{3}x^{-5/3}(1 + x + x^2) = 0 \iff 3x(1 + 2x) = 2(1 + x + x^2) \iff$ <strong>$4x^2 + x - 2 = 0$</strong>; the root in $(0, 1)$ is $x^* = (\sqrt{33} - 1)/8 \approx 0.593070$. (b) $c = f(x^*) =$ <strong>$2.755105$</strong> to six decimals (machine: $2.755104613024$, with an independent numeric minimization agreeing to all twelve printed decimals). (c) $M(3, 2) =$ <strong>$10$</strong>: $1, x, y, z, x^2, y^2, z^2, xy, xz, yz$. The bound $3M = 30$ against the true maximum $9$ — the slice-rank weapon is asymptotic: it concedes a factor of $3+$ at $n = 3$ and wins the exponential rate as $n$ grows ($30$ vs. $9$ at $n = 3$; $153$ vs. $45$ at $n = 5$; the ratio decays toward $1$ in <em>rate</em>, never in constant).</p>
+<h3>Answers to the &#9670; problems (receipt-backed)</h3>
+<p><strong>&#9670; 1.</strong> First, a $9$-cap in $\mathbb{F}_3^3$ exists: the machine exhibit $A_9 = \{(0,0,0), (1,0,0), (0,1,0), (1,1,0), (0,0,1), (1,0,1), (2,1,1), (2,2,1), (2,1,2)\}$ has $9$ points and is pairwise-verified to contain no collinear triple. To prove by hand that no $10$-cap exists in $\mathbb{F}_3^3$:</p>
+<ol>
+<li><strong>Step 1 ($\max$ cap in $\mathbb{F}_3^2$ is $4$).</strong> The affine plane $\mathbb{F}_3^2$ can be partitioned into $3$ parallel lines of $3$ points each; a cap can contain at most $2$ points per line, so at most $6$ points. If a cap $B \subseteq \mathbb{F}_3^2$ had $5$ points, pick any point $p \in B$: the $4$ lines through $p$ in $\mathbb{F}_3^2$ (one in each of the $4$ directions) partition $\mathbb{F}_3^2 \setminus \{p\}$ into $4$ pairs, and $B \setminus \{p\}$ can contain at most $1$ point from each of these $4$ lines, so $|B \setminus \{p\}| \le 4$, i.e., $|B| \le 5$. Moreover, if $|B| = 5$, then for <em>every</em> $p \in B$, each of the $4$ lines through $p$ contains a second point of $B$, so every line in $\mathbb{F}_3^2$ meets $B$ in $0$ or $2$ points. Counting the $\binom{5}{2} = 10$ pairs of points in $B$: each pair determines a distinct line of $\mathbb{F}_3^2$ (since no $3$ points of $B$ are collinear), so $B$ determines $10$ distinct $2$-secant lines. Thus out of the $12$ lines in $\mathbb{F}_3^2$, $10$ meet $B$ in $2$ points and $2$ meet $B$ in $0$ points. Those $2$ disjoint ($0$-point) lines must be parallel (as any two non-parallel lines in $\mathbb{F}_3^2$ intersect), so their union has $6$ points outside $B$, leaving only $9 - 6 = 3$ points for $B$ — a contradiction ($5 \ne 3$)! Thus every cap in $\mathbb{F}_3^2$ has size at most $4$.</li>
+<li><strong>Step 2 (Plane slicing in $\mathbb{F}_3^3$).</strong> Suppose $A \subseteq \mathbb{F}_3^3$ is a cap of size $|A| = 10$. Any parallel family of $3$ affine planes $H_0, H_1, H_2$ partitions $A$, and by Step 1 each plane contains at most $4$ points of $A$. Since $10 = 4 + 4 + 2 = 4 + 3 + 3$, no plane can contain $0$ or $1$ point of $A$: <strong>every affine plane in $\mathbb{F}_3^3$ meets $A$ in $2, 3,$ or $4$ points!</strong></li>
+<li><strong>Step 3 (Plane pencil around a $2$-secant line).</strong> For any line $L \subseteq \mathbb{F}_3^3$ containing $2$ points of $A$ ($|A \cap L| = 2$), the $4$ affine planes $P_1, P_2, P_3, P_4$ containing $L$ partition $\mathbb{F}_3^3 \setminus L$, so their intersections with $A \setminus L$ partition the $10 - 2 = 8$ points of $A \setminus L$. By Step 1, each plane $P_i$ satisfies $|A \cap P_i| \le 4$, so $|(A \setminus L) \cap P_i| \le 4 - 2 = 2$. Because $\sum_{i=1}^4 |(A \setminus L) \cap P_i| = 8$ and each summand is at most $2$, equality $|(A \setminus L) \cap P_i| = 2$ — and hence $|A \cap P_i| = 4$ — must hold for all four planes $P_i$! Thus <strong>every affine plane in $\mathbb{F}_3^3$ that contains at least two points of $A$ (and hence contains the $2$-secant line through them) must contain exactly $4$ points of $A$.</strong> Combine this with Step 2 (every affine plane meets $A$ in at least $2$ points): it follows that <em>every</em> affine plane in $\mathbb{F}_3^3$ must contain $4$ points of $A$, which is impossible since $3$ parallel planes would then contain $4 + 4 + 4 = 12 \ne 10$ points of $A$. Contradiction! Thus $|A| \le 9$. $\blacksquare$</li>
+</ol>
+<p><strong>&#9670; 2.</strong> Four isomorphism types: the <strong>empty graph</strong> ($1$ labeled copy — vacuous), the <strong>single triangle</strong> ($\binom{6}{3} = 20$ labeled), the <strong>bowtie</strong> — two triangles sharing one vertex ($6$ choices of center $\times 15$ ways to pair four of the remaining five into two pairs $= 90$ labeled), and the <strong>disjoint triangle pair</strong> ($10$ labeled: partitions of $6$ into two triples). Total <strong>$121$</strong> labeled graphs; maximum edges <strong>$6$</strong>, achieved exactly by the bowtie and the disjoint pair ($100$ labeled at the maximum — receipt 52runs-6, exhaustive over all $32,768$ graphs).</p>
+<p><strong>&#9670; 3.</strong> Six edges on $9$ cells means $3$ missing cells. Each $2$-block $\{(a,b),(c,d)\}$ of an induced-matching partition forces its two cross cells $(a,d)$ and $(c,b)$ to be <em>absent</em>. With three blocks and only three absent cells, every absent cell must serve as the cross cell of exactly two blocks; chasing the incidence structure ($\text{block}_1$'s cross cell is $\text{block}_2$'s, etc., around the cycle of three) forces the three absent cells to share no row or column — a perfect matching — and the blocks to be exactly the transposition pairs $\{(i,j),(j,i)\}$ around it. The census confirms: exactly <strong>$6$</strong> labeled $6$-edge examples $= \text{the } 3!$ perfect matchings of $K_{3,3}$ (receipt 52runs-6, v3).</p>
+</main>
+</body>
+</html>

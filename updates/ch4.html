@@ -1,0 +1,907 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter 4 &middot; The Probabilistic Method: Existence by Randomness &#8212; A Lecture Course in the Feynman Style</title>
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']]
+    }
+  };
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<style>
+  :root { font-family: Georgia, 'Times New Roman', serif; color: #1a1a1a; }
+  body { max-width: 46rem; margin: 0 auto; padding: 1.5rem 1.2rem 4rem; line-height: 1.55; background: #fff; }
+  h1 { font-size: 1.9rem; margin: 2.2rem 0 0.8rem; }
+  h2 { font-size: 1.45rem; margin: 2rem 0 0.6rem; border-bottom: 1px solid #ddd; padding-bottom: 0.25rem; }
+  h3 { font-size: 1.2rem; margin: 1.6rem 0 0.5rem; }
+  h4 { font-size: 1.05rem; margin: 1.3rem 0 0.4rem; }
+  pre, code { font-family: 'Courier New', Courier, monospace; }
+  code { background: #f2f2f2; padding: 0.05em 0.3em; border-radius: 3px; font-size: 0.92em; }
+  pre { white-space: pre; tab-size: 4; break-inside: avoid; page-break-inside: avoid;
+        overflow-x: auto; border: 1px solid #ddd; background: #fafafa; padding: 0.7rem 0.9rem;
+        font-size: 0.85rem; line-height: 1.35; }
+  blockquote { border-left: 3px solid #888; margin: 1rem 0; padding: 0.2rem 1rem; color: #333; }
+  table { border-collapse: collapse; margin: 1rem 0; break-inside: avoid; page-break-inside: avoid; }
+  th, td { border: 1px solid #bbb; padding: 0.35rem 0.6rem; text-align: left; }
+  th { background: #f0f0f0; }
+  .fig { margin: 1rem 0; text-align: center; break-inside: avoid; page-break-inside: avoid; }
+  .fig svg { max-width: 100%; height: auto; }
+  hr { border: 0; border-top: 1px solid #ccc; margin: 2rem 0; }
+  .banner { background: #eef6ff; border: 1px solid #bcd6f0; border-radius: 6px;
+            padding: 0.8rem 1rem; font-size: 0.9rem; font-family: system-ui, sans-serif; margin-bottom: 1.5rem; }
+  @page { size: A4; margin: 16mm 15mm; }
+  @media print {
+    body { max-width: none; padding: 0; font-size: 10.5pt; }
+    .no-print { display: none; }
+    pre { font-size: 8.8pt; }
+    h1, h2, h3, h4 { break-after: avoid; page-break-after: avoid; }
+  }
+</style>
+</head>
+<body>
+<main id="content">
+<h1>Chapter 4 · The Probabilistic Method</h1>
+<p><em>A lecture course, in the spirit of Feynman's physics lectures. One scandalous idea powers the whole chapter (Erdős, 1947, with a 1943 prequel): to prove that an object exists, <strong>design a random experiment</strong> and show it succeeds with positive probability. No object is ever constructed. The proofs in this chapter are, every one of them, an argument that a needle exists in a haystack — followed, twice, by the honest admission that nobody can hand you the needle.</em></p>
+<h2>How to read this chapter</h2>
+<p>Read with dice in your hands, not just a pencil. Lines marked <strong>✎ Checkpoint</strong> are the places to stop and predict — commit to a guess, in ink, before reading on. The exercises are graded: ●○○ <em>easy</em> (one lecture idea, applied directly), ●●○ <em>moderate</em> (two ideas, or one tricky step), ●●● <em>tough</em> (several ideas combined). Hints travel with the problems; worked answers sit at the very end. Try honestly first — the struggle is the part that cannot be outsourced. Beyond the graded set, ◐ <strong>Explorations</strong> are open-ended investigations: they state what you should find, not a number to match.</p>
+<p>The chapter trains five patterns: <strong>P10</strong> (averaging/expectation), <strong>P12</strong> (random construction), <strong>P13</strong> (union bound), <strong>P14</strong> (alteration), <strong>P18</strong> (algorithmic proof). They are summarized in the Trick Bag at the end. Two sharpenings arrive along the way: the <strong>Lovász Local Lemma</strong> refines P13 when the bad events are nearly independent (§4.3), and the <strong>second-moment method</strong> upgrades P10 from "some object beats the average" to "the average is where the mass lives" — enough to pin a sharp threshold (Lecture 6).</p>
+<hr>
+<h2>Lecture 1 · Existence Without Construction</h2>
+<p>Here is a fact you can prove in three lines and cannot improve in three years: <strong>every graph with $m$ edges has a cut crossing at least $m/2$ of them.</strong> (A <em>cut</em> is what you get by splitting the vertices into two sides; an edge is <em>crossed</em> if its ends land on different sides. Crossed edges form a bipartite subgraph — the two statements are the same fact in two costumes.)</p>
+<p>The obvious attack is to build the best split cleverly. Don't. Do something outrageous instead: throw every vertex into side $A$ or side $B$ <strong>at random, by fair coin flip</strong>. Now watch one edge $e = uv$. Its two endpoints flipped independent coins, so they disagree with probability exactly $1/2$ — the edge is crossed with probability $1/2$, and there is nothing this edge can do about it, nor anything its neighbors can do. The expected number of crossed edges is $m \cdot (1/2) = \mathbf{m/2}$.</p>
+<p>Now the punchline of the entire chapter. An <em>average</em> of $m/2$ is a promise: the number of crossed edges is $m/2$ on average, so <strong>some</strong> particular split crosses at least $m/2$ — because a random variable cannot always sit below its own average. We never built that split. We proved it exists, the way an alibi proves you were somewhere, without saying where. (Pattern <strong>P10</strong> — averaging — riding on <strong>P12</strong>, the random construction. This pairing is the engine of everything below.)</p>
+<p><strong>✎ Checkpoint.</strong> Before reading on: for $K_4$ ($m = 6$), predict the expected number of crossed edges, then list all splits and their cuts. There are $16$ coin-flip outcomes, but a split and its mirror image are the same split — so $8$ partitions. Do it in ink.</p>
+<p>Here is the full census, machine-checked: the $8$ partitions of $K_4$ cut <strong>$0, 3, 3, 3, 3, 4, 4, 4$</strong> edges. The expectation is $(0 + 4\cdot 3 + 3\cdot 4)/8 = \mathbf{3 = m/2}$, exactly as promised — and the three balanced ($2$–$2$) partitions cut <strong>$4$</strong>, comfortably above the average. The theorem is true, and $K_4$ shows it live; the gap between $3$ and $4$ is the slack the next exercises will squeeze.</p>
+<h3>1.1 From dice to determinism</h3>
+<p>A probabilistic proof can leave an engineer cold: <em>which</em> split crosses $m/2$? Here is the beautiful answer — the proof contains an algorithm. Take <strong>any</strong> partition whatsoever. If some vertex has strictly more neighbors on its own side than across, flip it: the cut grows by a positive integer. Flips strictly increase an integer bounded by $m$, so they stop. When they stop, <strong>every</strong> vertex has at least as many neighbors across as at home. Count now, twice: each crossed edge contributes $2$ to the total "across" tally (one for each endpoint), each internal edge contributes $2$ to the "at home" tally. Since $\text{across} \ge \text{at home}$ at every vertex, $2\cdot\text{cut} \ge 2\cdot(m - \text{cut})$, so <strong>$\text{cut} \ge m/2$</strong>. $\blacksquare$</p>
+<div class="fig">
+  <svg viewBox="0 0 680 230" width="680" height="230" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Local-flip derandomization on K4 from a 1-3 split cutting 3 edges to a 2-2 split cutting 4 edges">
+    <defs>
+      <marker id="arrow-flip" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M 0 1 L 8 5 L 0 9 z" fill="#b45309"/>
+      </marker>
+    </defs>
+
+    <!-- Left Panel: 1-3 Partition -->
+    <rect x="15" y="15" width="275" height="185" rx="6" fill="#fafafa" stroke="#d4d4d4"/>
+    <text x="152" y="34" text-anchor="middle" font-family="Georgia, serif" font-size="12.5" font-weight="bold" fill="#1a1a1a">Before Flip: Partition {v₁} | {v₂, v₃, v₄}</text>
+    <text x="58" y="54" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#1d4ed8">Side A</text>
+    <text x="215" y="54" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#4b5563">Side B</text>
+    <line x1="112" y1="44" x2="112" y2="172" stroke="#9ca3af" stroke-dasharray="4,3"/>
+
+    <!-- Crossed edges (3): (v1,v2), (v1,v3), (v1,v4) -->
+    <line x1="58" y1="110" x2="180" y2="68" stroke="#2563eb" stroke-width="2"/>
+    <line x1="58" y1="110" x2="245" y2="110" stroke="#2563eb" stroke-width="2"/>
+    <line x1="58" y1="110" x2="180" y2="152" stroke="#2563eb" stroke-width="2"/>
+
+    <!-- Internal edges in B (3): (v2,v3), (v2,v4), (v3,v4) -->
+    <line x1="180" y1="68" x2="245" y2="110" stroke="#dc2626" stroke-width="2" stroke-dasharray="5,3"/>
+    <line x1="180" y1="68" x2="180" y2="152" stroke="#dc2626" stroke-width="2" stroke-dasharray="5,3"/>
+    <line x1="245" y1="110" x2="180" y2="152" stroke="#9ca3af" stroke-width="1.8" stroke-dasharray="5,3"/>
+
+    <!-- Vertices (fixed local coordinates inside panel) -->
+    <circle cx="58" cy="110" r="14" fill="#dbeafe" stroke="#1d4ed8" stroke-width="2"/>
+    <text x="58" y="114" text-anchor="middle" font-family="Georgia, serif" font-size="12" fill="#1a1a1a">v₁</text>
+
+    <circle cx="180" cy="68" r="14" fill="#fef3c7" stroke="#b45309" stroke-width="2.4"/>
+    <text x="180" y="72" text-anchor="middle" font-family="Georgia, serif" font-size="12" font-weight="bold" fill="#1a1a1a">v₂</text>
+
+    <circle cx="245" cy="110" r="14" fill="#f3f4f6" stroke="#4b5563" stroke-width="2"/>
+    <text x="245" y="114" text-anchor="middle" font-family="Georgia, serif" font-size="12" fill="#1a1a1a">v₃</text>
+
+    <circle cx="180" cy="152" r="14" fill="#f3f4f6" stroke="#4b5563" stroke-width="2"/>
+    <text x="180" y="156" text-anchor="middle" font-family="Georgia, serif" font-size="12" fill="#1a1a1a">v₄</text>
+
+    <text x="152" y="188" text-anchor="middle" font-family="Georgia, serif" font-size="11.5" fill="#333">cut = 3 = m/2 (v₂ has 2 at home &gt; 1 across)</text>
+
+    <!-- Center Transition Arrow -->
+    <line x1="302" y1="108" x2="378" y2="108" stroke="#b45309" stroke-width="2.2" marker-end="url(#arrow-flip)"/>
+    <text x="340" y="92" text-anchor="middle" font-family="Georgia, serif" font-size="11.5" font-weight="bold" fill="#b45309">Flip v₂ → Side A</text>
+    <text x="340" y="126" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#4b5563">Δcut = +2 − 1 = +1</text>
+
+    <!-- Right Panel: 2-2 Partition (identical relative vertex coordinates +375px) -->
+    <rect x="390" y="15" width="275" height="185" rx="6" fill="#fafafa" stroke="#d4d4d4"/>
+    <text x="527" y="34" text-anchor="middle" font-family="Georgia, serif" font-size="12.5" font-weight="bold" fill="#1a1a1a">After Flip: Partition {v₁, v₂} | {v₃, v₄}</text>
+    <text x="455" y="54" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#1d4ed8">Side A</text>
+    <text x="612" y="54" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#4b5563">Side B</text>
+    <!-- Partition boundary shifted past v2 at x=555 -->
+    <line x1="578" y1="44" x2="578" y2="172" stroke="#9ca3af" stroke-dasharray="4,3"/>
+
+    <!-- Crossed edges (4): (v1,v3), (v1,v4), (v2,v3), (v2,v4) -->
+    <line x1="433" y1="110" x2="620" y2="110" stroke="#2563eb" stroke-width="2"/>
+    <line x1="433" y1="110" x2="555" y2="152" stroke="#2563eb" stroke-width="2"/>
+    <line x1="555" y1="68" x2="620" y2="110" stroke="#2563eb" stroke-width="2"/>
+    <line x1="555" y1="68" x2="555" y2="152" stroke="#2563eb" stroke-width="2"/>
+
+    <!-- Internal edges (2): (v1,v2) in A, (v3,v4) in B -->
+    <line x1="433" y1="110" x2="555" y2="68" stroke="#9ca3af" stroke-width="1.8" stroke-dasharray="5,3"/>
+    <line x1="620" y1="110" x2="555" y2="152" stroke="#9ca3af" stroke-width="1.8" stroke-dasharray="5,3"/>
+
+    <!-- Vertices (exact +375px translation of Left Panel) -->
+    <circle cx="433" cy="110" r="14" fill="#dbeafe" stroke="#1d4ed8" stroke-width="2"/>
+    <text x="433" y="114" text-anchor="middle" font-family="Georgia, serif" font-size="12" fill="#1a1a1a">v₁</text>
+
+    <circle cx="555" cy="68" r="14" fill="#dbeafe" stroke="#1d4ed8" stroke-width="2.4"/>
+    <text x="555" y="72" text-anchor="middle" font-family="Georgia, serif" font-size="12" font-weight="bold" fill="#1a1a1a">v₂</text>
+
+    <circle cx="620" cy="110" r="14" fill="#f3f4f6" stroke="#4b5563" stroke-width="2"/>
+    <text x="620" y="114" text-anchor="middle" font-family="Georgia, serif" font-size="12" fill="#1a1a1a">v₃</text>
+
+    <circle cx="555" cy="152" r="14" fill="#f3f4f6" stroke="#4b5563" stroke-width="2"/>
+    <text x="555" y="156" text-anchor="middle" font-family="Georgia, serif" font-size="12" fill="#1a1a1a">v₄</text>
+
+    <text x="527" y="188" text-anchor="middle" font-family="Georgia, serif" font-size="11.5" fill="#333">cut = 4 &gt; m/2 (every vertex: 2 across ≥ 1 home)</text>
+  </svg>
+  <p><em>Figure 4.1.</em> Derandomizing Lecture 1 on $K_4$ ($m=6$). In the $1$–$3$ split (left), $v_2$ has $2$ internal neighbors (dashed red) and only $1$ crossed neighbor (solid blue). Flipping $v_2$ to Side $A$ (right) turns its $2$ internal edges into crossed edges and its $1$ crossed edge into an internal edge, raising the cut from $3$ to $4$.</p>
+</div>
+<p>What you just watched is <strong>derandomization</strong> (pattern <strong>P18</strong>): the coin-flip proof is converted into a deterministic procedure whose termination <em>is</em> the theorem. The flip rule is exactly "do what the coin probably would have done, one vertex at a time." Expectation proof first, greedy algorithm second — a two-step worth owning as a single reflex.</p>
+<p><strong>What you now own:</strong> the coin-flip experiment (P12); the average as an existence promise (P10); the local-flip derandomization (P18). And a reflex: <em>when every object in a family has some score, some object scores at least the average — say so, and you have proved existence.</em></p>
+<hr>
+<h2>Lecture 2 · The Average Is a Promise</h2>
+<p>Lecture 1 quietly used the most valuable identity in this book: <strong>linearity of expectation</strong>. If $X = X_1 + X_2 + \dots + X_r$ (each $X_i$ an indicator: $1$ when the $i$-th bad thing happens, $0$ otherwise), then $\mathbb{E}[X] = \mathbb{E}[X_1] + \dots + \mathbb{E}[X_r]$, and — this is the scandal — <strong>the $X_i$ need not be independent</strong>. Look for it in Lecture 1: whether edge $e$ is crossed and whether edge $f$ is crossed <em>feel</em> like dependent events — they may share an endpoint and its coin. The sum didn't care. And the feeling deserves an audit, because in this experiment it is mostly an illusion: for <strong>two</strong> distinct edges the crossing indicators are independent, sharing an endpoint or not. If the edges are $uv$ and $uw$, then $X_{uv} = B_u \oplus B_v$ and $X_{uw} = B_u \oplus B_w$ for the three fair coins; over the eight labelings each indicator fires in four and both fire together in two — $1/4 = (1/2)^2$, independence. The genuine dependence is <em>joint</em> and lives on the triangle: every cut crosses an even number of any cycle's edges, so $X_{uv} \oplus X_{uw} \oplus X_{vw} = 0$ — the three indicators are pairwise independent yet can never all fire at once (probability $0$, not $1/8$). Dependence is exactly what makes probability hard elsewhere; linearity of expectation never meets the difficulty — in any of its costumes.</p>
+<p><strong>✎ Checkpoint.</strong> Tabulate the eight coin assignments of a triangle's vertices and tick, per row, which of the three edges are crossed. Confirm: each edge is crossed in four rows; each <em>pair</em> of edges is crossed together in two rows (pairwise independence — including the pairs that share a vertex); and no row crosses all three (a cut crosses a cycle an even number of times). You will have located the dependence exactly — and seen that Lecture 1's expectation never needed to know.</p>
+<p>Now the 1943 theorem that started the whole method, before Erdős gave the method its name: <strong>Szele's theorem.</strong> Recall that a <em>tournament</em> is a complete graph with every edge directed one way (a round-robin league: every pair plays, one winner). A <em>directed Hamiltonian path</em> is an ordering of all $n$ players $v_1, v_2, \dots, v_n$ such that each player beat the next. The claim: <strong>some tournament has at least $n!/2^{n-1}$ directed Hamiltonian paths.</strong></p>
+<p>The experiment: pick a tournament uniformly at random — each game's outcome an independent fair coin. Fix one ordering $(v_1, \dots, v_n)$; it forms a directed Hamiltonian path exactly when its $n - 1$ consecutive games were all won by the earlier player: probability $2^{-(n-1)}$. Let $X$ be the number of directed Hamiltonian paths; by linearity over all $n!$ orderings,</p>
+<p>$$\mathbb{E}[X] = \frac{n!}{2^{n-1}},$$</p>
+<p>and some tournament achieves at least the average. $\blacksquare$ The number is enormous — for $n = 10$ it is $10!/2^{9} = 3{,}628{,}800/512 = \mathbf{7{,}087.5}$, and since a count is an integer, some tournament on $10$ players has at least <strong>$7{,}088$</strong> directed Hamiltonian paths. Individual rich tournaments can even be written down — at $n = 10$ a machine search finds them easily, and the appendix records one with $9{,}793$ paths. What no one can write down is the needle the proof promises in general: a <em>uniform</em> explicit construction — a single rule that builds, for every $n$, a tournament with anything near $n!/2^{n-1}$ directed Hamiltonian paths. None is known; the average certifies the haystack without mapping it.</p>
+<p><strong>✎ Checkpoint.</strong> $n = 3$, by hand. There are $2^3 = 8$ tournaments. Six are <em>transitive</em> ($a$ beats $b$ beats $c$, and $a$ beats $c$ — the results order the players with no cycle). Two are $3$-cycles. Count the directed Hamiltonian paths in each kind, total them over all $8$, and divide. Predict first whether you will see $6/4$.</p>
+<p>The census, machine-checked: a transitive tournament has exactly <strong>$1$</strong> directed Hamiltonian path (its total order); a $3$-cycle has <strong>$3$</strong> (start anywhere). Total $6\cdot 1 + 2\cdot 3 = \mathbf{12}$, and $12/8 = \mathbf{1.5 = 6/2^2 = n!/2^{n-1}}$ ✓. (For $n = 4$ the machine totals $192$ over $64$ tournaments: $\mathbb{E}[X] = 3$, with individual tournaments ranging from $1$ to $5$.) Notice what the average hides: the transitive extreme has just $1$, the crowded extreme has more — the <em>expectation</em> sits between them and certifies the crowded one exists, without telling you where it is. That is the method's signature: an average over a world you can't survey is squeezed until it confesses that an extreme exists.</p>
+<div class="fig">
+  <svg viewBox="0 0 640 215" width="640" height="215" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Szele tournament census on 3 vertices: 6 transitive tournaments with 1 path vs 2 cyclic tournaments with 3 paths">
+    <defs>
+      <marker id="arc-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+        <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#1e293b"/>
+      </marker>
+      <marker id="arc-arrow-hi" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+        <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#15803d"/>
+      </marker>
+    </defs>
+
+    <!-- Left Panel: Transitive Tournament -->
+    <rect x="20" y="12" width="280" height="188" rx="6" fill="#fafafa" stroke="#d4d4d4"/>
+    <text x="160" y="32" text-anchor="middle" font-family="Georgia, serif" font-size="12.5" font-weight="bold" fill="#1a1a1a">Transitive Type (6 of 8 tournaments)</text>
+
+    <!-- Directed arcs: v1->v2 (path), v2->v3 (path), v1->v3 (shortcut) -->
+    <!-- v1=(160,64), v2=(95,152), v3=(225,152) -->
+    <line x1="150" y1="77" x2="107" y2="136" stroke="#15803d" stroke-width="2.2" marker-end="url(#arc-arrow-hi)"/>
+    <line x1="111" y1="152" x2="205" y2="152" stroke="#15803d" stroke-width="2.2" marker-end="url(#arc-arrow-hi)"/>
+    <line x1="170" y1="77" x2="213" y2="136" stroke="#64748b" stroke-width="1.8" marker-end="url(#arc-arrow)"/>
+
+    <circle cx="160" cy="64" r="15" fill="#dcfce7" stroke="#15803d" stroke-width="2"/>
+    <text x="160" y="68" text-anchor="middle" font-family="Georgia, serif" font-size="12" fill="#1a1a1a">v₁</text>
+
+    <circle cx="95" cy="152" r="15" fill="#dcfce7" stroke="#15803d" stroke-width="2"/>
+    <text x="95" y="156" text-anchor="middle" font-family="Georgia, serif" font-size="12" fill="#1a1a1a">v₂</text>
+
+    <circle cx="225" cy="152" r="15" fill="#dcfce7" stroke="#15803d" stroke-width="2"/>
+    <text x="225" y="156" text-anchor="middle" font-family="Georgia, serif" font-size="12" fill="#1a1a1a">v₃</text>
+
+    <text x="160" y="186" text-anchor="middle" font-family="Georgia, serif" font-size="11.5" fill="#333">1 directed path: v₁ → v₂ → v₃</text>
+
+    <!-- Right Panel: Cyclic 3-Cycle Tournament -->
+    <rect x="340" y="12" width="280" height="188" rx="6" fill="#fafafa" stroke="#d4d4d4"/>
+    <text x="480" y="32" text-anchor="middle" font-family="Georgia, serif" font-size="12.5" font-weight="bold" fill="#1a1a1a">Cyclic 3-Cycle (2 of 8 tournaments)</text>
+
+    <!-- Directed arcs: v1->v2, v2->v3, v3->v1 (all 3 form paths) -->
+    <!-- v1=(480,64), v2=(415,152), v3=(545,152) -->
+    <line x1="470" y1="77" x2="427" y2="136" stroke="#15803d" stroke-width="2.2" marker-end="url(#arc-arrow-hi)"/>
+    <line x1="431" y1="152" x2="525" y2="152" stroke="#15803d" stroke-width="2.2" marker-end="url(#arc-arrow-hi)"/>
+    <line x1="535" y1="139" x2="492" y2="80" stroke="#15803d" stroke-width="2.2" marker-end="url(#arc-arrow-hi)"/>
+
+    <circle cx="480" cy="64" r="15" fill="#dcfce7" stroke="#15803d" stroke-width="2"/>
+    <text x="480" y="68" text-anchor="middle" font-family="Georgia, serif" font-size="12" fill="#1a1a1a">v₁</text>
+
+    <circle cx="415" cy="152" r="15" fill="#dcfce7" stroke="#15803d" stroke-width="2"/>
+    <text x="415" y="156" text-anchor="middle" font-family="Georgia, serif" font-size="12" fill="#1a1a1a">v₂</text>
+
+    <circle cx="545" cy="152" r="15" fill="#dcfce7" stroke="#15803d" stroke-width="2"/>
+    <text x="545" y="156" text-anchor="middle" font-family="Georgia, serif" font-size="12" fill="#1a1a1a">v₃</text>
+
+    <text x="480" y="186" text-anchor="middle" font-family="Georgia, serif" font-size="11.5" fill="#333">3 directed paths (delete any 1 of the 3 arcs)</text>
+  </svg>
+  <p><em>Figure 4.2.</em> Szele's census at $n = 3$: the $6$ transitive tournaments contribute $1$ directed Hamiltonian path each, while the $2$ cyclic tournaments contribute $3$ each, giving $\mathbb{E}[X] = (6\cdot 1 + 2\cdot 3)/8 = 1.5 = 3!/2^2$.</p>
+</div>
+<p><strong>What you now own:</strong> indicator variables and linearity across dependent events (P10); the random-tournament experiment (P12); and the historical headline — the first probabilistic-method theorem in combinatorics is Szele's (1943), and no explicit construction matching its constant is known to this day.</p>
+<hr>
+<h2>Lecture 3 · Keep the Local Winners</h2>
+<p>Independent sets hide in every graph, and the question is how big. Here is a second way to be random — subtler than coin flips, and it proves the <strong>Caro–Wei bound</strong>: every graph has an independent set of size at least</p>
+<p>$$\alpha(G) \ge \sum_{v \in V} \frac{1}{d(v) + 1},$$</p>
+<p>the sum taken over all vertices, $d(v)$ the degree.</p>
+<p>The experiment (<strong>P12</strong> again, a new costume): order the vertices <strong>uniformly at random</strong> — a random permutation, every ordering equally likely. Now select a vertex $v$ whenever $v$ comes <strong>before all of its neighbors</strong> in the ordering: keep the <em>local winners</em>. Two observations, and each is half the theorem:</p>
+<ol><li><strong>The selected set is independent.</strong> Suppose edge $uv$ had both ends selected. Then $u$ came before all of $N(u)$, which includes $v$ — so $u$ precedes $v$. And $v$ came before all of $N(v)$, which includes $u$ — so $v$ precedes $u$. Both cannot be true; contradiction. (Notice this argument never used independence of anything — it is pure ordering logic.)</li><li><strong>$v$ is selected with probability $1/(d(v)+1)$.</strong> Look at the $d(v)+1$ vertices in $\{v\} \cup N(v)$. In a uniform random ordering, each of them is equally likely to appear first, and $v$ is selected exactly when $v$ is that first one.</li></ol>
+<p>So the expected number of selected vertices is $\sum_v \frac{1}{d(v)+1}$, by linearity (Lecture 2), and some ordering selects at least that many — an independent set of that size. $\blacksquare$</p>
+<p><strong>✎ Checkpoint.</strong> The path $P_4$ has degrees $1, 2, 2, 1$. Compute $\sum \frac{1}{d+1}$ in ink — you should get $5/3$ — and check it against $\alpha(P_4) = 2$. Comfortable? Now predict what the bound gives for $K_n$: you should get exactly $1$.</p>
+<div class="fig">
+  <svg viewBox="0 0 620 155" width="620" height="155" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Caro-Wei local-winner selection on P4 under permutation rank (3, 1, 4, 2)">
+    <rect x="15" y="10" width="590" height="135" rx="6" fill="#fafafa" stroke="#d4d4d4"/>
+    <text x="310" y="30" text-anchor="middle" font-family="Georgia, serif" font-size="12.5" font-weight="bold" fill="#1a1a1a">Caro–Wei Local Winners on P₄ under Sample Ordering π = (v₂, v₄, v₁, v₃)</text>
+
+    <!-- Edges of P4 -->
+    <line x1="115" y1="78" x2="245" y2="78" stroke="#64748b" stroke-width="2.2"/>
+    <line x1="245" y1="78" x2="375" y2="78" stroke="#64748b" stroke-width="2.2"/>
+    <line x1="375" y1="78" x2="505" y2="78" stroke="#64748b" stroke-width="2.2"/>
+
+    <!-- v1: rank 3 (blocked by v2 of rank 1) -->
+    <circle cx="115" cy="78" r="18" fill="#f3f4f6" stroke="#6b7280" stroke-width="1.8" stroke-dasharray="4,3"/>
+    <text x="115" y="82" text-anchor="middle" font-family="Georgia, serif" font-size="13" fill="#4b5563">v₁</text>
+    <text x="115" y="52" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#4b5563">rank 3 (blocked)</text>
+    <text x="115" y="114" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#333">1/(d+1) = 1/2</text>
+
+    <!-- v2: rank 1 (local winner: 1 < 3 and 1 < 4) -->
+    <circle cx="245" cy="78" r="18" fill="#dcfce7" stroke="#15803d" stroke-width="2.4"/>
+    <text x="245" y="82" text-anchor="middle" font-family="Georgia, serif" font-size="13" font-weight="bold" fill="#14532d">v₂</text>
+    <text x="245" y="52" text-anchor="middle" font-family="Georgia, serif" font-size="11" font-weight="bold" fill="#15803d">rank 1 ★ winner</text>
+    <text x="245" y="114" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#333">1/(d+1) = 1/3</text>
+
+    <!-- v3: rank 4 (blocked by v2 and v4) -->
+    <circle cx="375" cy="78" r="18" fill="#f3f4f6" stroke="#6b7280" stroke-width="1.8" stroke-dasharray="4,3"/>
+    <text x="375" y="82" text-anchor="middle" font-family="Georgia, serif" font-size="13" fill="#4b5563">v₃</text>
+    <text x="375" y="52" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#4b5563">rank 4 (blocked)</text>
+    <text x="375" y="114" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#333">1/(d+1) = 1/3</text>
+
+    <!-- v4: rank 2 (local winner: 2 < 4) -->
+    <circle cx="505" cy="78" r="18" fill="#dcfce7" stroke="#15803d" stroke-width="2.4"/>
+    <text x="505" y="82" text-anchor="middle" font-family="Georgia, serif" font-size="13" font-weight="bold" fill="#14532d">v₄</text>
+    <text x="505" y="52" text-anchor="middle" font-family="Georgia, serif" font-size="11" font-weight="bold" fill="#15803d">rank 2 ★ winner</text>
+    <text x="505" y="114" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#333">1/(d+1) = 1/2</text>
+
+    <text x="310" y="135" text-anchor="middle" font-family="Georgia, serif" font-size="11.5" fill="#1a1a1a">Selected independent set I = {v₂, v₄}; expected size across all 24 orderings: 1/2 + 1/3 + 1/3 + 1/2 = 5/3</text>
+  </svg>
+  <p><em>Figure 4.3.</em> The Caro–Wei experiment on $P_4$. Each vertex $v$ beats its $d(v)$ neighbors with probability $1/(d(v)+1)$; local winners (solid green) never share an edge because neither endpoint of an edge can precede the other.</p>
+</div>
+<p>The bound is <em>tight</em> for disjoint unions of cliques (Exercise 8): each clique $K_{n_i}$ has $n_i$ vertices of degree $n_i - 1$, contributing $n_i \cdot \frac{1}{n_i} = 1$ to the sum, so $\sum_{v \in V} \frac{1}{d(v)+1}$ counts the cliques and equals $\alpha(G)$ exactly. Moreover, for general graphs with $n$ vertices and $m$ edges, one application of the Cauchy–Schwarz inequality turns Caro–Wei into a global bound in terms of average degree alone. Pairing the positive quantities $\sqrt{d(v)+1}$ and $\frac{1}{\sqrt{d(v)+1}}$ across all $v \in V$, Cauchy–Schwarz gives</p>
+<p>$$n^2 = \left(\sum_{v \in V} 1\right)^2 = \left(\sum_{v \in V} \sqrt{d(v)+1} \cdot \frac{1}{\sqrt{d(v)+1}}\right)^2 \le \left(\sum_{v \in V} (d(v) + 1)\right)\left(\sum_{v \in V} \frac{1}{d(v) + 1}\right).$$</p>
+<p>By the handshake lemma, $\sum_{v \in V} (d(v) + 1) = \sum_{v \in V} d(v) + n = 2m + n$. Dividing through by $2m + n > 0$ yields</p>
+<p>$$\alpha(G) \ge \sum_{v \in V} \frac{1}{d(v) + 1} \ge \frac{n^2}{2m + n} = \frac{n}{\bar{d} + 1},$$</p>
+<p>where $\bar{d} = 2m/n$ is the average degree, with equality in the Cauchy–Schwarz step if and only if $d(v)$ is constant (i.e., $G$ is regular). Sparse graphs must contain large independent sets — the quantitative form of "density costs you a certificate of structurelessness."</p>
+<p><strong>What you now own:</strong> the random-ordering experiment and local winners (P12/P10); the honest reflex for tightness (ask <em>when does equality hold</em>); convexity as the standard second squeeze. The Caro–Wei bound will do honest work again in Exercise 6, where it turns a local observation (triangle-free) into a global one ($\alpha(\alpha+1) \ge n$).</p>
+<hr>
+<h2>Lecture 4 · When the Average Is Not Enough: the Union Bound</h2>
+<p>Lectures 1–3 proved objects <em>at least as good as an average</em> exist. But the questions that made Ramsey theory famous have a different shape: does an object exist with <strong>none</strong> of a long list of bad features? No monochromatic $K_k$ anywhere. No undominated pair anywhere. "At least one bad thing happens" must be shown <strong>impossible</strong>, so we need $\mathbb{P}(\text{no bad thing}) > 0$. The tool costs one line and is the workhorse of the subject — the <strong>union bound</strong> (pattern <strong>P13</strong>):</p>
+<p>$$\mathbb{P}(A_1 \cup A_2 \cup \dots \cup A_r) \le \mathbb{P}(A_1) + \mathbb{P}(A_2) + \dots + \mathbb{P}(A_r).$$</p>
+<p>If the bad-event probabilities <strong>sum below $1$</strong>, then with positive probability <em>no</em> bad event occurs — and an event of positive probability, in a finite probability space, has a witness. $\blacksquare$</p>
+<h3>4.1 Ramsey numbers, from the dice's side</h3>
+<p>Chapter 3 proved $R(k,k)$ — the smallest $n$ such that every red/blue coloring of $K_n$ contains a monochromatic $K_k$ — is at most about $4^k$. From the other side: <strong>$R(k,k)$ is at least exponential in $k$</strong>, and the proof is two coin flips deep. Color each edge of $K_n$ red/blue independently, fairly. A fixed $k$-set $S$ has all its $\binom{k}{2}$ internal edges monochromatic with probability $2\cdot 2^{-\binom{k}{2}} = 2^{1-\binom{k}{2}}$ (all red, or all blue). Union bound over the $\binom{n}{k}$ choices of $S$:</p>
+<p>$$\mathbb{P}(\text{some monochromatic } K_k) \le \binom{n}{k} \cdot 2^{1-\binom{k}{2}}.$$</p>
+<p>If $\binom{n}{k} \cdot 2^{1-\binom{k}{2}} < 1$, some coloring of $K_n$ has no monochromatic $K_k$ — so $R(k,k) > n$. We need no computer assistance to prove the clean exponential bound for all $k \ge 3$ at once. Set $n = \lfloor 2^{k/2} \rfloor$, so $n \le 2^{k/2}$. Using the elementary upper bound $\binom{n}{k} = \frac{n(n-1)\cdots(n-k+1)}{k!} < \frac{n^k}{k!}$ (valid for all $n \ge k \ge 2$), we have</p>
+<p>$$\binom{n}{k} 2^{1-\binom{k}{2}} < \frac{n^k}{k!} \cdot 2^{1 - \frac{k(k-1)}{2}} \le \frac{(2^{k/2})^k}{k!} \cdot 2^{1 - \frac{k^2}{2} + \frac{k}{2}} = \frac{2^{1 + k/2}}{k!}.$$</p>
+<p>For $k = 3$, $\frac{2^{1 + 3/2}}{3!} = \frac{4\sqrt{2}}{6} = \frac{2\sqrt{2}}{3} < 1$ (since $(2\sqrt{2})^2 = 8 < 9 = 3^2$). For every $k \ge 3$, incrementing $k \mapsto k+1$ multiplies the numerator by $\sqrt{2}$ and the denominator by $k+1 \ge 4 > \sqrt{2}$, so the ratio $\frac{2^{1+k/2}}{k!}$ is strictly decreasing and remains strictly less than $1$ for all $k \ge 3$. Consequently, $\binom{n}{k} 2^{1-\binom{k}{2}} < 1$ holds at $n = \lfloor 2^{k/2} \rfloor$, proving</p>
+<p>$$R(k,k) > \lfloor 2^{k/2} \rfloor \quad \text{for all } k \ge 3. \ \blacksquare$$</p>
+<p>Honesty first, because this chapter deals in honesty: the method is <em>weak when $k$ is small</em>, and you should see exactly how weak. The union bound's certified frontier, computed exactly: for $k = 3$ it certifies only $R(3,3) > 3$ (the truth, from Chapter 3, is $6$); for $k = 4$, $R(4,4) > 6$ (truth: $18$); for $k = 5$, $> 11$; $k = 6$, $> 17$; $k = 7$, $> 27$. The asymptotic engine only warms up as $k$ grows — but warm up it does, exponentially, and no construction is known that gets anywhere near it.</p>
+<p><strong>✎ Checkpoint.</strong> Check $k = 3, n = 5$ by hand: $\binom{5}{3}\cdot 2^{1-3} = 10/4 = 2.5$. Predict what this means about the union bound's ability to certify $R(3,3) > 5$ — then notice how lucky Lecture 1 was that $m/2$ needed no such slack.</p>
+<h3>4.2 The same move, two more costumes</h3>
+<p><strong>Property B (hypergraph $2$-coloring).</strong> Call a $k$-uniform hypergraph (every edge a $k$-set of vertices) <em>$2$-colorable</em> if vertices can be red/blue'd so that no edge is monochromatic. Random coloring: a fixed edge is mono with probability $2^{1-k}$; union bound: <strong>if $m < 2^{k-1}$ edges, the hypergraph is $2$-colorable.</strong> $\blacksquare$ One line. The frontier of this claim — what happens at and beyond $2^{k-1}$ edges — is Exploration X2's territory, and the Fano plane (Exercise 13) is the smallest famous casualty: $7$ edges, not colorable.</p>
+<p><strong>Property $S(k)$ (unbeatable tournaments).</strong> A tournament has property <strong>$S(k)$</strong> if every set of $k$ players is <em>jointly beaten</em> — for each $k$-set, some single player beat all $k$ of them. Random tournament again. Fix a $k$-set $V$. One outside player $w$ fails to dominate $V$ with probability $1 - 2^{-k}$; the $n - k$ outside players flip disjoint pairs of games, so independently:</p>
+<p>$$\mathbb{P}(V \text{ is undominated}) = (1 - 2^{-k})^{n-k}.$$</p>
+<p>Union bound over the $\binom{n}{k}$ sets: <strong>if $\binom{n}{k}\cdot(1 - 2^{-k})^{n-k} < 1$, a tournament with $S(k)$ exists.</strong> The product first grows with $n$, then decays exponentially; the first dip below $1$ is the certification. Machine-checked exactly: for $k = 2$ it happens at $n = \mathbf{21}$; for $k = 3$, at $n = \mathbf{91}$. The scale — roughly $k^2\cdot 2^k$ players — crushes every known explicit construction, and (Exercise 12 sends you there) the certified answer for $k = 2$ is wildly far from the truth. The method proves existence the way a flood proves the valley is downhill of the rain.</p>
+<h3>4.3 Bad events that barely talk: the Lovász Local Lemma</h3>
+<p>The union bound has a blind spot worth naming. If the bad events were fully independent, their probabilities would not need to sum below $1$ at all: $\mathbb{P}(\text{no bad event}) = \prod(1-p_i) > 0$ however many events there are, as long as each is avoidable on its own. The union bound charges every event as if it overlapped all the others; the truth usually sits between. The <strong>Lovász Local Lemma</strong> (1975) interpolates honestly:</p>
+<p><strong>Symmetric Lovász Local Lemma (Erdős–Lovász, 1975).</strong> Let $A_1, \dots, A_m$ be events in a probability space. Suppose that for each $i \in \{1, \dots, m\}$, $\mathbb{P}(A_i) \le p$, and there exists a dependency neighborhood $\Gamma(i) \subseteq \{1, \dots, m\} \setminus \{i\}$ of size $\lvert \Gamma(i) \rvert \le d$ such that $A_i$ is <strong>mutually independent</strong> of the collection of events $\{A_j : j \notin \Gamma(i) \cup \{i\}\}$. If</p>
+<p>$$e \cdot p \cdot (d + 1) \le 1,$$</p>
+<p>then $\mathbb{P}\!\left(\bigcap_{i=1}^m \overline{A_i}\right) > 0$.</p>
+<p><em>Proof.</em> If $d = 0$, the events $A_1, \dots, A_m$ are mutually independent; since $p \le 1/e < 1$, we have $\mathbb{P}\!\left(\bigcap_{i=1}^m \overline{A_i}\right) = \prod_{i=1}^m (1 - \mathbb{P}(A_i)) \ge (1 - p)^m > 0$. Assume henceforth that $d \ge 1$, and set $\gamma = \frac{1}{d+1} \in (0, 1/2]$. Note that $p \le \frac{1}{e(d+1)} = \frac{\gamma}{e}$. We prove by induction on $\lvert S \rvert \in \{0, 1, \dots, m-1\}$ that for every subset $S \subseteq \{1, \dots, m\}$ and every $i \notin S$,</p>
+<p>$$\mathbb{P}\!\left(A_i \;\middle|\; \bigcap_{j \in S} \overline{A_j}\right) \le \gamma \quad \text{and} \quad \mathbb{P}\!\left(\bigcap_{j \in S} \overline{A_j}\right) > 0.$$</p>
+<p>For the base case $\lvert S \rvert = 0$, the conditioning event is the full space, and $\mathbb{P}(A_i) \le p \le \frac{\gamma}{e} < \gamma$. For the inductive step, fix $S$ with $\lvert S \rvert \ge 1$ and $i \notin S$, assuming the claim holds for all strictly smaller subsets $S'$ with $\lvert S' \rvert < \lvert S \rvert$. Ordering $S = \{j_1, \dots, j_s\}$, the chain rule together with the induction hypothesis on proper prefixes gives</p>
+<p>$$\mathbb{P}\!\left(\bigcap_{j \in S} \overline{A_j}\right) = \prod_{r=1}^s \left(1 - \mathbb{P}\!\left(A_{j_r} \;\middle|\; \bigcap_{t=1}^{r-1} \overline{A_{j_t}}\right)\right) \ge (1 - \gamma)^s > 0,$$</p>
+<p>so the conditional probability given $\bigcap_{j \in S} \overline{A_j}$ is well-defined. Now partition $S$ into $S_1 = S \cap \Gamma(i)$ and $S_2 = S \setminus \Gamma(i)$. Note that $\lvert S_1 \rvert \le \lvert \Gamma(i) \rvert \le d$. By definition of conditional probability,</p>
+<p>$$\mathbb{P}\!\left(A_i \;\middle|\; \bigcap_{j \in S} \overline{A_j}\right) = \frac{\mathbb{P}\!\left(A_i \cap \bigcap_{j \in S_1} \overline{A_j} \;\middle|\; \bigcap_{k \in S_2} \overline{A_k}\right)}{\mathbb{P}\!\left(\bigcap_{j \in S_1} \overline{A_j} \;\middle|\; \bigcap_{k \in S_2} \overline{A_k}\right)}.$$</p>
+<p>Bound the numerator above by dropping $\bigcap_{j \in S_1} \overline{A_j}$: since $A_i$ is mutually independent of $\{A_k : k \in S_2\}$, the numerator is at most $\mathbb{P}\!\left(A_i \mid \bigcap_{k \in S_2} \overline{A_k}\right) = \mathbb{P}(A_i) \le p$. For the denominator, if $S_1 = \emptyset$ it equals $1 = (1 - \gamma)^0$; if $S_1 = \{u_1, \dots, u_r\}$ with $1 \le r \le d$, then for each $1 \le \ell \le r$ the conditioning set $\{u_1, \dots, u_{\ell-1}\} \cup S_2$ has size $\ell - 1 + \lvert S_2 \rvert < r + \lvert S_2 \rvert = \lvert S \rvert$, so the induction hypothesis gives $\mathbb{P}\!\left(A_{u_\ell} \mid \bigcap_{t=1}^{\ell-1} \overline{A_{u_t}} \cap \bigcap_{k \in S_2} \overline{A_k}\right) \le \gamma$. Hence the denominator satisfies</p>
+<p>$$\mathbb{P}\!\left(\bigcap_{j \in S_1} \overline{A_j} \;\middle|\; \bigcap_{k \in S_2} \overline{A_k}\right) = \prod_{\ell=1}^r \left(1 - \mathbb{P}\!\left(A_{u_\ell} \;\middle|\; \bigcap_{t=1}^{\ell-1} \overline{A_{u_t}} \cap \bigcap_{k \in S_2} \overline{A_k}\right)\right) \ge (1 - \gamma)^r \ge (1 - \gamma)^d.$$</p>
+<p>Using the elementary inequality $1 - \frac{1}{d+1} = \left(1 + \frac{1}{d}\right)^{-1} \implies \left(1 - \frac{1}{d+1}\right)^d = \left(1 + \frac{1}{d}\right)^{-d} > e^{-1}$ (since $\left(1 + \frac{1}{d}\right)^d < e$ for all $d \ge 1$), we obtain</p>
+<p>$$\mathbb{P}\!\left(A_i \;\middle|\; \bigcap_{j \in S} \overline{A_j}\right) \le \frac{p}{(1 - \gamma)^d} = \frac{p}{\left(1 - \frac{1}{d+1}\right)^d} < p \cdot e \le \frac{1}{d+1} = \gamma,$$</p>
+<p>completing the induction. Finally, applying the chain rule to all $m$ events gives $\mathbb{P}\!\left(\bigcap_{i=1}^m \overline{A_i}\right) \ge (1 - \gamma)^m = \left(\frac{d}{d+1}\right)^m > 0$. $\blacksquare$</p>
+<p><strong>Ramsey, revisited.</strong> Take the bad events of Section 4.1: for each $k$-subset $S \subseteq V(K_n)$, let $A_S$ be the event that $S$ is monochromatic, so $\mathbb{P}(A_S) = p = 2^{1-\binom{k}{2}}$. Because the $\binom{n}{2}$ edge coins are mutually independent and $A_S$ is determined solely by the $\binom{k}{2}$ edges inside $\binom{S}{2}$, the <strong>Mutual Independence Principle</strong> guarantees that $A_S$ is mutually independent of the entire collection of events $\{A_T : \lvert S \cap T \rvert \le 1\}$, since $\binom{S}{2} \cap \bigcup_{\lvert S \cap T \rvert \le 1} \binom{T}{2} = \emptyset$. Thus the dependency neighborhood $\Gamma(S) = \{T \neq S : \lvert S \cap T \rvert \ge 2\}$ has size $d$, where</p>
+<p>$$d + 1 = \sum_{i=2}^k \binom{k}{i}\binom{n-k}{k-i}.$$</p>
+<p>Let us extract the exact asymptotic threshold of $e \cdot p \cdot (d+1) \le 1$ for $n = c \cdot k \cdot 2^{k/2}$ as $k \to \infty$. For consecutive terms in the sum, the ratio is</p>
+<p>$$\frac{\binom{k}{i+1}\binom{n-k}{k-i-1}}{\binom{k}{i}\binom{n-k}{k-i}} = \frac{(k-i)^2}{(i+1)(n - 2k + i + 1)} \le \frac{k^2}{3(n - 2k + 3)} = O\!\left(k \cdot 2^{-k/2}\right) \to 0.$$</p>
+<p>Thus the $i = 2$ term dominates the entire sum up to a factor of $1 + O(k 2^{-k/2})$ (and in finite terms, the $i = 2$ summand already exceeds the $i = 3$ summand as soon as $3(n - 2k + 3) \ge (k-2)^2$, i.e., $n \ge 2k - 3 + \lceil (k-2)^2/3 \rceil \approx k^2/3$ — not $3k$: at $n = 3k$ the $i = 3$ term still leads for every $k \ge 8$, and an exact tie is possible at the threshold when $k \equiv 2 \pmod 3$ — machine-verified for $k = 4..15$), and the $+1$ is $S$ itself, hiding in the $i = k$ term (the identity is brute-force-confirmed at $(k, n)$ up to $(5, 12)$). Moreover, since $k^2 / n = O(k 2^{-k/2}) \to 0$, we have $\binom{n-k}{k-2} = (1 + O(k^2/n))\binom{n}{k-2}$ and $\binom{n}{k-2} = \frac{k(k-1)}{(n-k+2)(n-k+1)}\binom{n}{k} = (1 + O(k/n))\frac{k^2}{n^2}\binom{n}{k}$. By Stirling's formula $\binom{n}{k} = (1 + o(1))\frac{1}{\sqrt{2\pi k}}\left(\frac{en}{k}\right)^k$, we obtain</p>
+<p>$$d + 1 = (1 + o(1))\binom{k}{2}\binom{n}{k-2} = (1 + o(1))\frac{k^4}{2n^2 \sqrt{2\pi k}}\left(\frac{en}{k}\right)^k.$$</p>
+<p>Substituting $n = c \cdot k \cdot 2^{k/2}$ (so $n^2 = c^2 k^2 2^k$ and $(en/k)^k = (ec)^k 2^{k^2/2}$) and multiplying by $e \cdot p = 2e \cdot 2^{-k^2/2 + k/2}$ gives</p>
+<p>$$e \cdot p \cdot (d + 1) = (1 + o(1)) \cdot 2e \cdot 2^{-\frac{k^2}{2} + \frac{k}{2}} \cdot \frac{k^4}{2 c^2 k^2 2^k \sqrt{2\pi k}} \cdot (ec)^k 2^{\frac{k^2}{2}} = (1 + o(1)) \frac{e}{c^2 \sqrt{2\pi}} k^{3/2} \left(\frac{ec}{\sqrt{2}}\right)^k.$$</p>
+<p>For any fixed $c < \frac{\sqrt{2}}{e}$, the exponential base satisfies $\frac{ec}{\sqrt{2}} < 1$ and crushes the polynomial prefactor $k^{3/2}$ for all large $k$, yielding Spencer's theorem (1975):</p>
+<p>$$R(k,k) > \left(\frac{\sqrt{2}}{e} - o(1)\right) k \cdot 2^{k/2}. \ \blacksquare$$</p>
+<p>— still the best asymptotic lower bound known for diagonal Ramsey numbers. The constants now form a ladder, each method worth exactly one factor of $\sqrt{2}$ over the last:</p>
+<table><tr><th>method</th><th>constant on $k\cdot 2^{k/2}$</th></tr><tr><td>union bound (Erdős 1947)</td><td>$1/(e\sqrt{2}) \approx 0.260$</td></tr><tr><td>alteration (Lecture 5)</td><td>$1/e \approx 0.368$</td></tr><tr><td>Local Lemma (Spencer 1975)</td><td>$\sqrt{2}/e \approx 0.520$</td></tr></table>
+<p>And the honest small print, machine-checked by exact integer comparison: at small $k$ the Local Lemma certifies <em>less</em> than the methods it beats asymptotically —</p>
+<table><tr><th>$k$</th><th>union bound certifies</th><th>alteration certifies</th><th>Local Lemma certifies</th></tr><tr><td>$4$</td><td>$R > 6$</td><td>$R > 6$</td><td>$R > 5$</td></tr><tr><td>$5$</td><td>$R > 11$</td><td>$R > 11$</td><td>$R > 9$</td></tr><tr><td>$6$</td><td>$R > 17$</td><td>$R > 18$</td><td>$R > 15$</td></tr><tr><td>$7$</td><td>$R > 27$</td><td>$R > 29$</td><td>$R > 25$</td></tr></table>
+<p>The asymptotic aristocrat is the small-$k$ pauper — the chapter's honesty tax, levied one more time. The $-o(1)$ in the statement is load-bearing: it absorbs a $\Theta(\ln k/k)$ correction whose leading coefficient must exceed $3/2$. Specifically, setting $c = (\sqrt{2}/e)(1 - \alpha \ln k / k)$ yields $e \cdot p \cdot (d+1) \sim \frac{e^3}{2\sqrt{2\pi}} k^{3/2 - \alpha}$: thus $\alpha = 2$ decays as $k^{-1/2}$ and certifies for every $k \ge 15$, whereas $\alpha = 1$ grows as $k^{1/2}$ and fails for every $k \ge 4$ (diverging to $+\infty$ as $k \to \infty$ — the slack is real work, not decoration).</p>
+<p><strong>Property B, locally.</strong> Lecture 4.2 certified $k$-uniform hypergraphs with $m < 2^{k-1}$ edges — a <em>global</em> budget. The lemma buys a <em>local</em> one. Bad events $A_E =$ "edge $E$ is monochromatic", $p = 2^{1-k}$; $A_E$ is mutually independent of all events on vertex sets disjoint from $E$, so its conferring partners are precisely the edges meeting $E$. The condition $e\cdot p\cdot(d+1) \le 1$ reads $d \le \lfloor 2^{k-1}/e \rfloor - 1$:</p>
+<p><strong>If every edge of a $k$-uniform hypergraph meets at most $\lfloor 2^{k-1}/e \rfloor - 1$ others, the hypergraph is $2$-colorable.</strong></p>
+<p>Disjoint edges are now free: a hypergraph may have any number of edges, however far $m$ runs past $2^{k-1}$, as long as each edge lives in a sparse neighborhood. The budgets, machine-checked: $k = 3 \to 0$, $k = 4 \to 1$, $k = 5 \to 4$, $k = 6 \to 10$, $k = 7 \to 22$, $k = 8 \to 46$. The Fano plane (each line meeting $6$ others against a budget of $0$) is correctly <em>not</em> certified — it is the smallest genuine casualty, Exercise 13's. And a detector sweep on the enumerable scale: every $3$-uniform hypergraph on $6$ vertices with pairwise disjoint edges (all $30$ of them) and every $4$-uniform one on $6$ vertices with each edge meeting at most one other (all $120$) is $2$-colorable — at this scale no counterexample to the constant exists to be found; the sweep is a guard on the arithmetic, which is exactly what it is for.</p>
+<p><strong>What you now own:</strong> the union bound as the standard "avoid all bad events" template (P13); the Ramsey lower bound and its honest small-$k$ weakness; two costumes of the same move (hypergraphs, tournaments); the Local Lemma as the honest interpolation between full independence and the union bound's worst case — and the calibrated expectation that a clean certification may sit far from the truth.</p>
+<hr>
+<h2>Lecture 5 · Build, Then Prune: Alteration</h2>
+<p>One flaw runs through Lectures 1–4: the random object only <em>avoids</em> bad features when the union bound squeezes below $1$, and it often won't. Erdős's repair is pattern <strong>P14</strong>, <strong>alteration</strong>: let the random object have its bad features, then <strong>delete them</strong>. The random coloring of $K_n$ has some monochromatic $K_k$'s? Fine — delete one vertex from each. What survives is smaller but clean, and smaller-but-clean is often far better than nothing.</p>
+<p>Set it up. Color $K_n$ randomly; let $X$ be the number of monochromatic $K_k$'s; Lecture 4 computed $\mathbb{E}[X] = \binom{n}{k}\cdot 2^{1-\binom{k}{2}}$. Now delete, from each monochromatic $K_k$, one of its vertices. The survivors contain no monochromatic $K_k$ (any survivor clique would have been on the deletion list, and each listed clique lost a vertex), and at most one vertex was deleted per bad clique — so at least $n - X$ vertices survive. Expectation again: since the number of surviving vertices $s$ in any coloring is an integer, <strong>some outcome leaves at least $s \ge \left\lceil n - \binom{n}{k}\cdot 2^{1-\binom{k}{2}} \right\rceil$ survivors</strong>, and since a survivor graph on $s$ vertices with no monochromatic $K_k$ is a certificate that $R(k,k) > s$:</p>
+<p>$$R(k,k) > \left\lceil n - \binom{n}{k}\cdot 2^{1-\binom{k}{2}} \right\rceil \quad \text{— for every integer } n \ge 1. \ \blacksquare$$</p>
+<div class="fig">
+  <svg viewBox="0 0 680 235" width="680" height="235" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Alteration method: deleting one vertex per monochromatic clique leaves a clean survivor graph">
+    <defs>
+      <marker id="arrow-prune" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+        <path d="M 0 1 L 8 5 L 0 9 z" fill="#dc2626"/>
+      </marker>
+    </defs>
+
+    <!-- Left Panel: Random Coloring with X = 1 Bad Triangle -->
+    <rect x="15" y="12" width="275" height="198" rx="6" fill="#fafafa" stroke="#d4d4d4"/>
+    <text x="152" y="32" text-anchor="middle" font-family="Georgia, serif" font-size="12.5" font-weight="bold" fill="#1a1a1a">1. Random Coloring (X = 1 bad K₃ on {v₁, v₂, v₃})</text>
+
+    <!-- Non-bad edges on {v1..v6} -->
+    <line x1="90" y1="115" x2="185" y2="62" stroke="#2563eb" stroke-width="1.6"/>
+    <line x1="90" y1="162" x2="185" y2="168" stroke="#2563eb" stroke-width="1.6"/>
+    <line x1="185" y1="62" x2="242" y2="115" stroke="#dc2626" stroke-width="1.6"/>
+    <line x1="242" y1="115" x2="185" y2="168" stroke="#2563eb" stroke-width="1.6"/>
+    <line x1="185" y1="62" x2="185" y2="168" stroke="#2563eb" stroke-width="1.6"/>
+    <line x1="52" y1="62" x2="185" y2="62" stroke="#2563eb" stroke-width="1.6"/>
+
+    <!-- Monochromatic Red Triangle {v1, v2, v3} -->
+    <line x1="52" y1="62" x2="90" y2="115" stroke="#dc2626" stroke-width="2.8"/>
+    <line x1="90" y1="115" x2="90" y2="162" stroke="#dc2626" stroke-width="2.8"/>
+    <line x1="52" y1="62" x2="90" y2="162" stroke="#dc2626" stroke-width="2.8"/>
+
+    <!-- Vertices (fixed local coordinates) -->
+    <circle cx="52" cy="62" r="13" fill="#fee2e2" stroke="#dc2626" stroke-width="2.4"/>
+    <text x="52" y="66" text-anchor="middle" font-family="Georgia, serif" font-size="11.5" font-weight="bold" fill="#991b1b">v₁</text>
+
+    <circle cx="90" cy="115" r="13" fill="#fee2e2" stroke="#dc2626" stroke-width="2"/>
+    <text x="90" y="119" text-anchor="middle" font-family="Georgia, serif" font-size="11.5" fill="#1a1a1a">v₂</text>
+
+    <circle cx="90" cy="162" r="13" fill="#fee2e2" stroke="#dc2626" stroke-width="2"/>
+    <text x="90" y="166" text-anchor="middle" font-family="Georgia, serif" font-size="11.5" fill="#1a1a1a">v₃</text>
+
+    <circle cx="185" cy="62" r="13" fill="#f3f4f6" stroke="#4b5563" stroke-width="2"/>
+    <text x="185" y="66" text-anchor="middle" font-family="Georgia, serif" font-size="11.5" fill="#1a1a1a">v₄</text>
+
+    <circle cx="242" cy="115" r="13" fill="#f3f4f6" stroke="#4b5563" stroke-width="2"/>
+    <text x="242" y="119" text-anchor="middle" font-family="Georgia, serif" font-size="11.5" fill="#1a1a1a">v₅</text>
+
+    <circle cx="185" cy="168" r="13" fill="#f3f4f6" stroke="#4b5563" stroke-width="2"/>
+    <text x="185" y="172" text-anchor="middle" font-family="Georgia, serif" font-size="11.5" fill="#1a1a1a">v₆</text>
+
+    <text x="152" y="198" text-anchor="middle" font-family="Georgia, serif" font-size="11.5" fill="#333">n = 6 vertices, X = 1 monochromatic K₃</text>
+
+    <!-- Center Transition Arrow -->
+    <line x1="302" y1="112" x2="378" y2="112" stroke="#dc2626" stroke-width="2.2" marker-end="url(#arrow-prune)"/>
+    <text x="340" y="96" text-anchor="middle" font-family="Georgia, serif" font-size="11.5" font-weight="bold" fill="#dc2626">Prune v₁</text>
+    <text x="340" y="130" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#4b5563">s ≥ n − X</text>
+
+    <!-- Right Panel: Pruned Survivor Graph (exact +375px translation) -->
+    <rect x="390" y="12" width="275" height="198" rx="6" fill="#fafafa" stroke="#d4d4d4"/>
+    <text x="527" y="32" text-anchor="middle" font-family="Georgia, serif" font-size="12.5" font-weight="bold" fill="#1a1a1a">2. Pruned Graph (v₁ deleted, 0 bad K₃'s)</text>
+
+    <!-- Deleted edges incident to v1 (dashed gray/red) -->
+    <line x1="427" y1="62" x2="465" y2="115" stroke="#9ca3af" stroke-width="1.5" stroke-dasharray="4,3"/>
+    <line x1="427" y1="62" x2="465" y2="162" stroke="#9ca3af" stroke-width="1.5" stroke-dasharray="4,3"/>
+    <line x1="427" y1="62" x2="560" y2="62" stroke="#9ca3af" stroke-width="1.5" stroke-dasharray="4,3"/>
+
+    <!-- Surviving edges -->
+    <line x1="465" y1="115" x2="465" y2="162" stroke="#dc2626" stroke-width="2.2"/>
+    <line x1="465" y1="115" x2="560" y2="62" stroke="#2563eb" stroke-width="1.6"/>
+    <line x1="465" y1="162" x2="560" y2="168" stroke="#2563eb" stroke-width="1.6"/>
+    <line x1="560" y1="62" x2="617" y2="115" stroke="#dc2626" stroke-width="1.6"/>
+    <line x1="617" y1="115" x2="560" y2="168" stroke="#2563eb" stroke-width="1.6"/>
+    <line x1="560" y1="62" x2="560" y2="168" stroke="#2563eb" stroke-width="1.6"/>
+
+    <!-- Deleted vertex v1 (dashed state) -->
+    <circle cx="427" cy="62" r="13" fill="#f9fafb" stroke="#9ca3af" stroke-width="1.8" stroke-dasharray="4,3"/>
+    <text x="427" y="66" text-anchor="middle" font-family="Georgia, serif" font-size="11.5" fill="#9ca3af">v₁</text>
+
+    <!-- Surviving vertices {v2..v6} -->
+    <circle cx="465" cy="115" r="13" fill="#dcfce7" stroke="#15803d" stroke-width="2"/>
+    <text x="465" y="119" text-anchor="middle" font-family="Georgia, serif" font-size="11.5" fill="#1a1a1a">v₂</text>
+
+    <circle cx="465" cy="162" r="13" fill="#dcfce7" stroke="#15803d" stroke-width="2"/>
+    <text x="465" y="166" text-anchor="middle" font-family="Georgia, serif" font-size="11.5" fill="#1a1a1a">v₃</text>
+
+    <circle cx="560" cy="62" r="13" fill="#dcfce7" stroke="#15803d" stroke-width="2"/>
+    <text x="560" y="66" text-anchor="middle" font-family="Georgia, serif" font-size="11.5" fill="#1a1a1a">v₄</text>
+
+    <circle cx="617" cy="115" r="13" fill="#dcfce7" stroke="#15803d" stroke-width="2"/>
+    <text x="617" y="119" text-anchor="middle" font-family="Georgia, serif" font-size="11.5" fill="#1a1a1a">v₅</text>
+
+    <circle cx="560" cy="168" r="13" fill="#dcfce7" stroke="#15803d" stroke-width="2"/>
+    <text x="560" y="172" text-anchor="middle" font-family="Georgia, serif" font-size="11.5" fill="#1a1a1a">v₆</text>
+
+    <text x="527" y="198" text-anchor="middle" font-family="Georgia, serif" font-size="11.5" fill="#333">s = n − X = 5 clean survivors certify R(k,k) &gt; s</text>
+  </svg>
+  <p><em>Figure 4.4.</em> Pattern P14 (Alteration): instead of requiring $X = 0$ monochromatic $K_k$'s, delete one vertex (dashed $v_1$) from each bad $K_k$. At least $s \ge \lceil n - \mathbb{E}[X] \rceil$ vertices survive with zero monochromatic $K_k$'s.</p>
+</div>
+<p>Now the fun: choose $n$ to make the right side big, which the plain union bound never allowed (it needed its product <em>below</em> $1$; alteration only needs the damage to be smaller than the head start). Machine-checked, exactly, by rational arithmetic:</p>
+<table><tr><th>$k$</th><th>best $n$</th><th>expected damage $\binom{n}{k}\cdot 2^{1-\binom{k}{2}}$</th><th>survivors $\ge$</th><th>certified</th><th>plain bound certified</th></tr><tr><td>$5$</td><td>$13$</td><td>$1287/512 \approx 2.51$</td><td>$10.49$</td><td>$R(5,5) > 11$</td><td>$R(5,5) > 11$</td></tr><tr><td>$6$</td><td>$21$</td><td>$54264/16384 \approx 3.31$</td><td>$17.69$</td><td><strong>$R(6,6) > 18$</strong></td><td>$R(6,6) > 17$</td></tr><tr><td>$7$</td><td>$33$</td><td>$4272048/1048576 \approx 4.07$</td><td>$28.93$</td><td><strong>$R(7,7) > 29$</strong></td><td>$R(7,7) > 27$</td></tr></table>
+<p><strong>✎ Checkpoint.</strong> Before reading the table: $k = 5$ gave the plain bound $R(5,5) > 11$. Predict whether alteration beats it there. Then look — and take the lesson: alteration gains a <em>factor that grows with $k$</em>, but at $k = 5$ the pruning damage eats exactly the head start. The method's profit is asymptotic, and honesty about small cases is the tax on this whole chapter.</p>
+<h3>The asymptotics, in full</h3>
+<p>Both asymptotic constants follow rigorously from Stirling's inequality $k! \ge \sqrt{2\pi k}\left(\frac{k}{e}\right)^k$. Write $n = c \cdot k \cdot 2^{k/2}$ for a constant $c > 0$. Using $\binom{n}{k} \le \frac{n^k}{k!} \le \frac{1}{\sqrt{2\pi k}}\left(\frac{en}{k}\right)^k$ (which is asymptotically tight since $\binom{n}{k} = (1 - O(k^2/n))\frac{n^k}{k!}$), the expected number of monochromatic $K_k$'s in a random $2$-coloring of $K_n$ satisfies</p>
+<p>$$\mathbb{E}[X] = \binom{n}{k} 2^{1 - \binom{k}{2}} \le \frac{1}{\sqrt{2\pi k}} \left(\frac{e \cdot c \cdot k \cdot 2^{k/2}}{k}\right)^k \cdot 2 \cdot 2^{-\frac{k(k-1)}{2}} = \frac{2}{\sqrt{2\pi k}} (ec)^k 2^{\frac{k^2}{2} - \frac{k^2}{2} + \frac{k}{2}} = \frac{2(ec\sqrt{2})^k}{\sqrt{2\pi k}}.$$</p>
+<p>One formula now answers both questions:</p>
+<ol>
+<li><strong>The union bound</strong> requires $\mathbb{E}[X] < 1$. From the upper bound above, this holds whenever $(ec\sqrt{2})^k < \frac{\sqrt{2\pi k}}{2}$. For any fixed $c \le \frac{1}{e\sqrt{2}}$ (and $k \ge 2$, where $\frac{\sqrt{2\pi k}}{2} > 1$), we have $(ec\sqrt{2})^k \le 1 < \frac{\sqrt{2\pi k}}{2}$, whereas for any fixed $c > \frac{1}{e\sqrt{2}}$, the asymptotic equivalence $\mathbb{E}[X] \sim \frac{2(ec\sqrt{2})^k}{\sqrt{2\pi k}} \to \infty$ causes the union bound to fail for all large $k$. Thus the union bound certifies
+$$R(k,k) > \left(\frac{1}{e\sqrt{2}} - o(1)\right) k \cdot 2^{k/2}.$$</li>
+<li><strong>Alteration</strong> requires only $\mathbb{E}[X] = o(n)$ so that the surviving vertex count $n - \mathbb{E}[X] = n(1 - \mathbb{E}[X]/n)$ retains a $1 - o(1)$ fraction of $n$. Dividing our upper bound for $\mathbb{E}[X]$ by $n = c \cdot k \cdot 2^{k/2}$ cancels the $2^{k/2}$ factor inside $(ec\sqrt{2})^k = (ec)^k 2^{k/2}$ against the $2^{k/2}$ in $n$:
+$$\frac{\mathbb{E}[X]}{n} \le \frac{2(ec)^k 2^{k/2}}{\sqrt{2\pi k} \cdot c \cdot k \cdot 2^{k/2}} = \frac{2(ec)^k}{c\sqrt{2\pi} \cdot k^{3/2}}.$$
+Whenever $ec \le 1$ (i.e., $c \le 1/e$), we have $(ec)^k \le 1$ and therefore $\frac{\mathbb{E}[X]}{n} = O(k^{-3/2}) \to 0$ as $k \to \infty$ (in fact, setting $c = 1/e$ directly gives $n - \mathbb{E}[X] = \frac{k}{e}2^{k/2}\left(1 - O(k^{-3/2})\right)$). Conversely, for any fixed $c > 1/e$, $\frac{\mathbb{E}[X]}{n} \sim \frac{2(ec)^k}{c\sqrt{2\pi}k^{3/2}} \to +\infty$. Thus alteration certifies
+$$R(k,k) > \left(\frac{1}{e} - o(1)\right) k \cdot 2^{k/2}. \ \blacksquare$$</li>
+</ol>
+<p>The ratio of the constants is exactly $\sqrt{2}$ — the asymptotic shadow of the tie, $+1$, $+2$ you read off the table above. And the machine (exact integer arithmetic at $k = 10, 15, 20, 25, 30$) sees precisely the two regimes the derivation predicts: at $c = 0.9/e$ the exact $\mathbb{E}[X]/n$ falls monotonically from $1.6\%$ to $0.06\%$, while at $c = 1.5/e$ it explodes from $2.0$ to $1{,}681$ — the boundary $ec = 1$ is real, and nothing happens on the wrong side of it. The union bound's own boundary is just as sharp, and just as slow to arrive: at $20\%$ above $1/(e\sqrt{2})$ the product already exceeds $1$ by $k = 15$; at $5\%$ above, it stays below $1$ through $k = 40$ and crosses only by $k = 45$. The closer $c$ sits to the constant, the longer the certification holds — but above the constant it always dies. That is what the $-o(1)$ is for.</p>
+<h3>The same race, run without dice: greedy joins the table</h3>
+<p>One player is missing from the comparisons so far: a <em>deterministic constructor</em>. Lecture 1 derandomized the max-cut coin flips; the Ramsey union bound derandomizes the same way — pattern <strong>P18</strong>, second appearance. Color the <strong>edges</strong> of $K_n$ one at a time. After some edges are colored, each $k$-clique $S$ contributes its conditional probability of ending up monochromatic: $2^{1-\binom{k}{2}}$ while none of its edges is colored, $(1/2)^{\binom{k}{2}-f}$ once $f$ of them are colored and all share one color, and $0$ from the moment two colors appear among $S$'s colored edges — that clique can never be monochromatic again. Call the total $E_{\text{so\_far}}$. For the next edge $e$, let $D_c$ be the change in $E_{\text{so\_far}}$ if $e$ gets color $c$. Cliques not containing $e$ contribute to neither; each clique containing $e$ splits its old contribution so that the two futures average out: <strong>$D_{\text{red}} + D_{\text{blue}} = 0$</strong> — the same telescoping as Lecture 1's two coordinate expectations. So one of the two colors has $D_c \le 0$, and greedy takes it: the conditional expectation never rises. When the last edge is colored, $E_{\text{so\_far}}$ <em>is</em> the count of monochromatic $k$-cliques. <strong>Whenever the union bound certifies — $\mathbb{E}[X] < 1$ — greedy constructs a clean coloring of the same $K_n$, deterministically.</strong> The dice were only ever a proof device; the constructor needs no appeal to probability at run time.</p>
+<p>The guarantee column below is therefore exactly the union bound's column — derandomization costs nothing here. The <em>observed</em> reach of the constructor is another matter, and it is the table's most honest lesson:</p>
+<table><tr><th>$k$</th><th>random certifies (union bound, Lecture 4)</th><th>greedy guarantees (derandomized)</th><th>greedy observed (scanned to first failure)</th><th>altered certifies (this lecture)</th><th>Local Lemma certifies (§4.3)</th></tr><tr><td>$4$</td><td>$> 6$</td><td>$> 6$</td><td>$> 10$</td><td>$> 6$</td><td>$> 5$</td></tr><tr><td>$5$</td><td>$> 11$</td><td>$> 11$</td><td>$> 22$</td><td>$> 11$</td><td>$> 9$</td></tr><tr><td>$6$</td><td>$> 17$</td><td>$> 17$</td><td>$> 26$ (scan cap)</td><td>$> 18$</td><td>$> 15$</td></tr><tr><td>$7$</td><td>$> 27$</td><td>$> 27$</td><td>—</td><td>$> 29$</td><td>$> 25$</td></tr><tr><td>$8$</td><td>$> 42$</td><td>$> 42$</td><td>—</td><td>$> 47$</td><td>$> 41$</td></tr></table>
+<p>The observed column is one implementation — edges in lexicographic order, ties broken to red — run upward in $n$ until its first failure (at $k = 4$ it fails at $n = 11$; at $k = 5$ it fails at $n = 23$; at $k = 6$ no failure was found up to the scan's cap; $k = 7$–$8$ not scanned). Read three lessons off the table. <strong>Greedy's guarantee inherits the union bound exactly</strong> — that is the derandomization theorem, and the runs confirm it: at every frontier $n$ the conditional expectation started below $1$, never rose, and finished at zero. <strong>The observed constructor outruns every analytic certificate at $k = 5, 6$</strong> — the scan's clean coloring of $K_{22}$ at $k = 5$ is itself a constructive proof that $R(5,5) > 22$, double this chapter's best certified bound — while at $k = 4$ the same constructor stops at $10$, far short of the true $17$. Neither direction is promised: the observed reach is a fact about one implementation, discovered by running it, and the guarantee column is all the method warrants in general. <strong>Analysis and search are different sports</strong> — the certified bounds grow like $k\cdot 2^{k/2}$ because that is what we can prove in general; a constructor's reach at a fixed small $k$ is a measurement. The probabilistic method's philosophy in one sentence: <em>the dice prove existence, the derandomized dice construct it, and neither pretends to be the fastest way to find it</em> (computer searches in the literature reach far beyond any column here — record-hunting is a different game than certifying).</p>
+<p><strong>What you now own:</strong> alteration (P14) — random object, then prune; the deletion inequality for Ramsey; the reflex of <em>optimizing the head start $n$ against the expected damage</em>; the full asymptotic derivation — one Stirling formula, two thresholds ($ec\sqrt{2} = 1$ for the union bound, $ec = 1$ for alteration), and the technique every later Ramsey lower bound descends from; the calibrated expectation that a method's small cases may tie or lose while its asymptotics win; and the derandomized Ramsey (P18) — greedy inherits the union bound's certificate as a construction, while its observed reach runs on a track no guarantee covers.</p>
+<hr>
+<h2>Lecture 6 · The Second Moment: When the Average Must Concentrate</h2>
+<p>Every result so far lived on the first moment — $\mathbb{E}[X]$ small enough (union bound), or $\mathbb{E}[X]$ large somewhere (averaging), or $\mathbb{E}[X] = o(n)$ (alteration). Here is a question none of those can answer. In $G(n,p)$ — $n$ vertices, each of the $\binom{n}{2}$ possible edges present independently with probability $p$ — let $X$ be the number of triangles. $\mathbb{E}[X] = \binom{n}{3}p^3$. If $\mathbb{E}[X] \to \infty$, must a triangle <em>actually appear</em>? The first moment is deaf to this: a huge average can be run up by rare freak outcomes, with $X = 0$ in the typical case. To conclude that $X > 0$ <em>typically</em>, you must show the distribution concentrates — and concentration is a statement about the second moment.</p>
+<p><strong>The engine (Paley–Zygmund, worn as Chebyshev).</strong> For any nonnegative random variable $X$ with $0 < \mathbb{E}[X^2] < \infty$,</p>
+<p>$$\mathbb{P}(X > 0) \ge \frac{\mathbb{E}[X]^2}{\mathbb{E}[X^2]}.$$</p>
+<p>Proof: $\mathbb{E}[X] = \mathbb{E}[X\cdot \mathbf{1}_{X>0}] \le \sqrt{\mathbb{E}[X^2]\cdot \mathbb{E}[\mathbf{1}_{X>0}^2]} = \sqrt{\mathbb{E}[X^2]\cdot \mathbb{P}(X>0)}$ — Cauchy–Schwarz on the two random variables $X$ and $\mathbf{1}_{X>0}$ — then square. $\blacksquare$ The working costume is Chebyshev: $\mathbb{P}(X = 0) \le \mathbb{P}(\lvert X - \mathbb{E}[X] \rvert \ge \mathbb{E}[X]) \le \operatorname{Var}(X)/\mathbb{E}[X]^2$, so <strong>$\operatorname{Var}(X) = o(\mathbb{E}[X]^2)$ forces $X > 0$ almost surely</strong> ("almost surely" = with probability tending to $1$ as $n$ grows). Sanity, on a full census: at $n = 6, p = 1/2$, all $32{,}768$ graphs enumerated give $\mathbb{E}[X] = 5/2, \mathbb{E}[X^2] = 45/4$, so the engine promises $\mathbb{P}(\text{triangle exists}) \ge (25/4)/(45/4) = 5/9 \approx 0.556$; the exact count is $26{,}979/32{,}768 \approx 0.823$. The bound is soft, as bounds at $n = 6$ should be — but it is a bound.</p>
+<p><strong>Application: the triangle threshold.</strong> Let $X = \sum_{S \in \binom{V}{3}} X_S$ be the number of triangles in $G(n,p)$, where $X_S$ is the indicator that all three edges of the $3$-element vertex set $S$ are present. Clearly $\mathbb{E}[X] = \binom{n}{3}p^3$. To compute $\operatorname{Var}(X) = \mathbb{E}[X^2] - \mathbb{E}[X]^2 = \sum_{(S,T)} \left(\mathbb{E}[X_S X_T] - \mathbb{E}[X_S]\mathbb{E}[X_T]\right)$, classify the ordered pairs $(S, T)$ of $3$-subsets by the size of their vertex intersection $\lvert S \cap T \rvert$:</p>
+<ul>
+<li><strong>$\lvert S \cap T \rvert \le 1$:</strong> The two triples share at most one vertex and therefore <strong>zero edges</strong>, so their $6$ edges are distinct and mutually independent: $\mathbb{E}[X_S X_T] = p^6 = \mathbb{E}[X_S]\mathbb{E}[X_T]$, contributing $0$ to $\operatorname{Var}(X)$.</li>
+<li><strong>$\lvert S \cap T \rvert = 3$ ($T = S$):</strong> There are $\binom{n}{3}$ such pairs; $S \cup T$ spans $3$ edges, so $\mathbb{E}[X_S^2] - \mathbb{E}[X_S]^2 = p^3 - p^6$.</li>
+<li><strong>$\lvert S \cap T \rvert = 2$:</strong> To form $T$ from a fixed $S$, choose $2$ of the $3$ vertices of $S$ ($\binom{3}{2} = 3$ ways) and $1$ of the $n - 3$ vertices outside $S$ ($n - 3$ ways), giving $3(n-3)\binom{n}{3}$ ordered pairs $(S,T)$. Their union $S \cup T$ has $4$ vertices and $3 + 3 - 1 = 5$ distinct edges (sharing the single edge on $S \cap T$), so $\mathbb{E}[X_S X_T] - \mathbb{E}[X_S]\mathbb{E}[X_T] = p^5 - p^6$.</li>
+</ul>
+<p>Summing these contributions gives the exact identity</p>
+<p>$$\operatorname{Var}(X) = \binom{n}{3}(p^3 - p^6) + 3(n-3)\binom{n}{3}(p^5 - p^6)$$</p>
+<p>— machine-verified to the last integer: at $n = 4, 5, 6$ and $p = 1/2$ and $1/4$, full enumeration of all $2^{\binom{n}{2}}$ graphs matches $\mathbb{E}[X]$ and $\mathbb{E}[X^2]$ exactly, and Paley–Zygmund holds on every one of those exact distributions. Now divide by $\mathbb{E}[X]^2 = \binom{n}{3}^2 p^6$, valid for all $n \ge 3$ and $p \in (0, 1]$:</p>
+<p>$$\frac{\operatorname{Var}(X)}{\mathbb{E}[X]^2} = \frac{1 - p^3}{\binom{n}{3}p^3} + \frac{3(n-3)(1 - p)}{\binom{n}{3}p} \le \frac{1}{\binom{n}{3}p^3} + \frac{3(n-3)}{\binom{n}{3}p}.$$</p>
+<p>Since $\binom{n}{3} = \frac{n(n-1)(n-2)}{6} = \frac{n^3}{6}(1 - O(1/n))$, substituting $t = np$ yields</p>
+<p>$$\frac{\operatorname{Var}(X)}{\mathbb{E}[X]^2} \le (1 + o(1))\left(\frac{6}{(np)^3} + \frac{18(n-3)}{n^3 p}\right) \le (1 + o(1))\left(\frac{6}{t^3} + \frac{18}{n^2 p}\right).$$</p>
+<p>Whenever $t = np \to \infty$, we have $n^2 p = n \cdot t \ge t \to \infty$, so both $6/t^3 \to 0$ and $18/(n^2 p) \to 0$, forcing $\operatorname{Var}(X)/\mathbb{E}[X]^2 \to 0$ (and larger $p$ only shrinks the relative variance $\operatorname{Var}(X)/\mathbb{E}[X]^2$ further, since $p^{-3}-1$ and $p^{-1}-1$ are strictly decreasing on $(0,1]$). By Chebyshev's inequality, $\mathbb{P}(X = 0) \le \operatorname{Var}(X)/\mathbb{E}[X]^2 \to 0$, so almost every graph in $G(n,p)$ contains a triangle when $np \to \infty$. Conversely, when $np \to 0$, Markov's first-moment inequality gives $\mathbb{P}(X \ge 1) \le \mathbb{E}[X] = \binom{n}{3}p^3 \le \frac{(np)^3}{6} \to 0$, so almost no graph contains a triangle. Between the two regimes sits the answer, sharp:</p>
+<p><strong>The threshold for the appearance of a triangle in $G(n,p)$ is $p = 1/n$.</strong> $\blacksquare$</p>
+<p>First moment below, second moment above: a complete sharp-threshold argument, the kind random-graph theory runs on.</p>
+<div class="fig">
+  <svg viewBox="0 0 680 205" width="680" height="205" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Three overlap cases for pairs of triangles (S, T) in G(n,p): |S cap T| = 3, 2, and at most 1">
+    <!-- Panel 1: |S cap T| = 3 -->
+    <rect x="12" y="12" width="208" height="178" rx="6" fill="#fafafa" stroke="#d4d4d4"/>
+    <text x="116" y="32" text-anchor="middle" font-family="Georgia, serif" font-size="12" font-weight="bold" fill="#1a1a1a">Case 1: |S ∩ T| = 3 (T = S)</text>
+
+    <line x1="116" y1="62" x2="72" y2="132" stroke="#1d4ed8" stroke-width="2.6"/>
+    <line x1="72" y1="132" x2="160" y2="132" stroke="#1d4ed8" stroke-width="2.6"/>
+    <line x1="160" y1="132" x2="116" y2="62" stroke="#1d4ed8" stroke-width="2.6"/>
+
+    <circle cx="116" cy="62" r="11" fill="#dbeafe" stroke="#1d4ed8" stroke-width="2"/>
+    <circle cx="72" cy="132" r="11" fill="#dbeafe" stroke="#1d4ed8" stroke-width="2"/>
+    <circle cx="160" cy="132" r="11" fill="#dbeafe" stroke="#1d4ed8" stroke-width="2"/>
+
+    <text x="116" y="160" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#333">3 edges in S ∪ T</text>
+    <text x="116" y="177" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#1d4ed8">Cov(X_S, X_T) = p³ − p⁶</text>
+
+    <!-- Panel 2: |S cap T| = 2 -->
+    <rect x="236" y="12" width="208" height="178" rx="6" fill="#fafafa" stroke="#d4d4d4"/>
+    <text x="340" y="32" text-anchor="middle" font-family="Georgia, serif" font-size="12" font-weight="bold" fill="#1a1a1a">Case 2: |S ∩ T| = 2 (1 shared edge)</text>
+
+    <!-- Left triangle S: (272,97), (340,60), (340,134) -->
+    <line x1="272" y1="97" x2="340" y2="60" stroke="#4b5563" stroke-width="2"/>
+    <line x1="272" y1="97" x2="340" y2="134" stroke="#4b5563" stroke-width="2"/>
+    <!-- Right triangle T: (408,97), (340,60), (340,134) -->
+    <line x1="408" y1="97" x2="340" y2="60" stroke="#4b5563" stroke-width="2"/>
+    <line x1="408" y1="97" x2="340" y2="134" stroke="#4b5563" stroke-width="2"/>
+    <!-- Shared spine edge -->
+    <line x1="340" y1="60" x2="340" y2="134" stroke="#dc2626" stroke-width="3.2"/>
+
+    <circle cx="272" cy="97" r="11" fill="#f3f4f6" stroke="#4b5563" stroke-width="2"/>
+    <circle cx="408" cy="97" r="11" fill="#f3f4f6" stroke="#4b5563" stroke-width="2"/>
+    <circle cx="340" cy="60" r="11" fill="#fee2e2" stroke="#dc2626" stroke-width="2"/>
+    <circle cx="340" cy="134" r="11" fill="#fee2e2" stroke="#dc2626" stroke-width="2"/>
+
+    <text x="340" y="160" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#333">5 edges in S ∪ T (3(n−3)C(n,3) pairs)</text>
+    <text x="340" y="177" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#dc2626">Cov(X_S, X_T) = p⁵ − p⁶</text>
+
+    <!-- Panel 3: |S cap T| <= 1 -->
+    <rect x="460" y="12" width="208" height="178" rx="6" fill="#fafafa" stroke="#d4d4d4"/>
+    <text x="564" y="32" text-anchor="middle" font-family="Georgia, serif" font-size="12" font-weight="bold" fill="#1a1a1a">Case 3: |S ∩ T| ≤ 1 (0 shared edges)</text>
+
+    <!-- Left triangle S: (502,66), (502,128), (564,97) -->
+    <line x1="502" y1="66" x2="502" y2="128" stroke="#15803d" stroke-width="2"/>
+    <line x1="502" y1="66" x2="564" y2="97" stroke="#15803d" stroke-width="2"/>
+    <line x1="502" y1="128" x2="564" y2="97" stroke="#15803d" stroke-width="2"/>
+    <!-- Right triangle T: (626,66), (626,128), (564,97) -->
+    <line x1="626" y1="66" x2="626" y2="128" stroke="#15803d" stroke-width="2"/>
+    <line x1="626" y1="66" x2="564" y2="97" stroke="#15803d" stroke-width="2"/>
+    <line x1="626" y1="128" x2="564" y2="97" stroke="#15803d" stroke-width="2"/>
+
+    <circle cx="502" cy="66" r="10" fill="#dcfce7" stroke="#15803d" stroke-width="1.8"/>
+    <circle cx="502" cy="128" r="10" fill="#dcfce7" stroke="#15803d" stroke-width="1.8"/>
+    <circle cx="626" cy="66" r="10" fill="#dcfce7" stroke="#15803d" stroke-width="1.8"/>
+    <circle cx="626" cy="128" r="10" fill="#dcfce7" stroke="#15803d" stroke-width="1.8"/>
+    <circle cx="564" cy="97" r="10" fill="#dcfce7" stroke="#15803d" stroke-width="1.8"/>
+
+    <text x="564" y="160" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#333">6 edge-disjoint coins in S ∪ T</text>
+    <text x="564" y="177" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#15803d">Cov(X_S, X_T) = p⁶ − p⁶ = 0</text>
+  </svg>
+  <p><em>Figure 4.5.</em> Splitting $\operatorname{Var}(X) = \sum_{(S,T)} \operatorname{Cov}(X_S, X_T)$ by vertex overlap $\lvert S \cap T \rvert$. Even when $S$ and $T$ share a vertex ($\lvert S \cap T \rvert = 1$, right), they share zero edges, so their indicators are independent and contribute $0$ to $\operatorname{Var}(X)$.</p>
+</div>
+<p><strong>✎ Checkpoint.</strong> At exactly $p = 1/n$: $\mathbb{E}[X] \to 1/6$, a constant. Predict $\mathbb{P}(\text{no triangle})$ as $n \to \infty$ — does it tend to $0$, to $1$, or to something in between? Neither moment can decide a boundary this fine; the truth (flagged, not proved here) is the Poisson limit: the triangle count tends to a $\text{Poisson}(1/6)$ variable, so $\mathbb{P}(\text{no triangle}) \to e^{-1/6} \approx 0.846$. The average alone never tells you where the mass sits — that is the whole point of this lecture.</p>
+<p><strong>Corollary: random graphs are hard to color.</strong> Exercise 5's union bound, read asymptotically, says almost every graph in $G(n, 1/2)$ has $\alpha \le 2\log_2 n$ — the product it bounds tends to $0$ as $n$ grows (machine-checked trend: $10^{-4}, 10^{-10}, 10^{-25}, 10^{-42}$ at $n = 16, 100, 10^4, 10^6$). Now count color classes: a proper coloring with $r$ colors partitions the $n$ vertices into $r$ independent sets, each of size at most $\alpha$, so $n \le r\cdot \alpha$:</p>
+<p>$$\chi(G(n,1/2)) \ge \frac{n}{2\log_2 n} \quad \text{for almost every graph} \text{ — Erdős's classical lower bound.}$$</p>
+<p>The matching upper bound — almost every graph is colorable with $(1+o(1))\cdot n/(2\log_2 n)$ colors — is Bollobás's celebrated 1988 theorem, and it is honestly beyond this chapter: the lower bound is a first-moment count; the upper bound needs a greedy coloring plus a sharp second-moment analysis of the independent-set count. Together they pin the chromatic number of a random graph to within a factor of $1+o(1)$ — while of Lecture 4's honesty it remains true that we cannot write a single one of these graphs down.</p>
+<p><strong>What you now own:</strong> the second-moment engine — Cauchy–Schwarz's $\mathbb{P}(X>0) \ge \mathbb{E}[X]^2/\mathbb{E}[X^2]$, worn as Chebyshev's $\operatorname{Var} = o(\mathbb{E}^2)$; the threshold reflex (first moment kills one side, second moment the other); the triangle threshold $p = 1/n$ with its honestly flagged Poisson boundary; and the chromatic corollary, lower bound proved, sharp form flagged as a flag should be.</p>
+<hr>
+<h2>The Trick Bag (reference card)</h2>
+<table><tr><th>Pattern</th><th>Plain language</th><th>Where you met it</th></tr><tr><td><strong>P10 Averaging / expectation</strong></td><td>A random variable cannot always sit below its average; some object beats the mean. Its functional-analysis face, <strong>graphical Brascamp–Lieb</strong>: assign every edge of the host graph a two-variable function and iterate $L^p$ duality and Hölder — the convexity engine that carries whole proofs the way the average carries this chapter (Sah–Sawhney–Stoner–Zhao's reverse Sidorenko inequality, Inventiones 2020)</td><td>Lectures 1, 2, 3, 5, 6</td></tr><tr><td><strong>P12 Random construction</strong></td><td>Prove existence by designing an experiment: coin flips, random tournaments, random orderings, random colorings</td><td>All lectures</td></tr><tr><td><strong>P13 Union bound</strong></td><td>If the bad-event probabilities sum below $1$, an object avoiding all of them exists</td><td>Lecture 4 (refined by the Local Lemma, §4.3)</td></tr><tr><td><strong>P14 Alteration</strong></td><td>Let the random object be imperfect; delete the damage; count survivors</td><td>Lecture 5</td></tr><tr><td><strong>P18 Algorithmic proof</strong></td><td>Derandomize: the greedy local-flip procedure's termination <em>is</em> the theorem; the conditional-expectation walk inherits the union bound</td><td>Lectures 1, 5</td></tr></table>
+<p><strong>Formula box:</strong> $\text{cut} \ge m/2$ (every graph; connected graphs: $\ge m/2 + (n-1)/4$ — Edwards–Erdős, Exercise 10). Szele: some tournament has $\ge n!/2^{n-1}$ directed Hamiltonian paths. Caro–Wei: $\alpha \ge \sum \frac{1}{d(v)+1} \ge \frac{n^2}{2m+n}$. Union bound Ramsey: $\binom{n}{k}\cdot 2^{1-\binom{k}{2}} < 1 \implies R(k,k) > n$; clean form $R(k,k) > \lfloor 2^{k/2} \rfloor$ ($k \ge 3$). Alteration: $R(k,k) > \left\lceil n - \binom{n}{k}\cdot 2^{1-\binom{k}{2}} \right\rceil$; asymptotics $R(k,k) > \left(\frac{1}{e\sqrt{2}} - o(1)\right)k\cdot 2^{k/2}$ (union bound) and $R(k,k) > \left(\frac{1}{e} - o(1)\right)k\cdot 2^{k/2}$ (alteration) — constants ladder $\frac{1}{e\sqrt{2}} < \frac{1}{e} < \frac{\sqrt{2}}{e}$. Property B: $m < 2^{k-1}$ edges $\implies 2$-colorable; locally: each edge meeting $\le \lfloor 2^{k-1}/e \rfloor - 1$ others $\implies 2$-colorable. Property $S(k)$: $\binom{n}{k}(1-2^{-k})^{n-k} < 1 \implies S(k)$ tournament exists ($k = 2: n = 21$; $k = 3: n = 91$). Local Lemma (symmetric): $e\cdot p\cdot(d+1) \le 1$ with $p = 2^{1-\binom{k}{2}}, d+1 = \sum_{i\ge 2}\binom{k}{i}\binom{n-k}{k-i} \approx \binom{k}{2}\binom{n}{k-2} \implies R(k,k) > \left(\frac{\sqrt{2}}{e} - o(1)\right)k\cdot 2^{k/2}$ (Spencer 1975 — best known). Second moment: $\mathbb{P}(X>0) \ge \mathbb{E}[X]^2/\mathbb{E}[X^2]$; triangles in $G(n,p)$: $\operatorname{Var}(X)/\mathbb{E}[X]^2 \approx \frac{6}{(np)^3} + \frac{18}{n^2 p} \to 0 \iff np \to \infty$ — threshold $p = 1/n$; $\chi(G(n,1/2)) \ge \frac{n}{2\log_2 n}$ for almost every graph (Bollobás 1988: equality up to $1+o(1)$, flagged).</p>
+<hr>
+<h2>Exercises (graded: ●○○ easy · ●●○ moderate · ●●● tough)</h2>
+<p><em>Hints are here; worked answers are at the end of the chapter. Try first.</em></p>
+<p><strong>Easy — one idea, applied directly</strong></p>
+<ol><li>(●○○) Redo Lecture 1 with explicit indicator variables: $X = \sum_e X_e$ with $X_e = 1$ iff edge $e$ is crossed. <em>Hint: P10 — compute $\mathbb{E}[X_e]$ and appeal to linearity; no independence needed. Then locate the dependence honestly: check on a triangle which indicator pairs are independent, and which joint pattern is impossible.</em></li><li>(●○○) Prove that every $k$-uniform hypergraph with $m < 2^{k-1}$ edges is $2$-colorable. <em>Hint: P13 — this is Lecture 4.2's property B, in your hands; check a fixed edge's mono probability.</em></li><li>(●○○) Prove that every $3$-uniform hypergraph with $m$ edges admits a vertex $2$-coloring with at most $m/4$ monochromatic edges. <em>Hint: P12 + P10 — a fixed edge is monochromatic with probability $1/4$.</em></li><li>(●○○) Prove that some tournament on $n$ vertices has at least $\binom{n}{3}/4$ <em>cyclic</em> triples (three players each beating the next round the triangle). Note the transitive tournament has $0$ — the point of the exercise is that the crowded extreme exists anyway. <em>Hint: P12 + P10 — for a fixed triple, count the cyclic orientations out of the $8$.</em></li></ol>
+<p><strong>Moderate — two ideas, or one tricky step</strong></p>
+<ol start="5"><li>(●●○) Prove that for every $n \ge 2$ (and for almost every graph as $n \to \infty$), some $n$-vertex graph has both $\alpha(G) \le 2\log_2 n$ and $\omega(G) \le 2\log_2 n$. <em>Hint: P13 — random graph $G(n, 1/2)$; union-bound over $k$-sets that are cliques OR independent sets, with $k = \lceil 2\log_2 n \rceil$; the two colors are symmetric.</em></li><li>(●●○) Prove that every triangle-free graph satisfies $\alpha(\alpha+1) \ge n$. <em>Hint: P10 + Lecture 3 — what is the neighborhood of a vertex, in a triangle-free graph? Careful: $d(v) \le \alpha$, NOT $\alpha - 1$; then apply Caro–Wei.</em></li><li>(●●○) Prove that for every $n \ge 3$, some tournament on $n$ vertices has at least $(n-1)!/2^n$ directed Hamiltonian <em>cycles</em>. <em>Hint: P12 + P10 — count undirected Hamiltonian cycles first ($(n-1)!/2$ of them); each survives as a directed cycle with probability $2^{1-n}$; mind both cyclic directions.</em></li><li>(●●○) Show that Caro–Wei is tight: if $G$ is a disjoint union of cliques, then $\alpha(G) = \sum \frac{1}{d(v)+1}$ exactly. <em>Hint: compute both sides per clique; then check tightness on examples — equality, not just closeness.</em></li></ol>
+<p><strong>Tough — several chapter ideas combined</strong></p>
+<ol start="9"><li>(●●○) Prove that every graph with $m \ge n/2$ edges has an independent set of size at least $n^2/(4m)$. <em>Hint: P14 alteration — pick a random vertex subset (each vertex with probability $p$), then delete one endpoint of every surviving internal edge; choose $p = n/(2m)$ and explain why the hypothesis $m \ge n/2$ is genuinely needed.</em></li><li>(●●●) <strong>The Edwards–Erdős bound.</strong> Prove that every <em>connected</em> graph has a cut of size at least <strong>$m/2 + (n-1)/4$</strong> — and first refute, with two examples — $K_3$ and $K_5$ — the tempting-but-false claim that every graph has a cut of at least $m/2 + \sqrt{m/8}$. <em>Hint: P10/P18-style induction on $n$ — three moves: split at a cut vertex; remove a non-cut vertex of odd degree; and when all degrees are even, remove two adjacent vertices $u,v$ with $G - \{u,v\}$ still connected, placing them back in the order that pays a rounding bonus. The third move needs a small existence lemma about $2$-connected graphs — proved in full in the answer; this is the chapter's most demanding exercise. (The historical truth: the $\sqrt{m/8}$ claim is a garbled memory of Edwards' theorem for arbitrary graphs, which really does hold — see the answer.)</em></li><li>(●●●) Compute, by exact arithmetic, the best alteration bound of Lecture 5 for $k = 5, 6, 7$: for each $k$, find the $n$ maximizing $n - \binom{n}{k}\cdot 2^{1-\binom{k}{2}}$, and state the certified $R(k,k)$ lower bound. Report where alteration beats the plain union bound and where it merely ties. <em>Hint: P14 — rational arithmetic, not floats; compare with Lecture 4's certified frontier.</em></li><li>(●●●) For property $S(k)$, find by exact computation the smallest $n$ the union bound certifies, for $k = 2$ and $k = 3$ — and compare each with the scale $k^2\cdot 2^k$. <em>Hint: P13 — $\binom{n}{k}(1-2^{-k})^{n-k} < 1$; the product rises, then decays; the first dip below $1$ is your answer.</em></li></ol>
+<p><strong>Pattern unknown — you choose the tool</strong> <em>The graded set above tells you which lecture idea to reach for — research and exams do not. No hints here, and no difficulty rating either: diagnosing the problem is part of the problem. Worked answers still wait at the end.</em></p>
+<ol start="13"><li>(◆) The <strong>Fano plane</strong>: seven points and seven $3$-point lines, every two points on exactly one line, every two lines meeting in exactly one point. Show that no matter how you color its seven points red and blue, some line is monochromatic.</li><li>(◆) Prove that every set $A$ of $n$ nonzero integers contains a <strong>sum-free</strong> subset larger than $n/3$ — a subset $S$ with no solution of $x + y = z$ inside $S$. <em>(Erdős, 1965 — the proof fits in this chapter's toolbox.)</em></li><li>(◆) Vectors $v_1, \dots, v_r$ in the plane satisfy $\sum \lvert v_i \rvert^2 = 1$. Show that signs $\varepsilon_i \in \{\pm 1\}$ exist with $\left\lvert \sum \varepsilon_i v_i \right\rvert \le 1$.</li></ol>
+<p><strong>Graded backfill — five more, each hint naming its pattern</strong></p>
+<ol start="16"><li>(●○○) <strong>How rare is order?</strong> A tournament is <em>transitive</em> if its players can be ranked so that everyone beats everyone below them. Compute the probability that a random tournament on $n$ vertices is transitive, and conclude that for large $n$ almost every tournament contains a cyclic triple (Exercise 4's engine, from the other side). <em>Hint: P12 — count the favorable tournaments (each ranking forces every one of the $\binom{n}{2}$ games), then divide by the $2^{\binom{n}{2}}$ equally likely tournaments.</em></li><li>(●○○) <strong>Expected fixed points.</strong> In a uniformly random arrangement of $n$ letters into $n$ envelopes (Chapter 1's derangement world, but now with luck allowed), compute the expected number of letters that land home — for <strong>every</strong> $n$ at once. <em>Hint: P10's linearity — $X = \sum X_i$ with $X_i$ the indicator that letter $i$ is home; $\mathbb{E}[X_i]$ is one honest number each.</em></li><li>(●●○) <strong>Chebyshev's first outing.</strong> In a uniform random vertex bipartition of $K_n$ (Lecture 1's coin-flip cut experiment), let $X = \sum_{e \in E(K_n)} X_e$ be the number of crossed edges. Compute $\mathbb{E}[X]$ and $\operatorname{Var}(X)$, and conclude that $\mathbb{P}(\lvert X - \binom{n}{2}/2 \rvert < n) \ge 7/8$ for every $n \ge 1$. Why does $\operatorname{Var}(X)$ equal the variance of the total edge count in $G(n, 1/2)$ even though the two distributions are completely different? <em>Hint: P10 — in the random cut, the edge-crossing indicators are not mutually independent, but Lecture 2's pairwise-independence lesson is all that $\operatorname{Var}(X) = \sum \operatorname{Var}(X_e)$ needs; then apply Chebyshev's inequality.</em></li><li>(●●○) <strong>Tournament kings.</strong> A <em>king</em> of a tournament is a player who, for every opponent $u$, either beat $u$ directly or beat someone who beat $u$ (two steps or fewer). Prove that every tournament has a king — in fact, that <strong>every player of maximum out-degree is a king.</strong> <em>Hint: P8 — take the winningest player $v$; if some $u$ dodges $v$ and all of $v$'s victims, count $u$'s wins honestly and catch the contradiction (P2's degree-sum spirit).</em></li><li>(●●●) <strong>Dominating sets by alteration.</strong> A <em>dominating set</em> is a set $D$ of vertices such that every vertex outside $D$ has a neighbor inside $D$. Prove that every graph on $n$ vertices with minimum degree $\delta$ has a dominating set of at most <strong>$n(1 + \ln(\delta+1))/(\delta+1)$</strong> vertices. <em>Hint: P14, exactly as Lecture 5 runs: pick each vertex independently with probability $p = \ln(\delta+1)/(\delta+1)$, let $U$ be the uncovered vertices, and repair — how big is $\mathbb{E}[\lvert\text{chosen}\rvert + \lvert U\rvert]$? The bound $(1-p)^{\delta+1} \le e^{-p(\delta+1)}$ does the last step.</em></li></ol>
+<p><strong>Explorations — ◐ research-style training</strong> <em>No single right answer — what you should find is described in each. These train the habit research actually runs on: changing the problem.</em></p>
+<p>X1. (◐) <strong>When certificates lie.</strong> Lecture 4 certifies an $S(2)$ tournament exists on $21$ vertices. The truth is dramatically smaller: search all tournaments on $n \le 6$ vertices ($2^{15}$ of them at $n = 6$ — a one-liner) and you will find <strong>none</strong> with $S(2)$; so the truth is somewhere in $7..20$. Find the true minimum, then interrogate the winner: it is not a random-looking object at all — it has arithmetic structure (investigate tournaments built from the quadratic residues modulo a prime $p \equiv 3 \pmod 4$). Then meditate on the gap: a certificate of $21$ against a truth of single digits — and ask how the gap behaves for $k = 3$, where the certificate says $91$.</p>
+<p>X2. (◐) <strong>The property-B frontier.</strong> Exercise 2 shows $m < 2^{k-1}$ edges always allow a $2$-coloring, and Exercise 13 exhibits a $3$-uniform $7$-edge non-colorable hypergraph — so the frontier for $k = 3$ sits between $4$ and $7$ edges, and the general minimum $m(3)$ is a known hard theorem (it is $7$, achieved only by the Fano plane). Build the frontier ladder yourself: for $n = 4, 5, 6$ vertices, search by increasing edge count for the smallest non-$2$-colorable $3$-uniform hypergraph. You should find that four vertices admit nothing at all, and — the discovery — that the minimum for $n = 5$ and $n = 6$ coincides: edge-minimal obstructions are cramped, not sprawling. Then push to $n = 7$ and meet the Fano plane from the machine's side.</p>
+<hr>
+<h2>Computational Lab (verified)</h2>
+<h3>Part 1 — Derandomized cuts and a variance lesson</h3>
+<p>The chapter's two pillars — derandomized cuts and Monte-Carlo existence — executed and verified (2026-10-09, reference edition; carried over unchanged, comments normalized to plain ASCII):</p>
+<pre>import random
+
+def max_cut_by_flips(n, p, rng=None):            # Lecture 1.1: local-flip derandomization
+    if n &lt; 2:
+        return 0, 0
+    r = rng if rng is not None else random
+    adj = {v: set() for v in range(n)}
+    m = 0
+    for i in range(n):
+        for j in range(i + 1, n):
+            if r.random() &lt; p:
+                adj[i].add(j)
+                adj[j].add(i)
+                m += 1
+    if m == 0:
+        return 0, 0
+    side = [r.random() &lt; 0.5 for _ in range(n)]
+    improved = True
+    while improved:
+        improved = False
+        for v in range(n):
+            same = sum(1 for u in adj[v] if side[u] == side[v])
+            if same &gt; len(adj[v]) - same:
+                side[v] = not side[v]
+                improved = True
+    cut = sum(1 for i in range(n) for j in adj[i] if i &lt; j and side[i] != side[j])
+    return m, cut
+
+def k5_ramsey_exact_and_mc(trials=200, seed=19): # Side-experiment: K_5 monochromatic K_3's
+    edges = [(i, j) for i in range(5) for j in range(i + 1, 5)]
+    triangles = [(i, j, k) for i in range(5) for j in range(i + 1, 5) for k in range(j + 1, 5)]
+    edge_idx = {e: idx for idx, e in enumerate(edges)}
+    tri_masks = [
+        (1 &lt;&lt; edge_idx[(i, j)]) | (1 &lt;&lt; edge_idx[(i, k)]) | (1 &lt;&lt; edge_idx[(j, k)])
+        for (i, j, k) in triangles
+    ]
+    exact_survivors = sum(
+        1 for bits in range(1 &lt;&lt; 10)
+        if not any((bits &amp; mask) == 0 or (bits &amp; mask) == mask for mask in tri_masks)
+    )
+    rng = random.Random(seed)
+    mc_survivors = sum(
+        1 for _ in range(trials)
+        if not any(
+            (bits &amp; mask) == 0 or (bits &amp; mask) == mask
+            for bits in [rng.getrandbits(10)]
+            for mask in tri_masks
+        )
+    )
+    return exact_survivors, 1 &lt;&lt; 10, mc_survivors, trials
+
+for _ in range(6):
+    m, cut = max_cut_by_flips(12, 0.5)
+    assert cut &gt;= m / 2                          # never lands below m/2
+
+exact_surv, total_col, mc_surv, trials = k5_ramsey_exact_and_mc()
+assert (exact_surv, total_col) == (12, 1024)     # exact: 12 / 1024 = 0.01171875</pre>
+<p><strong>Verified output:</strong> $6$ random graphs ($n = 12, p = 0.5$): $m = 30, 29, 36, 30, 32, 32$ and $\text{cut} = 22, 22, 24, 24, 25, 21$ — <strong>zero violations</strong> of $\text{cut} \ge m/2$, with ratios $1.31$–$1.60$ (local flips typically beat the expectation bound by a wide margin). Recorded side-experiment: Monte-Carlo on $K_5$ — $200$ random red/blue edge colorings $\to 1$ survivor (a coloring with no monochromatic triangle) $\approx 0.005$ vs the exact $12/1024 \approx 0.0117$ — a <strong>variance lesson</strong>: for events near $1\%$, small samples are noisy; validate estimators on computable cases before trusting them elsewhere.</p>
+<p><strong>What to explore:</strong> test the Edwards–Erdős improvement of Exercise 10 ($\text{cut} \ge m/2 + (n-1)/4$ on <em>connected</em> graphs — check a few hundred random connected graphs and record how often equality is approached; odd complete graphs and windmills achieve it exactly); estimate $\mathbb{P}(\text{no monochromatic } K_4)$ on $K_8$ by sampling (the exact value is out of reach of brute force — $2^{28}$ colorings — but your Chapter 3 lab already knows $R(4,4) = 18$, so $K_8$ should mostly survive; measure the gap between your estimate and the union bound's pessimism).</p>
+<h3>Part 2 — The triangle threshold at scale: seeded, reproducible Monte-Carlo</h3>
+<p>Lecture 6 proved the sharp threshold: triangles appear in $G(n, p)$ right around $p = 1/n$ — first moment below, second moment above. What does the threshold look like from inside a finite graph? Sampling answers that — but Part 1's variance lesson demands samples that mean something, so this part is fully <em>reproducible</em>: no <code>random</code> module, just a Lehmer LCG ($x \leftarrow 48271\cdot x \bmod (2^{31} - 1)$) drawing every coin, doing exact integer arithmetic that any language reproduces identically. With $p = c/n$ the expected triangle count is $\binom{n}{3}p^3 \approx c^3/6$; if triangles behaved like a Poisson family, the chance of seeing at least one would be about $1 - e^{-c^3/6}$ — the lecture's closing checkpoint asks you to predict exactly this at $c = 1$.</p>
+<pre>import math
+
+def make_rng(seed=1):                        # Lehmer LCG: x &lt;- 48271 x mod (2^31 - 1)
+    state = [seed]
+    def rand():
+        state[0] = 48271 * state[0] % 2147483647
+        return state[0]
+    return rand
+
+def sample_triangles_gnp(n, c, trials, rand):
+    if n &lt; 3 or trials &lt;= 0:
+        return 0, 0
+    p = c / n
+    hits, tri_sum = 0, 0
+    for _ in range(trials):
+        adj = [[False] * n for _ in range(n)]
+        for i in range(n):                    # one draw per pair, (i, j) lexicographic
+            for j in range(i + 1, n):
+                if rand() / 2147483647 &lt; p:
+                    adj[i][j] = adj[j][i] = True
+        t = 0
+        for i in range(n):
+            for j in range(i + 1, n):
+                if adj[i][j]:
+                    for k in range(j + 1, n):
+                        if adj[i][k] and adj[j][k]:
+                            t += 1
+        if t:
+            hits += 1
+        tri_sum += t
+    return hits, tri_sum
+
+rand = make_rng()
+TRIALS = 200
+for n in (60, 120, 240):
+    for c in (0.5, 1, 2, 3):
+        hits, tri_sum = sample_triangles_gnp(n, c, TRIALS, rand)
+        print(f"{n} {c} {hits} {hits / TRIALS:.3f} "
+              f"{1 - math.exp(-c ** 3 / 6):.3f} {tri_sum / TRIALS:.2f} {c ** 3 / 6:.2f}")</pre>
+<p>The columns: $n$, $c$, samples with a triangle (of $200$), the observed fraction, the Poisson estimate $1 - e^{-c^3/6}$, the observed mean triangle count, the Poisson mean $c^3/6$.</p>
+<p><strong>Verified output.</strong> <code>60 0.5 4 0.020 0.021 0.03 0.02</code> / <code>60 1 29 0.145 0.154 0.15 0.17</code> / <code>60 2 148 0.740 0.736 1.45 1.33</code> / <code>60 3 196 0.980 0.989 4.04 4.50</code> / <code>120 0.5 5 0.025 0.021 0.03 0.02</code> / <code>120 1 22 0.110 0.154 0.12 0.17</code> / <code>120 2 146 0.730 0.736 1.26 1.33</code> / <code>120 3 194 0.970 0.989 4.16 4.50</code> / <code>240 0.5 5 0.025 0.021 0.03 0.02</code> / <code>240 1 21 0.105 0.154 0.12 0.17</code> / <code>240 2 148 0.740 0.736 1.41 1.33</code> / <code>240 3 199 0.995 0.989 4.26 4.50</code>. Away from the threshold the fractions land on the Poisson estimate within noise — at $c = 2$ the observed $0.740, 0.730, 0.740$ straddle the limit $0.736$, and at $c = 3$ everything is within two points of $0.989$. At $c = 1$, exactly on the threshold, the observed fractions ($0.145, 0.110, 0.105$) run below the limit $0.154$ and close slowly — finite-size effects: $\binom{n}{3}p^3 = (c^3/6)(1 - O(1/n))$, plus genuine dependence between overlapping triangles, both fading as $n$ grows. That is Lecture 6's closing checkpoint answered empirically: $\mathbb{P}(\text{no triangle})$ tends to $e^{-1/6} \approx 0.846$, and the $c = 1$ columns show the approach ($0.855, 0.890, 0.895$). At $c = 0.5$ the counts are $4, 5, 5$ hits in $200$ — a couple of Poisson blips against a $0.021$ baseline; with $200$ samples a fraction carries noise of about $\pm 0.03$ (Part 1's variance lesson, now wearing threshold clothes: read the trend, not a single cell).</p>
+<p><strong>What to explore:</strong> push $n$ further at $c = 1$ and watch the fraction climb toward $0.154$; then push <code>TRIALS</code> up at fixed $n$ and watch the noise band shrink — which effect converges faster, and why? Finally, re-read the second-moment proof and pinpoint exactly which dependence the Poisson heuristic ignores.</p>
+<h3>Part 3 — Complete verification suite for Lectures 1–6</h3>
+<p>The self-contained verification script below reproduces the exact rational and integer censuses cited across Lectures 1–6: the $K_4$ cut distribution, the tournament Hamiltonian path and cycle censuses, the Caro–Wei permutation average, the exact Ramsey frontiers (Union Bound, Alteration, and Local Lemma), the Property $S(k)$ thresholds, the derandomized greedy Ramsey constructor, and the exact second-moment triangle distribution on $G(6, 1/2)$:</p>
+<pre>from fractions import Fraction
+from itertools import combinations, permutations
+import math
+
+# 1. Lecture 1: K_4 random-cut census (8 partitions up to symmetry)
+def k4_cut_census():
+    edges = list(combinations(range(4), 2))
+    cuts = sorted(
+        sum(1 for u, v in edges if ((mask &gt;&gt; u) &amp; 1) != ((mask &gt;&gt; v) &amp; 1))
+        for mask in range(1 &lt;&lt; 3)              # fix vertex 0 on side 0 (8 partitions)
+    )
+    return cuts, Fraction(sum(cuts), len(cuts))
+
+# 2. Lecture 2 &amp; A7: Directed Hamiltonian paths and cycles in all 2^C(n,2) tournaments
+def tournament_ham_census(n):
+    if n &lt; 1:
+        return 0, 0, 0, 0
+    pairs = list(combinations(range(n), 2))
+    m = len(pairs)
+    total_paths = 0
+    total_cycles = 0
+    max_paths = 0
+    max_cycles = 0
+    perms = list(permutations(range(n)))
+    fixed_root_perms = [p for p in perms if p[0] == 0] if n &gt;= 3 else []
+    for bits in range(1 &lt;&lt; m):
+        adj = [[False] * n for _ in range(n)]
+        for idx, (u, v) in enumerate(pairs):
+            if (bits &gt;&gt; idx) &amp; 1:
+                adj[u][v] = True
+            else:
+                adj[v][u] = True
+        p_cnt = sum(1 for p in perms if all(adj[p[i]][p[i + 1]] for i in range(n - 1)))
+        c_cnt = sum(
+            1 for p in fixed_root_perms
+            if all(adj[p[i]][p[(i + 1) % n]] for i in range(n))
+        ) if n &gt;= 3 else 0
+        total_paths += p_cnt
+        total_cycles += c_cnt
+        max_paths = max(max_paths, p_cnt)
+        max_cycles = max(max_cycles, c_cnt)
+    return total_paths, max_paths, total_cycles, max_cycles
+
+# 3. Lecture 3: Caro-Wei local-winner selector and exact expectation
+def caro_wei_local_winners(adj):
+    n = len(adj)
+    if n == 0:
+        return Fraction(0), Fraction(0)
+    cw_bound = sum(Fraction(1, len(adj[v]) + 1) for v in range(n))
+    total_selected = 0
+    for perm in permutations(range(n)):
+        pos = {v: i for i, v in enumerate(perm)}
+        selected = [v for v in range(n) if all(pos[v] &lt; pos[u] for u in adj[v])]
+        total_selected += len(selected)
+    return cw_bound, Fraction(total_selected, math.factorial(n))
+
+# 4. Lectures 4 &amp; 5: Exact Union Bound, Alteration, and LLL Ramsey frontiers + Property S(k)
+def ramsey_certified_frontiers(k, n_max=100):
+    if k &lt; 3:
+        return 0, (0, 0), 0
+    denom = 1 &lt;&lt; (math.comb(k, 2) - 1)
+    ub_best = max(n for n in range(k, n_max + 1) if math.comb(n, k) &lt; denom)
+    alt_best_n, alt_best_s = max(
+        ((n, math.ceil(Fraction(n) - Fraction(math.comb(n, k), denom))) for n in range(k, n_max + 1)),
+        key=lambda item: (Fraction(item[0]) - Fraction(math.comb(item[0], k), denom))
+    )
+    lll_best = max(
+        n for n in range(k, n_max + 1)
+        if math.e * (2.0 ** (1 - math.comb(k, 2))) * sum(
+            math.comb(k, i) * math.comb(n - k, k - i) for i in range(2, k + 1)
+        ) &lt;= 1.0
+    )
+    return ub_best, (alt_best_n, alt_best_s), lll_best
+
+def property_s_k_threshold(k, n_max=200):
+    if k &lt; 1:
+        return 0
+    for n in range(k + 1, n_max + 1):
+        if math.comb(n, k) * ((1 &lt;&lt; k) - 1) ** (n - k) &lt; (1 &lt;&lt; k) ** (n - k):
+            return n
+    return -1
+
+# 5. Lecture 5: Derandomized Ramsey greedy edge-coloring by conditional expectations
+def greedy_ramsey_coloring(n, k):
+    if n &lt; k or k &lt; 2:
+        return True, 0
+    edges = list(combinations(range(n), 2))
+    edge_to_id = {e: idx for idx, e in enumerate(edges)}
+    cliques = []
+    edge_cliques = [[] for _ in edges]
+    for c_idx, verts in enumerate(combinations(range(n), k)):
+        c_edges = [edge_to_id[(u, v)] for u, v in combinations(verts, 2)]
+        cliques.append(c_edges)
+        for e_id in c_edges:
+            edge_cliques[e_id].append(c_idx)
+    red_cnt = [0] * len(cliques)
+    blue_cnt = [0] * len(cliques)
+    kk = math.comb(k, 2)
+    for e_id in range(len(edges)):
+        delta_red = Fraction(0)
+        for c_idx in edge_cliques[e_id]:
+            r, b = red_cnt[c_idx], blue_cnt[c_idx]
+            if r &gt; 0 and b == 0:
+                delta_red += Fraction(1, 1 &lt;&lt; (kk - r))
+            elif b &gt; 0 and r == 0:
+                delta_red -= Fraction(1, 1 &lt;&lt; (kk - b))
+        # D_red + D_blue = 0; choose Red iff delta_red &lt;= 0 (ties broken to Red)
+        choose_red = (delta_red &lt;= 0)
+        for c_idx in edge_cliques[e_id]:
+            if choose_red:
+                red_cnt[c_idx] += 1
+            else:
+                blue_cnt[c_idx] += 1
+    mono_cliques = sum(1 for r, b in zip(red_cnt, blue_cnt) if r == kk or b == kk)
+    return mono_cliques == 0, mono_cliques
+
+# 6. Lecture 6: Exact second-moment triangle distribution on G(6, 1/2)
+def exact_triangle_moments_n6():
+    edges = list(combinations(range(6), 2))
+    edge_idx = {e: i for i, e in enumerate(edges)}
+    tri_masks = [
+        (1 &lt;&lt; edge_idx[(i, j)]) | (1 &lt;&lt; edge_idx[(i, k)]) | (1 &lt;&lt; edge_idx[(j, k)])
+        for i, j, k in combinations(range(6), 3)
+    ]
+    total_graphs = 1 &lt;&lt; 15
+    sum_x, sum_x2, pos_x = 0, 0, 0
+    for bits in range(total_graphs):
+        x = sum(1 for mask in tri_masks if (bits &amp; mask) == mask)
+        sum_x += x
+        sum_x2 += x * x
+        if x &gt; 0:
+            pos_x += 1
+    ex = Fraction(sum_x, total_graphs)
+    ex2 = Fraction(sum_x2, total_graphs)
+    return ex, ex2, ex * ex / ex2, Fraction(pos_x, total_graphs)
+
+assert k4_cut_census() == ([0, 3, 3, 3, 3, 4, 4, 4], Fraction(3, 1))
+assert tournament_ham_census(3) == (12, 3, 2, 1)
+assert tournament_ham_census(4) == (192, 5, 24, 1)
+assert tournament_ham_census(5)[2:] == (768, 3)
+assert caro_wei_local_winners([{1}, {0, 2}, {1, 3}, {2}]) == (Fraction(5, 3), Fraction(5, 3))
+assert [ramsey_certified_frontiers(k) for k in (4, 5, 6, 7)] == [
+    (6, (8, 6), 5), (11, (13, 11), 9), (17, (21, 18), 15), (27, (33, 29), 25)
+]
+assert (property_s_k_threshold(2), property_s_k_threshold(3)) == (21, 91)
+assert exact_triangle_moments_n6() == (
+    Fraction(5, 2), Fraction(45, 4), Fraction(5, 9), Fraction(26979, 32768)
+)</pre>
+<hr>
+<h2>Answers to the Exercises</h2>
+<p><em>Attempt everything first — the value is in the attempt; these pages will still be here when you return.</em></p>
+<p><strong>A1.</strong> Let $X_e = 1$ if edge $e$ has its ends on different sides of the coin-flip partition. Then $X = \sum_e X_e$ is the cut size, and $\mathbb{E}[X_e] = \mathbb{P}(\text{coin}(u) \neq \text{coin}(v)) = 1/2$ for every edge. Linearity: $\mathbb{E}[X] = \sum_e \mathbb{E}[X_e] = m/2$, so some partition crosses $\ge m/2$. $\blacksquare$ Sanity, machine-checked: $K_4$'s eight partitions cut $0, 3, 3, 3, 3, 4, 4, 4$ — average exactly $3 = m/2$. <em>(The exercise is Lecture 1 with the machinery named. On the dependence the hint asks you to locate: two distinct edges' indicators are in fact independent — sharing an endpoint breaks nothing, as Lecture 2's tabulation shows — while the triangle's three indicators are pairwise independent but jointly dependent: every cut crosses zero or two of them, so all three never fire at once. Linearity needed none of this, and that is the point.)</em></p>
+<p><strong>A2.</strong> Color each vertex red/blue independently. A fixed edge (a $k$-set) is monochromatic with probability $2\cdot(1/2)^k = 2^{1-k}$. Union bound over the $m$ edges: $\mathbb{P}(\text{some mono edge}) \le m\cdot 2^{1-k} < 1$ (here is where $m < 2^{k-1}$ enters), so some coloring has none. $\blacksquare$ For $k = 3$ this certifies $2$-colorability for $m \le 3$ — and honestly stops there: the Fano plane (Exercise 13) fails with $7$, and Exploration X2 maps the frontier between.</p>
+<p><strong>A3.</strong> Random coloring; a fixed $3$-edge is mono with probability $2\cdot(1/2)^3 = 1/4$. $\mathbb{E}[\text{\# mono edges}] = m/4$, so some coloring has at most $m/4$ monochromatic edges. $\blacksquare$ Note the shape of the conclusion: not "zero bad events" (that would need $m < 2^2 = 4$ by A2) but "few bad events" — expectation tolerates what the union bound cannot: P10 where P13 would refuse.</p>
+<p><strong>A4.</strong> For a fixed triple of players, the $8$ orientations of the three games fall into two camps: $6$ transitive (a total order among the three) and $2$ cyclic (each beats the next, in one or the other rotation). So the triple is cyclic with probability $2/8 = 1/4$, and the expected number of cyclic triples over a random tournament is $\binom{n}{3}/4$. Some tournament achieves at least the average. $\blacksquare$ Machine-checked at $n = 5$: over all $1024$ tournaments the average is exactly $2.5 = \binom{5}{3}/4$; the maximum is <strong>$5$</strong> (the regular "cyclic" tournament on $5$ vertices — $5$ of its $10$ triples cyclic, the most any tournament can hold, attained by $24$ of the $1024$ labeled tournaments) and the minimum is <strong>$0$</strong> (the transitive tournament, which is exactly why the statement needs existence, not construction: the extremes coexist, and the average certifies the crowded one).</p>
+<p><strong>A5.</strong> Take $G \sim G(n, 1/2)$ and set $k = \lceil 2\log_2 n \rceil$. Note that by definition of the ceiling function, $2\log_2 n \le k < 2\log_2 n + 1$, so the integer $k - 1$ satisfies $k - 1 < 2\log_2 n$ for <strong>every</strong> $n \ge 2$. A fixed $k$-vertex subset $S$ is a clique with probability $2^{-\binom{k}{2}}$ and an independent set with probability $2^{-\binom{k}{2}}$; for $k \ge 2$ these two events are disjoint, so $\mathbb{P}(S \text{ is a clique or independent set}) = 2^{1-\binom{k}{2}}$. By the union bound over all $\binom{n}{k}$ choices of $S$,</p>
+<p>$$\mathbb{P}(\alpha(G) \ge k \text{ or } \omega(G) \ge k) \le \binom{n}{k} 2^{1 - \binom{k}{2}}.$$</p>
+<p>For $n = 2$, every $2$-vertex graph satisfies $\alpha(G) \le 2 = 2\log_2 2$ and $\omega(G) \le 2 = 2\log_2 2$ trivially. For every $n \ge 3$, we have $k = \lceil 2\log_2 n \rceil \ge \lceil 2\log_2 3 \rceil = 4$ and $n \le 2^{k/2}$. Using $\binom{n}{k} < \frac{n^k}{k!}$ (valid for all $k \ge 2$, and equal to $0$ if $n < k$), we obtain</p>
+<p>$$\binom{n}{k} 2^{1 - \binom{k}{2}} < \frac{n^k}{k!} 2^{1 - \frac{k(k-1)}{2}} \le \frac{(2^{k/2})^k}{k!} 2^{1 - \frac{k^2}{2} + \frac{k}{2}} = \frac{2^{1 + k/2}}{k!}.$$</p>
+<p>Since $\frac{2^{1+k/2}}{k!} \le \frac{2^3}{4!} = \frac{1}{3} < 1$ for all $k \ge 4$ and $\frac{2^{1+k/2}}{k!} \to 0$ super-exponentially as $n \to \infty$ (where $k \ge 2\log_2 n \to \infty$), the union bound is strictly less than $1$ for <strong>every</strong> $n \ge 3$ and tends to $0$ as $n \to \infty$ (for instance, at $n = 16, k = 8$: $\binom{16}{8}\cdot 2^{-27} = 12870/134217728 \approx 9.6\times 10^{-5} < 1$, so some $16$-vertex graph has $\alpha, \omega \le 7 < 8$; at $n = 100, k = 14$: $\binom{100}{14}\cdot 2^{-90} \approx 3.6\times 10^{-11} < 1$, so $\alpha, \omega \le 13 < 2\log_2 100 \approx 13.29$). Thus for every $n \ge 2$ (and for a $1 - o(1)$ fraction of all graphs as $n \to \infty$), some $n$-vertex graph has $\alpha(G) \le k - 1 < 2\log_2 n$ and $\omega(G) \le k - 1 < 2\log_2 n$. $\blacksquare$ The lesson of Chapter 3 returns with a vengeance: almost every graph is Ramsey-quiet, and we cannot write a single one of them down.</p>
+<p><strong>A6.</strong> Triangle-free means the neighborhood of any vertex is an <em>independent</em> set — so $d(v) \le \alpha$ for every $v$ (careful: $\alpha$, not $\alpha-1$; the neighborhood can have $\alpha$ vertices, it just cannot exceed the maximum independent set). Caro–Wei (Lecture 3) gives $\alpha \ge \sum_v \frac{1}{d(v)+1}$; since $d(v) \le \alpha$, each term is at least $\frac{1}{\alpha+1}$, so $\alpha \ge \frac{n}{\alpha+1}$, i.e. <strong>$\alpha(\alpha+1) \ge n$</strong>. $\blacksquare$ The trap: writing $d(v) \le \alpha-1$ would give $\alpha^2 \ge n$ — false: $C_5$ has $\alpha = 2$ and $\alpha^2 = 4 < 5$, while the correct inequality gives $2\cdot 3 = 6 \ge 5$ ✓. Machine-checked: all $7 + 41 + 388 + 5789$ triangle-free graphs on $n = 3, 4, 5, 6$ vertices satisfy $\alpha(\alpha+1) \ge n$; zero violations.</p>
+<p><strong>A7.</strong> For $n \ge 3$, $K_n$ contains $(n-1)!/2$ undirected Hamiltonian cycles (cyclic orderings up to rotation and reversal). Fix one; its $n$ edges are oriented consistently with the cyclic order — all clockwise, or all counterclockwise — with probability $2\cdot(1/2)^n = 2^{1-n}$ (the two events are disjoint for $n \ge 3$, and each is a specific pattern of $n$ independent coins). Linearity over the cycles: the expected number of directed Hamiltonian cycles in a random tournament is $((n-1)!/2)\cdot 2^{1-n} = \mathbf{(n-1)!/2^n}$, and some tournament achieves at least that. $\blacksquare$ Machine-checked: $n = 4$ — over all $64$ tournaments, total $24$ directed Hamiltonian cycles, $\mathbb{E}[X] = 24/64 = 0.375 = 6/16$ ✓, and the maximum in one tournament is $1$ (the cyclic $K_4$); $n = 5$ — total $768$ over $1024$ tournaments, $\mathbb{E}[X] = 0.75 = 24/32$ ✓, maximum $3$. So already at $n = 5$ some tournament has $3$ directed Hamiltonian cycles while the transitive one has $0$ — the average again certifies the crowded extreme. (Do not over-read the count: the three cycles cannot be edge-disjoint — three Hamiltonian cycles on five vertices would need $3 \times 5 = 15$ arcs, and a $5$-vertex tournament has only $10$ — the count is of cycles, not of disjoint arc sets.) Note the pair of expectations for $n \ge 3$: directed Hamiltonian paths (Lecture 2) have expectation $n!/2^{n-1}$, whereas directed Hamiltonian cycles have expectation $(n-1)!/2^n$. The ratio of the two expectations is <strong>$2n$</strong>, which factors as $n \times 2$: deleting any of the $n$ arcs of a directed Hamiltonian cycle produces a distinct directed Hamiltonian path ($n$ paths per cycle), while a fixed directed Hamiltonian path $v_1 \to v_2 \to \dots \to v_n$ (already using $n-1$ arcs) closes into a directed cycle only if the remaining arc between $v_n$ and $v_1$ is oriented $v_n \to v_1$, which happens with probability $1/2$. At $n = 5$ the ratio of expectations reads $7.5/0.75 = 10 = 2n$ ✓.</p>
+<p><strong>A8.</strong> Let $G = K_{n_1} \sqcup K_{n_2} \sqcup \dots \sqcup K_{n_t}$ (disjoint cliques). Every vertex of clique $i$ has degree $n_i-1$, so clique $i$ contributes $n_i\cdot(1/n_i) = 1$ to the sum: $\sum \frac{1}{d(v)+1} = t$. And $\alpha(G) = t$ exactly: an independent set takes at most one vertex per clique, and one per clique is possible. So the bound is attained — equality, not a near miss. $\blacksquare$ Machine-checked on $K_3\sqcup K_2\sqcup K_1$ ($\alpha = 3 = \text{sum}$), $K_2\sqcup K_2$ ($2 = 2$), $K_4\sqcup K_3$ ($2 = 2$), and five isolated vertices ($5 = 5$). A bound you cannot improve without changing its shape: any uniform strengthening must fail on these.</p>
+<p><strong>A9.</strong> Choose a random vertex subset $S$ by keeping each vertex with probability $p$. $\mathbb{E}[\lvert S\rvert] = np$; $\mathbb{E}[\text{\# edges inside } S] = mp^2$ (each of the $m$ edges survives with $p^2$). Now <strong>alter</strong> (P14): delete from $S$ one endpoint of every internal edge. At most one vertex is lost per internal edge, so $\text{survivors} \ge \lvert S\rvert - e(S)$, and the survivors are independent (every surviving internal edge lost an endpoint — in fact all of them did). $\mathbb{E}[\text{survivors}] \ge np - mp^2$, so some choice leaves at least that many: <strong>$\alpha \ge np - mp^2$</strong>. Optimize: $p = n/(2m)$ gives $np - mp^2 = \frac{n^2}{2m} - \frac{n^2}{4m} = \mathbf{n^2/(4m)}$. $\blacksquare$ The hypothesis is load-bearing: $p$ is a probability only if $n/(2m) \le 1$, i.e. <strong>$m \ge n/2$</strong> (for $m < n/2$ take $p = 1$ instead, giving $\alpha \ge n - m$ — a different and also useful regime; at $m = n/2$ the two formulas agree at $n/2$). Machine-checked: every graph on $5$ or $6$ vertices with $m \ge n/2$ satisfies $\alpha \ge n^2/(4m)$; zero violations ($968$ and $32647$ cases). Compare Turán's $n^2/(2m+n)$ (Lecture 3): the alteration bound wins when $m < n/2\dots$ but there $p = 1$ already gives the stronger $n - m$; for $m \ge n/2$, Turán's $n^2/(2m+n) \ge n^2/(4m)$ with equality only at $m = n/2$. So the alteration bound's honest role is a proof technique that transfers (Exercise 10's world), not a record-holder here — worth saying aloud.</p>
+<p><strong>A10.</strong> <em>Part 1 — the refutation.</em> The claim "every graph has a cut $\ge m/2 + \sqrt{m/8}$" is <strong>false</strong>. Witness 1: $K_3$. Its maximum cut is $2$ (of $3$ edges), but $m/2 + \sqrt{m/8} = 1.5 + \sqrt{0.375} \approx 2.112 > 2$. Witness 2: $K_5$, max cut $6$, bound $5 + \sqrt{1.25} \approx 6.118 > 6$. And this is no accident of smallness — an exhaustive machine scan of all connected graphs on $3$ to $6$ vertices ($27{,}474$ of them) finds these two and <em>only</em> these two violators: they are exactly the odd cliques, the graphs where the true theorem below is tight. A strengthening that adds anything to a sharp bound must fail on the sharp examples.</p>
+<p><em>Part 2 — the theorem.</em> <strong>Every connected graph has a cut of size at least $m/2 + (n-1)/4$</strong> (Edwards, answering a conjecture of Erdős). Proof by induction on $n$. For $n \le 2$, connected means a single edge ($\text{cut } 1 \ge 0.5 + 0.25$) or a single vertex ($0 \ge 0$). Now $n \ge 3$.</p>
+<p><strong>Move 1 — split at a cut vertex.</strong> If $G$ has a cut vertex $x$, write $G = G_1 \cup G_2$ with $G_1 \cap G_2 = \{x\}$, both parts connected, every edge in one part, $n_1 + n_2 = n + 1$ and $m_1 + m_2 = m$. By induction, each part has a cut of $\ge m_i/2 + (n_i-1)/4$. Put the two cuts together, flipping all of $G_2$'s side labels if necessary so the two copies of $x$ agree: internal edges keep their cut status, so the combined cut has $\ge m_1/2 + m_2/2 + (n_1-1)/4 + (n_2-1)/4 = m/2 + (n-1)/4$. No loss — the fractions add perfectly. $\blacksquare$ (for this case)</p>
+<p><strong>Move 2 — remove a non-cut vertex of odd degree.</strong> If $G$ has no cut vertex it is $2$-connected, so $G - v$ is connected for every $v$. If some $v$ has odd degree $d$: by induction $G - v$ (connected, $m - d$ edges, $n - 1$ vertices) has a cut $\ge (m-d)/2 + (n-2)/4$. Put $v$ back on the side that crosses more of its $d$ edges — at least $\lceil d/2 \rceil = (d+1)/2$ of them. Total: $(m-d)/2 + (d+1)/2 + (n-2)/4 = m/2 + n/4 \ge m/2 + (n-1)/4$. Overshooting is allowed. $\blacksquare$ (for this case)</p>
+<p><strong>Move 3 — the even $2$-connected case.</strong> Suppose $G$ is $2$-connected and every degree is even (if Moves 1–2 do not apply, this is where we are). We need an <em>adjacent</em> pair $u, v$ with $G - \{u,v\}$ connected; that one exists is a small lemma, proved below. Let $G' = G - \{u,v\}$: connected, with $m' = m - a - b - 1$ edges, where $a$ and $b$ are the numbers of edges from $u$ and $v$ to $G'$. By induction $G'$ has a cut $\ge m'/2 + (n-3)/4$. Now put $u$ and $v$ back. Since $d(u), d(v)$ are even and $uv$ is an edge, <strong>$a = d(u) - 1$ and $b = d(v) - 1$ are odd.</strong> Place $u$ first, opposite the majority of its $a$ neighbors in the cut: $\ge \lceil a/2 \rceil = (a+1)/2$ edges crossed. Place $v$ second: it faces $b$ neighbors in $G'$ plus $u$ — $b + 1$ of them, an even number — and goes to the side crossing at least $(b+1)/2$ of them. New edges crossed: $(a+1)/2 + (b+1)/2 = (a+b)/2 + 1$. Total cut $\ge m'/2 + (n-3)/4 + (a+b)/2 + 1 = (m - a - b - 1)/2 + (a+b)/2 + (n-3)/4 + 1 = \mathbf{m/2 + (n-1)/4}$. $\blacksquare$</p>
+<p><strong>Lemma (the good pair).</strong> Every $2$-connected graph on $n \ge 3$ vertices has an edge $uv$ such that $G - \{u,v\}$ is connected. <em>Proof.</em> If $G$ is a cycle, removing the endpoints of any edge leaves a path (or a single vertex, at $n = 3$) — connected. Otherwise, by the ear-decomposition theorem, $G$ is built as $C_0 \cup P_1 \cup \dots \cup P_r$ from a cycle $C_0$ by adding ears (paths whose endpoints lie in the earlier graph, whose internal vertices are new), every intermediate stage $2$-connected — and one quiet clause of the decomposition matters here: an ear may be a single edge with <em>no</em> internal vertices (a chord). So do not take the last ear; take the <strong>last ear with at least one internal vertex</strong>, say $P_i$. Every later ear $P_{i+1}, \dots, P_r$ is then a single edge adding no vertex, so the stage $C_0 \cup \dots \cup P_i$ already spans all of $G$. If $P_i$ has two or more internal vertices, take $u, v$ to be consecutive internal vertices of $P_i$: $G - \{u,v\}$ contains $C_0 \cup \dots \cup P_{i-1}$ (connected) plus the remaining fragments of $P_i$, each attached to that stage at an ear endpoint — connected, and spanning, so $G - \{u,v\}$ is connected. If $P_i$ has exactly one internal vertex $w$, let $x$ be an endpoint of $P_i$ adjacent to $w$ ($wx$ is an edge of $G$): $G - \{w, x\}$ contains $(C_0 \cup \dots \cup P_{i-1}) - x$, and a $2$-connected graph minus one vertex is connected — spanning again, since the later ears added no vertices. Finally, if <em>no</em> ear has an internal vertex, then $C_0$ itself spans all of $G$ and $G$ is a cycle plus chords: take $u, v$ to be the endpoints of any $C_0$-edge — $C_0 - \{u,v\}$ is a path and $G - \{u,v\}$ contains it. In every case the chosen pair is an edge and $G - \{u,v\}$ is connected. $\blacksquare$ (The lemma was also verified exhaustively by machine: every $2$-connected graph on at most $6$ vertices, and every even-degree $2$-connected graph on $7$ vertices — all $22{,}834$ of them, enumerated over the full cycle space of $K_7$ — admits a good pair; zero counterexamples.)</p>
+<p>Sharpness, and the chapter's honesty: the bound is attained by <strong>$K_3$</strong> ($2 = 1.5 + 0.5$), <strong>$K_5$</strong> ($6 = 5 + 1$), <strong>$K_7$</strong> ($12 = 10.5 + 1.5$), and the windmill of triangles on $5$ vertices ($4 = 3 + 1$) — all machine-checked. The historical note: the $\sqrt{m/8}$ claim is a corruption of Edwards' <em>other</em> theorem, which really holds: every graph (connected or not) has a cut of at least $\left\lceil \frac{m}{2} + \sqrt{\frac{m}{8} + \frac{1}{64}} - \frac{1}{8} \right\rceil$ — verified by machine on all graphs up to $6$ vertices, zero violations — but the version with $\sqrt{m/8}$ alone drops the correction terms and dies on $K_3$. The connected bound $m/2 + (n-1)/4$ is the cleaner statement and the one parameterized algorithms target.</p>
+<p><em>Proof of Edwards' general bound.</em> Let $G$ be any graph with $m$ edges, and decompose $G$ into its connected components $C_1, \dots, C_r$ having $n_i$ vertices and $m_i$ edges ($\sum_{i=1}^r m_i = m$). For any component $C_i$ with $m_i \ge 1$ edges, we have $n_i \ge 2$ and $m_i \le \binom{n_i}{2} = \frac{n_i(n_i-1)}{2}$, so $n_i^2 - n_i - 2m_i \ge 0$, which yields $n_i - 1 \ge \frac{\sqrt{1 + 8m_i} - 1}{2}$. By the Edwards–Erdős bound just proved on each connected component $C_i$,</p>
+<p>$$\text{cut}(C_i) \ge \frac{m_i}{2} + \frac{n_i - 1}{4} \ge \frac{m_i}{2} + \frac{\sqrt{1 + 8m_i} - 1}{8} = \frac{m_i}{2} + \sqrt{\frac{m_i}{8} + \frac{1}{64}} - \frac{1}{8}$$</p>
+<p>(and the inequality also holds with equality $0 = 0$ if $m_i = 0$). Since the function $g(x) = \sqrt{\frac{x}{8} + \frac{1}{64}} - \frac{1}{8}$ is concave on $[0, \infty)$ with $g(0) = 0$, it is subadditive ($g(x) + g(y) \ge g(x+y)$ for all $x, y \ge 0$). Summing across all components $C_1, \dots, C_r$ gives</p>
+<p>$$\text{cut}(G) = \sum_{i=1}^r \text{cut}(C_i) \ge \sum_{i=1}^r \left(\frac{m_i}{2} + g(m_i)\right) \ge \frac{m}{2} + g\!\left(\sum_{i=1}^r m_i\right) = \frac{m}{2} + \sqrt{\frac{m}{8} + \frac{1}{64}} - \frac{1}{8}.$$</p>
+<p>Because $\text{cut}(G)$ is an integer, taking the ceiling completes the proof. $\blacksquare$</p>
+<p><strong>A11.</strong> Rational arithmetic, exactly as the hint demands; $D = 2^{\binom{k}{2}-1}$, expected damage $\mathbb{E}[X] = \binom{n}{k}/D$.</p>
+<p>$k = 5$: maximize $f(n) = n - \binom{n}{5}/512$. $f(12) = 12 - 792/512 = 10.453\dots$; $f(13) = 13 - 1287/512 = 10.486\dots$; $f(14) = 14 - 2002/512 = 10.089\dots$. Best $n = \mathbf{13}$, survivors $\ge 13 - 1287/512 = 5369/512 \approx 10.49$, so some outcome leaves $\ge 11$ vertices: <strong>$R(5,5) > 11$</strong> — exactly what the plain bound already certified. A tie: at $k = 5$ the pruning damage ($2.51$ expected bad cliques) eats the two extra vertices of head start.</p>
+<p>$k = 6$: best $n = \mathbf{21}$: $\mathbb{E}[X] = 54264/16384 \approx 3.312$, survivors $\ge 21 - 3.312 = 17.688 \to \ge 18$ vertices: <strong>$R(6,6) > 18$</strong>, versus the plain bound's $17$. A one-vertex gain.</p>
+<p>$k = 7$: best $n = \mathbf{33}$: $\mathbb{E}[X] = 4272048/1048576 \approx 4.074$, survivors $\ge 28.926 \to \ge 29$: <strong>$R(7,7) > 29$</strong>, versus the plain $27$. A two-vertex gain. $\blacksquare$ The pattern is the lecture's moral in numbers: alteration's profit grows with $k$ (tie, $+1$, $+2$) — the asymptotic $\sqrt{2}$-in-the-constant improvement is invisible at $k = 5$ and only waking up here. Machine-checked by exact BigInt rational comparison of $n - \binom{n}{k}/D$ across all $n \le 500$.</p>
+<p><strong>A12.</strong> The bound certifies an $S(k)$ tournament on $n$ vertices as soon as $\binom{n}{k}(1-2^{-k})^{n-k} < 1$. The product rises with $n$, peaks, then decays exponentially (each new vertex multiplies by $(1-2^{-k}) < 1$ while the $\binom{n}{k}$ factor grows only polynomially in $n$); the first dip below $1$ is the certification, found by exact integer arithmetic (compare $\binom{n}{k}\cdot(2^k-1)^{n-k}$ against $(2^k)^{n-k}$):</p>
+<p>$k = 2$: $\binom{n}{2}\cdot(3/4)^{n-2} < 1$ first at <strong>$n = 21$</strong> ($n = 20$ gives $190\cdot(3/4)^{18} \approx 1.07$ — just misses).<br>$k = 3$: $\binom{n}{3}\cdot(7/8)^{n-3} < 1$ first at <strong>$n = 91$</strong> ($n = 90$ gives $\approx 1.056$ — just misses).</p>
+<p>Against the scale $k^2\cdot 2^k$: $21$ vs $16$, and $91$ vs $72$ — the same constant factor of about $1.3$ in both, which is what "$n \approx k^2\cdot 2^k$ up to a constant" means. To derive the asymptotic scale rigorously from the union bound condition $\binom{n}{k}(1 - 2^{-k})^{n-k} < 1$, use $\binom{n}{k} \le \left(\frac{en}{k}\right)^k$ and $1 - x \le e^{-x}$ (with $x = 2^{-k}$):</p>
+<p>$$\binom{n}{k}(1 - 2^{-k})^{n-k} \le \left(\frac{en}{k}\right)^k e^{-(n-k)2^{-k}} = \exp\!\left(k \ln\!\left(\frac{en}{k}\right) - (n - k)2^{-k}\right).$$</p>
+<p>Substituting $n = c \cdot k^2 \cdot 2^k$ for a constant $c > 0$, we have $\ln(en/k) = k \ln 2 + \ln(eck) = (1 + o(1)) k \ln 2$ and $(n-k)2^{-k} = c k^2 - k 2^{-k} = (1 - o(1)) c k^2$, so the exponent equals</p>
+<p>$$k^2 \left(\ln 2 - c + O\!\left(\frac{\ln k}{k}\right)\right).$$</p>
+<p>Thus for any $c > \ln 2 \approx 0.6931$, the exponent tends to $-\infty$ as $k \to \infty$, certifying an $S(k)$ tournament of order $n = (\ln 2 + o(1)) k^2 2^k$. $\blacksquare$ And now the sting, which Exploration X1 develops: for $k = 2$ the <em>truth</em> is single digits, so the certificate is off by a factor of three. The union bound proves existence, never optimality — a certified $21$ is a proof that a valley floods, not a map of the river.</p>
+<p><strong>A13.</strong> Color the seven points red/blue and count <strong>same-colored pairs</strong> two ways. On one side: if $r$ points are red and $7 - r$ points are blue, the number of monochromatic pairs of points is</p>
+<p>$$\binom{r}{2} + \binom{7-r}{2} = \frac{r(r-1) + (7-r)(6-r)}{2} = r^2 - 7r + 21 = \left(r - \frac{7}{2}\right)^2 + \frac{35}{4}.$$</p>
+<p>Since $r$ is an integer, this quadratic is minimized at $r = 3$ and $r = 4$, where it equals $\binom{3}{2} + \binom{4}{2} = 3 + 6 = \mathbf{9}$. On the other side: every pair of points lies on <strong>exactly one</strong> of the $7$ lines (the Fano plane's defining property — machine-checked: its $7$ lines cover all $21$ pairs exactly once). Now suppose, for contradiction, that no line is monochromatic. Then every line's colors split $2$–$1$, contributing exactly <em>one</em> same-colored pair; each same-colored pair lies on exactly one line; so there are at most $7$ same-colored pairs. But there are at least $9$. Contradiction — some line is monochromatic. $\blacksquare$ Machine-checked: all $128$ colorings were enumerated and every single one has a monochromatic line. Notice the architecture: this is the union bound's <em>exact</em> cousin — instead of bounding $\mathbb{P}(\text{some bad line}) \le 7\cdot(1/8)$, the incidence structure lets us count the bad events perfectly, and the count overflows. (This is also the smallest $3$-uniform non-$2$-colorable hypergraph — Exploration X2's frontier begins here.)</p>
+<div class="fig">
+  <svg viewBox="0 0 420 225" width="420" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The Fano plane PG(2,2) with 7 points and 7 lines under a 3-red, 4-blue vertex coloring">
+    <rect x="15" y="10" width="390" height="205" rx="6" fill="#fafafa" stroke="#d4d4d4"/>
+    <text x="210" y="30" text-anchor="middle" font-family="Georgia, serif" font-size="12.5" font-weight="bold" fill="#1a1a1a">The Fano Plane PG(2, 2): 7 Points, 7 Lines, ≥ 9 Same-Colored Pairs</text>
+
+    <!-- Inscribed circle line {p4, p5, p6}: center (210, 128), r = 42 -->
+    <circle cx="210" cy="128" r="42" fill="none" stroke="#64748b" stroke-width="1.8"/>
+
+    <!-- 3 outer sides of triangle: p1=(210,44), p2=(137,170), p3=(283,170) -->
+    <line x1="210" y1="44" x2="137" y2="170" stroke="#64748b" stroke-width="1.8"/>
+    <line x1="137" y1="170" x2="283" y2="170" stroke="#2563eb" stroke-width="3"/>
+    <line x1="283" y1="170" x2="210" y2="44" stroke="#64748b" stroke-width="1.8"/>
+
+    <!-- 3 medians through center p7=(210,128): to p4=(210,170), p5=(246,107), p6=(174,107) -->
+    <line x1="210" y1="44" x2="210" y2="170" stroke="#64748b" stroke-width="1.8"/>
+    <line x1="137" y1="170" x2="246" y2="107" stroke="#64748b" stroke-width="1.8"/>
+    <line x1="283" y1="170" x2="174" y2="107" stroke="#64748b" stroke-width="1.8"/>
+
+    <!-- 3 Red points: p1=(210,44), p5=(246,107), p6=(174,107) -->
+    <circle cx="210" cy="44" r="10" fill="#fee2e2" stroke="#dc2626" stroke-width="2.2"/>
+    <text x="210" y="48" text-anchor="middle" font-family="Georgia, serif" font-size="10.5" fill="#991b1b">1</text>
+
+    <circle cx="174" cy="107" r="10" fill="#fee2e2" stroke="#dc2626" stroke-width="2.2"/>
+    <text x="174" y="111" text-anchor="middle" font-family="Georgia, serif" font-size="10.5" fill="#991b1b">6</text>
+
+    <circle cx="246" cy="107" r="10" fill="#fee2e2" stroke="#dc2626" stroke-width="2.2"/>
+    <text x="246" y="111" text-anchor="middle" font-family="Georgia, serif" font-size="10.5" fill="#991b1b">5</text>
+
+    <!-- 4 Blue points: p2=(137,170), p4=(210,170), p3=(283,170) [monochromatic base line!], plus p7=(210,128) -->
+    <circle cx="137" cy="170" r="10" fill="#dbeafe" stroke="#1d4ed8" stroke-width="2.4"/>
+    <text x="137" y="174" text-anchor="middle" font-family="Georgia, serif" font-size="10.5" font-weight="bold" fill="#1e3a8a">2</text>
+
+    <circle cx="210" cy="170" r="10" fill="#dbeafe" stroke="#1d4ed8" stroke-width="2.4"/>
+    <text x="210" y="174" text-anchor="middle" font-family="Georgia, serif" font-size="10.5" font-weight="bold" fill="#1e3a8a">4</text>
+
+    <circle cx="283" cy="170" r="10" fill="#dbeafe" stroke="#1d4ed8" stroke-width="2.4"/>
+    <text x="283" y="174" text-anchor="middle" font-family="Georgia, serif" font-size="10.5" font-weight="bold" fill="#1e3a8a">3</text>
+
+    <circle cx="210" cy="128" r="10" fill="#dbeafe" stroke="#1d4ed8" stroke-width="2.2"/>
+    <text x="210" y="132" text-anchor="middle" font-family="Georgia, serif" font-size="10.5" fill="#1e3a8a">7</text>
+
+    <text x="210" y="201" text-anchor="middle" font-family="Georgia, serif" font-size="11.5" fill="#333">C(3,2) + C(4,2) = 3 + 6 = 9 monochromatic pairs &gt; 7 lines ⇒ base line {2, 4, 3} is all-blue</text>
+  </svg>
+  <p><em>Figure 4.6.</em> Any red/blue point coloring of the Fano plane creates at least $\binom{3}{2} + \binom{4}{2} = 3 + 6 = 9$ monochromatic point pairs across only $7$ lines, forcing at least one monochromatic $3$-point line.</p>
+</div>
+<p><strong>A14.</strong> Choose a prime $p = 3k + 2$ with $p$ larger than every $\lvert a_i \rvert$ (there are infinitely many — a standard fact of number theory; any large enough prime congruent to $2 \pmod 3$). The <strong>middle third</strong> of the residues mod $p$, $M = \{k+1, k+2, \dots, 2k+1\}$, is <em>sum-free mod $p$</em>: if $x, y \in M$ then $x + y$ lies in $\{2k+2, \dots, 4k+2\}$, which wraps mod $p = 3k+2$ to $\{2k+2, \dots, 3k+1\} \cup \{0, \dots, k\}$ — neither piece meets $M$. (Check $p = 23, k = 7$: $M = \{8, \dots, 15\}$; sums land in $16..30$, i.e. mod $23$ in $\{16..22\} \cup \{0..7\}$ — disjoint from $M$ ✓ machine-checked.) Now randomize: pick $\lambda$ uniformly from $\{1, \dots, p-1\}$ and let $S_\lambda = \{a \in A : \lambda a \bmod p \in M\}$. For each fixed $a \in A$, since $0 < \lvert a \rvert < p$, we have $p \nmid a$, so the map $\lambda \mapsto \lambda a \bmod p$ is a bijection on $\{1, \dots, p-1\}$. As $\lambda$ is drawn uniformly from $\{1, \dots, p-1\}$, the residue $\lambda a \bmod p$ is uniformly distributed over $\{1, \dots, p-1\}$, of which $M = \{k+1, \dots, 2k+1\}$ occupies $\lvert M \rvert = k + 1$ elements. Since $p = 3k + 2$, we have</p>
+<p>$$\mathbb{P}(\lambda a \bmod p \in M) = \frac{\lvert M \rvert}{p - 1} = \frac{k + 1}{3k + 1} > \frac{1}{3}.$$</p>
+<p>By linearity — Lecture 2, one last time — $\mathbb{E}[\lvert S_\lambda \rvert] = n\cdot(k+1)/(p-1) > n/3$, so some $\lambda$ gives <strong>$\lvert S_\lambda \rvert > n/3$</strong>. And $S_\lambda$ is sum-free <em>as integers</em>: if $x + y = z$ with all three in $S_\lambda$, then $\lambda x + \lambda y \equiv \lambda z \pmod p$ with all three residues in $M$ — contradicting $M$'s sum-freeness. $\blacksquare$ Machine-checked, $p = 23, A = \{1, \dots, 12\}$: the $22$ multiplier sets have sizes $4$ or $5$, totaling $96$, average $48/11 \approx 4.36 > 4$ ✓; the max is $5$ ($\lambda = 1$ gives $S = \{8, 9, 10, 11, 12\}$); and every one of the $22$ sets is verifiably sum-free over the integers.</p>
+<p><strong>A15.</strong> Flip independent signs $\varepsilon_i = \pm 1$, each fair. Expand the square: $\left\lvert \sum \varepsilon_i v_i \right\rvert^2 = \sum_i \lvert v_i \rvert^2 + \sum_{i\neq j} \varepsilon_i \varepsilon_j (v_i\cdot v_j)$. For $i \neq j$ the signs are independent with $\mathbb{E}[\varepsilon_i \varepsilon_j] = \mathbb{E}[\varepsilon_i]\mathbb{E}[\varepsilon_j] = 0$ — every cross term has expectation zero (this is where independence <em>is</em> needed, and honestly so). So $\mathbb{E}\!\left[\left\lvert \sum \varepsilon_i v_i \right\rvert^2\right] = \sum \lvert v_i \rvert^2 = 1$, and some signing achieves $\left\lvert \sum \varepsilon_i v_i \right\rvert^2 \le 1$, i.e. $\left\lvert \sum \varepsilon_i v_i \right\rvert \le 1$. $\blacksquare$ The proof never used the plane: any dimension, same one line. Machine-checked on three examples: $v = (0.6, 0), (0, 0.8)$ — every signing gives $\lvert \sum \rvert$ exactly $1$ (equality: the worst case, and the theorem's bound is sharp); three copies of $(1/\sqrt{3}, 0)$ — best signing gives $1/\sqrt{3} \approx 0.577$; and $(0.3, 0.4), (0.5, 0), (0, 0.5), (0.4, 0.3)$ — best $\approx 0.283$. Note what the machine's first example teaches: the average of $\lvert \sum \rvert^2$ is exactly $1$ with <em>no spread</em>, so "some signing $\le 1$" is all the method can ever promise there — and it delivers exactly that.</p>
+<p><strong>A16.</strong> Count the favorable tournaments. A ranking of the players forces every one of the $\binom{n}{2}$ games — the higher-ranked player wins each — so each of the $n!$ rankings produces one tournament. And no transitive tournament is counted twice: its ranking is recoverable, because a transitive tournament's out-degrees are $0, 1, \dots, n-1$, all distinct (the last player loses to everyone; remove them and induct), so a player's rank can be read off from their score. Hence exactly $n!$ of the $2^{\binom{n}{2}}$ equally likely tournaments are transitive, and</p>
+<p>$$\mathbb{P}(\text{transitive}) = \frac{n!}{2^{\binom{n}{2}}}.$$</p>
+<p>For $n = 5$ that is $120/1024 \approx 0.117$; for $n = 10$ it is $10!/2^{45} \approx 1.03 \times 10^{-7}$; and the decay is faster than exponential — $n!$ grows roughly like $n^n$ while the denominator grows like $2^{n^2/2}$. Now the conclusion, from Exercise 4's other side: a tournament with <em>no</em> cyclic triple is exactly a transitive one. (Why: if $u$ beats $v$ and $v$ beats $w$, then $u$ must beat $w$ — otherwise $u, v, w$ are a cycle — so the beat-relation is transitive, and a transitive total relation is a ranking.) So $\mathbb{P}(\text{some cyclic triple}) = 1 - n!/2^{\binom{n}{2}} \to 1$ as $n$ grows: almost every tournament contains a cyclic triple. $\blacksquare$ Machine-checked: the transitive tournaments on $n = 2, 3, 4, 5$ vertices number exactly $n!$ ($2, 6, 24, 120$ out of $2, 8, 64, 1024$).</p>
+<p><strong>A17.</strong> Linearity does all the work, one honest number at a time. Let $X_i$ be the indicator that letter $i$ lands home, and $X = \sum_{i=1}^n X_i$. Letter $i$ is home in exactly $(n-1)!$ of the $n!$ arrangements — the other $n-1$ letters are free to permute — so $\mathbb{E}[X_i] = (n-1)!/n! = 1/n$, honestly, for every $i$ and every $n$. Summing: $\mathbb{E}[X] = n \cdot (1/n) = \mathbf{1}$. The expected number of homecomings is one, no matter how many envelopes there are. $\blacksquare$ Machine-checked over every arrangement for $n = 2, \dots, 6$: the mean fixed-point count is exactly $1$ each time. Two honest notes. (1) The expectation is not a promise — the actual count swings from $0$ to $n$, and its concentration around $1$ is a variance story (Lecture 6's world; Exercise 18 trains exactly that computation). (2) This one line is the engine under Chapter 1's derangement world: X1 there asks for the same expectation by double counting, and follows it to the deeper law — the fixed-point count converges to $\text{Poisson}(1)$, the shadow of this expectation. On average one success; sometimes none.</p>
+<p><strong>A18.</strong> Write $X = \sum_{e \in E(K_n)} X_e$, the sum over the $\binom{n}{2}$ edges of $K_n$, with $X_e = \mathbf{1}(B_u \neq B_v)$ the indicator that edge $e = uv$ is crossed by the random vertex partition. Each $X_e$ is a $\text{Bernoulli}(1/2)$ variable: $\mathbb{E}[X_e] = 1/2$ and $\operatorname{Var}(X_e) = 1/4$, so $\mathbb{E}[X] = \binom{n}{2}/2$. For the variance, name the lesson before using it — this is the exercise's second question. <strong>The edge-crossing indicators are not mutually independent</strong> — on any triangle $uvw$, $X_{uv} \oplus X_{vw} \oplus X_{wu} = 0$, so all three can never fire simultaneously — but as Lecture 2 proved, they are <strong>pairwise independent</strong>: for any two distinct edges $e \neq f$ (whether disjoint or sharing one endpoint), $\mathbb{E}[X_e X_f] = \mathbb{P}(\text{both crossed}) = 1/4 = \mathbb{E}[X_e]\mathbb{E}[X_f]$, so every covariance $\operatorname{Cov}(X_e, X_f) = \mathbb{E}[X_e X_f] - \mathbb{E}[X_e]\mathbb{E}[X_f] = 0$ vanishes. Because the variance of a sum depends only on first and second moments of pairs,</p>
+<p>$$\operatorname{Var}(X) = \sum_{e \in E(K_n)} \operatorname{Var}(X_e) + \sum_{e \neq f} \operatorname{Cov}(X_e, X_f) = \binom{n}{2} \cdot \frac{1}{4} + 0 = \frac{1}{4}\binom{n}{2},$$</p>
+<p>which is identical to the variance of the edge count in $G(n, 1/2)$ (where the $\binom{n}{2}$ edge indicators are mutually independent). This is Lecture 2's lesson in service — pairwise independence is free where variance is concerned; the dependence hides in <em>joint</em> events (the triangles), which the variance never consults. By Chebyshev's inequality, for every $n \ge 1$,</p>
+<p>$$\mathbb{P}\!\left(\left\lvert X - \frac{1}{2}\binom{n}{2} \right\rvert \ge n\right) \le \frac{\operatorname{Var}(X)}{n^2} = \frac{\binom{n}{2}}{4n^2} = \frac{n(n-1)}{8n^2} = \frac{n-1}{8n} < \frac{1}{8},$$</p>
+<p>so $\mathbb{P}(\lvert X - \binom{n}{2}/2 \rvert < n) > 7/8$. The random cut's edge count hugs its mean within $\pm n$, at $7/8$ confidence, with no independence assumption beyond pairwise ever spent. $\blacksquare$ Machine-checked at $n = 5$: over all $2^5 = 32$ vertex partitions of $K_5$ ($2$ partitions cut $0$ edges, $10$ cut $4$ edges, and $20$ cut $6$ edges), the mean is $(2\cdot 0 + 10\cdot 4 + 20\cdot 6)/32 = 5 = \binom{5}{2}/2$ and the variance is $(2\cdot 25 + 10\cdot 1 + 20\cdot 1)/32 = 80/32 = 5/2 = \binom{5}{2}/4$.</p>
+<p><strong>A19.</strong> Let $v$ be a player of maximum out-degree $d^+(v) = d$, and suppose some opponent $u$ dodges $v$ for two steps: $u$ beat $v$ (otherwise $v$ reached $u$ directly), and $u$ beat every player that $v$ beat — otherwise some $w$ with $v \to w \to u$ gives the two-step road. Now count $u$'s wins honestly, in the degree-sum spirit: $u$ beat $v$ <em>and</em> all $d$ of $v$'s victims, and $u$ is none of those $d+1$ players, so $d^+(u) \ge d + 1$ — one more win than the maximum out-degree in the whole tournament. Contradiction. Nobody dodges $v$: <strong>every player of maximum out-degree is a king</strong>, and since a maximum always exists, every tournament has a king. $\blacksquare$ Machine-checked on every tournament on $n = 2, \dots, 5$ vertices ($1{,}098$ tournaments, $1{,}678$ maximum-out-degree players in all): every maximum player reached every other player within two steps, zero exceptions. Note the moral: the king is found by a counting contradiction, never by construction — Lecture 1's existence-without-construction, in tournament clothes.</p>
+<p><strong>A20.</strong> Alteration, run exactly as Lecture 5 taught it. Choose each vertex independently with probability $p = \ln(\delta+1)/(\delta+1)$; let $D_0$ be the chosen set, so $\mathbb{E}[\lvert D_0 \rvert] = np$. Call a vertex <em>uncovered</em> if neither it nor any neighbor was chosen, and let $U$ be the uncovered set. For a fixed vertex $v$, the set $\{v\} \cup N(v)$ has $d(v)+1 \ge \delta+1$ vertices, each missed independently with probability $(1-p)$, so $\mathbb{P}(v \in U) = (1-p)^{d(v)+1} \le (1-p)^{\delta+1}$. The hint's bound closes the estimate: $1-x \le e^{-x}$, so $(1-p)^{\delta+1} \le e^{-p(\delta+1)} = e^{-\ln(\delta+1)} = 1/(\delta+1)$. Sum over vertices: $\mathbb{E}[\lvert U \rvert] \le n/(\delta+1)$. Now repair: $D = D_0 \cup U$ dominates by construction — every vertex is either chosen or was uncovered and repaired in — and</p>
+<p>$$\mathbb{E}[\lvert D \rvert] \le np + \frac{n}{\delta+1} = \frac{n(1 + \ln(\delta+1))}{\delta+1}.$$</p>
+<p>Some outcome does at least as well as the expectation, so a dominating set of that size or smaller exists. $\blacksquare$ Machine-checked on every labeled graph on at most six vertices ($33{,}867$ of them): the true minimum dominating number never exceeded $n(1+\ln(\delta+1))/(\delta+1)$.</p>
+</main>
+</body>
+</html>

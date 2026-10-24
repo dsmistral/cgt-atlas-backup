@@ -1,0 +1,567 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter 6 &middot; Linear-Algebraic Methods &#8212; A Lecture Course in the Feynman Style</title>
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']]
+    }
+  };
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<style>
+  :root { font-family: Georgia, 'Times New Roman', serif; color: #1a1a1a; }
+  body { max-width: 46rem; margin: 0 auto; padding: 1.5rem 1.2rem 4rem; line-height: 1.55; background: #fff; }
+  h1 { font-size: 1.9rem; margin: 2.2rem 0 0.8rem; }
+  h2 { font-size: 1.45rem; margin: 2rem 0 0.6rem; border-bottom: 1px solid #ddd; padding-bottom: 0.25rem; }
+  h3 { font-size: 1.2rem; margin: 1.6rem 0 0.5rem; }
+  h4 { font-size: 1.05rem; margin: 1.3rem 0 0.4rem; }
+  pre, code { font-family: 'Courier New', Courier, monospace; }
+  code { background: #f2f2f2; padding: 0.05em 0.3em; border-radius: 3px; font-size: 0.92em; }
+  pre { white-space: pre; tab-size: 4; break-inside: avoid; page-break-inside: avoid;
+        overflow-x: auto; border: 1px solid #ddd; background: #fafafa; padding: 0.7rem 0.9rem;
+        font-size: 0.85rem; line-height: 1.35; }
+  blockquote { border-left: 3px solid #888; margin: 1rem 0; padding: 0.2rem 1rem; color: #333; }
+  table { border-collapse: collapse; margin: 1rem 0; break-inside: avoid; page-break-inside: avoid; }
+  th, td { border: 1px solid #bbb; padding: 0.35rem 0.6rem; text-align: left; }
+  th { background: #f0f0f0; }
+  .fig { margin: 1rem 0; text-align: center; break-inside: avoid; page-break-inside: avoid; }
+  .fig svg { max-width: 100%; height: auto; }
+  hr { border: 0; border-top: 1px solid #ccc; margin: 2rem 0; }
+  .banner { background: #eef6ff; border: 1px solid #bcd6f0; border-radius: 6px;
+            padding: 0.8rem 1rem; font-size: 0.9rem; font-family: system-ui, sans-serif; margin-bottom: 1.5rem; }
+  @page { size: A4; margin: 16mm 15mm; }
+  @media print {
+    body { max-width: none; padding: 0; font-size: 10.5pt; }
+    .no-print { display: none; }
+    pre { font-size: 8.8pt; }
+    h1, h2, h3, h4 { break-after: avoid; page-break-after: avoid; }
+  }
+</style>
+</head>
+<body>
+<main id="content">
+<h1>Chapter 6 &middot; Linear-Algebraic Methods</h1>
+<p><em>Part of the Combinatorics &amp; Graph Theory Atlas (see the Atlas canvas for the chapter map and progress report).</em></p>
+<p>The great discovery of 20th-century combinatorics: many counting bounds are secretly <strong>dimension bounds</strong>. Encode sets as vectors, and "you can't have too many" becomes "vectors can't exceed the dimension of the space". This edition is a lecture course in four lectures &#8212; Fisher's inequality two ways, Oddtown and Eventown (where the field chooses the answer), the polynomial method, and the friendship theorem &#8212; every proof complete, every claimed number machine-checked. The polynomial method &#8212; a one-line proof of Oddtown's descendants and the engine behind the best known Ramsey lower bounds &#8212; gets a full lecture of its own, and returns in Chapter 8, running on the Hamming cube. The eigenvalue half of the subject &#8212; eigenvalues as averaging machines, spectral Tur&aacute;n, two-distance sets, and the modern toolkit of interlacing, the Hoffman bounds, Lov&aacute;sz theta, and Delsarte's linear program &#8212; is the subject of Chapter 8, <em>Spectral Methods and the Modern Toolkit</em>; this chapter closes exactly where that one picks up.</p>
+<h2>How to read this chapter</h2>
+<p><strong>Notation.</strong> $[n] = \{1, \dots, n\}$; a family $\mathcal{F} = \{A_1, \dots, A_m\}$ of subsets has characteristic ($0/1$) column vectors $v_i \in \mathbb{R}^n$ (or $\mathbb{F}_p^n$). $G = (V, E)$ is a simple graph on $n$ vertices with $m$ edges, adjacency matrix $A$, eigenvalues $\lambda_1 \ge \dots \ge \lambda_n$; $d$-regular means every vertex has degree $d$; $J$ is the all-ones matrix, $I$ the identity, $\mathbf{1}$ the all-ones vector, and $\mathbf{1}^\perp$ the hyperplane of vectors with coordinate sum $0$. $\omega$ is the clique number, $\alpha$ the independence number. $\binom{a}{b}$ is the binomial coefficient (with $\binom{a}{b} = 0$ for $b &lt; 0$ or $b &gt; a$); $\mathbb{F}_p$ the field of integers mod $p$; $\|x\|$ the Euclidean norm. Letters are re-stated locally where a lecture needs its own ($m$ in particular is the number of sets in the intersection families of L1&#8211;L3).</p>
+<p><strong>The exercises are graded:</strong> (Easy) <em>easy</em> (a direct application of one lecture idea), (Moderate) <em>moderate</em> (two ideas, or one tricky step), (Tough) <em>tough</em> (several chapter ideas combined). Hints travel with the problems; worked answers sit at the very end of the chapter. Try honestly before reading a hint. Beyond the graded set, (Pattern-Unknown) <strong>pattern-unknown</strong> problems name no method and carry no hint: diagnosing which tool fits is part of the problem. And (Exploration) <strong>Explorations</strong> at the end are open-ended investigations with no single right answer &#8212; research training, not test preparation.</p>
+<h2>The pattern table for this chapter</h2>
+<table><tr><th>Pattern</th><th>Plain language</th><th>Where you meet it</th></tr><tr><td><strong>P19 Rank / dimension</strong></td><td>Build a matrix whose rank you can bound two ways; dimension is a counting bound in disguise</td><td>L1, L4; Ch. 8 (two-distance sets)</td></tr><tr><td><strong>P19$'$ Independence via dot products</strong></td><td>Self-products nonzero, cross-products zero &#8212; over the field the congruences name &#8212; forces linear independence</td><td>L2, L3</td></tr><tr><td><strong>P22 Polynomial method</strong></td><td>One polynomial per set, vanishing on all the others; the dimension of a polynomial space caps the family</td><td>L1, L3; Ch. 8 (two-distance sets, Delsarte)</td></tr><tr><td><strong>P19/P22 face &#8212; slice rank</strong></td><td>The tensor-power face of the same dimension budget: slice-decompose a diagonal tensor and uniformly-bounded families stay exponentially small (Croot&#8211;Lev&#8211;Pach; Ellenberg&#8211;Gijswijt). One face, two entries: the engine is a P19 rank argument (the slices bound a dimension) AND a P22 polynomial argument (the slices are indexed by a vanishing polynomial's monomials) &#8212; the survey's census fired both patterns in the same proofs, so the face names both, no double credit</td><td>Ch. 14 L6 (the cap set theorem)</td></tr><tr><td><strong>P21 Spectral / Rayleigh</strong></td><td>Eigenvalues as averaging devices: Rayleigh lower bound, structure upper bound, operator norm on $\mathbf{1}^\perp$</td><td>Ch. 8 (the spectral lectures)</td></tr><tr><td><strong>P20 Weight shifting / symmetrization</strong></td><td>Move weight toward the extremal configuration without losing the objective. Usage-evidence note: genuinely under-used in the field &#8212; the survey's classics reach for shifting (P23) or averaging (P10) when they symmetrize (Katona's circle method is P10 partial work)</td><td>Ch. 8 (Motzkin&#8211;Straus)</td></tr></table>
+<hr>
+<h2>Lecture 1 &middot; Fisher's Inequality, Two Ways</h2>
+<p><strong>Problem.</strong> $A_1, \dots, A_m$ are distinct subsets of an $n$-element set; every pair intersects in <strong>exactly $\lambda$</strong> points ($\lambda \ge 0$); and no $|A_i|$ equals $\lambda$. Then <strong>$m \le n$</strong>.</p>
+<p>Two engines solve this, one getting $m \le n + 1$ and the other closing the last notch. They are worth learning as a pair: the first is the seed of the Frankl&#8211;Wilson theory (Lecture 3); the second is the Gram-matrix machine you will reuse all chapter.</p>
+<h3>1.1 Bose's polynomials &#8212; honest, and one short of the goal</h3>
+<p>To each set $A_i$ associate the polynomial in $n$ variables $x_1, \dots, x_n$ (one per ground element):</p>
+<p>$$p_i(x) = \sum_{k \in A_i} x_k - \lambda.$$</p>
+<p>Evaluate at the $0/1$ vectors $v_j$: $p_i(v_j) = |A_i \cap A_j| - \lambda$. For $i \ne j$ that is $\lambda - \lambda = 0$; for $i = j$ it is $|A_i| - \lambda \ne 0$. So the <strong>evaluation matrix</strong> $(p_i(v_j))$ is diagonal with nonzero diagonal entries &#8212; invertible &#8212; and the $p_i$ are linearly independent.</p>
+<p>Where do they live? Each $p_i$ is a linear combination of $1, x_1, \dots, x_n$: a space of dimension $n + 1$. Independence forces</p>
+<p>$$m \le n + 1.$$</p>
+<p>One notch short &#8212; and honestly so: nothing in the argument uses that the coefficients of the $x_k$ in $p_i$ are all <strong>$1$</strong>. Machine check on the two classical tight examples: the Fano plane's evaluation matrix is $2I$ (each line has $|A| - \lambda = 3 - 1 = 2$ on the diagonal), determinant $2^7 = 128$; the $4$-point near-pencil's is $\operatorname{diag}(2, 1, 1, 1)$, determinant $2$.</p>
+<h3>1.2 The Gram matrix &#8212; positive definite, $\operatorname{rank} \le n$, done</h3>
+<p>Take the characteristic vectors $v_i \in \mathbb{R}^n$ and the $m \times m$ matrix of dot products $M = (v_i \cdot v_j) = (|A_i \cap A_j|)$:</p>
+<p>$$M = \lambda J + D, \quad \text{where } D = \operatorname{diag}(|A_1| - \lambda, \dots, |A_m| - \lambda),$$</p>
+<p>with all diagonal entries $d_i = |A_i| - \lambda &gt; 0$ (since for $m = 1$, $m \le n$ is trivial when $n \ge 1$, and for $m \ge 2$, $|A_i| \ge |A_i \cap A_j| = \lambda$ with $|A_i| \ne \lambda$ forces $|A_i| &gt; \lambda$).</p>
+<p><strong>Claim 1: $M$ is positive definite.</strong> For any $x \in \mathbb{R}^m \setminus \{0\}$:<br>$$x^T M x = \lambda \left(\sum_{i=1}^m x_i\right)^2 + \sum_{i=1}^m (|A_i| - \lambda)x_i^2.$$<br>The first term is $\ge 0$ (since $\lambda \ge 0$); the second is $&gt; 0$ because $|A_i| - \lambda &gt; 0$ and at least one coordinate satisfies $x_i \ne 0$. So $x^T M x &gt; 0$: $M$ is positive definite, and <strong>$\operatorname{rank} M = m$</strong>.</p>
+<p><strong>Claim 2: $\operatorname{rank} M \le n$.</strong> $M = V V^T$ where $V$ stacks the row vectors $v_i^T$ as rows ($V$ is $m \times n$), and $\operatorname{rank}(V V^T) \le \operatorname{rank} V \le n$.</p>
+<p>Combining: $m = \operatorname{rank} M \le n$. $\blacksquare$</p>
+<p><strong>Checkpoint &#8212; determinants, computed two ways.</strong> For $D = \operatorname{diag}(d_1, \dots, d_m)$ with every $d_i &gt; 0$, the <strong>determinant lemma</strong> states</p>
+<p>$$\det(\lambda J + D) = \det(D)\left(1 + \lambda \sum_{i=1}^m \frac{1}{d_i}\right).$$</p>
+<p><em>Proof of the determinant lemma.</em> Since $d_i &gt; 0$, $D$ is invertible and $\lambda J + D = D(I + \lambda D^{-1}\mathbf{1}\mathbf{1}^T)$. Here $\lambda D^{-1}\mathbf{1}\mathbf{1}^T$ is a rank-$1$ matrix whose unique potentially nonzero eigenvalue is its trace $\operatorname{tr}(\lambda D^{-1}\mathbf{1}\mathbf{1}^T) = \lambda \mathbf{1}^T D^{-1}\mathbf{1} = \lambda \sum_{i=1}^m 1/d_i$, with the remaining $m - 1$ eigenvalues equal to $0$. Adding $I$ shifts the eigenvalues to $1 + \lambda \sum_{i=1}^m 1/d_i$ (once) and $1$ ($m - 1$ times), so $\det(I + \lambda D^{-1}\mathbf{1}\mathbf{1}^T) = 1 + \lambda \sum_{i=1}^m 1/d_i$, and multiplying by $\det(D) = \prod_{i=1}^m d_i$ gives the formula. $\blacksquare$</p>
+<p>This lemma prices both tight examples with $d_i = |A_i| - \lambda$. Fano plane (seven $3$-point lines on seven points, $\lambda = 1$, $d_i = 2$): $\det = 2^7 \cdot (1 + 7/2) = 128 \cdot 4.5 = \mathbf{576} = 24^2$. Near-pencil on $4$ points (one $3$-point line plus the three $2$-point lines through the fourth point; $D = \operatorname{diag}(2, 1, 1, 1)$): $\det = 2 \cdot (1 + 1/2 + 1 + 1 + 1) = \mathbf{9}$. Both check against direct elimination; both families have $m = n$, so Fisher is tight. And Sylvester's criterion runs live on the Fano Gram: its leading principal minors are $3, 8, 20, 48, 112, 256, 576$ &#8212; all positive, positive definiteness confirmed without writing a single quadratic form.</p>
+<h3>1.3 Corollary &#8212; de Bruijn&#8211;Erd&#337;s (P19 applied to geometry)</h3>
+<p><strong>$n \ge 3$ non-collinear points determine at least $n$ distinct lines.</strong><br><em>Proof.</em> Let $\mathcal{L}$ be the set of lines determined by the $n$ points, with $|\mathcal{L}| = N$. For each point $p$, let $A_p \subseteq \mathcal{L}$ be the set of lines passing through $p$. Any two distinct points determine a unique line, so $|A_p \cap A_q| = 1 = \lambda$ for $p \ne q$. Because the $n$ points are not all collinear, no single line contains all $n$ points: for each point $p$, picking a line $\ell \in A_p$ and a point $r \notin \ell$, the line $pr$ is a second line in $A_p$, so $|A_p| \ge 2 \ne \lambda$. In particular, the sets $A_p$ are distinct (if $A_p = A_q$, then $|A_p \cap A_q| = |A_p| \ge 2$, contradicting $|A_p \cap A_q| = 1$). Applying Fisher's inequality to the $n$ sets $A_p \subseteq \mathcal{L}$ gives $n \le |\mathcal{L}| = N$. $\blacksquare$</p>
+<p><strong>Checkpoint.</strong> Enumerate the linear spaces on $4$ labeled points (any two points on exactly one line, each line of size $\ge 2$, not all $4$ points collinear): there are exactly <strong>$5$</strong> &#8212; four near-pencils (choose the point off the $3$-point line, giving $4$ lines) and one affine plane (all six pairs as lines, giving $6$ lines). The brute-force census is Exercise 15; every one of the five satisfies $N \ge n$, as de Bruijn&#8211;Erd&#337;s demands.</p>
+<p><strong>What you now own:</strong> the evaluation-matrix reflex (a polynomial per set, vanishing on the others) and the Gram template &#8212; <em>dot-product pattern $\Rightarrow$ positive definiteness $\Rightarrow \operatorname{rank} = m \Rightarrow m \le n$</em> &#8212; a machine you can retarget at dozens of theorems (Exercises 5, 8, and 11; Chapter 8's two-distance lecture runs it in geometry).</p>
+<hr>
+<h2>Lecture 2 &middot; Oddtown and Eventown: The Field Chooses the Answer</h2>
+<p><strong>Problem (Oddtown).</strong> A family of subsets of an $n$-set, each of <strong>odd</strong> size, with <strong>even</strong> pairwise intersections. Then the family has at most <strong>$n$</strong> members.</p>
+<h3>2.1 Independence over $\mathbb{F}_2$ (P19$'$)</h3>
+<p>Take characteristic vectors $v_i$ in the vector space <strong>$\mathbb{F}_2^n$</strong> &#8212; work mod $2$, because the problem is stated in parities. Then<br>$$v_i \cdot v_i = |A_i| \equiv 1 \pmod 2 \quad \text{(odd)}, \qquad v_i \cdot v_j = |A_i \cap A_j| \equiv 0 \pmod 2 \quad \text{(even) for } i \ne j.$$<br>Suppose $\sum_{i=1}^m c_i v_i = 0$ is a linear dependence over $\mathbb{F}_2$. Dot with $v_j$: every cross term dies, and the only survivor is $c_j (v_j \cdot v_j) = c_j \cdot 1 = c_j$. So $c_j = 0$ for all $j$: the $v_i$ are linearly independent over $\mathbb{F}_2$, and $\mathbb{F}_2^n$ has dimension $n$, so $m \le n$. $\blacksquare$</p>
+<p>The census confirms the bound is tight: on $[3]$ the maximum Oddtown has $3$ members, on $[4]$ it has $4$ (Exercise 1 &#8212; the four $3$-subsets of $[4]$ do it).</p>
+<h3>2.2 The twist &#8212; Eventown, and the field's revenge</h3>
+<p>If instead all sizes <strong>and</strong> all intersections are <strong>even</strong>, the family can have $2^{\lfloor n/2 \rfloor}$ members: partition the ground set into $\lfloor n/2 \rfloor$ disjoint pairs (leaving one element unused if $n$ is odd) and take all $2^{\lfloor n/2 \rfloor}$ unions of pairs. Every set has even size; every intersection is even. So flipping one parity changes the answer from linear to <em>exponential</em>. The rank argument explains why it <strong>must</strong> collapse:</p>
+<p><strong>Eventown upper bound.</strong> Over $\mathbb{F}_2$, Eventown's vectors satisfy $v_i \cdot v_j = 0$ for <strong>all</strong> $i, j$ &#8212; including $i = j$, since every $|A_i|$ is even. So the symmetric bilinear form $(x, y) \mapsto x \cdot y$ vanishes on the entire span $W = \operatorname{span}_{\mathbb{F}_2}\{v_1, \dots, v_m\} \subseteq \mathbb{F}_2^n$: for $x = \sum_i a_i v_i$ and $y = \sum_j b_j v_j$, $x \cdot y = \sum_{i,j} a_i b_j (v_i \cdot v_j) = 0$. Every vector of $W$ is orthogonal to every vector of $W$, i.e., <strong>$W \subseteq W^\perp$</strong>. Because the dot product on $\mathbb{F}_2^n$ is nondegenerate, $\dim W + \dim W^\perp = n$, whence $2 \dim W \le n$ and $\dim W \le \lfloor n/2 \rfloor$. Distinct sets have distinct characteristic vectors inside $W$, so $|\mathcal{F}| \le |W| = 2^{\dim W} \le 2^{\lfloor n/2 \rfloor}$. $\blacksquare$ (Exercise 2; census: maximum $2$ on $[3]$, $4$ on $[4]$ &#8212; both matching the formula.)</p>
+<h3>2.3 The same trick over any prime</h3>
+<p>Nothing is special about $2$. Fix a prime $p$ and a residue $k \not\equiv 0 \pmod p$: if every $|A_i| \equiv k \pmod p$ and every pairwise intersection $|A_i \cap A_j| \equiv 0 \pmod p$, the same dotting argument over $\mathbb{F}_p$ gives $v_i \cdot v_i = k \ne 0$ and $v_i \cdot v_j = 0$ for $i \ne j$ &#8212; linear independence again, so <strong>$m \le n$ for every prime</strong>. Machine census for $p = 3, k = 1$ on $[4]$: maximum family size $4 = n$, attained by the singletons. The lesson generalizes: the modulus is not decoration &#8212; it is the theorem (Exercise 6).</p>
+<h3>2.4 One more parity flip &#8212; symmetric differences</h3>
+<p>Suppose instead all pairwise <strong>symmetric differences</strong> are even: $|A_i \triangle A_j| \equiv 0 \pmod 2$ for all $i, j$. Since $|A \triangle B| = |A| + |B| - 2|A \cap B| \equiv |A| + |B| \pmod 2$, every $|A_i|$ has the <strong>same parity</strong> &#8212; so for $n \ge 1$ the whole family sits inside one parity class of $2^{n-1}$ sets, and that is the sharp bound (Exercise 12; census: maximum $8 = 2^3$ on $[4]$, attained by all the odd sets). Three parity conditions, three answers: $n$, $2^{\lfloor n/2 \rfloor}$, $2^{n-1}$.</p>
+<p><strong>What you now own:</strong> the reflex of doing inner products over the field the <em>congruences</em> point to (P19$'$), and the habit of asking how the answer changes with the modulus &#8212; the contrast is usually the real theorem.</p>
+<hr>
+<h2>Lecture 3 &middot; Polynomials That Count: Ray-Chaudhuri&#8211;Wilson, Frankl&#8211;Wilson, and Ramsey Graphs</h2>
+<p>The evaluation-matrix idea of Lecture 1 was deliberately wasteful: the polynomials $p_i = \sum_{k \in A_i} x_k - \lambda$ lived in a space of dimension $n + 1$, but we never asked what the <em>smallest</em> natural space is. This lecture asks, and the dividends are the strongest intersection theorems known &#8212; and, via a construction, quasipolynomial lower bounds for Ramsey numbers.</p>
+<h3>3.1 The multilinear lemma</h3>
+<p>On the cube $\{0,1\}^n$ every function $f : \{0,1\}^n \to \mathbb{F}$ (any field $\mathbb{F}$) is given by a unique <strong>multilinear</strong> polynomial (each variable to degree $\le 1$): $x_i^2 = x_i$ on $\{0, 1\}$ kills higher powers, and the $2^n$ multilinear monomials $x_S = \prod_{i \in S} x_i$ ($S \subseteq [n]$, with $x_\emptyset = 1$) are linearly independent as functions &#8212; evaluating $x_S$ at the indicator vectors $1_T$ ordered by nondecreasing size $|T|$ gives $x_S(1_T) = 1$ iff $S \subseteq T$, an upper-triangular matrix with $1$s on the diagonal. So the space of multilinear polynomials of degree $\le s$ has dimension</p>
+<p>$$\sum_{i=0}^{s} \binom{n}{i}$$</p>
+<p>&#8212; one basis monomial $x_S$ per subset $S \subseteq [n]$ of size $|S| \le s$.</p>
+<h3>3.2 The non-uniform warm-up: Bose again, generalized</h3>
+<p>Let $A_1, \dots, A_m \subseteq [n]$ be distinct sets whose pairwise intersections all lie in a set $L = \{\ell_1, \dots, \ell_s\}$ of $s$ allowed values, with $|A_i| \notin L$ for all $i$. Define over $\mathbb{R}$</p>
+<p>$$f_i(x) = \prod_{\ell \in L} \left(|A_i \cap x| - \ell\right), \quad \text{where } |A_i \cap x| = \sum_{k \in A_i} x_k.$$</p>
+<p>Then $f_i(v_j) = 0$ for $i \ne j$ (since $|A_i \cap A_j| \in L$, one factor vanishes) and $f_i(v_i) = \prod_{\ell \in L}(|A_i| - \ell) \ne 0$ (since $|A_i| \notin L$). Expand each $f_i(x)$ and replace every power $x_k^r$ ($r \ge 2$) by $x_k$ to obtain a multilinear polynomial $\tilde{f}_i(x)$ of degree $\le s$ that agrees with $f_i$ on $\{0, 1\}^n$. The evaluation matrix $(\tilde{f}_i(v_j))$ is diagonal with nonzero diagonal entries &#8212; invertible &#8212; so the $\tilde{f}_i$ are linearly independent in the space of multilinear polynomials of degree $\le s$, giving</p>
+<p>$$m \le \sum_{i=0}^{s} \binom{n}{i}.$$</p>
+<p>Bose's $m \le n + 1$ is the case $s = 1$ with $L = \{\lambda\}$. Fisher's $m \le n$ (uniformity not required!) is the Gram matrix's extra notch.</p>
+<h3>3.3 Ray-Chaudhuri&#8211;Wilson: the slice trick</h3>
+<p><strong>Theorem (Ray-Chaudhuri&#8211;Wilson).</strong> Let $\mathcal{F} = \{A_1, \dots, A_m\}$ be a family of $k$-subsets of $[n]$ whose pairwise intersections all lie in a set $L \subseteq \{0, 1, \dots, k - 1\}$ of size $|L| = s$ (with $s \le k \le n$). Then</p>
+<p>$$m \le \binom{n}{s}.$$</p>
+<p><em>Proof.</em> Since $L \subseteq \{0, 1, \dots, k - 1\}$, we have $k \notin L$, so the multilinearized polynomials $\tilde{f}_i$ from &sect;3.2 satisfy $\tilde{f}_i(v_i) = \prod_{\ell \in L}(k - \ell) \ne 0$ and $\tilde{f}_i(v_j) = 0$ for $i \ne j$. Thus $\tilde{f}_1, \dots, \tilde{f}_m$ are linearly independent even as functions restricted to $\{v_1, \dots, v_m\}$. Now restrict to the <strong>slice</strong> $\binom{[n]}{k} = \{x \in \{0, 1\}^n : \sum_{j=1}^n x_j = k\}$ where all $v_j$ live. On this slice, any multilinear monomial $x_S = \prod_{i \in S} x_i$ of degree $|S| &lt; k$ can be rewritten as a linear combination of multilinear monomials of degree $|S| + 1$: using $x_j^2 = x_j$ on $\{0, 1\}^n$,</p>
+<p>$$k x_S = x_S \sum_{j=1}^n x_j = \sum_{j \in S} x_S x_j + \sum_{j \notin S} x_S x_j = |S| x_S + \sum_{j \notin S} x_{S \cup \{j\}},$$</p>
+<p>and since $|S| &lt; k$ we have $k - |S| &gt; 0$, so</p>
+<p>$$x_S = \frac{1}{k - |S|} \sum_{j \notin S} x_{S \cup \{j\}}$$</p>
+<p>for all $x$ on the slice $\binom{[n]}{k}$. Iterating this substitution for every monomial of degree $0, 1, \dots, s - 1$ (since $s \le k$, every step has $|S| \le s - 1 &lt; k$), every multilinear polynomial of degree $\le s$ coincides on the slice $\binom{[n]}{k}$ with a linear combination of the $\binom{n}{s}$ multilinear monomials of degree <strong>exactly $s$</strong>. Since $\tilde{f}_1, \dots, \tilde{f}_m$ remain linearly independent as functions on $\{v_1, \dots, v_m\} \subseteq \binom{[n]}{k}$, they span an $m$-dimensional subspace of a function space spanned by $\binom{n}{s}$ monomials, forcing <strong>$m \le \binom{n}{s}$</strong>. $\blacksquare$</p>
+<p>The slice identity is the whole trick: <em>uniformity converts "degree $\le s$" into "degree exactly $s$"</em>, saving the sum over lower degrees. Machine tightness checks ($n = 6, k = 3$): for $L = \{0, 2\}$ the maximum family has $4$ members (bound $\binom{6}{2} = 15$); for $L = \{0, 1\}$ it is again $4$ (Exercise 14 closes this one by hand and finds the truth beneath the bound); for $L = \{1, 2\}$ the maximum is <strong>$10 = \binom{5}{2}$</strong> &#8212; all triples containing a fixed point &#8212; the bound $\binom{6}{2} = 15$ is honest but not always attained.</p>
+<h3>3.4 Frankl&#8211;Wilson: Fermat does the bookkeeping (P22 over $\mathbb{F}_p$)</h3>
+<p><strong>Theorem (Frankl&#8211;Wilson, modular form).</strong> Fix a prime $p$ and an integer $k$. If $A_1, \dots, A_m \subseteq [n]$ satisfy $|A_i| \equiv k \pmod p$ for all $i$ and $|A_i \cap A_j| \not\equiv k \pmod p$ for all $i \ne j$, then</p>
+<p>$$m \le \sum_{i=0}^{p-1} \binom{n}{i}.$$</p>
+<p><em>Proof.</em> Work over $\mathbb{F}_p$ and define, for each set $A_i$, the Fermat polynomial</p>
+<p>$$p_i(x) = 1 - \left(\sum_{r \in A_i} x_r - k\right)^{p-1}.$$</p>
+<p>By Fermat's little theorem in $\mathbb{F}_p$, $t^{p-1} = 1$ if $t \not\equiv 0 \pmod p$ and $t^{p-1} = 0$ if $t \equiv 0 \pmod p$ (since $p - 1 \ge 1$). Thus at the characteristic vectors $v_j \in \{0, 1\}^n$, $p_i(v_i) = 1 - (|A_i| - k)^{p-1} = 1 - 0 = 1$ (since $|A_i| \equiv k \pmod p$), while for $i \ne j$, $p_i(v_j) = 1 - (|A_i \cap A_j| - k)^{p-1} = 1 - 1 = 0$ (since $|A_i \cap A_j| \not\equiv k \pmod p$). After multilinearizing via $x_r^2 = x_r$, the evaluation matrix $(\tilde{p}_i(v_j))$ is the $m \times m$ identity matrix $I_m$ over $\mathbb{F}_p$, so $\tilde{p}_1, \dots, \tilde{p}_m$ are linearly independent over $\mathbb{F}_p$. Since $p_i(x)$ has degree $\le p - 1$, each $\tilde{p}_i(x)$ lies in the span of the multilinear monomials $\prod_{r \in S} x_r$ with $|S| \le p - 1$, which has dimension $\sum_{i=0}^{p-1} \binom{n}{i}$. $\blacksquare$</p>
+<p>For $p = 2$ the Fermat polynomial is $p_i(x) = 1 - (\sum_{r \in A_i} x_r - k)$: the independence argument <strong>is</strong> Oddtown's, in disguise &#8212; the polynomial method did not replace the linear algebra; it organized it.</p>
+<h3>3.5 The payoff: explicit Ramsey graphs</h3>
+<p>Turn the theorem into graphs: for a prime $p$ and integers $1 \le k \le m - 1$, let the vertices be the $\binom{m}{k}$ $k$-subsets of $[m]$ (all of size $\equiv k \pmod p$), joining $A \ne B$ by an edge iff $|A \cap B| \not\equiv k \pmod p$. A clique is then a family of $k$-subsets whose pairwise intersections avoid the residue class $k \bmod p$ &#8212; Frankl&#8211;Wilson caps it at $\sum_{i=0}^{p-1} \binom{m}{i}$ (or even $\binom{m}{p-1}$ via the slice reduction when $k \ge p - 1$). An independent set is a family of $k$-subsets whose pairwise intersections all lie in $L = \{\ell \in \{0, \dots, k - 1\} : \ell \equiv k \pmod p\}$ &#8212; Ray-Chaudhuri&#8211;Wilson caps it at $\binom{m}{|L|}$ where $|L| = \lfloor k/p \rfloor$. Two worked instances, fully machine-checked:</p>
+<p><strong>$p = 2, m = 5, k = 3$.</strong> Vertices: the $\binom{5}{3} = 10$ $3$-subsets of $[5]$; join $A \ne B$ iff $|A \cap B|$ is even, i.e. (since distinct $3$-subsets of $[5]$ meet in $1$ or $2$ points) iff $|A \cap B| = 2$. Complementing each vertex ($A \mapsto [5] \setminus A$) turns this into the graph on $2$-subsets of $[5]$ where adjacency means <em>intersecting</em> &#8212; the complement of the Kneser graph $KG(5,2)$, better known as the <strong>complement of the Petersen graph</strong>. The machine finds $\omega = 4$ (a maximum clique is the set of four triples inside a fixed $4$-set, e.g. all triples of $\{2,3,4,5\}$) and $\alpha = 2$. The theory's caps &#8212; Frankl&#8211;Wilson $\sum_{i \le 1}\binom{5}{i} = 6$ for cliques, RCW $\binom{5}{1} = 5$ for independent sets &#8212; are honest but loose here: $6$ and $5$ versus the true $4$ and $2$.</p>
+<p><strong>$p = 3, m = 7, k = 4$.</strong> Vertices: the $\binom{7}{4} = 35$ $4$-subsets of $[7]$; join $A \ne B$ iff $|A \cap B| \not\equiv 1 \pmod 3$ &#8212; distinct $4$-subsets of $[7]$ meet in $1, 2,$ or $3$ points, so this joins exactly the pairs meeting in $2$ or $3$ points. Machine: $\omega = 15$ (all $\binom{6}{4} = 15$ $4$-subsets avoiding a fixed point &#8212; any two of them share $\ge 2$ points), $\alpha = 2$; caps: Frankl&#8211;Wilson $\sum_{i \le 2}\binom{7}{i} = 29$, RCW $\binom{7}{1} = 7$. Again valid, again loose.</p>
+<p><strong>Checkpoint &#8212; parameters must not degenerate.</strong> Try $p = 3, m = 7, k = 5$: two distinct $5$-subsets of $[7]$ meet in $3$ or $4$ points &#8212; residues $0$ and $1 \bmod 3$, never $2 \equiv k \pmod 3$. So <em>every</em> pair gets joined: the construction collapses to $K_{21}$ ($\omega = 21, \alpha = 1$) and proves nothing. In general, two distinct $k$-subsets of $[m]$ intersect in sizes ranging over $\{\max(0, 2k - m), \dots, k - 1\}$, an interval of $\min(k, m - k)$ consecutive integers; whenever $\min(k, m - k) &lt; p$ and $k - p &lt; \max(0, 2k - m)$, the residue $k \bmod p$ never occurs among pairwise intersections and the graph degenerates into $K_{\binom{m}{k}}$. Check a purported construction for degeneracy before believing its bounds.</p>
+<p><strong>The Ramsey corollary (cited, not proven here).</strong> Run the same construction at scale: take $k = p^2 - 1$ (so $k \equiv -1 \pmod p$, and the only intersection sizes $< k$ congruent to $k \pmod p$ are $p - 1, 2p - 1, \dots, p^2 - p - 1$, giving $|L| = p - 1$). Then both the clique number and the independence number are bounded above by $\binom{m}{p-1}$, while the vertex count is $N = \binom{m}{p^2 - 1}$. Choosing $m = p^3$, Frankl and Wilson (1981) obtained explicit graphs with no clique or independent set of size $K = \binom{p^3}{p-1} + 1$ on</p>
+<p>$$N = \binom{p^3}{p^2 - 1} = \exp\left(\Omega\left(\frac{\log^2 K}{\log \log K}\right)\right)$$</p>
+<p>vertices &#8212; a quasipolynomial constructive Ramsey lower bound that stood for a quarter century, until Barak&#8211;Rao&#8211;Shaltiel&#8211;Wigderson (2006) improved it. The two worked graphs above are this construction at toy scale; the full optimization is cited to the papers, flagged as beyond this chapter's scope.</p>
+<p><strong>What you now own:</strong> the multilinear lemma, the slice trick (uniformity as a dimension discount), Fermat polynomials as bookkeeping, and the reflex of testing a construction's parameters for degeneracy before trusting its bounds.</p>
+<hr>
+<h2>Lecture 4 &middot; The Friendship Theorem</h2>
+<p><strong>Problem.</strong> If in a simple graph $G$ on $n \ge 3$ vertices every two distinct vertices have <strong>exactly one</strong> common neighbor, then some vertex is adjacent to <strong>all</strong> others &#8212; and the graph is a "windmill": $t \ge 1$ triangles glued at one central vertex ($n = 2t + 1$).</p>
+<p>The proof has three load-bearing parts, each complete here (the middle one was a flagged sketch in the reference literature for years; it is a degree-class argument, and it assembles cleanly).</p>
+<h3>4.1 Claim 1 &#8212; non-adjacent vertices have equal degrees</h3>
+<p><strong>Claim 1.</strong> If $x \not\sim y$ then $d(x) = d(y)$.<br><em>Proof.</em> For any two distinct vertices $a \ne b$, denote by $\operatorname{cn}(a, b)$ their unique common neighbor. Let $z = \operatorname{cn}(x, y)$ be the unique common neighbor of the non-adjacent pair $x, y$. The natural idea is to send each $u \in N(x) \setminus \{z\}$ to the unique common neighbor $\alpha(u) = \operatorname{cn}(u, y)$ of the pair $(u, y)$ &#8212; but the codomain needs care: $\alpha(u)$ can be <strong>$z$ itself</strong>. In $W_2$, with $x = a_1, y = a_2, u = b_1$, the pair $(u, y)$ has common neighbor the hub &#8212; which is $z$. So $\alpha$ does not in general land in $N(y) \setminus \{z\}$; the argument must excise one vertex from each side, and the excised vertices are forced. The members of $N(x) \setminus \{z\}$ adjacent to $z$ are exactly the common neighbors of the pair $(x, z)$: there is at most one (two would give the pair $(x, z)$ two common neighbors) and at least one (that pair's common neighbor $u_0 = \operatorname{cn}(x, z)$ is adjacent to $x$ and to $z$, and is not $z$ itself) &#8212; so <strong>exactly one</strong>, $u_0 = \operatorname{cn}(x, z) \in N(x) \setminus \{z\}$. Mirror-wise, $v_0 = \operatorname{cn}(y, z)$ is the unique $z$-adjacent member of $N(y) \setminus \{z\}$. Now take $u \in N(x) \setminus \{z, u_0\}$. Then $u \not\sim y$ (else $u \ne z$ would be a second common neighbor of $x$ and $y$), so $u \ne y$ and the pair $(u, y)$ has its unique common neighbor $\alpha(u) = \operatorname{cn}(u, y) \in N(y)$. Moreover: $\alpha(u) \ne z$, because $z \not\sim u$ &#8212; $u_0$ is the <em>only</em> $z$-adjacent member of $N(x) \setminus \{z\}$; $\alpha(u) \ne x$, because $x \not\sim y$ while $\alpha(u) \sim y$; and $\alpha(u) \ne v_0$ &#8212; if $\alpha(u) = v_0$, then since $v_0 \sim z$ and $\alpha(u) \sim u$, the pair $(u, z)$ would have the two common neighbors $x$ and $v_0$, which are distinct because $x \not\sim y$ while $v_0 \sim y$. Finally, $\alpha$ is injective on $N(x) \setminus \{z, u_0\}$: if $\alpha(u_1) = \alpha(u_2) = w$ with $u_1 \ne u_2$, then $w$ is adjacent to both $u_1$ and $u_2$, and so is $x$ &#8212; the pair $(u_1, u_2)$ would have the two common neighbors $x$ and $w$, which are distinct because $x \not\sim y$ while $w \sim y$. Thus $\alpha$ is an injection from $N(x) \setminus \{z, u_0\}$ into $N(y) \setminus \{z, v_0\}$, giving $d(x) - 2 \le d(y) - 2$. The mirror construction (swapping $x$ and $y$, $u_0 \leftrightarrow v_0$) gives an injection the other way, so $d(y) - 2 \le d(x) - 2$: <strong>$d(x) = d(y)$</strong>. $\blacksquare$ (The census below runs the diagnostic both ways: the un-excised codomain claim fails in every one of the $120$ census graphs that have non-adjacent pairs &#8212; $\alpha(u_0) = z$ in each of the $1{,}320$ pairs &#8212; while the $u_0 / v_0$ excision is a bijection on all of them.)</p>
+<p>Contrapositive, worth enshrining: <strong>distinct degrees force adjacency.</strong> (Machine: the claim holds in every graph of the census below &#8212; $121$ friendship graphs, zero exceptions.)</p>
+<h3>4.2 Claim 2 &#8212; no universal vertex is impossible (the ERS brick)</h3>
+<p><strong>Claim 2.</strong> Every friendship graph on $n \ge 3$ vertices has a universal vertex.<br><em>Proof.</em> Suppose not. Since $n \ge 3$ and every pair of vertices has a common neighbor, no vertex has degree $0$, so every degree lies in $\{1, \dots, n - 2\}$. Partition $V$ into degree classes. If some degree class is a singleton $\{x\}$, then every $y \ne x$ has $d(y) \ne d(x)$, so by Claim 1's contrapositive $x$ is adjacent to every other vertex: $d(x) = n - 1$, universal, contradiction. So every nonempty degree class has $\ge 2$ members; in particular, picking any nonempty degree class $B$ (of common degree $k$), $B$ contains at least two distinct vertices $b_1, b_2$.</p>
+<p>Now watch the cross-class edges. Every $w \notin B$ has degree $\ne k$, so $w$ is adjacent to <strong>every</strong> vertex of $B$ (Claim 1's contrapositive). In particular, every $w \notin B$ is a common neighbor of the pair $(b_1, b_2)$ &#8212; which has exactly one common neighbor. So $|V \setminus B| \le 1$.</p>
+<p>Two cases. If $V \setminus B = \{z\}$: $z$ is adjacent to all of $B$ (distinct degrees), so $d(z) = |B| = n - 1$ &#8212; universal, contradiction. If $V \setminus B = \emptyset$: the graph is $k$-regular, and the spectral lemma below (&sect;4.4) forces $k = 2, n = 3$ &#8212; the triangle $K_3$, in which every vertex has degree $2 = n - 1$ and is universal. Contradiction again. $\blacksquare$</p>
+<h3>4.3 Assembly &#8212; the universal vertex pins down the windmill</h3>
+<p>Let $u$ be universal. Put $H = G - u$. If $H$ contained a $3$-vertex path $w\text{&#8211;}x\text{&#8211;}y$ with $w \ne y$, the pair $(w, y)$ would have common neighbors $x$ <strong>and</strong> $u$ &#8212; two, contradiction. (This also rules out any triangle $w\text{&#8211;}x\text{&#8211;}y$ in $H$.) So $H$ has maximum degree $\le 1$: a matching plus isolated vertices. But an isolated vertex $z$ of $H$ has $N_G(z) = \{u\}$, while $N_G(u) = V \setminus \{u\}$ &#8212; the pair $(z, u)$ has $N_G(z) \cap N_G(u) = \emptyset$, <strong>zero</strong> common neighbors. Contradiction. So $H$ has no isolated vertices and is a perfect matching: $n - 1$ is even, $n = 2t + 1$ ($t \ge 1$), and $G$ is exactly $t$ triangles sharing $u$: the windmill $W_t$. $\blacksquare$</p>
+<p><strong>Figure 1</strong> draws $W_4$ alongside the deleted state $H = G - u$; check all three pair types: two vertices from different blades share only $u$; the two vertices of one blade share only $u$; and the pair $(u, a_i)$ shares only the blade-partner $b_i$.</p>
+<h3>4.4 The spectral lemma &#8212; friendship graphs are (almost) never regular</h3>
+<p><strong>Lemma.</strong> A $k$-regular friendship graph on $n \ge 3$ vertices exists only for $k = 2, n = 3$ (the triangle $K_3$).<br><em>Proof.</em> Let $A$ be the adjacency matrix. "Exactly one common neighbor per pair" is a matrix equation: $(A^2)_{uv} = 1$ for $u \ne v$ and $(A^2)_{uu} = d(u) = k$ on the diagonal:</p>
+<p>$$A^2 = J + (k - 1)I.$$</p>
+<p>Applying both sides to the all-ones vector $\mathbf{1}$ gives $k^2 \mathbf{1} = A^2 \mathbf{1} = (J + (k - 1)I)\mathbf{1} = (n + k - 1)\mathbf{1}$, so $n = k(k - 1) + 1$. Since $A$ is real symmetric and $J\mathbf{1} = n\mathbf{1}$, $\mathbf{1}$ is an eigenvector of $A$ with eigenvalue $k$, and $A$ preserves the orthogonal complement $\mathbf{1}^\perp$ (of dimension $n - 1$). On $\mathbf{1}^\perp$, $J$ acts as $0$, so $A^2$ acts as $(k - 1)I$; thus $A$'s eigenvalues on $\mathbf{1}^\perp$ are $\pm\sqrt{k - 1}$ with nonnegative integer multiplicities $a, b$ satisfying $a + b = n - 1$. Because $G$ is a simple graph, the trace of $A$ is $0$:</p>
+<p>$$\operatorname{tr} A = k + (a - b)\sqrt{k - 1} = 0.$$</p>
+<p>Since $n \ge 3$, we have $k \ge 2$ (as $k = 1$ gives $n = 1$). If $k - 1$ is not a perfect square, $\sqrt{k - 1}$ is irrational, so $a - b = 0$ and $k = 0$ &#8212; impossible. Thus $k - 1 = t^2$ for a positive integer $t$, giving $k = t^2 + 1$ and $(b - a)t = t^2 + 1$. Then $t \mid (t^2 + 1)$ forces $t \mid 1$, so <strong>$t = 1, k = 2$</strong>, and $n = k(k - 1) + 1 = 3$, which is $K_3$. $\blacksquare$</p>
+<p>A counting cross-check of the regular case &#8212; honest label: it re-derives the $n$&#8211;$k$ ledger of the matrix equation above by double counting (P2) but is <em>not</em> a complete second proof, because it excludes no even $k \ge 4$ (parity kills only the odd $k$: $n = k(k-1) + 1$ is always odd, so $nk = 2|E|$ even forces $k$ even &#8212; $k = 4, 6, \dots$ survive; the trace ledger above is what excludes them). Length-$2$ walks between distinct ordered pairs $(u, v)$ number $n(n - 1)$ &#8212; one per ordered pair &#8212; and also $\sum_{w \in V} d(w)(d(w) - 1) = n k(k - 1)$ (choosing the middle vertex $w$ and two distinct neighbors). Dividing by $n$ gives $n - 1 = k(k - 1)$, i.e. <strong>$n = k(k - 1) + 1$</strong>. For $k = 2$: $n = 3$.</p>
+<h3>4.5 Census, spectra, and the shape of the answer</h3>
+<p>Machine census, all labeled graphs on $n = 3 \dots 7$ vertices: friendship graphs number <strong>$1, 0, 15, 0, 105$</strong> &#8212; every single one a windmill with a universal vertex, Claim 1 holding throughout. The count has a clean formula: for $n = 3$ ($t = 1$), $W_1 = K_3$ has all $3$ vertices universal, giving $1$ labeled graph; for odd $n = 2t + 1 \ge 5$ ($t \ge 2$), the universal hub has degree $2t &gt; 2$ and is unique ($n$ choices), and the remaining $n - 1$ vertices form a perfect matching ($(n - 2)!!$ ways), giving $n(n - 2)!!$ labeled friendship graphs: $5 \cdot 3!! = 15$, $7 \cdot 5!! = 105$.</p>
+<p>The windmill's spectrum is explicit (Exercise 9 derives it): $W_t$ has eigenvalues $1$ ($t - 1$ times), $-1$ ($t$ times), and $(1 \pm \sqrt{1 + 8t})/2$. So $W_2$ carries $\{(1 \pm \sqrt{17})/2, 1, -1, -1\}$ and $W_3$ carries $\{3, 1, 1, -1, -1, -1, -2\}$. Non-regular friendship graphs satisfy the matrix equation in its honest form $A^2 = J + (D - I)$ with $D = \operatorname{diag}(\text{degrees})$ &#8212; the lab verifies it entry by entry on $W_2$, and on the triangle $K_3$ it reads $A^2 = I + J$ with $\det A = 2$.</p>
+<div class="fig"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 390" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <defs>
+    <marker id="arrow-slate" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 8 5 L 0 9 z" fill="#475569"/>
+    </marker>
+    <marker id="arrow-red" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 8 5 L 0 9 z" fill="#dc2626"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="880" height="390" fill="#ffffff"/>
+  <text x="32" y="30" font-size="16.5" font-weight="700" fill="#193e5c">Figure 1 &#183; The windmill W&#8324; (n = 9, t = 4) and the deletion assembly H = G &#8722; u (Lecture 4, &#167;&#167;4.3&#8211;4.5)</text>
+
+  <!-- Panel A: Symmetric Windmill W_4 -->
+  <text x="155" y="58" font-size="13" font-weight="700" fill="#1e293b" text-anchor="middle">A. Windmill W&#8324; (universal hub u)</text>
+
+  <!-- Spokes from hub u=(155, 195) to the 4 blades -->
+  <g stroke="#2563eb" stroke-width="2.8">
+    <!-- Blade 1 (top-left): a1=(75, 105), b1=(125, 80) -->
+    <line x1="155" y1="195" x2="75" y2="105"/>
+    <line x1="155" y1="195" x2="125" y2="80"/>
+    <!-- Blade 2 (top-right): a2=(185, 80), b2=(235, 105) -->
+    <line x1="155" y1="195" x2="185" y2="80"/>
+    <line x1="155" y1="195" x2="235" y2="105"/>
+    <!-- Blade 3 (bottom-right): a3=(235, 285), b3=(185, 310) -->
+    <line x1="155" y1="195" x2="235" y2="285"/>
+    <line x1="155" y1="195" x2="185" y2="310"/>
+    <!-- Blade 4 (bottom-left): a4=(125, 310), b4=(75, 285) -->
+    <line x1="155" y1="195" x2="125" y2="310"/>
+    <line x1="155" y1="195" x2="75" y2="285"/>
+  </g>
+
+  <!-- Blade matching edges in W_4 -->
+  <g stroke="#dc2626" stroke-width="3.8">
+    <line x1="75" y1="105" x2="125" y2="80"/>
+    <line x1="185" y1="80" x2="235" y2="105"/>
+    <line x1="235" y1="285" x2="185" y2="310"/>
+    <line x1="125" y1="310" x2="75" y2="285"/>
+  </g>
+
+  <!-- Central hub vertex u -->
+  <circle cx="155" cy="195" r="16" fill="#dc2626" stroke="#172333" stroke-width="2"/>
+  <text x="155" y="200" font-size="14" font-weight="700" fill="#ffffff" text-anchor="middle">u</text>
+
+  <!-- Blade 1 vertices -->
+  <circle cx="75" cy="105" r="15" fill="#dbeafe" stroke="#2563eb" stroke-width="2.2"/>
+  <text x="75" y="110" font-size="13" font-weight="700" fill="#172333" text-anchor="middle">a&#8321;</text>
+  <circle cx="125" cy="80" r="15" fill="#dbeafe" stroke="#2563eb" stroke-width="2.2"/>
+  <text x="125" y="85" font-size="13" font-weight="700" fill="#172333" text-anchor="middle">b&#8321;</text>
+
+  <!-- Blade 2 vertices -->
+  <circle cx="185" cy="80" r="15" fill="#dbeafe" stroke="#2563eb" stroke-width="2.2"/>
+  <text x="185" y="85" font-size="13" font-weight="700" fill="#172333" text-anchor="middle">a&#8322;</text>
+  <circle cx="235" cy="105" r="15" fill="#dbeafe" stroke="#2563eb" stroke-width="2.2"/>
+  <text x="235" y="110" font-size="13" font-weight="700" fill="#172333" text-anchor="middle">b&#8322;</text>
+
+  <!-- Blade 3 vertices -->
+  <circle cx="235" cy="285" r="15" fill="#dbeafe" stroke="#2563eb" stroke-width="2.2"/>
+  <text x="235" y="290" font-size="13" font-weight="700" fill="#172333" text-anchor="middle">a&#8323;</text>
+  <circle cx="185" cy="310" r="15" fill="#dbeafe" stroke="#2563eb" stroke-width="2.2"/>
+  <text x="185" y="315" font-size="13" font-weight="700" fill="#172333" text-anchor="middle">b&#8323;</text>
+
+  <!-- Blade 4 vertices -->
+  <circle cx="125" cy="310" r="15" fill="#dbeafe" stroke="#2563eb" stroke-width="2.2"/>
+  <text x="125" y="315" font-size="13" font-weight="700" fill="#172333" text-anchor="middle">a&#8324;</text>
+  <circle cx="75" cy="285" r="15" fill="#dbeafe" stroke="#2563eb" stroke-width="2.2"/>
+  <text x="75" y="290" font-size="13" font-weight="700" fill="#172333" text-anchor="middle">b&#8324;</text>
+
+  <!-- Panel B: Deleted state H = G - u and forbidden isolated vertex z -->
+  <text x="375" y="58" font-size="13" font-weight="700" fill="#1e293b" text-anchor="middle">B. Deleted state H = G &#8722; u (&#167;4.3)</text>
+
+  <!-- Dashed deleted spokes from deleted hub u=(375, 175) -->
+  <g stroke="#94a3b8" stroke-width="1.8" stroke-dasharray="5,4">
+    <line x1="375" y1="175" x2="310" y2="105"/>
+    <line x1="375" y1="175" x2="350" y2="85"/>
+    <line x1="375" y1="175" x2="400" y2="85"/>
+    <line x1="375" y1="175" x2="440" y2="105"/>
+    <line x1="375" y1="175" x2="440" y2="245"/>
+    <line x1="375" y1="175" x2="400" y2="265"/>
+    <line x1="375" y1="175" x2="350" y2="265"/>
+    <line x1="375" y1="175" x2="310" y2="245"/>
+    <!-- Dashed spoke to hypothetical isolated vertex z=(375, 325) -->
+    <line x1="375" y1="175" x2="375" y2="325" stroke="#dc2626" stroke-dasharray="4,4"/>
+  </g>
+
+  <!-- Remaining solid red matching edges in H = G - u -->
+  <g stroke="#dc2626" stroke-width="3.5">
+    <line x1="310" y1="105" x2="350" y2="85"/>
+    <line x1="400" y1="85" x2="440" y2="105"/>
+    <line x1="440" y1="245" x2="400" y2="265"/>
+    <line x1="350" y1="265" x2="310" y2="245"/>
+  </g>
+
+  <!-- Deleted hub u (dashed circle) -->
+  <circle cx="375" cy="175" r="14" fill="#f8fafc" stroke="#64748b" stroke-width="2" stroke-dasharray="4,3"/>
+  <text x="375" y="180" font-size="13" font-weight="700" fill="#64748b" text-anchor="middle">u</text>
+
+  <!-- Blade nodes in H -->
+  <circle cx="310" cy="105" r="12" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+  <text x="310" y="109" font-size="11" font-weight="700" fill="#172333" text-anchor="middle">a&#8321;</text>
+  <circle cx="350" cy="85" r="12" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+  <text x="350" y="89" font-size="11" font-weight="700" fill="#172333" text-anchor="middle">b&#8321;</text>
+  <circle cx="400" cy="85" r="12" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+  <text x="400" y="89" font-size="11" font-weight="700" fill="#172333" text-anchor="middle">a&#8322;</text>
+  <circle cx="440" cy="105" r="12" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+  <text x="440" y="109" font-size="11" font-weight="700" fill="#172333" text-anchor="middle">b&#8322;</text>
+  <circle cx="440" cy="245" r="12" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+  <text x="440" y="249" font-size="11" font-weight="700" fill="#172333" text-anchor="middle">a&#8323;</text>
+  <circle cx="400" cy="265" r="12" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+  <text x="400" y="269" font-size="11" font-weight="700" fill="#172333" text-anchor="middle">b&#8323;</text>
+  <circle cx="350" cy="265" r="12" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+  <text x="350" y="269" font-size="11" font-weight="700" fill="#172333" text-anchor="middle">a&#8324;</text>
+  <circle cx="310" cy="245" r="12" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+  <text x="310" y="249" font-size="11" font-weight="700" fill="#172333" text-anchor="middle">b&#8324;</text>
+
+  <!-- Forbidden isolated leftover vertex z in H -->
+  <circle cx="375" cy="325" r="13" fill="#fef2f2" stroke="#dc2626" stroke-width="2" stroke-dasharray="4,3"/>
+  <text x="375" y="330" font-size="12" font-weight="700" fill="#dc2626" text-anchor="middle">z</text>
+  <line x1="435" y1="325" x2="392" y2="325" stroke="#dc2626" stroke-width="1.6" marker-end="url(#arrow-red)"/>
+  <text x="375" y="362" font-size="11.5" fill="#dc2626" font-weight="600" text-anchor="middle">isolated z in H &#8658; cn(z, u) = &#8709; (forbidden)</text>
+
+  <!-- Right Panel: Three pair types and census notes -->
+  <text x="490" y="90" font-size="13.5" fill="#172333" font-weight="700">Every pair has a unique common neighbor:</text>
+  <text x="490" y="118" font-size="12.5" fill="#172333">&#8226; Cross-blade pair (a&#8321;, b&#8322;) &#8594; only hub u</text>
+  <text x="490" y="142" font-size="12.5" fill="#172333">&#8226; In-blade pair (a&#8321;, b&#8321;) &#8594; only hub u</text>
+  <text x="490" y="166" font-size="12.5" fill="#172333">&#8226; Hub-blade pair (u, a&#8321;) &#8594; only partner b&#8321;</text>
+
+  <text x="490" y="204" font-size="12.5" fill="#475569">Assembly (&#167;4.3): deleting universal u (dashed)</text>
+  <text x="490" y="224" font-size="12.5" fill="#475569">leaves H = G &#8722; u with max degree &#8804; 1 (no path</text>
+  <text x="490" y="244" font-size="12.5" fill="#475569">P&#8323; or triangle K&#8323;). Any isolated vertex z in H</text>
+  <text x="490" y="264" font-size="12.5" fill="#475569">would leave (z, u) with 0 common neighbors,</text>
+  <text x="490" y="284" font-size="12.5" fill="#475569">forcing H to be a perfect matching (red).</text>
+
+  <text x="490" y="320" font-size="12.5" fill="#475569">Census (n = 3&#8230;7): 1, 0, 15, 0, 105 labeled</text>
+  <text x="490" y="340" font-size="12.5" fill="#475569">friendship graphs &#8212; 1 for n = 3 (K&#8323;) and</text>
+  <text x="490" y="360" font-size="12.5" fill="#475569">n(n &#8722; 2)!! for odd n = 2t + 1 &#8805; 5.</text>
+</svg></div>
+<p><strong>What you now own:</strong> the common-neighbor bijection (Claim 1), the degree-class split (Claim 2 &#8212; pigeonhole plus one adjacency observation), the assembly, and the reflex of writing combinatorial information as a matrix equation before thinking.</p>
+<hr>
+<h2>The Trick Bag (reference card)</h2>
+<table><tr><th>Pattern</th><th>Plain language</th><th>Where you met it</th></tr><tr><td><strong>P19 Rank / dimension</strong></td><td>Gram or evaluation matrix; rank bounded above by ambient dimension and below by positive definiteness / invertibility</td><td>L1, L4; Ch. 8 (two-distance sets)</td></tr><tr><td><strong>P19$'$ Independence via dot products</strong></td><td>Self-products nonzero, cross-products zero &#8212; over the field the congruences name</td><td>L2, L3</td></tr><tr><td><strong>P22 Polynomial method</strong></td><td>One polynomial per set, vanishing on the others; slice trick for uniform families; Fermat for modular conditions; Krawtchouk combinations as certificates</td><td>L1, L3; Ch. 8 (two-distance sets, Delsarte)</td></tr><tr><td><strong>P21 Spectral / Rayleigh</strong></td><td>$\lambda_1 \ge 2m/n$ from the average; structure caps $\lambda_1$; operator norm $\mu$ on $\mathbf{1}^\perp$ prices pseudorandomness; smallest eigenvalue prices independence</td><td>Ch. 8 (the spectral lectures)</td></tr><tr><td><strong>P20 Weight shifting</strong></td><td>Merge weight into better-connected vertices; the support shrinks to a clique at no cost</td><td>Ch. 8 (Motzkin&#8211;Straus)</td></tr><tr><td><strong>The field chooses itself (lore)</strong></td><td>Parity/mod-$p$ conditions in the statement $\Rightarrow$ do linear algebra over $\mathbb{F}_p$</td><td>L2, L3</td></tr><tr><td><strong>Center before counting (lore)</strong></td><td>Subtract the mean; the centered Gram carries the true rank ($k - 1$, not $k$)</td><td>Ch. 8 (two-distance sets)</td></tr><tr><td><strong>Test parameters for degeneracy (lore)</strong></td><td>A construction whose forbidden values never occur proves nothing (the $K_{21}$ non-example)</td><td>L3</td></tr><tr><td><strong>Compress before you bound (lore)</strong></td><td>Restrict the matrix to a subspace or partition first: interlacing makes every such restriction honest, and equitable quotients give exact eigenvalues</td><td>Ch. 8 (interlacing)</td></tr><tr><td><strong>Distribute, then average (lore)</strong></td><td>Sum a quantity over all pairs before bounding it: character sums come out as squares, distance distributions as feasible points</td><td>Ch. 8 (Delsarte)</td></tr></table>
+<p><strong>Formula box:</strong> Fisher: pairwise intersections exactly $\lambda \ge 0$, no $|A_i| = \lambda \Rightarrow m \le n$; Bose: $m \le n + 1$ via diagonal evaluation; $\det(\lambda J + D) = \det(D)(1 + \lambda\sum 1/d_i)$. Oddtown $\le n$; Eventown $\le 2^{\lfloor n/2 \rfloor}$; same-parity sizes $\Rightarrow \le 2^{n-1}$ ($n \ge 1$); mod-$p$ analogue $\le n$ for every prime. RCW: $k$-uniform, intersections in $L \subseteq \{0, \dots, k-1\} \Rightarrow m \le \binom{n}{|L|}$. Frankl&#8211;Wilson: sizes $\equiv k$, intersections $\not\equiv k \pmod p \Rightarrow m \le \sum_{i \le p-1}\binom{n}{i}$; Ramsey corollary $R(K,K) \ge \exp(c \log^2 K / \log\log K)$ (cited). Friendship ($n \ge 3$): every pair exactly one common neighbor $\Rightarrow$ windmill $W_t$ ($n = 2t + 1$), labeled count $1$ for $n = 3$ and $n(n-2)!!$ for odd $n \ge 5$; $k$-regular friendship $\Rightarrow k = 2, n = 3$ ($n = k(k-1)+1$); $W_t$ spectrum $\{1^{t-1}, (-1)^t, (1\pm\sqrt{1+8t})/2\}$. The spectral half of this card &#8212; Rayleigh averaging, the expander-mixing lemma, Motzkin&#8211;Straus and spectral Tur&aacute;n, $s$-distance sets, interlacing, the Hoffman bounds, Lov&aacute;sz theta, and the Delsarte LP with its Krawtchouk certificates &#8212; moved with the spectral lectures to Chapter 8 (Spectral Methods and the Modern Toolkit).</p>
+<hr>
+<h2>Exercises (graded: Easy &middot; Moderate &middot; Tough)</h2>
+<p><strong>Easy &#8212; one idea, applied directly</strong></p>
+<ol>
+<li>(Easy) <strong>An Oddtown census.</strong> Show that the Oddtown bound $n$ is attained on $[4]$: exhibit four sets, and explain why the census says no fifth can join. <em>Hint: L2.1; the four $3$-subsets of $[4]$.</em></li>
+<li>(Easy) <strong>Eventown's ceiling.</strong> Prove that an Eventown family on $[n]$ has at most $2^{\lfloor n/2 \rfloor}$ members. <em>Hint: P19$'$ &#8212; the span $W$ satisfies $W \subseteq W^\perp$.</em></li>
+<li>(Easy) <strong>An odd determinant.</strong> L2.1 proved Oddtown over $\mathbb{F}_2$. Re-prove it over the rationals: show the Oddtown Gram matrix is congruent to the identity mod $2$, deduce that its determinant is odd &#8212; hence nonzero &#8212; and conclude $m \le n$, noting which fields the argument reaches. Then show the same route dies for Eventown: exhibit an Eventown family on $[4]$ whose Gram matrix is singular, and name the step of the mod-$2$ proof that has no rational analogue. <em>Hint: P19$'$ &#8212; the congruence is the whole engine: diagonal odd, off-diagonal even, so $G \equiv I \pmod 2$; for the witness, pair $[4]$ up as $\{1,2\}, \{3,4\}$ and add their union.</em></li>
+<li>(Easy) <strong>Weighted blocks.</strong> Put a real weight $w_i$ on each point of $[n]$ and define the weighted intersection $\langle A, B \rangle = \sum_{i \in A \cap B} w_i$. Suppose the sets $A_1, \dots, A_m$ pairwise meet in the same weighted amount $\Lambda &gt; 0$, and every weighted size $\langle A_i, A_i \rangle$ is strictly larger than $\Lambda$. Prove $m \le n$ &#8212; no integrality anywhere in the statement. Then audit the proof: which hypotheses does the argument actually consume &#8212; the positivity of the weights, some parity, or neither? <em>Hint: P19 &#8212; $G = \Lambda J + \operatorname{diag}(\langle A_i, A_i \rangle - \Lambda)$; watch closely what the lemma of L1.2 ever asks about the $w_i$.</em></li>
+</ol>
+<p><strong>Moderate &#8212; two ideas, or one tricky step</strong></p>
+<ol start="5">
+<li>(Moderate) <strong>The Fano plane's Gram.</strong> Compute the determinant of the Fano plane's intersection matrix (diagonal $3$, off-diagonal $1$) &#8212; both by the determinant lemma of L1.2 and by Sylvester's minors &#8212; and explain what each computation certifies. <em>Hint: $2I + J$; the lemma's $1 + \lambda\sum 1/d_i$.</em></li>
+<li>(Moderate) <strong>The $\mathbb{F}_3$ analogue.</strong> Prove: if every $|A_i| \equiv 1 \pmod 3$ and every pairwise intersection $\equiv 0 \pmod 3$, then the family has at most $n$ members. Which step of L2.1 survives unchanged, and what does the census on $[4]$ say the extremal family is? <em>Hint: P19$'$ over $\mathbb{F}_3$.</em></li>
+<li>(Moderate) <strong>Friendship Claim 1.</strong> Prove that in a friendship graph, non-adjacent vertices have equal degrees, and state the contrapositive that powers Claim 2. <em>Hint: the excised common-neighbor map $\alpha: N(x)\setminus\{z, u_0\} \to N(y)\setminus\{z, v_0\}$; injectivity via the two-common-neighbors contradiction.</em></li>
+<li>(Moderate) <strong>Auditing Fisher's boundary ($|A_i| = \lambda$).</strong> Suppose distinct sets $A_1, \dots, A_m \subseteq [n]$ pairwise meet in $\lambda \ge 1$ points. When every $|A_i| &gt; \lambda$, the determinant lemma of L1.2 prices $\det(\lambda J + D) &gt; 0$ and gives $m \le n$. Audit what happens if the hypothesis $|A_i| \ne \lambda$ is dropped: show that at most one set can have size $\lambda$, explain where the determinant-lemma formula breaks when $|A_1| = \lambda$, and prove directly that $m \le n$ still holds! Finally, verify sharpness on the near-pencil on $[n]$ ($n \ge 3$) and the Fano plane. <em>Hint: P19 &#8212; if $|A_1| = \lambda$, then $A_1 \subseteq A_j$ for all $j \ge 2$, and the remainders $A_j \setminus A_1$ are nonempty and pairwise disjoint inside $[n] \setminus A_1$.</em></li>
+<li>(Moderate) <strong>Windmill spectra.</strong> Derive the full spectrum of the windmill $W_t$: show $1$ occurs $t - 1$ times, $-1$ occurs $t$ times, and the two remaining eigenvalues solve $\lambda^2 - \lambda - 2t = 0$. Verify against $W_2$ and $W_3$. <em>Hint: vectors $(1, -1)$ supported on one blade; differences of blade sums; then the $2 \times 2$ quotient $\{\text{hub}\} \cup \{\text{symmetrized blades}\}$.</em></li>
+<li>(Moderate) <strong>Hadamard orders are multiples of four.</strong> An $n \times n$ $\pm 1$ matrix $H$ with $H H^T = nI$ is a Hadamard matrix. Prove: if one exists with $n \ge 3$, then $4 \mid n$ &#8212; and conclude that no Hadamard matrix of order $3$ exists. <em>Hint: P19 + P2 &#8212; normalize the first row to all $+$ by flipping columns, then census the columns by the sign pair they carry in rows $2$ and $3$ (the four patterns $a, b, c, d$); count the same columns three ways: against row $2$'s balance, against row $3$'s balance, and against the orthogonality of rows $2$ and $3$.</em></li>
+</ol>
+<p><strong>Tough &#8212; several chapter ideas combined</strong></p>
+<ol start="11">
+<li>(Tough) <strong>Graham&#8211;Pollak, and the cover that cheats.</strong> Prove that the edges of $K_n$ cannot be <strong>partitioned</strong> into fewer than $n - 1$ complete bipartite graphs &#8212; and contrast: they can be <strong>covered</strong> by $\lceil \log_2 n \rceil$. <em>Hint: P19 &#8212; on $V = \{\sum x_u = 0\}$ use the partition identity $\sum_i 2 s_{A_i}s_{B_i} = -\|x\|^2$ and the vectors $z_i = |B_i|\cdot 1_{A_i} - |A_i|\cdot 1_{B_i}$; for the cover, give each vertex its binary address and cut by bit.</em></li>
+<li>(Tough) <strong>One more parity class.</strong> Prove: a family of subsets of $[n]$ ($n \ge 1$) whose pairwise symmetric differences are all even has at most $2^{n-1}$ members, sharply. <em>Hint: $|A \triangle B| \equiv |A| + |B| \pmod 2$; one parity class.</em></li>
+<li>(Tough) <strong>The ten-vertex Ramsey graph.</strong> Build the graph on the $3$-subsets of $[5]$ joining $A, B$ when $|A \cap B| = 2$. Prove $\omega = 4$ and $\alpha = 2$ by hand, verify the theoretical caps ($6$ and $5$), and identify the graph as the complement of the Petersen graph. <em>Hint: L3.5; complement each triple to a $2$-subset and watch "intersect in $2$" become "intersect in $1$".</em></li>
+</ol>
+<p><strong>Pattern unknown &#8212; you choose the tool</strong> <em>No hints, no difficulty rating: diagnosing the problem is part of the problem. Worked answers still wait at the end.</em></p>
+<ol start="14">
+<li>(Pattern-Unknown) On $[6]$, how large can a family of $3$-subsets be if all pairwise intersections lie in $\{0, 1\}$? The general theory offers a bound; the truth is smaller. Find both, and close the gap by hand.</li>
+<li>(Pattern-Unknown) Enumerate every (finite) linear space on $4$ labeled points: any two points on exactly one line, each line $\ge 2$ points, not all collinear. How many are there, and what does each say about de Bruijn&#8211;Erd&#337;s?</li>
+<li>(Pattern-Unknown) Find the independence number of the Petersen graph and prove by hand that every independent set attaining it is one of five configurations.</li>
+</ol>
+<p><strong>Explorations &#8212; research-style training</strong> <em>No single right answer &#8212; what you should find is described in each.</em></p>
+<ol start="17">
+<li>(Exploration) <strong>A Ramsey graph factory.</strong> For several primes $p$, ground sizes $m$ and uniform sizes $k$, build the Frankl&#8211;Wilson graphs of L3.5 (vertices $= k$-subsets of $[m]$, join on the wrong residue class), compute $\omega$ and $\alpha$ exhaustively, and compare against the Frankl&#8211;Wilson and RCW caps. Hunt for degenerate parameters &#8212; can you predict degeneracy before the machine finds it? How close do the actual cliques come to the caps as $m$ grows?</li>
+</ol>
+<hr>
+<h2>Computational Lab (verified)</h2>
+<p>Two parts, all deterministic; the printed outputs were produced by machine runs of exactly this logic. Part 1 verifies the $\mathbb{F}_p$ rank machine on Oddtown, Eventown, and $\mathbb{F}_3$ singletons, the determinant lemma on the Fano plane and near-pencils, the linear spaces on $[4]$, and the Frankl&#8211;Wilson Ramsey parameters. Part 2 runs the friendship graph census for $n = 1 \dots 7$, the Claim 1 excision diagnostic across all $1{,}320$ non-adjacent pairs, and the matrix equation $A^2 = J + (D - I)$ on $W_2$.</p>
+<h3>Part 1 &#8212; Rank machines over $\mathbb{F}_p$, determinants, linear spaces, and Frankl&#8211;Wilson</h3>
+<pre>from itertools import combinations
+import math
+
+# 1. Rank machine over F_p (p prime), guarding empty inputs
+def fp_rank(rows, p):
+    if not rows or not rows[0]:
+        return 0
+    M = [[x % p for x in r] for r in rows]
+    r0, rank = 0, 0
+    for c in range(len(M[0])):
+        pvt = next((i for i in range(r0, len(M)) if M[i][c] % p), -1)
+        if pvt &lt; 0:
+            continue
+        M[r0], M[pvt] = M[pvt], M[r0]
+        inv = pow(M[r0][c], p - 2, p)  # Fermat inverse in F_p
+        M[r0] = [(a * inv) % p for a in M[r0]]
+        for i in range(len(M)):
+            if i != r0 and M[i][c] % p:
+                f = M[i][c]
+                M[i] = [(a - f * b) % p for a, b in zip(M[i], M[r0])]
+        r0 += 1
+        rank += 1
+        if r0 == len(M):
+            break
+    return rank
+
+def vec(A, n):
+    return [1 if i in A else 0 for i in range(n)]
+
+oddtown  = [vec({0,1,2}, 4), vec({0,1,3}, 4), vec({0,2,3}, 4), vec({1,2,3}, 4)]
+eventown = [vec(set(), 4), vec({0,1}, 4), vec({2,3}, 4), vec({0,1,2,3}, 4)]
+f3_fam   = [vec({0}, 4), vec({1}, 4), vec({2}, 4), vec({3}, 4)]
+print("Ranks (Oddtown/F2, Eventown/F2, Singletons/F3):",
+      fp_rank(oddtown, 2), fp_rank(eventown, 2), fp_rank(f3_fam, 3))
+
+# 2. L1.2 Determinant Lemma &amp; Sylvester leading principal minors (Fano &amp; near-pencils)
+def det_lemma_int(d_list, lam=1):
+    if any(d &lt;= 0 for d in d_list):
+        raise ValueError("Every d_i = |A_i| - lam must be strictly positive.")
+    m = len(d_list)
+    return math.prod(d_list) + lam * sum(
+        math.prod(d_list[j] for j in range(m) if j != i) for i in range(m)
+    )
+
+fano_minors = [det_lemma_int([2] * k, 1) for k in range(1, 8)]
+near_pencil_dets = [det_lemma_int([1] * (n - 1) + [n - 2], 1) for n in range(3, 8)]
+print("Fano leading minors (k=1..7):", fano_minors)
+print("Near-pencil dets (n=3..7):   ", near_pencil_dets)
+
+# 3. L1.3 / A15 Exhaustive census of linear spaces on n = 4 labeled points
+candidate_lines = [set(c) for r in (2, 3) for c in combinations(range(4), r)]
+pairs_4 = [set(p) for p in combinations(range(4), 2)]
+lin_spaces_4 = [
+    fam for r in range(1, len(candidate_lines) + 1)
+    for fam in combinations(candidate_lines, r)
+    if all(sum(1 for L in fam if p.issubset(L)) == 1 for p in pairs_4)
+]
+print("Linear spaces on [4]:", len(lin_spaces_4),
+      "with line counts", sorted(len(fam) for fam in lin_spaces_4))
+
+# 4. L3.5 Frankl-Wilson Ramsey graph check (exact clique/independence numbers &amp; degeneracy guard)
+def fw_ramsey_stats(p, m, k):
+    if not (1 &lt;= k &lt;= m - 1):
+        raise ValueError("Require 1 &lt;= k &lt;= m - 1.")
+    verts = [set(c) for c in combinations(range(m), k)]
+    N = len(verts)
+    adj = [0] * N
+    for i in range(N):
+        for j in range(i + 1, N):
+            if len(verts[i] &amp; verts[j]) % p != k % p:
+                adj[i] |= 1 &lt;&lt; j
+                adj[j] |= 1 &lt;&lt; i
+
+    def max_clique_size(cands):
+        if not cands:
+            return 0
+        best = 0
+        while cands and len(cands) &gt; best:
+            v = cands.pop()
+            best = max(best, 1 + max_clique_size(cands &amp; {u for u in cands if (adj[v] &gt;&gt; u) &amp; 1}))
+        return best
+
+    all_v = (1 &lt;&lt; N) - 1
+    omega = max_clique_size(set(range(N)))
+    # Switch to complement adjacency for independence number alpha
+    for i in range(N):
+        adj[i] = (~adj[i]) &amp; all_v &amp; ~(1 &lt;&lt; i)
+    alpha = max_clique_size(set(range(N)))
+    fw_cap = sum(math.comb(m, i) for i in range(p))
+    rcw_cap = math.comb(m, k // p)
+    degen_complete = min(k, m - k) &lt; p
+    return N, omega, alpha, fw_cap, rcw_cap, degen_complete
+
+print("FW(2,5,3):", fw_ramsey_stats(2, 5, 3))
+print("FW(3,7,4):", fw_ramsey_stats(3, 7, 4))
+print("FW(3,7,5):", fw_ramsey_stats(3, 7, 5))</pre>
+<p><strong>Verified output.</strong></p>
+<pre>Ranks (Oddtown/F2, Eventown/F2, Singletons/F3): 4 2 4
+Fano leading minors (k=1..7): [3, 8, 20, 48, 112, 256, 576]
+Near-pencil dets (n=3..7):    [4, 9, 16, 25, 36]
+Linear spaces on [4]: 5 with line counts [4, 4, 4, 4, 6]
+FW(2,5,3): (10, 4, 2, 6, 5, False)
+FW(3,7,4): (35, 15, 2, 29, 7, False)
+FW(3,7,5): (21, 21, 1, 29, 7, True)</pre>
+<h3>Part 2 &#8212; The friendship census ($n = 3 \dots 7$), Claim 1 diagnostic, and $W_2$ walk matrix</h3>
+<pre>from itertools import combinations
+
+def double_fact(k):
+    res = 1
+    for x in range(k, 0, -2):
+        res *= x
+    return res
+
+def windmill_formula(n):
+    if n &lt; 3 or n % 2 == 0:
+        return 0
+    if n == 3:
+        return 1                   # K_3 has all 3 vertices universal (1 labeled graph, not 3*1!!)
+    return n * double_fact(n - 2)  # unique hub (n ways) * blade matching ((n-2)!! ways)
+
+def is_friendship(n, adj):
+    if n &lt; 3:
+        return False               # guard n &lt; 3 (rules out vacuous K_1 at n = 1)
+    for u in range(n):
+        au = adj[u]
+        for v in range(u + 1, n):
+            if (au &amp; adj[v]).bit_count() != 1:
+                return False
+    return True
+
+def cn(adj, u, v):
+    mask = adj[u] &amp; adj[v]
+    return (mask &amp; -mask).bit_length() - 1
+
+nonadj_graphs, nonadj_pairs, naive_fails, excised_ok = 0, 0, 0, 0
+
+for n in range(1, 8):
+    count = 0
+    if n &gt;= 3:
+        for mask in range(1 &lt;&lt; (n * (n - 1) // 2)):
+            adj = [0] * n
+            e = 0
+            for u in range(n):
+                for v in range(u + 1, n):
+                    if (mask &gt;&gt; e) &amp; 1:
+                        adj[u] |= 1 &lt;&lt; v
+                        adj[v] |= 1 &lt;&lt; u
+                    e += 1
+            if is_friendship(n, adj):
+                count += 1
+                degs = [adj[u].bit_count() for u in range(n)]
+                assert (n - 1) in degs  # universal vertex exists (Claim 2)
+                has_nonadj = False
+                for x, y in combinations(range(n), 2):
+                    if not ((adj[x] &gt;&gt; y) &amp; 1):
+                        has_nonadj = True
+                        nonadj_pairs += 1
+                        assert degs[x] == degs[y]  # Claim 1
+                        z = cn(adj, x, y)
+                        u0, v0 = cn(adj, x, z), cn(adj, y, z)
+                        if cn(adj, u0, y) == z:
+                            naive_fails += 1
+                        dom = [u for u in range(n) if ((adj[x] &gt;&gt; u) &amp; 1) and u not in (z, u0)]
+                        cod = {v for v in range(n) if ((adj[y] &gt;&gt; v) &amp; 1) and v not in (z, v0)}
+                        img = {cn(adj, u, y) for u in dom}
+                        if img == cod and len(img) == len(dom):
+                            excised_ok += 1
+                if has_nonadj:
+                    nonadj_graphs += 1
+    assert count == windmill_formula(n)
+    if n &gt;= 3:
+        print(f"n={n}: count={count} (formula={windmill_formula(n)})")
+
+print(f"Claim 1 diagnostic: {nonadj_graphs} graphs with non-adjacent pairs, "
+      f"{nonadj_pairs} pairs; naive fails={naive_fails}, excised bijections={excised_ok}")
+
+# Verify A^2 = J + (D - I) on W_2 (hub 0, blades {1,2} and {3,4})
+W2 = [
+    [0, 1, 1, 1, 1],
+    [1, 0, 1, 0, 0],
+    [1, 1, 0, 0, 0],
+    [1, 0, 0, 0, 1],
+    [1, 0, 0, 1, 0],
+]
+A2 = [[sum(W2[i][k] * W2[k][j] for k in range(5)) for j in range(5)] for i in range(5)]
+for row in A2:
+    print(row)</pre>
+<p><strong>Verified output.</strong></p>
+<pre>n=3: count=1 (formula=1)
+n=4: count=0 (formula=0)
+n=5: count=15 (formula=15)
+n=6: count=0 (formula=0)
+n=7: count=105 (formula=105)
+Claim 1 diagnostic: 120 graphs with non-adjacent pairs, 1320 pairs; naive fails=1320, excised bijections=1320
+[4, 1, 1, 1, 1]
+[1, 2, 1, 1, 1]
+[1, 1, 2, 1, 1]
+[1, 1, 1, 2, 1]
+[1, 1, 1, 1, 2]</pre>
+<p>Every counted graph is a windmill with a universal hub: $1$ for $n = 3$ ($K_3$) and $n(n-2)!!$ for odd $n \ge 5$ ($5 \cdot 3!! = 15$, $7 \cdot 5!! = 105$). On $W_2$ (hub $0$, blades $\{1,2\}$ and $\{3,4\}$), $A^2 = J + (D - I)$ has diagonal equal to the degrees $(4, 2, 2, 2, 2)$ and every off-diagonal entry equal to $1$ &#8212; the diagonal is not constant, reflecting non-regularity.</p>
+<hr>
+<h2>Answers to the Exercises</h2>
+<p><strong>A1.</strong> The four $3$-subsets of $[4]$ &#8212; $\{1,2,3\}, \{1,2,4\}, \{1,3,4\}, \{2,3,4\}$ &#8212; have odd sizes ($3$) and pairwise intersections of size $2$ (even): an Oddtown of size $4 = n$. No fifth set can join: five characteristic vectors in $\mathbb{F}_2^4$ cannot be linearly independent (L2.1's argument caps the family at $n = 4$), and any Oddtown family of five would have to be. Machine check: exhaustive census &#8212; maximum Oddtown size $3$ on $[3]$, $4$ on $[4]$; the exhibited family is extremal.</p>
+<p><strong>A2.</strong> Over $\mathbb{F}_2$ every vector of the family has even self-product (sizes even) and even cross-products (intersections even): all pairwise products vanish. For $x = \sum_i a_i v_i$ and $y = \sum_j b_j v_j$ in the span $W$: $x \cdot y = \sum_{i,j} a_i b_j (v_i \cdot v_j) = 0$. So $W \subseteq W^\perp$, giving $2 \dim W \le n$, i.e. $\dim W \le \lfloor n/2 \rfloor$, and the family injects into $W$: $|\mathcal{F}| \le 2^{\dim W} \le 2^{\lfloor n/2 \rfloor}$. Sharp: partition $[n]$ into $\lfloor n/2 \rfloor$ disjoint pairs and take all $2^{\lfloor n/2 \rfloor}$ unions. Machine check: census maxima $2$ on $[3]$ and $4$ on $[4]$ &#8212; both matching the formula.</p>
+<p><strong>A3.</strong> (a) The Gram matrix $G = V V^T$ has diagonal entries $|A_i|$ (odd) and off-diagonal entries $|A_i \cap A_j|$ (even): $G \equiv I_m \pmod 2$. The determinant is an integer polynomial in the entries, so $\det G \equiv \det I_m = 1 \pmod 2$: the determinant is an odd integer, in particular nonzero in $\mathbb{Z}$. Thus $G$ is nonsingular over $\mathbb{F}_2$ (and every field of characteristic $2$) as well as over $\mathbb{Q}$ and $\mathbb{R}$ (and every field of characteristic $0$) &#8212; though not necessarily over $\mathbb{F}_p$ for an odd prime $p$ dividing $\det G$, as the $\det G = 9 \equiv 0 \pmod 3$ extremal family below illustrates. Working over $\mathbb{Q}$, $m = \operatorname{rank}_\mathbb{Q} G \le \operatorname{rank}_\mathbb{Q} V \le n$. (b) Eventown: all sizes and intersections are even, so $G \equiv 0 \pmod 2$ &#8212; the mod-$2$ determinant congruence returns $0 \equiv 0$ and certifies nothing. Over $\mathbb{Q}$ the Gram rank argument fails honestly: the pairing family $A_1 = \{1,2\}, A_2 = \{3,4\}, A_3 = \{1,2,3,4\}$ on $[4]$ has Gram matrix</p>
+<p>$$G = \begin{bmatrix} 2 &amp; 0 &amp; 2 \\ 0 &amp; 2 &amp; 2 \\ 2 &amp; 2 &amp; 4 \end{bmatrix},$$</p>
+<p>whose third row is the sum of the first two &#8212; $\det G = 0$, singular, for a valid Eventown family of size $3$ (or $4$ if $\emptyset$ is included). The step of the mod-$2$ proof with no rational analogue is self-orthogonality ($W \subseteq W^\perp$): over $\mathbb{F}_2$, $v \cdot v = |A| \equiv 0 \pmod 2$ is possible for $v \ne 0$, whereas over $\mathbb{Q}$ the standard inner product is positive definite ($\langle x, x \rangle &gt; 0$ for all $x \ne 0$), so $W \cap W^\perp = \{0\}$ and no nonzero subspace can sit inside its own orthogonal complement. Eventown's $2^{\lfloor n/2 \rfloor}$ is genuinely a characteristic-$2$ theorem, while Oddtown's $n$ works over every field. $\blacksquare$ Machine check: across all $34$ Oddtown families on $[4]$, every Gram determinant is odd and nonzero, with maximum size $4$ attained by the four singletons ($G = I_4, \det G = 1$) and the four triples of Exercise 1 ($G = I_4 + 2J_4, \det G = 9$); the Eventown witness has $\det G = 0$ and $\operatorname{rank} G = 2$.</p>
+<p><strong>A4.</strong> The weighted intersection matrix $G = (\langle A_i, A_j \rangle)$ is $\Lambda J + D$ with $D = \operatorname{diag}(\langle A_1, A_1 \rangle - \Lambda, \dots, \langle A_m, A_m \rangle - \Lambda)$, whose diagonal entries are strictly positive by hypothesis. Since $\Lambda &gt; 0$ as well, the determinant lemma of L1.2 prices</p>
+<p>$$\det G = \prod_{i=1}^m (\langle A_i, A_i \rangle - \Lambda) \cdot \left(1 + \Lambda \sum_{i=1}^m \frac{1}{\langle A_i, A_i \rangle - \Lambda}\right) &gt; 0,$$</p>
+<p>and every leading principal minor is likewise positive: $G$ is positive definite, hence nonsingular ($\operatorname{rank} G = m$). Meanwhile $G = V W V^T$ where $V$ is the $m \times n$ incidence matrix and $W = \operatorname{diag}(w_1, \dots, w_n)$, so $m = \operatorname{rank} G = \operatorname{rank}(V W V^T) \le \operatorname{rank} V \le n$. $\blacksquare$ The audit: the proof never touches the individual weights $w_i$ except through the aggregated sums $\langle A_i, A_j \rangle$. All it consumes is the matrix pattern: constant off-diagonal $\Lambda &gt; 0$ and diagonal entries strictly larger than $\Lambda$. The weights $w_i$ can be arbitrary real numbers, negative or zero included &#8212; $G = \Lambda J + D$ with $D \succ 0$ and $\Lambda &gt; 0$ is positive definite regardless of how the entries were manufactured from $W$, and $\operatorname{rank}(V W V^T) \le \operatorname{rank} V \le n$ holds for every $n \times n$ matrix $W$. Positivity of the $w_i$ buys the geometric interpretation of $\langle \cdot, \cdot \rangle$ as an inner product on $\mathbb{R}^n$, not the bound $m \le n$; integrality was never needed. Machine check: verified on the triangle family $\{1,2\}, \{2,3\}, \{1,3\}$ with $\det G = 4a^3$ ($w_1 = w_2 = w_3 = a &gt; 0$), across $120$ random instances, and on mixed-sign weight vectors on $[4]$ such as $(3, -2, 5, -1)$.</p>
+<p><strong>A5.</strong> The Fano plane has seven lines of size $3$ with pairwise intersections of size $1$, so its Gram matrix is $M = J + 2I$. Its eigenvalues are $2$ (multiplicity $6$, on $\mathbf{1}^\perp$) and $2 + 7 = 9$ (multiplicity $1$, on $\mathbf{1}$), giving $\det M = 2^6 \cdot 9 = \mathbf{576} = 24^2$. The determinant lemma of L1.2 agrees: $\det(D)(1 + \lambda\sum_{i=1}^7 1/d_i)$ with $D = 2I_7, \lambda = 1$ gives $2^7(1 + 7/2) = 128 \cdot 4.5 = 576$. Sylvester's leading principal minors &#8212; $\det(2I_k + J_k) = 2^{k-1}(k + 2)$ for $k = 1, \dots, 7$, namely $3, 8, 20, 48, 112, 256, 576$ &#8212; are all strictly positive, certifying positive definiteness (hence $\operatorname{rank} M = 7 = m$) without writing a quadratic form; the eigenvalue computation certifies the same thing and prices the determinant. Fisher: $m = n = 7$, tight.</p>
+<p><strong>A6.</strong> Over $\mathbb{F}_3$: $v_i \cdot v_i = |A_i| \equiv 1 \not\equiv 0 \pmod 3$ and $v_i \cdot v_j = |A_i \cap A_j| \equiv 0 \pmod 3$ for $i \ne j$. Dotting a linear dependence $\sum_{i=1}^m c_i v_i = 0$ with $v_j$ leaves $c_j \cdot 1 = 0$ in $\mathbb{F}_3$, i.e. $c_j = 0$ for all $j$ &#8212; the L2.1 argument survives verbatim because its only ingredients were "self-products nonzero, cross-products zero", which holds in $\mathbb{F}_3$. So $m \le n$. (In general, sizes $\equiv k \not\equiv 0 \pmod p$ and pairwise intersections $\equiv 0 \pmod p$ imply $m \le n$ for any prime $p$.) Census on $[4]$: maximum $4$, attained by the singletons $\{1\}, \{2\}, \{3\}, \{4\}$ &#8212; sizes $1 \equiv 1 \pmod 3$, pairwise intersections $0$.</p>
+<p><strong>A7.</strong> Let $z = \operatorname{cn}(x, y)$ be the unique common neighbor of the non-adjacent pair $x, y$. Sending each $u \in N(x)\setminus\{z\}$ to the unique common neighbor $\alpha(u) = \operatorname{cn}(u, y)$ of $(u, y)$ does <strong>not</strong> map into $N(y)\setminus\{z\}$, because $\alpha(u) = z$ occurs whenever $u \sim z$: in $W_2$ with $x = a_1, y = a_2, u = b_1$, the pair $(u, y)$ has common neighbor the hub $z$. To repair the domain and codomain, observe that the vertices in $N(x)\setminus\{z\}$ adjacent to $z$ are precisely the common neighbors of $(x, z)$, of which there is a unique one, $u_0 = \operatorname{cn}(x, z) \in N(x)\setminus\{z\}$. Symmetrically, $v_0 = \operatorname{cn}(y, z)$ is the unique $z$-adjacent vertex in $N(y)\setminus\{z\}$. For any $u \in N(x)\setminus\{z, u_0\}$, we have $u \not\sim y$ (else $u \ne z$ would be a second common neighbor of $x$ and $y$), so $\alpha(u) = \operatorname{cn}(u, y) \in N(y)$ is well-defined; $\alpha(u) \ne z$ because $u \not\sim z$ (as $u_0$ is the unique $z$-neighbor in $N(x)\setminus\{z\}$); $\alpha(u) \ne x$ because $x \not\sim y$; and $\alpha(u) \ne v_0$, since if $\alpha(u) = v_0$, both $x$ and $v_0$ would be common neighbors of $(u, z)$ ($v_0 \sim u$ via $\alpha(u) = v_0$ and $v_0 \sim z$ by definition), and $x \ne v_0$ because $x \not\sim y$ while $v_0 \sim y$. If $\alpha(u_1) = \alpha(u_2) = w$ for $u_1 \ne u_2$ in $N(x)\setminus\{z, u_0\}$, then $w$ and $x$ are two common neighbors of $(u_1, u_2)$, distinct since $x \not\sim y$ while $w \sim y$. Contradiction: $\alpha : N(x)\setminus\{z, u_0\} \to N(y)\setminus\{z, v_0\}$ is injective, giving $d(x) - 2 \le d(y) - 2$; swapping $x$ and $y$ gives $d(y) - 2 \le d(x) - 2$, so $d(x) = d(y)$. Contrapositive: $d(x) \ne d(y) \Rightarrow x \sim y$. Machine check: verified across all $121$ friendship graphs on $n = 3 \dots 7$ ($1{,}320$ non-adjacent pairs).</p>
+<p><strong>A8.</strong> When every $|A_i| &gt; \lambda$, the Gram matrix $G = \lambda J + D$ has $D = \operatorname{diag}(|A_1| - \lambda, \dots, |A_m| - \lambda) \succ 0$, and the determinant lemma of L1.2 gives $\det G = \prod_{i=1}^m (|A_i| - \lambda) \cdot (1 + \lambda\sum_{i=1}^m 1/(|A_i| - \lambda)) &gt; 0$. Since $G = V V^T$ for the $m \times n$ incidence matrix $V$, $m = \operatorname{rank} G \le \operatorname{rank} V \le n$. <em>The audit when $|A_i| = \lambda$ is permitted:</em> First, at most one set in the family can have size $\lambda$: if $|A_1| = |A_2| = \lambda$, then $|A_1 \cap A_2| = \lambda$ forces $A_1 = A_2$, contradicting that the sets are distinct. Second, if $|A_1| = \lambda$ and $|A_i| &gt; \lambda$ for $i \ge 2$, then $d_1 = |A_1| - \lambda = 0$, so $D$ is singular and the factored form $\prod_i d_i (1 + \lambda\sum_i 1/d_i)$ has a division by zero in $1/d_1$ (though expanding the product before dividing gives $\lambda \prod_{i=2}^m d_i &gt; 0$, so $G$ is actually still nonsingular!). Even simpler, the combinatorial patch bypasses matrices altogether when $|A_1| = \lambda$: since $|A_1 \cap A_j| = \lambda = |A_1|$ for every $j \ge 2$, we have $A_1 \subseteq A_j$ for all $j \ge 2$. Therefore the $m - 1$ remainder sets $B_j = A_j \setminus A_1 \subseteq [n] \setminus A_1$ ($j = 2, \dots, m$) are nonempty (as $|A_j| &gt; \lambda$) and pairwise disjoint (since $B_i \cap B_j = (A_i \cap A_j) \setminus A_1 = A_1 \setminus A_1 = \emptyset$). At most $n - \lambda$ nonempty pairwise disjoint sets can fit inside $[n] \setminus A_1$, so $m - 1 \le n - \lambda$, giving $m \le n - \lambda + 1 \le n$ (since $\lambda \ge 1$). Sharpness: the near-pencil on $[n]$ ($n \ge 3$) &#8212; the $n - 1$ pairs $\{1, i\}$ for $i = 2, \dots, n$ together with $\{2, \dots, n\}$ &#8212; has $\lambda = 1, m = n$, and $\det G = 1^{n-1}(n-2)(1 + (n-1)/1 + 1/(n-2)) = (n-1)^2$ ($4, 9, 16, 25, 36$ for $n = 3 \dots 7$); the Fano plane has $\lambda = 1, m = n = 7, \det G = 576$.</p>
+<p><strong>A9.</strong> Three families of eigenvectors of $W_t$ ($n = 2t + 1$ vertices: hub $0$ and blades $\{a_i, b_i\}$ for $i = 1, \dots, t$). (i) Let $e_i^-$ be supported on blade $i$ with entries $+1$ at $a_i$, $-1$ at $b_i$, and $0$ elsewhere: the hub coordinate of $A e_i^-$ is $1 + (-1) = 0$, the $a_i$ coordinate is $b_i$'s entry $-1$, and the $b_i$ coordinate is $a_i$'s entry $+1$, so $A e_i^- = -e_i^-$: eigenvalue <strong>$-1$</strong> with multiplicity at least $t$ (one independent vector per blade). (ii) Let $e_i^+$ have $+1$ at both $a_i, b_i$ and $0$ elsewhere; for $i = 2, \dots, t$, the vector $e_1^+ - e_i^+$ has hub coordinate $2 - 2 = 0$, and at each vertex of blade $1$ (resp. blade $i$) $A$ picks up its blade partner's $+1$ (resp. $-1$), so $A(e_1^+ - e_i^+) = e_1^+ - e_i^+$: eigenvalue <strong>$1$</strong> with multiplicity at least $t - 1$. (iii) The remaining $2$-dimensional subspace is spanned by the indicator of the hub $u$ and the sum $\sum_{i=1}^t e_i^+$ of all blade indicators, corresponding to the equitable partition $\{\{u\}, V \setminus \{u\}\}$ with quotient matrix</p>
+<p>$$Q = \begin{bmatrix} 0 &amp; 2t \\ 1 &amp; 1 \end{bmatrix},$$</p>
+<p>since the hub has $2t$ blade neighbors and each blade vertex has $1$ hub neighbor and $1$ in-blade neighbor. The characteristic polynomial of $Q$ is $\lambda^2 - \lambda - 2t = 0$, yielding the two remaining eigenvalues <strong>$(1 \pm \sqrt{1 + 8t})/2$</strong>. The multiplicities sum to $t + (t - 1) + 2 = 2t + 1 = n$, and the trace is $t(-1) + (t - 1)(1) + 1 = 0$. For $W_2$ ($t = 2$): $\{(1 \pm \sqrt{17})/2, 1, -1, -1\}$; for $W_3$ ($t = 3$): $\{3, 1, 1, -1, -1, -1, -2\}$.</p>
+<p><strong>A10.</strong> Multiply each column $j$ of $H$ by $H_{1j} \in \{\pm 1\}$; this leaves $H H^T = nI$ unchanged (since $(HD)(HD)^T = H D^2 H^T = H H^T$) and makes row $1$ all $+1$s. Since $n \ge 3$, rows $2$ and $3$ exist and are orthogonal to row $1$ and to each other. Classify the $n$ columns by the ordered pair of signs $(H_{2j}, H_{3j}) \in \{+, -\}^2$: let $a, b, c, d$ be the numbers of columns of types $(+,+), (+,-), (-,+), (-,-)$ respectively. Counting columns four ways:<br>Total columns: $a + b + c + d = n$.<br>Orthogonality of row $1$ and row $2$: $(a + b) - (c + d) = 0 \implies a + b = n/2$.<br>Orthogonality of row $1$ and row $3$: $(a + c) - (b + d) = 0 \implies a + c = n/2$.<br>Orthogonality of row $2$ and row $3$: $(a + d) - (b + c) = 0 \implies a + d = n/2, \; b + c = n/2$.<br>From $a + b = a + c = n/2$ we get $b = c$; then $2b = b + c = n/2$, so $n = 4b$ is a multiple of $4$ (and in fact $a = b = c = d = n/4$). Since $4 \nmid 3$, no Hadamard matrix of order $3$ exists. $\blacksquare$</p>
+<p><strong>A11.</strong> <em>Partition lower bound.</em> Suppose the edges of $K_n$ are partitioned into $r$ complete bipartite subgraphs $K_{A_i, B_i}$ ($i = 1, \dots, r$). Discarding any empty bicliques, we may assume $|A_i| \ge 1$ and $|B_i| \ge 1$ for all $i$. The edge partition is the matrix identity $\sum_{i=1}^r (a_i b_i^T + b_i a_i^T) = J - I$, where $a_i = 1_{A_i}$ and $b_i = 1_{B_i}$. For any $x \in V = \mathbf{1}^\perp = \{x \in \mathbb{R}^n : \sum_{u=1}^n x_u = 0\}$, we have $J x = 0$, so $x^T(J - I)x = -\|x\|^2$, which reads</p>
+<p>$$\sum_{i=1}^r 2 s_{A_i}(x) s_{B_i}(x) = -\|x\|^2, \quad \text{where } s_A(x) = a^T x = \sum_{u \in A} x_u.$$</p>
+<p>Now define $z_i = |B_i| a_i - |A_i| b_i$ for $i = 1, \dots, r$. Each $z_i$ lies in $V$ because $z_i \cdot \mathbf{1} = |B_i||A_i| - |A_i||B_i| = 0$. Since $\dim V = n - 1$, if $r \le n - 2$ there exists a nonzero vector $x \in V$ orthogonal to $z_1, \dots, z_r$. Orthogonality $z_i \cdot x = 0$ gives $|B_i| s_{A_i}(x) = |A_i| s_{B_i}(x)$, and since $|A_i|, |B_i| \ge 1$,</p>
+<p>$$s_{A_i}(x) s_{B_i}(x) = \frac{|B_i|}{|A_i|} s_{A_i}(x)^2 \ge 0 \quad \text{for every } i = 1, \dots, r.$$</p>
+<p>Summing over $i$ yields $-\|x\|^2 = \sum_{i=1}^r 2 s_{A_i}(x) s_{B_i}(x) \ge 0$, forcing $x = 0$, a contradiction. Thus $r \ge n - 1$, and the star partition $A_i = \{i\}, B_i = \{i + 1, \dots, n\}$ ($i = 1, \dots, n - 1$) achieves $r = n - 1$. $\blacksquare$ <em>Cover upper bound.</em> Encode each vertex $v \in \{0, \dots, n - 1\}$ in binary using $k = \lceil \log_2 n \rceil$ bits, and for each bit position $j \in \{1, \dots, k\}$ form the biclique $K_{A_j, B_j}$ where $A_j$ is the set of vertices with $j$-th bit $0$ and $B_j$ is the set of vertices with $j$-th bit $1$. Any two distinct vertices differ in at least one bit position $j$, so every edge of $K_n$ is covered by $\lceil \log_2 n \rceil$ bicliques (which overlap on edges differing in multiple bits).</p>
+<p><strong>A12.</strong> Since $|A \triangle B| = |A| + |B| - 2|A \cap B| \equiv |A| + |B| \pmod 2$, the condition $|A_i \triangle A_j| \equiv 0 \pmod 2$ for all $i, j$ means $|A_i| \equiv |A_j| \pmod 2$ for all $i, j$: every set in the family has the same size parity $c \in \{0, 1\}$. For $n \ge 1$, the binomial identity $\sum_{k=0}^n (-1)^k \binom{n}{k} = (1 - 1)^n = 0$ shows that $[n]$ has equally many even-sized and odd-sized subsets, namely $2^{n-1}$ of each. Thus $|\mathcal{F}| \le 2^{n-1}$, attained sharply by taking all subsets of $[n]$ of even size (or all of odd size).</p>
+<p><strong>A13.</strong> The vertices of $G$ are the $\binom{5}{3} = 10$ $3$-subsets of $[5]$, with $A \sim B$ iff $|A \cap B| = 2$. Complementing each $3$-subset $A \mapsto \overline{A} = [5] \setminus A$ gives a bijection onto the $\binom{5}{2} = 10$ $2$-subsets of $[5]$ such that $|\overline{A} \cap \overline{B}| = 5 - |A \cup B| = 5 - (6 - |A \cap B|) = |A \cap B| - 1$. Thus $A \sim B$ ($|A \cap B| = 2$) iff $|\overline{A} \cap \overline{B}| = 1$, which is the line graph $L(K_5)$ &#8212; the <strong>complement of the Petersen graph</strong> $KG(5, 2)$ (where $2$-subsets are adjacent iff they are disjoint).<br><em>Proof that $\omega(G) = 4$:</em> By the complementation bijection, a clique in $G$ is a family of $2$-subsets of $[5]$ (edges of $K_5$) that pairwise intersect in $1$ vertex. If a clique has $\ge 2$ edges, say $e_1 = \{a, b\}$ and $e_2 = \{a, c\}$ ($b \ne c$), then every other edge in the clique must intersect both $e_1$ and $e_2$: either it contains $a$, or it is $e_3 = \{b, c\}$. If $e_3 = \{b, c\}$ is in the clique, no fourth edge can intersect all three of $\{a, b\}, \{a, c\}, \{b, c\}$ (any $2$-subset intersecting all three must contain at least two of $\{a, b, c\}$, hence equals one of them), so a triangle $K_3 \subseteq K_5$ gives a clique of size $3$. If $\{b, c\}$ is not in the clique, every edge in the clique contains $a$, forming a star centered at $a$ of size at most $4$ (the four pairs $\{a, x\}$ for $x \in [5] \setminus \{a\}$). Translating back to $3$-subsets via complementation, $\omega(G) = 4$, and the five maximum cliques of size $4$ are the families $\{T \in \binom{[5]}{3} : a \notin T\}$ of all four $3$-subsets of a fixed $4$-subset $[5] \setminus \{a\}$.<br><em>Proof that $\alpha(G) = 2$:</em> An independent set in $G$ corresponds to a family of pairwise disjoint $2$-subsets of $[5]$. Since $2 \cdot 3 = 6 &gt; 5$, at most $\lfloor 5/2 \rfloor = 2$ pairwise disjoint $2$-subsets can fit in $[5]$, and $\{\{1, 2\}, \{3, 4\}\}$ achieves $2$; hence $\alpha(G) = 2$. The general theoretical caps &#8212; Frankl&#8211;Wilson $\sum_{i \le 1} \binom{5}{i} = 6$ for $\omega$ and RCW $\binom{5}{1} = 5$ for $\alpha$ &#8212; are valid upper bounds ($4 \le 6$ and $2 \le 5$). $\blacksquare$</p>
+<p><strong>A14.</strong> Ray-Chaudhuri&#8211;Wilson with $n = 6, k = 3, L = \{0, 1\}$ gives the upper bound $|\mathcal{F}| \le \binom{6}{2} = 15$ &#8212; valid, but the true maximum is <strong>$4$</strong>. To prove $|\mathcal{F}| \le 4$ by hand: since $|A_i \cap A_j| \le 1$ for $i \ne j$, no $2$-subset of $[6]$ is contained in more than one block of $\mathcal{F}$. Each $3$-subset contains $\binom{3}{2} = 3$ pairs, so $3|\mathcal{F}| \le \binom{6}{2} = 15$, giving $|\mathcal{F}| \le 5$. Suppose $|\mathcal{F}| = 5$; then all $15$ pairs of $[6]$ are covered once, so every point $x \in [6]$ must pair with the other $5$ points in blocks of size $3$. Since each block containing $x$ covers $2$ of those pairs, $2$ would have to divide $5$, which is impossible! Thus $|\mathcal{F}| \le 4$, and $4$ is attained by $\{1,2,3\}, \{1,4,5\}, \{2,4,6\}, \{3,5,6\}$ (pairwise intersections all equal to $1$).</p>
+<p><strong>A15.</strong> A linear space on $[4] = \{1,2,3,4\}$ requires every pair of points to lie on a unique line, every line to have size $\ge 2$, and no line to have size $4$. Case 1: there is a line of size $3$, say $\{1,2,3\}$. That line covers the $3$ pairs inside $\{1,2,3\}$, so the remaining $3$ pairs $\{1,4\}, \{2,4\}, \{3,4\}$ must each be their own $2$-point line (no line through $4$ can contain two points of $\{1,2,3\}$ without covering a pair twice). This gives the near-pencil ($N = 4$ lines), and there are $\binom{4}{3} = 4$ such labeled spaces, one for each choice of the point off the $3$-point line. Case 2: every line has size $2$. Then the lines must be all $\binom{4}{2} = 6$ pairs of $[4]$ &#8212; the $4$-point affine plane $AG(2, 2)$ ($N = 6$ lines), giving $1$ space. Total: <strong>$5$</strong> labeled linear spaces on $[4]$. The $4$ near-pencils have $N = 4 = n$ (making de Bruijn&#8211;Erd&#337;s tight), while the affine plane has $N = 6 &gt; 4 = n$; all five satisfy $N \ge n$.</p>
+<p><strong>A16.</strong> In the Petersen graph $KG(5, 2)$, vertices are the $2$-subsets of $[5]$ and edges join disjoint pairs, so an independent set in $KG(5, 2)$ is a clique in its complement $L(K_5)$ &#8212; namely, a family $\mathcal{I}$ of $2$-subsets of $[5]$ that pairwise intersect. By the exact case analysis proved in <strong>A13</strong> (every pairwise-intersecting family of edges in $K_5$ is either contained in a triangle $K_3$ of size $3$ or in a star of size $4$), we have $\alpha(KG(5, 2)) = 4$, and the independent sets of size $4$ are precisely the <strong>five stars</strong> $\mathcal{S}_a = \{e \in \binom{[5]}{2} : a \in e\}$ for $a = 1, 2, 3, 4, 5$. $\blacksquare$</p>
+</main>
+</body>
+</html>
